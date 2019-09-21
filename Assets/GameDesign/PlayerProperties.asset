@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerProperties
   m_EditorClassIdentifier: 
   MoveSpeed: 4
+  AccelerationTime: 0.1

@@ -3,27 +3,37 @@
 public class PlayerMovement : MonoBehaviour
 {
     private Vector3 velocity;
-    
-    [Header("References")]
+    private Vector3 targetVelocity;
+    private Vector3 currentVelocity;
+
+    [Header("References")] 
     [SerializeField] private PlayerCollisions Collisions;
     [SerializeField] private PlayerProperties Properties;
-    
+
     private void Update()
     {
-        velocity = PlayerInput.Movement * Properties.MoveSpeed;
+        if (Collisions.Info.Above || Collisions.Info.Below)
+            velocity.y = 0;
+
+        if (Collisions.Info.Left || Collisions.Info.Right)
+            velocity.x = 0;
+
+        targetVelocity = PlayerInput.Movement * Properties.MoveSpeed;
+        velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref currentVelocity, Properties.AccelerationTime);
         Move(velocity * Time.deltaTime);
     }
-    
-    private void Move(Vector3 velocity)
+
+    private void Move(Vector2 moveAmount)
     {
         Collisions.UpdateRaycastOrigins();
+        Collisions.Info.Reset();
 
-        if (velocity.x != 0)
-            Collisions.GetHorizontalCollisions(ref velocity);
+        if (moveAmount.x != 0)
+            Collisions.GetHorizontalCollisions(ref moveAmount);
 
-        if (velocity.y != 0)
-            Collisions.GetVerticalCollisions(ref velocity);
+        if (moveAmount.y != 0)
+            Collisions.GetVerticalCollisions(ref moveAmount);
 
-        transform.Translate(velocity);
+        transform.Translate(moveAmount);
     }
 }

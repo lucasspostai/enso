@@ -85,11 +85,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec7607c1aee0e74d8eae4ec7a26b11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalRayCount: 4
-  VerticalRayCount: 4
+  HorizontalRaySpacing: 0
+  VerticalRaySpacing: 0
+  Collider: {fileID: 5356242511951146642}
   CollisionLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  HorizontalRayCount: 4
+  VerticalRayCount: 4
 --- !u!114 &8491124380792908023
 MonoBehaviour:
   m_ObjectHideFlags: 0
