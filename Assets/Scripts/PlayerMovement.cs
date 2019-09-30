@@ -2,25 +2,27 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector3 velocity;
     private Vector3 targetVelocity;
     private Vector3 currentVelocity;
 
     [Header("References")] 
     [SerializeField] private PlayerCollisions Collisions;
+
     [SerializeField] private PlayerProperties Properties;
+
+    [HideInInspector] public Vector3 Velocity;
 
     private void Update()
     {
         if (Collisions.Info.Above || Collisions.Info.Below)
-            velocity.y = 0;
+            Velocity.y = 0;
 
         if (Collisions.Info.Left || Collisions.Info.Right)
-            velocity.x = 0;
+            Velocity.x = 0;
 
         targetVelocity = PlayerInput.Movement * Properties.MoveSpeed;
-        velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref currentVelocity, Properties.AccelerationTime);
-        Move(velocity * Time.deltaTime);
+        Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, Properties.AccelerationTime);
+        Move(Velocity * Time.deltaTime);
     }
 
     private void Move(Vector2 moveAmount)
