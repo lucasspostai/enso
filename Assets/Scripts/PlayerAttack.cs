@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float TimeBetweenAttack;
     [SerializeField] private Vector2 AttackRange;
     [SerializeField] private LayerMask EnemiesLayerMask;
+    [SerializeField] private Transform AttackAnchor;
     [SerializeField] private Transform AttackPosition;
     [SerializeField] private PlayerMovement Movement;
 
@@ -27,6 +28,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        float angle = Mathf.Atan2(Movement.Velocity.y, Movement.Velocity.x) * Mathf.Rad2Deg;
+        AttackAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        
         actualTimeBetweenAttack -= Time.deltaTime;
     }
 
