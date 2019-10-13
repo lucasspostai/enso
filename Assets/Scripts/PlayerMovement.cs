@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 currentVelocity;
 
     [Header("References")] 
+    [SerializeField] private Animator PlayerAnimator;
+    [SerializeField] private PlayerAttack Attack;
     [SerializeField] private PlayerCollisions Collisions;
-
     [SerializeField] private PlayerProperties Properties;
 
     [HideInInspector] public Vector3 Velocity;
@@ -37,5 +39,19 @@ public class PlayerMovement : MonoBehaviour
             Collisions.GetVerticalCollisions(ref moveAmount);
 
         transform.Translate(moveAmount);
+
+        if (Attack.IsAttacking)
+            return;
+
+        if (PlayerInput.Movement == Vector2.zero)
+        {
+            PlayerAnimator.Play(PlayerAnimations.IdleState);
+            return;
+        }
+
+        PlayerAnimator.Play(PlayerAnimations.RunningState);
+
+        PlayerAnimator.SetFloat(PlayerAnimations.FaceX, PlayerInput.Movement.x);
+        PlayerAnimator.SetFloat(PlayerAnimations.FaceY, PlayerInput.Movement.y);
     }
 }

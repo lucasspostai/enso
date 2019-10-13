@@ -2,6 +2,7 @@
 
 public class PlayerAttack : MonoBehaviour
 {
+    private bool isAttackColliderEnabled;
     private float actualTimeBetweenAttack;
     private Collider2D[] enemiesToDamage;
 
@@ -10,18 +11,29 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask EnemiesLayerMask;
     [SerializeField] private Transform AttackAnchor;
     [SerializeField] private Transform AttackPosition;
+
+    [Header("References")] 
+    [SerializeField] private Animator PlayerAnimator;
     [SerializeField] private PlayerMovement Movement;
+
+    [HideInInspector] public bool IsAttacking;
 
     #region Delegates
 
     private void OnEnable()
     {
-        PlayerInput.AttackInputDown += Attack;
+        PlayerInput.AttackInputDown += StartAttack;
+        PlayerAnimations.EnableCollider += EnableAttackCollider;
+        PlayerAnimations.DisableCollider += DisableAttackCollider;
+        PlayerAnimations.EndAttackAnimation += EndAttack;
     }
 
     private void OnDisable()
     {
-        PlayerInput.AttackInputDown -= Attack;
+        PlayerInput.AttackInputDown -= StartAttack;
+        PlayerAnimations.EnableCollider -= EnableAttackCollider;
+        PlayerAnimations.DisableCollider -= DisableAttackCollider;
+        PlayerAnimations.EndAttackAnimation -= EndAttack;
     }
 
     #endregion
@@ -32,27 +44,52 @@ public class PlayerAttack : MonoBehaviour
         AttackAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         
         actualTimeBetweenAttack -= Time.deltaTime;
+
+        if (isAttackColliderEnabled)
+            GetAttackCollisions();
     }
 
-    private void Attack()
+    private void StartAttack()
     {
         if (actualTimeBetweenAttack <= 0)
         {
             actualTimeBetweenAttack = TimeBetweenAttack;
 
-            enemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, AttackRange, 0, EnemiesLayerMask);
+            IsAttacking = true;
 
-            foreach (Collider2D enemyToDamage in enemiesToDamage)
-            {
-                var enemy = enemyToDamage.GetComponent<Enemy>();
-                
-                if(enemy != null)
-                    enemy.TakeDamage();
-            }
+            PlayerAnimator.Play(PlayerAnimations.BasicAttackState);
         }
         else
         {
             Debug.Log("Can't attack yet'");
+        }
+    }
+
+    private void EnableAttackCollider()
+    {
+        isAttackColliderEnabled = true;
+    }
+    
+    private void DisableAttackCollider()
+    {
+        isAttackColliderEnabled = false;
+    }
+
+    private void EndAttack()
+    {
+        IsAttacking = false;
+    }
+
+    private void GetAttackCollisions()
+    {
+        enemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, AttackRange, 0, EnemiesLayerMask);
+
+        foreach (Collider2D enemyToDamage in enemiesToDamage)
+        {
+            var enemy = enemyToDamage.GetComponent<Enemy>();
+                
+            if(enemy != null)
+                enemy.TakeDamage();
         }
     }
 
