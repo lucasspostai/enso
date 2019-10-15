@@ -2,12 +2,12 @@
 
 public class PlayerAttack : MonoBehaviour
 {
+    private bool canPerformNewAttack;
     private bool isAttackColliderEnabled;
-    private float actualTimeBetweenAttack;
+    private float attackCooldown;
+    private int numberOfAttacksMade;
     private Collider2D[] enemiesToDamage;
 
-    [SerializeField] private float TimeBetweenAttack;
-    [SerializeField] private Vector2 AttackRange;
     [SerializeField] private LayerMask EnemiesLayerMask;
     [SerializeField] private Transform AttackAnchor;
     [SerializeField] private Transform AttackPosition;
@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Animator PlayerAnimator;
     [SerializeField] private PlayerMovement Movement;
+    [SerializeField] private PlayerProperties Properties;
 
     [HideInInspector] public bool IsAttacking;
 
@@ -42,8 +43,8 @@ public class PlayerAttack : MonoBehaviour
     {
         float angle = Mathf.Atan2(Movement.Velocity.y, Movement.Velocity.x) * Mathf.Rad2Deg;
         AttackAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
-        actualTimeBetweenAttack -= Time.deltaTime;
+
+        attackCooldown -= Time.deltaTime;
 
         if (isAttackColliderEnabled)
             GetAttackCollisions();
@@ -51,16 +52,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        if (actualTimeBetweenAttack <= 0)
+        if (numberOfAttacksMade < Properties.MaxNumberOfAttacks && attackCooldown <= 0)
         {
-            actualTimeBetweenAttack = TimeBetweenAttack;
-
+            numberOfAttacksMade++;
+            
             IsAttacking = true;
 
+            //Randomizar animações de ataque
             PlayerAnimator.Play(PlayerAnimations.BasicAttackState);
         }
         else
         {
+            attackCooldown = Properties.AttackCooldown;
+
             Debug.Log("Can't attack yet'");
         }
     }
@@ -69,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
     {
         isAttackColliderEnabled = true;
     }
-    
+
     private void DisableAttackCollider()
     {
         isAttackColliderEnabled = false;
@@ -82,13 +86,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetAttackCollisions()
     {
-        enemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, AttackRange, 0, EnemiesLayerMask);
-
+        enemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, Properties.AttackRange, 0, EnemiesLayerMask);
         foreach (Collider2D enemyToDamage in enemiesToDamage)
         {
             var enemy = enemyToDamage.GetComponent<Enemy>();
-                
-            if(enemy != null)
+
+            if (enemy != null)
                 enemy.TakeDamage();
         }
     }
@@ -96,6 +99,6 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(AttackPosition.position, AttackRange);
+        Gizmos.DrawWireCube(AttackPosition.position, Properties.AttackRange);
     }
 }

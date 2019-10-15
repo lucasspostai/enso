@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   AccelerationTime: 0.05
+  MaxNumberOfAttacks: 3
+  AttackCooldown: 0.2
+  AttackRange: {x: 2.5, y: 2}
