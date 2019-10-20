@@ -8,8 +8,10 @@ public class PlayerProperties : ScriptableObject
     public float MoveSpeed;
     public float AccelerationTime;
 
-    [Header("Simple Attack")] 
-    public int MaxNumberOfAttacks;
-    public float AttackCooldown;
+    [Header("Dodge Roll")] 
+    public float SlidingSpeed;
+    public float SlidingLength;
+
+    [Header("Simple Attack")]
     public Vector2 AttackRange;
 }

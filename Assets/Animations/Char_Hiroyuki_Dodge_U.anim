@@ -21,45 +21,45 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 0fd275ea3e0370f469059abb4b792e10, type: 3}
-    - time: 0.083333336
+    - time: 0.027777778
       value: {fileID: 21300000, guid: e13489ba364316b44a4ce98d30d08f7b, type: 3}
-    - time: 0.16666667
+    - time: 0.055555556
       value: {fileID: 21300000, guid: 69a1367c99207d249a761f56e3be3418, type: 3}
-    - time: 0.25
+    - time: 0.083333336
       value: {fileID: 21300000, guid: f451ce0f78c3b1b428425dc194f50e0e, type: 3}
-    - time: 0.33333334
+    - time: 0.11111111
       value: {fileID: 21300000, guid: 24932b50ed9a3cf499b703e420d8f3ef, type: 3}
-    - time: 0.41666666
+    - time: 0.1388889
       value: {fileID: 21300000, guid: 28b306d0e559c5643935d2f897d1398e, type: 3}
-    - time: 0.5
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 79f1421ab6ca1bb44990003ab582c083, type: 3}
-    - time: 0.5833333
+    - time: 0.19444445
       value: {fileID: 21300000, guid: fcb8e665370c68b4396e8d01ab013744, type: 3}
-    - time: 0.6666667
+    - time: 0.22222222
       value: {fileID: 21300000, guid: 592e16e24bc26c744b671065d69ab849, type: 3}
-    - time: 0.75
+    - time: 0.25
       value: {fileID: 21300000, guid: 3be7c9a8562e47d4c9a479703c37cc6b, type: 3}
-    - time: 0.8333333
+    - time: 0.2777778
       value: {fileID: 21300000, guid: 217abfa63861f06418fdff599f1a1899, type: 3}
-    - time: 0.9166667
+    - time: 0.30555555
       value: {fileID: 21300000, guid: f5aaad0bb9cee4f4ead2f7ac39bb1131, type: 3}
-    - time: 1
+    - time: 0.33333334
       value: {fileID: 21300000, guid: a745ecfec9cfc964ebdcf54e1c5f8625, type: 3}
-    - time: 1.0833334
+    - time: 0.3611111
       value: {fileID: 21300000, guid: 155901539a743874eb7344ff2cde23df, type: 3}
-    - time: 1.1666666
+    - time: 0.3888889
       value: {fileID: 21300000, guid: 2b234080848f85646942962721fc8a71, type: 3}
-    - time: 1.25
+    - time: 0.41666666
       value: {fileID: 21300000, guid: e3b4cf68d875f4f478ba0837dfec12bd, type: 3}
-    - time: 1.3333334
+    - time: 0.44444445
       value: {fileID: 21300000, guid: 938e7370113a5fa49835f3797e41a610, type: 3}
-    - time: 1.4166666
+    - time: 0.4722222
       value: {fileID: 21300000, guid: 5719bff6d1fc8554c84547752e26323a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 12
+  m_SampleRate: 36
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -97,12 +97,12 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -116,4 +116,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.4722222
+    functionName: OnEndRollAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

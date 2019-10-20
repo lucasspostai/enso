@@ -2,10 +2,7 @@
 
 public class PlayerAttack : MonoBehaviour
 {
-    private bool canPerformNewAttack;
     private bool isAttackColliderEnabled;
-    private float attackCooldown;
-    private int numberOfAttacksMade;
     private Collider2D[] enemiesToDamage;
 
     [SerializeField] private LayerMask EnemiesLayerMask;
@@ -44,18 +41,14 @@ public class PlayerAttack : MonoBehaviour
         float angle = Mathf.Atan2(Movement.Velocity.y, Movement.Velocity.x) * Mathf.Rad2Deg;
         AttackAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        attackCooldown -= Time.deltaTime;
-
         if (isAttackColliderEnabled)
             GetAttackCollisions();
     }
 
     private void StartAttack()
     {
-        if (numberOfAttacksMade < Properties.MaxNumberOfAttacks && attackCooldown <= 0)
+        if (!IsAttacking)
         {
-            numberOfAttacksMade++;
-            
             IsAttacking = true;
 
             //Randomizar animações de ataque
@@ -63,8 +56,6 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            attackCooldown = Properties.AttackCooldown;
-
             Debug.Log("Can't attack yet'");
         }
     }

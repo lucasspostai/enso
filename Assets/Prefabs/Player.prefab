@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2784454056699770330}
   - component: {fileID: 8491124380792908023}
   - component: {fileID: 8070404727408723846}
+  - component: {fileID: 7134707014561844925}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -106,7 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0495aff34c59654ab1b999bce4bee2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackButton: 32
+  AttackButton: 323
+  DefenseButton: 324
+  DodgeButton: 32
 --- !u!114 &2784454056699770330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +145,7 @@ MonoBehaviour:
   PlayerAnimator: {fileID: 2744533126663345872}
   Attack: {fileID: 8070404727408723846}
   Collisions: {fileID: 2784454056699770330}
+  DodgeRoll: {fileID: 7134707014561844925}
   Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8070404727408723846
@@ -156,8 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7150528a2973bce49abe8c835b1a247d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBetweenAttack: 0.2
-  AttackRange: {x: 2.5, y: 2}
   EnemiesLayerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -165,7 +167,24 @@ MonoBehaviour:
   AttackPosition: {fileID: 4153355543147800833}
   PlayerAnimator: {fileID: 2744533126663345872}
   Movement: {fileID: 8491124380792908023}
+  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   IsAttacking: 0
+--- !u!114 &7134707014561844925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf921d70f23c6be459668e0d8d4d4164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAnimator: {fileID: 2744533126663345872}
+  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
+  Movement: {fileID: 8491124380792908023}
+  ActualRollState: 0
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0

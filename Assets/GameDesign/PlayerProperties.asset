@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2c63e6facb8d84bbb278fb9c5ebffd, type: 3}
   m_Name: PlayerProperties
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 15
   AccelerationTime: 0.05
-  MaxNumberOfAttacks: 3
-  AttackCooldown: 0.2
+  SlidingSpeed: 20
+  SlidingLength: 1
   AttackRange: {x: 2.5, y: 2}

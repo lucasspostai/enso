@@ -4,12 +4,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private bool attackInputDownCalled;
+    private bool defenseInputDownCalled;
     private bool dodgeInputDownCalled;
 
-    [SerializeField] private KeyCode AttackButton = KeyCode.Space;
-    [SerializeField] private KeyCode DodgeButton = KeyCode.LeftShift;
+    [SerializeField] private KeyCode AttackButton = KeyCode.Mouse0;
+    [SerializeField] private KeyCode DefenseButton = KeyCode.Mouse1;
+    [SerializeField] private KeyCode DodgeButton = KeyCode.Space;
     
     public static event Action AttackInputDown;
+    public static event Action DefenseInputDown;
     public static event Action DodgeInputDown;
     
     public static Vector2 Movement;
@@ -19,11 +22,17 @@ public class PlayerInput : MonoBehaviour
         UpdateMovement();
 
         attackInputDownCalled = Input.GetKeyDown(AttackButton);
+        defenseInputDownCalled = Input.GetKeyDown(DefenseButton);
         dodgeInputDownCalled = Input.GetKeyDown(DodgeButton);
 
         if (attackInputDownCalled)
         {
             OnAttackInputDown();
+        }
+
+        if (defenseInputDownCalled)
+        {
+            OnDefenseInputDown();
         }
         
         if (dodgeInputDownCalled)
@@ -34,20 +43,19 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdateMovement()
     {
-        Movement = Vector2.zero;
-        
-        if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0)
-            Movement.x = Input.GetAxisRaw("Horizontal") > 0 ? 1 : -1;
-        
-        if(Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0)
-            Movement.y = Input.GetAxisRaw("Vertical") > 0 ? 1 : -1;
-        
+        Movement.x = Input.GetAxisRaw("Horizontal");
+        Movement.y = Input.GetAxisRaw("Vertical");
         Movement.Normalize();
     }
 
     private static void OnAttackInputDown()
     {
         AttackInputDown?.Invoke();
+    }
+
+    private static void OnDefenseInputDown()
+    {
+        DefenseInputDown?.Invoke();
     }
 
     private static void OnDodgeInputDown()
