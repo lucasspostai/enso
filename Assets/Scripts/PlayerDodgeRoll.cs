@@ -24,13 +24,13 @@ public class PlayerDodgeRoll : MonoBehaviour
     private void OnEnable()
     {
         PlayerInput.DodgeInputDown += Roll;
-        PlayerAnimations.EndRollAnimation += StopSliding;
+        CharacterAnimations.EndRollAnimation += StopSliding;
     }
 
     private void OnDisable()
     {
         PlayerInput.DodgeInputDown -= Roll;
-        PlayerAnimations.EndRollAnimation -= StopSliding;
+        CharacterAnimations.EndRollAnimation -= StopSliding;
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class PlayerDodgeRoll : MonoBehaviour
         if (ActualRollState == RollState.Normal)
         {
             ActualRollState = RollState.Sliding;
-            PlayerAnimator.Play(PlayerAnimations.DodgingState);
+            PlayerAnimator.Play(CharacterAnimations.DodgingState);
         }
     }
 

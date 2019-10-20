@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
 {
     private bool attackInputDownCalled;
     private bool defenseInputDownCalled;
+    private bool defenseInputUpCalled;
     private bool dodgeInputDownCalled;
 
     [SerializeField] private KeyCode AttackButton = KeyCode.Mouse0;
@@ -13,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     
     public static event Action AttackInputDown;
     public static event Action DefenseInputDown;
+    public static event Action DefenseInputUp;
     public static event Action DodgeInputDown;
     
     public static Vector2 Movement;
@@ -23,6 +25,7 @@ public class PlayerInput : MonoBehaviour
 
         attackInputDownCalled = Input.GetKeyDown(AttackButton);
         defenseInputDownCalled = Input.GetKeyDown(DefenseButton);
+        defenseInputUpCalled = Input.GetKeyUp(DefenseButton);
         dodgeInputDownCalled = Input.GetKeyDown(DodgeButton);
 
         if (attackInputDownCalled)
@@ -33,6 +36,11 @@ public class PlayerInput : MonoBehaviour
         if (defenseInputDownCalled)
         {
             OnDefenseInputDown();
+        }
+        
+        if (defenseInputUpCalled)
+        {
+            OnDefenseInputUp();
         }
         
         if (dodgeInputDownCalled)
@@ -61,5 +69,10 @@ public class PlayerInput : MonoBehaviour
     private static void OnDodgeInputDown()
     {
         DodgeInputDown?.Invoke();
+    }
+
+    private static void OnDefenseInputUp()
+    {
+        DefenseInputUp?.Invoke();
     }
 }

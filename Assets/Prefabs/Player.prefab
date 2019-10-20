@@ -41,10 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2784454056699770309}
   - component: {fileID: 5356242511951146642}
+  - component: {fileID: 8528520040655336778}
   - component: {fileID: 5583368025677090078}
   - component: {fileID: 2784454056699770330}
   - component: {fileID: 8491124380792908023}
   - component: {fileID: 8070404727408723846}
+  - component: {fileID: 8067335770854407838}
   - component: {fileID: 7134707014561844925}
   m_Layer: 8
   m_Name: Player
@@ -95,6 +97,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &8528520040655336778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8924b224a900c24dbfade130a4df530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvincibilityTime: 0
+  Health: 0
+  Balance: 0
 --- !u!114 &5583368025677090078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 2744533126663345872}
   Attack: {fileID: 8070404727408723846}
+  Defense: {fileID: 8067335770854407838}
   Collisions: {fileID: 2784454056699770330}
   DodgeRoll: {fileID: 7134707014561844925}
   Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
@@ -166,9 +184,25 @@ MonoBehaviour:
   AttackAnchor: {fileID: 4942956660897927905}
   AttackPosition: {fileID: 4153355543147800833}
   PlayerAnimator: {fileID: 2744533126663345872}
+  Defense: {fileID: 8067335770854407838}
   Movement: {fileID: 8491124380792908023}
   Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   IsAttacking: 0
+--- !u!114 &8067335770854407838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb2cddfd47c2634db176eadf6f39eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDefending: 0
+  PlayerAnimator: {fileID: 2744533126663345872}
+  Attack: {fileID: 8070404727408723846}
 --- !u!114 &7134707014561844925
 MonoBehaviour:
   m_ObjectHideFlags: 0

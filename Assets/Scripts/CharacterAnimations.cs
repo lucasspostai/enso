@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class CharacterAnimations : MonoBehaviour
 {
     public static readonly int FaceX = Animator.StringToHash("FaceX");
     public static readonly int FaceY = Animator.StringToHash("FaceY");
@@ -9,6 +9,7 @@ public class PlayerAnimations : MonoBehaviour
     public static readonly string RunningState = "Running";
     public static readonly string DodgingState = "Dodge";
     public static readonly string BasicAttackState = "BasicAttack";
+    public static readonly string DefenseState = "Defense";
     
     public static event Action EnableCollider;
     public static event Action DisableCollider;

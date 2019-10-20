@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "PlayerProperties", menuName = "Enso/Player")]
-public class PlayerProperties : ScriptableObject
+public class PlayerProperties : FighterProperties
 {
     [Header("Movement")]
     public float MoveSpeed;
+    public float MoveSpeedWhileDefending;
     public float AccelerationTime;
 
     [Header("Dodge Roll")] 
@@ -14,4 +14,5 @@ public class PlayerProperties : ScriptableObject
 
     [Header("Simple Attack")]
     public Vector2 AttackRange;
+    public int Damage;
 }

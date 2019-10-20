@@ -1,12 +1,26 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Fighter
 {
     [SerializeField] private SpriteRenderer AnimationSpriteRenderer;
+    [SerializeField] private EnemyProperties Properties;
 
-    public void TakeDamage()
+    private void Start()
     {
+        Health = Properties.Health;
+        Balance = Properties.BalanceAmount;
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        if (InvincibilityTime > 0)
+            return;
+        
+        base.TakeDamage(damage);
+
+        InvincibilityTime = Properties.InvincibilityTime;
+        
         Debug.Log("Hit");
         
         StartCoroutine(TintEnemy());
@@ -17,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
         AnimationSpriteRenderer.material.color = Color.red;
 
-        yield return  new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f);
         
         AnimationSpriteRenderer.material.color = Color.white;
     }

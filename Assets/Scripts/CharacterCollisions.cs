@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerCollisions : RaycastController
+public class CharacterCollisions : RaycastController
 {
     public CollisionInfo Info;
 

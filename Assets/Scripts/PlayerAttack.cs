@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("References")] 
     [SerializeField] private Animator PlayerAnimator;
+    [SerializeField] private PlayerDefense Defense;
     [SerializeField] private PlayerMovement Movement;
     [SerializeField] private PlayerProperties Properties;
 
@@ -21,17 +22,17 @@ public class PlayerAttack : MonoBehaviour
     private void OnEnable()
     {
         PlayerInput.AttackInputDown += StartAttack;
-        PlayerAnimations.EnableCollider += EnableAttackCollider;
-        PlayerAnimations.DisableCollider += DisableAttackCollider;
-        PlayerAnimations.EndAttackAnimation += EndAttack;
+        CharacterAnimations.EnableCollider += EnableAttackCollider;
+        CharacterAnimations.DisableCollider += DisableAttackCollider;
+        CharacterAnimations.EndAttackAnimation += EndAttack;
     }
 
     private void OnDisable()
     {
         PlayerInput.AttackInputDown -= StartAttack;
-        PlayerAnimations.EnableCollider -= EnableAttackCollider;
-        PlayerAnimations.DisableCollider -= DisableAttackCollider;
-        PlayerAnimations.EndAttackAnimation -= EndAttack;
+        CharacterAnimations.EnableCollider -= EnableAttackCollider;
+        CharacterAnimations.DisableCollider -= DisableAttackCollider;
+        CharacterAnimations.EndAttackAnimation -= EndAttack;
     }
 
     #endregion
@@ -47,12 +48,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        if (!IsAttacking)
+        if (!IsAttacking && !Defense.IsDefending)
         {
             IsAttacking = true;
 
             //Randomizar animações de ataque
-            PlayerAnimator.Play(PlayerAnimations.BasicAttackState);
+            PlayerAnimator.Play(CharacterAnimations.BasicAttackState);
         }
         else
         {
@@ -80,10 +81,8 @@ public class PlayerAttack : MonoBehaviour
         enemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, Properties.AttackRange, 0, EnemiesLayerMask);
         foreach (Collider2D enemyToDamage in enemiesToDamage)
         {
-            var enemy = enemyToDamage.GetComponent<Enemy>();
-
-            if (enemy != null)
-                enemy.TakeDamage();
+            var enemy = enemyToDamage.GetComponent<IDamageable>();
+            enemy?.TakeDamage(Properties.Damage);
         }
     }
 
