@@ -21,4 +21,7 @@ MonoBehaviour:
   SlidingSpeed: 20
   SlidingLength: 1
   AttackRange: {x: 2.5, y: 2}
-  Damage: 1
+  SimpleAttackDamage: 1
+  HeavyAttackRange: {x: 4, y: 3}
+  HeavyAttackDamage: 5
+  HeavyAttackHoldingTime: 1

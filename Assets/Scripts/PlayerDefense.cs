@@ -22,7 +22,7 @@ public class PlayerDefense : MonoBehaviour
 
     private void StartDefense()
     {
-        if (Attack.IsAttacking)
+        if (Attack.IsPerformingSimpleAttack)
             return;
         
         Debug.Log("StartDefense");

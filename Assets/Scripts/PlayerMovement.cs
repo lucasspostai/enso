@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(moveAmount);
 
-        if (Attack.IsAttacking || DodgeRoll.ActualRollState == RollState.Sliding || Defense.IsDefending)
+        if (Attack.IsPerformingSimpleAttack || Attack.IsPerformingHeavyAttack || DodgeRoll.ActualRollState == RollState.Sliding || Defense.IsDefending)
             return;
 
         if (PlayerInput.Movement == Vector2.zero)

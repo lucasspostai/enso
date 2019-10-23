@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private bool attackInputDownCalled;
+    private bool attackInputUpCalled;
     private bool defenseInputDownCalled;
     private bool defenseInputUpCalled;
     private bool dodgeInputDownCalled;
@@ -13,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private KeyCode DodgeButton = KeyCode.Space;
     
     public static event Action AttackInputDown;
+    public static event Action AttackInputUp;
     public static event Action DefenseInputDown;
     public static event Action DefenseInputUp;
     public static event Action DodgeInputDown;
@@ -24,6 +26,7 @@ public class PlayerInput : MonoBehaviour
         UpdateMovement();
 
         attackInputDownCalled = Input.GetKeyDown(AttackButton);
+        attackInputUpCalled = Input.GetKeyUp(AttackButton);
         defenseInputDownCalled = Input.GetKeyDown(DefenseButton);
         defenseInputUpCalled = Input.GetKeyUp(DefenseButton);
         dodgeInputDownCalled = Input.GetKeyDown(DodgeButton);
@@ -31,6 +34,11 @@ public class PlayerInput : MonoBehaviour
         if (attackInputDownCalled)
         {
             OnAttackInputDown();
+        }
+
+        if (attackInputUpCalled)
+        {
+            OnAttackInputUp();
         }
 
         if (defenseInputDownCalled)
@@ -74,5 +82,10 @@ public class PlayerInput : MonoBehaviour
     private static void OnDefenseInputUp()
     {
         DefenseInputUp?.Invoke();
+    }
+
+    private static void OnAttackInputUp()
+    {
+	    AttackInputUp?.Invoke();
     }
 }

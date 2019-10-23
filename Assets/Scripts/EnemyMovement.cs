@@ -71,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
 
         transform.Translate(moveAmount);
 
-        /*if (Attack.IsAttacking || DodgeRoll.ActualRollState == RollState.Sliding)
+        /*if (Attack.IsPerformingSimpleAttack || DodgeRoll.ActualRollState == RollState.Sliding)
             return;*/
 
         if (PlayerInput.Movement == Vector2.zero)

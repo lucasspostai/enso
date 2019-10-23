@@ -14,5 +14,10 @@ public class PlayerProperties : FighterProperties
 
     [Header("Simple Attack")]
     public Vector2 AttackRange;
-    public int Damage;
+    public int SimpleAttackDamage;
+
+    [Header("Heavy Attack")]
+    public Vector2 HeavyAttackRange;
+    public int HeavyAttackDamage;
+    public float HeavyAttackHoldingTime;
 }
