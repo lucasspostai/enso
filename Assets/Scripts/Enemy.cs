@@ -20,9 +20,7 @@ public class Enemy : Fighter
         base.TakeDamage(damage);
 
         InvincibilityTime = Properties.InvincibilityTime;
-        
-        Debug.Log("Hit");
-        
+
         StartCoroutine(TintEnemy());
     }
 

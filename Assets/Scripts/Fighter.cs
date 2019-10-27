@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Fighter : MonoBehaviour, IDamageable
 {
+    private bool canBeHurt;
+    
     [HideInInspector] public float InvincibilityTime;
     [HideInInspector] public int Health;
     [HideInInspector] public int Balance;
@@ -16,6 +15,9 @@ public class Fighter : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(int damage)
     {
+        /*if (!canBeHurt)
+            return;*/
+
         Health -= damage;
 
         if (Health <= 0)
@@ -30,8 +32,14 @@ public class Fighter : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    public void UpdateBalance()
+    public void UpdateBalance(int damage)
     {
-        
+        Balance -= damage;
+
+        if (Balance <= 0)
+        {
+            Balance = 0;
+            canBeHurt = true;
+        }
     }
 }
