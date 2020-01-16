@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     private Vector2 focusPosition;
     private Vector3 offset;
 
-    [SerializeField] private PlayerCollisions Target;
+    [SerializeField] private CharacterCollisions Target;
     [SerializeField] private CameraProperties Properties;
 
     private void Start()

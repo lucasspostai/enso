@@ -15,4 +15,4 @@ MonoBehaviour:
   VerticalOffset: 0
   LookAheadDistance: 2
   LookAheadSmoothTime: 1
-  FocusAreaSize: {x: 4, y: 4}
+  FocusAreaSize: {x: 4, y: 3}
