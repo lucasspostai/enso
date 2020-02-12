@@ -3,24 +3,9 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class PoolManager : MonoBehaviour
+    public class PoolManager : Singleton<PoolManager>
     {
         private Dictionary<int, Queue<ObjectInstance>> poolDictionary = new Dictionary<int, Queue<ObjectInstance>>();
-
-        private static PoolManager instance;
-
-        public static PoolManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = FindObjectOfType<PoolManager>();
-                }
-
-                return instance;
-            }
-        }
 
         public void CreatePool(GameObject prefab, int poolSize)
         {
@@ -31,7 +16,7 @@ namespace Framework
                 poolDictionary.Add(poolKey, new Queue<ObjectInstance>());
 
                 //Criação do parent para os objetos inseridos na pool
-                GameObject poolHolder = new GameObject((prefab.name + "_Pool"));
+                GameObject poolHolder = new GameObject(prefab.name + "_Pool");
                 poolHolder.transform.parent = transform;
 
                 for (int i = 0; i < poolSize; i++)
@@ -43,7 +28,7 @@ namespace Framework
             }
         }
 
-        public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
+        public ObjectInstance ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             int poolKey = prefab.GetInstanceID();
 
@@ -53,32 +38,37 @@ namespace Framework
                 poolDictionary[poolKey].Enqueue(objectToReuse);
 
                 objectToReuse.Reuse(position, rotation);
+                
+                return objectToReuse;
             }
+
+            return null;
         }
 
         public class ObjectInstance
         {
-            private GameObject gameObject;
+            public GameObject GameObject;
+            
             private Transform transform;
             private bool hasPoolObjectComponent;
             private PoolObject poolObject;
 
             public ObjectInstance(GameObject objectInstance)
             {
-                gameObject = objectInstance;
-                transform = gameObject.transform;
-                gameObject.SetActive(false);
+                GameObject = objectInstance;
+                transform = GameObject.transform;
+                GameObject.SetActive(false);
 
-                if (gameObject.GetComponent<PoolObject>())
+                if (GameObject.GetComponent<PoolObject>())
                 {
                     hasPoolObjectComponent = true;
-                    poolObject = gameObject.GetComponent<PoolObject>();
+                    poolObject = GameObject.GetComponent<PoolObject>();
                 }
             }
 
             public void Reuse(Vector3 position, Quaternion rotation)
             {
-                gameObject.SetActive(true);
+                GameObject.SetActive(true);
                 transform.position = position;
                 transform.rotation = rotation;
 
