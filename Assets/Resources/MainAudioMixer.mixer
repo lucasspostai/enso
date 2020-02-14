@@ -94,7 +94,7 @@ AudioMixerGroupController:
   m_Pitch: a778d3a1576c04949ab6d2a5e387cb84
   m_Effects:
   - {fileID: 244763918460764012}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 8
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -112,7 +112,7 @@ AudioMixerGroupController:
   m_Pitch: 6e072e06db13b7d4180d150cc44c08a6
   m_Effects:
   - {fileID: 244266913211546906}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -130,7 +130,7 @@ AudioMixerGroupController:
   m_Pitch: 4043d5faec39f204cb99bfa67ce3801d
   m_Effects:
   - {fileID: 244476786430238942}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

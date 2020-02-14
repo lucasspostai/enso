@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Framework.Audio
@@ -8,10 +9,10 @@ namespace Framework.Audio
     {
         private UniqueRandom uniqueRandom;
 
-        public AudioClip[] Clips;
+        public List<AudioClip> Clips = new List<AudioClip>();
         public float Volume = 1f;
-        public float MinPitch = 1f;
-        public float MaxPitch = 1f;
+        public float MinPitch = 0.95f;
+        public float MaxPitch = 1.05f;
         public bool Loop;
         public float SpatialBlend;
 
@@ -20,7 +21,7 @@ namespace Framework.Audio
         private void OnEnable()
         {
             if (Clips != null)
-                uniqueRandom = new UniqueRandom(0, Clips.Length);
+                uniqueRandom = new UniqueRandom(0, Clips.Count);
         }
 
         public AudioClip GetClip()
