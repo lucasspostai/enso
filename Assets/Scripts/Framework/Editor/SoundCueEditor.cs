@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Text;
 using Framework.Audio;
 using UnityEditor;
 using UnityEditorInternal;
@@ -191,7 +190,7 @@ namespace Framework.Editor
 
         #region Audio Player Handler
 
-        private static void PlayClip(AudioClip clip)
+        private static void PlayClip(AudioClip clip, int startSample = 0, bool loop = false)
         {
             Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
             Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
@@ -199,19 +198,10 @@ namespace Framework.Editor
                 "PlayClip",
                 BindingFlags.Static | BindingFlags.Public,
                 null,
-                new[]
-                {
-                    typeof(AudioClip)
-                },
-                null
-            );
-            method?.Invoke(
-                null,
-                new object[]
-                {
-                    clip
-                }
-            );
+                new System.Type[] { typeof(AudioClip), typeof(int), typeof(bool) },
+                null);
+
+            method.Invoke(null, new object[] { clip, startSample, loop });
         }
 
         private static void StopAllClips()
