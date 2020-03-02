@@ -102,14 +102,14 @@ namespace Framework.Editor
         {
             GUILayout.BeginHorizontal();
 
-            SoundCueTarget.Loop = GUILayout.Toggle(SoundCueTarget.Loop, "Loop", Styles.BigButtonLeft, GUILayout.Height(50));
+            SoundCueTarget.Loop = GUILayout.Toggle(SoundCueTarget.Loop, "Loop", Styles.BigButtonLeft);
 
-            if (GUILayout.Button("Play", Styles.BigButtonMid, GUILayout.Height(50)))
+            if (GUILayout.Button("Play", Styles.BigButtonMid))
             {
                 PlayClip(SoundCueTarget.GetClip());
             }
 
-            if (GUILayout.Button("Stop", Styles.BigButtonRight, GUILayout.Height(50)))
+            if (GUILayout.Button("Stop", Styles.BigButtonRight))
             {
                 StopAllClips();
             }

@@ -50,8 +50,8 @@ namespace Framework.Editor
             }
         };
 
-        public static readonly GUIStyle BigButtonLeft = new GUIStyle(EditorStyles.miniButtonLeft) {fontSize = 25};
-        public static readonly GUIStyle BigButtonMid = new GUIStyle(EditorStyles.miniButtonMid) {fontSize = 25};
-        public static readonly GUIStyle BigButtonRight = new GUIStyle(EditorStyles.miniButtonRight) {fontSize = 25};
+        public static readonly GUIStyle BigButtonLeft = new GUIStyle(EditorStyles.miniButtonLeft) {fontSize = 12};
+        public static readonly GUIStyle BigButtonMid = new GUIStyle(EditorStyles.miniButtonMid) {fontSize = 12};
+        public static readonly GUIStyle BigButtonRight = new GUIStyle(EditorStyles.miniButtonRight) {fontSize = 12};
     }
 }
