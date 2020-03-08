@@ -16,6 +16,7 @@ public class RaycastController : MonoBehaviour
     
     [Header("Raycast Properties")]
     public LayerMask CollisionLayerMask;
+    public LayerMask TriggerCollisionLayerMask;
 
     public virtual void Start()
     {
