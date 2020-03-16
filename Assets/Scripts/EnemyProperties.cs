@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyProperties", menuName = "Enso/Enemy")]

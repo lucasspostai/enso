@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VerticalOffset: 0
   LookAheadDistance: 2
-  LookAheadSmoothTime: 1
+  LookAheadSmoothTime: 5
   FocusAreaSize: {x: 4, y: 3}

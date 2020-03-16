@@ -112,6 +112,13 @@ MonoBehaviour:
   InvincibilityTime: 0
   Health: 0
   Balance: 0
+  Animator: {fileID: 2744533126663345872}
+  Movement: {fileID: 8491124380792908023}
+  Attack: {fileID: 8070404727408723846}
+  Defense: {fileID: 8067335770854407838}
+  Collisions: {fileID: 2784454056699770330}
+  DodgeRoll: {fileID: 7134707014561844925}
+  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
 --- !u!114 &5583368025677090078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,9 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0495aff34c59654ab1b999bce4bee2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackButton: 323
-  DefenseButton: 324
-  DodgeButton: 32
+  SprintButton: 350
+  AttackButton: 355
+  DefenseButton: 354
+  DodgeButton: 351
 --- !u!114 &2784454056699770330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +158,7 @@ MonoBehaviour:
   TriggerCollisionLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  ShowDebug: 0
 --- !u!114 &8491124380792908023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,12 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf9777cf6de899468708ed9b397410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAnimator: {fileID: 2744533126663345872}
-  Attack: {fileID: 8070404727408723846}
-  Defense: {fileID: 8067335770854407838}
-  Collisions: {fileID: 2784454056699770330}
-  DodgeRoll: {fileID: 7134707014561844925}
-  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8070404727408723846
 MonoBehaviour:
