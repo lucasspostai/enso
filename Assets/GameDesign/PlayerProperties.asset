@@ -15,9 +15,9 @@ MonoBehaviour:
   Health: 5
   BalanceAmount: 10
   InvincibilityTime: 0.5
-  MoveSpeed: 15
+  MoveSpeed: 7
   MoveSpeedWhileDefending: 3
-  AccelerationTime: 0.05
+  AccelerationTime: 0
   SlidingSpeed: 20
   SlidingLength: 1
   AttackRange: {x: 2.5, y: 2}

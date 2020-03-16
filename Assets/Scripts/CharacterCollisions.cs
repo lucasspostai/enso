@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using LevelDesignEvents;
+using UnityEngine;
 
 public class CharacterCollisions : RaycastController
 {
     public CollisionInfo Info;
+    public bool ShowDebug;
 
     public void GetHorizontalCollisions(ref Vector2 velocity)
     {
@@ -14,6 +16,7 @@ public class CharacterCollisions : RaycastController
             Vector2 rayOrigin = directionX == -1 ? Origins.BottomLeft : Origins.BottomRight;
             rayOrigin += Vector2.up * (HorizontalRaySpacing * i);
 
+            //Obstacle Collision
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, CollisionLayerMask);
 
             if (hit)
@@ -25,7 +28,22 @@ public class CharacterCollisions : RaycastController
                 Info.Right = directionX == 1;
             }
 
-            Debug.DrawRay(rayOrigin, Vector2.right * directionX, Color.red);
+            //Trigger Collision
+            RaycastHit2D triggerHit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength,
+                TriggerCollisionLayerMask);
+
+            if (triggerHit)
+            {
+                var levelDesignEventExecuter = triggerHit.collider.gameObject.GetComponent<LevelDesignEventExecuter>();
+
+                if (levelDesignEventExecuter)
+                {
+                    levelDesignEventExecuter.ExecuteEvents();
+                }
+            }
+
+            if (ShowDebug)
+                Debug.DrawRay(rayOrigin, Vector2.right * directionX, Color.red);
         }
     }
 
@@ -49,8 +67,23 @@ public class CharacterCollisions : RaycastController
                 Info.Below = directionY == -1;
                 Info.Above = directionY == 1;
             }
+            
+            //Trigger Collision
+            RaycastHit2D triggerHit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength,
+                TriggerCollisionLayerMask);
 
-            Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.red);
+            if (triggerHit)
+            {
+                var levelDesignEventExecuter = triggerHit.collider.gameObject.GetComponent<LevelDesignEventExecuter>();
+
+                if (levelDesignEventExecuter)
+                {
+                    levelDesignEventExecuter.ExecuteEvents();
+                }
+            }
+
+            if (ShowDebug)
+                Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.red);
         }
     }
 
