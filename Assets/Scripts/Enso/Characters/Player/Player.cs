@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Framework;
+using UnityEngine;
 
-namespace Gameplay
+namespace Enso.Characters.Player
 {
     public class Player : Fighter
     {
@@ -11,6 +12,10 @@ namespace Gameplay
         public PlayerDefense Defense;
         public CharacterCollisions Collisions;
         public PlayerDodgeRoll DodgeRoll;
-        public PlayerProperties Properties;
+
+        public PlayerProperties GetProperties()
+        {
+            return BaseProperties as PlayerProperties;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gameplay
+namespace Enso.Characters.Player
 {
     [CreateAssetMenu(fileName = "PlayerProperties", menuName = "Enso/Player")]
     public class PlayerProperties : FighterProperties

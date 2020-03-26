@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Gameplay
+namespace Enso.Characters.Player
 {
     public class PlayerInput : MonoBehaviour
     {

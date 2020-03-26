@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Gameplay
+namespace Enso.Characters.Player
 {
     [RequireComponent(typeof(Player))]
     public class PlayerMovement : MonoBehaviour
@@ -16,7 +16,7 @@ namespace Gameplay
         private void Start()
         {
             player = GetComponent<Player>();
-            currentSpeed = player.Properties.MoveSpeed;
+            currentSpeed = player.GetProperties().MoveSpeed;
         }
 
         // private void OnEnable()
@@ -51,7 +51,7 @@ namespace Gameplay
         
             //Move
             targetVelocity = PlayerInput.Movement * currentSpeed;
-            Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, player.Properties.AccelerationTime);
+            Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, player.GetProperties().AccelerationTime);
             Move(Velocity * Time.deltaTime);
         }
 
@@ -60,10 +60,10 @@ namespace Gameplay
             player.Collisions.UpdateRaycastOrigins();
             player.Collisions.Info.Reset();
 
-            if (Math.Abs(moveAmount.x) > player.Properties.DeadZone)
+            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone)
                 player.Collisions.GetHorizontalCollisions(ref moveAmount);
 
-            if (Math.Abs(moveAmount.y) > player.Properties.DeadZone)
+            if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
                 player.Collisions.GetVerticalCollisions(ref moveAmount);
 
             transform.Translate(moveAmount);
