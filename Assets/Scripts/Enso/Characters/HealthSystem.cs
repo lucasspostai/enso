@@ -73,5 +73,13 @@ namespace Enso.Characters
         {
             Death?.Invoke();
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                TakeDamage(1);
+            }
+        }
     }
 }

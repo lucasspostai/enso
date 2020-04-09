@@ -1,4 +1,5 @@
-﻿using Gameplay;
+﻿using Enso.Characters.Player;
+using Enso.Interfaces;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -7,13 +8,13 @@ public class PlayerAttack : MonoBehaviour
 	private bool holdingAttackButton;
 	private Collider2D[] enemiesToDamage;
 	private float timeHoldingAttackButton;
+	private Player player;
 
 	[SerializeField] private LayerMask EnemiesLayerMask;
 	[SerializeField] private Transform AttackAnchor;
 	[SerializeField] private Transform AttackPosition;
 
 	[Header("References")]
-	[SerializeField] private Animator PlayerAnimator;
 	[SerializeField] private PlayerDefense Defense;
 	[SerializeField] private PlayerMovement Movement;
 	[SerializeField] private PlayerProperties Properties;
@@ -45,6 +46,11 @@ public class PlayerAttack : MonoBehaviour
 
 	#endregion
 
+	private void Start()
+	{
+		player = GetComponent<Player>();
+	}
+	
 	private void Update()
 	{
 		float angle = Mathf.Atan2(Movement.Velocity.y, Movement.Velocity.x) * Mathf.Rad2Deg;
@@ -71,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 			IsPerformingSimpleAttack = true;
 
 			//Randomizar animações de ataque
-			PlayerAnimator.Play(CharacterAnimations.BasicAttackState);
+			player.Animator.Play(CharacterAnimations.BasicAttackState);
 		}
 		else
 		{
@@ -84,12 +90,12 @@ public class PlayerAttack : MonoBehaviour
 		if (timeHoldingAttackButton >= Properties.HeavyAttackHoldingTime)
 		{
 			IsPerformingHeavyAttack = true;
-			PlayerAnimator.Play(CharacterAnimations.HeavyAttackState);
+			player.Animator.Play(CharacterAnimations.HeavyAttackState);
 		}
 		else
 		{
 			IsPerformingSimpleAttack = true;
-			PlayerAnimator.Play(CharacterAnimations.BasicAttackState);
+			player.Animator.Play(CharacterAnimations.BasicAttackState);
 		}
 
 		timeHoldingAttackButton = 0;

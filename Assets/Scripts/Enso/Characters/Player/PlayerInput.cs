@@ -19,11 +19,13 @@ namespace Enso.Characters.Player
         private bool defenseInputDownCalled;
         private bool defenseInputUpCalled;
         private bool dodgeInputDownCalled;
+        private bool healInputDownCalled;
 
-        [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button0;
+        [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button5;
         [SerializeField] private KeyCode DefenseButton = KeyCode.Joystick1Button4;
-        [SerializeField] private KeyCode DodgeButton = KeyCode.Joystick1Button1;
+        [SerializeField] private KeyCode DodgeButton = KeyCode.Joystick1Button2;
+        [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button0;
     
         public static event Action SprintInputDown;
         public static event Action AttackInputDown;
@@ -31,6 +33,7 @@ namespace Enso.Characters.Player
         public static event Action DefenseInputDown;
         public static event Action DefenseInputUp;
         public static event Action DodgeInputDown;
+        public static event Action HealInputDown;
     
         public static Vector2 Movement;
         public static MovementState ActualMovementState;
@@ -45,6 +48,7 @@ namespace Enso.Characters.Player
             defenseInputDownCalled = Input.GetKeyDown(DefenseButton);
             defenseInputUpCalled = Input.GetKeyUp(DefenseButton);
             dodgeInputDownCalled = Input.GetKeyDown(DodgeButton);
+            healInputDownCalled = Input.GetKeyDown(HealButton);
 
             if (sprintInputDownCalled)
             {
@@ -74,6 +78,11 @@ namespace Enso.Characters.Player
             if (dodgeInputDownCalled)
             {
                 OnDodgeInputDown();
+            }
+
+            if (healInputDownCalled)
+            {
+                OnHealInputDown();
             }
         }
 
@@ -138,6 +147,11 @@ namespace Enso.Characters.Player
         private static void OnAttackInputUp()
         {
             AttackInputUp?.Invoke();
+        }
+
+        private static void OnHealInputDown()
+        {
+            HealInputDown?.Invoke();
         }
 
         #endregion

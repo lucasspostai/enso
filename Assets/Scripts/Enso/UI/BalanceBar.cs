@@ -3,7 +3,7 @@ using Enso.Characters.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Enso.Interface
+namespace Enso.UI
 {
     public class BalanceBar : MonoBehaviour
     {

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.Utils
 {
     public class UniqueRandom
     {

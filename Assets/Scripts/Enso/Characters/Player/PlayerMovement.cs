@@ -53,6 +53,8 @@ namespace Enso.Characters.Player
             targetVelocity = PlayerInput.Movement * currentSpeed;
             Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, player.GetProperties().AccelerationTime);
             Move(Velocity * Time.deltaTime);
+            
+            print(Velocity);
         }
 
         public void Move(Vector2 moveAmount)
@@ -60,11 +62,11 @@ namespace Enso.Characters.Player
             player.Collisions.UpdateRaycastOrigins();
             player.Collisions.Info.Reset();
 
-            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone)
+            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone){}
                 player.Collisions.GetHorizontalCollisions(ref moveAmount);
 
-            if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
-                player.Collisions.GetVerticalCollisions(ref moveAmount);
+                if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
+                    player.Collisions.GetVerticalCollisions(ref moveAmount);
 
             transform.Translate(moveAmount);
 

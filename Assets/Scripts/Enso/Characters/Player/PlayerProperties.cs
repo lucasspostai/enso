@@ -2,14 +2,19 @@
 
 namespace Enso.Characters.Player
 {
-    [CreateAssetMenu(fileName = "PlayerProperties", menuName = "Enso/Player")]
+    [CreateAssetMenu(fileName = "HiroyukiProperties", menuName = "Enso/Hiroyuki")]
     public class PlayerProperties : FighterProperties
     {
         [Header("Movement")]
         public float MoveSpeed;
+        public float SprintSpeed;
         public float MoveSpeedWhileDefending;
         public float AccelerationTime;
         public float DeadZone;
+
+        [Header("Healing")] 
+        public int HealingCharges;
+        public float DelayToHealAgain;
 
         [Header("Dodge Roll")] 
         public float SlidingSpeed;

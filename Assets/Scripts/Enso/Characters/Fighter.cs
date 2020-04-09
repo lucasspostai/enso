@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enso.Interfaces;
+using UnityEngine;
 
 namespace Enso.Characters
 {

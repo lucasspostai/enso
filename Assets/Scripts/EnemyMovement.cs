@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Gameplay;
+using Enso.Characters.Enemies;
+using Enso.Characters.Player;
+using Framework;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,4 +1,4 @@
-﻿using Gameplay;
+﻿using Enso.Characters.Player;
 using UnityEngine;
 
 public enum RollState

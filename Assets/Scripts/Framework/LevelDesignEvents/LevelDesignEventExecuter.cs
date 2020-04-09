@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace LevelDesignEvents
+namespace Framework.LevelDesignEvents
 {
     public abstract class LevelDesignEventExecuter : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Enso.Interface
+namespace Enso.UI
 {
     public class CanvasController : MonoBehaviour
     {

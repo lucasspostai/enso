@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Framework
+namespace Framework.Utils
 {
     public class LevelLoader : Singleton<LevelLoader>
     {

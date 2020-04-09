@@ -1,5 +1,5 @@
 ﻿using System;
-using Gameplay;
+using Enso.Characters.Player;
 using UnityEngine;
 
 public class PlayerDefense : MonoBehaviour

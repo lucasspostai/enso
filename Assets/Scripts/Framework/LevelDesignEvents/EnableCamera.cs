@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-namespace LevelDesignEvents
+namespace Framework.LevelDesignEvents
 {
     public class EnableCamera : LevelDesignEvent
     {

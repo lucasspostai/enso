@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace LevelDesignEvents
+namespace Framework.LevelDesignEvents
 {
     public abstract class LevelDesignEvent : MonoBehaviour
     {

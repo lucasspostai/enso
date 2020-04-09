@@ -14,11 +14,11 @@ namespace Framework
         [HideInInspector] public int VerticalRayCount;
         [HideInInspector] public RaycastOrigins Origins;
 
-        public BoxCollider2D Collider;
-    
+        [SerializeField] protected BoxCollider2D Collider;
+        [SerializeField] protected bool ShowDebug;
+
         [Header("Raycast Properties")]
-        public LayerMask CollisionLayerMask;
-        public LayerMask TriggerCollisionLayerMask;
+        [SerializeField] protected LayerMask CollisionLayerMask;
 
         public virtual void Start()
         {

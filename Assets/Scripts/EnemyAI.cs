@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Gameplay;
+using Enso.Characters.Enemies;
+using Enso.Characters.Player;
+using Framework;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour

@@ -1,10 +1,9 @@
-﻿using System;
-using Enso.Characters;
+﻿using Enso.Characters;
 using Enso.Characters.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Enso.Interface
+namespace Enso.UI
 {
     public class HealthBar : MonoBehaviour
     {

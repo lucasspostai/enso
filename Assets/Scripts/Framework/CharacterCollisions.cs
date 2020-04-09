@@ -1,13 +1,11 @@
-﻿using Framework;
-using LevelDesignEvents;
+﻿using Framework.LevelDesignEvents;
 using UnityEngine;
 
-namespace Gameplay
+namespace Framework
 {
     public class CharacterCollisions : RaycastController
     {
         public CollisionInfo Info;
-        public bool ShowDebug;
 
         public void GetHorizontalCollisions(ref Vector2 velocity)
         {
@@ -29,20 +27,6 @@ namespace Gameplay
 
                     Info.Left = directionX == -1;
                     Info.Right = directionX == 1;
-                }
-
-                //Trigger Collision
-                RaycastHit2D triggerHit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength,
-                    TriggerCollisionLayerMask);
-
-                if (triggerHit)
-                {
-                    var levelDesignEventExecuter = triggerHit.collider.gameObject.GetComponent<LevelDesignEventExecuter>();
-
-                    if (levelDesignEventExecuter)
-                    {
-                        levelDesignEventExecuter.ExecuteEvents();
-                    }
                 }
 
                 if (ShowDebug)
@@ -69,20 +53,6 @@ namespace Gameplay
 
                     Info.Below = directionY == -1;
                     Info.Above = directionY == 1;
-                }
-            
-                //Trigger Collision
-                RaycastHit2D triggerHit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength,
-                    TriggerCollisionLayerMask);
-
-                if (triggerHit)
-                {
-                    var levelDesignEventExecuter = triggerHit.collider.gameObject.GetComponent<LevelDesignEventExecuter>();
-
-                    if (levelDesignEventExecuter)
-                    {
-                        levelDesignEventExecuter.ExecuteEvents();
-                    }
                 }
 
                 if (ShowDebug)
