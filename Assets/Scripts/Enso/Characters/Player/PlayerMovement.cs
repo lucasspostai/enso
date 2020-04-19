@@ -13,6 +13,8 @@ namespace Enso.Characters.Player
 
         [HideInInspector] public Vector3 Velocity;
 
+        [SerializeField] private Transform HitboxAnchor;
+
         private void Start()
         {
             player = GetComponent<Player>();
@@ -53,8 +55,8 @@ namespace Enso.Characters.Player
             targetVelocity = PlayerInput.Movement * currentSpeed;
             Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, player.GetProperties().AccelerationTime);
             Move(Velocity * Time.deltaTime);
-            
-            print(Velocity);
+
+            UpdateHitBoxAnchorRotation();
         }
 
         public void Move(Vector2 moveAmount)
@@ -96,6 +98,12 @@ namespace Enso.Characters.Player
                     player.Animator.Play(CharacterAnimations.IdleState);
                     break;
             }
+        }
+
+        private void UpdateHitBoxAnchorRotation()
+        {
+            float angle = Mathf.Atan2(Velocity.y, Velocity.x) * Mathf.Rad2Deg;
+            HitboxAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         // private void StartDefending()

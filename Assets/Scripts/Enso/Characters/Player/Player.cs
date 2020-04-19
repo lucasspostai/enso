@@ -12,7 +12,6 @@ namespace Enso.Characters.Player
         public PlayerDefense Defense;
         public CharacterCollisions Collisions;
         public PlayerDodgeRoll DodgeRoll;
-        public HealthSystem Health;
 
         public PlayerProperties GetProperties()
         {

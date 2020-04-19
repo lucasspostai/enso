@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4942956660897927905}
   m_Layer: 8
-  m_Name: AttackAnchor
+  m_Name: HitboxAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,53 @@ Transform:
   m_Children:
   - {fileID: 4153355543147800833}
   m_Father: {fileID: 2784454056699770309}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2410737939770930458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6068584419971872605}
+  - component: {fileID: 7343323490171082706}
+  m_Layer: 8
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6068584419971872605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410737939770930458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2784454056699770309}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7343323490171082706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410737939770930458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43828e6077e99445a676c0453f7c900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisFighter: {fileID: 8528520040655336778}
+  HurtboxSize: {x: 0.4, y: 0.87, z: 0}
 --- !u!1 &2784454056699770331
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,11 +91,9 @@ GameObject:
   - component: {fileID: 7339120810423616055}
   - component: {fileID: 5589958904590343412}
   - component: {fileID: 7622270846077408965}
+  - component: {fileID: 3551470306229874877}
   - component: {fileID: 4116229603299559527}
   - component: {fileID: 8491124380792908023}
-  - component: {fileID: 8070404727408723846}
-  - component: {fileID: 8067335770854407838}
-  - component: {fileID: 7134707014561844925}
   m_Layer: 8
   m_Name: HiroyukiIshigame
   m_TagString: Player
@@ -70,6 +113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2784454057411166859}
+  - {fileID: 6068584419971872605}
   - {fileID: 4942956660897927905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -115,11 +159,10 @@ MonoBehaviour:
   BaseProperties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Animator: {fileID: 5783155035047645049}
   Movement: {fileID: 8491124380792908023}
-  Attack: {fileID: 8070404727408723846}
-  Defense: {fileID: 8067335770854407838}
+  Attack: {fileID: 0}
+  Defense: {fileID: 0}
   Collisions: {fileID: 4116229603299559527}
-  DodgeRoll: {fileID: 7134707014561844925}
-  Health: {fileID: 7339120810423616055}
+  DodgeRoll: {fileID: 0}
 --- !u!114 &5583368025677090078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +216,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f714e2ec9e564e9e76af500d9ba90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3551470306229874877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91b16daa5dde0c4395ceec1e85fe070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackHitbox: {fileID: 6495635343669140766}
+  AttackAnimationClip:
+    ThisAnimator: {fileID: 5783155035047645049}
+    ThisAnimationClip: {fileID: 7400000, guid: 70f101b95008dba40bf2b52723d0871b, type: 2}
+    AnimatorStateName: IttoCombat_Run
+    LayerNumber: 0
+  AttackFrameChecker:
+    HitFrameStart: 4
+    HitFrameEnd: 6
+    TotalFrames: 7
+  Damage: 10
 --- !u!114 &4116229603299559527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,59 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: {x: 0, y: 0, z: 0}
---- !u!114 &8070404727408723846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7150528a2973bce49abe8c835b1a247d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  AttackAnchor: {fileID: 4942956660897927905}
-  AttackPosition: {fileID: 4153355543147800833}
-  Defense: {fileID: 8067335770854407838}
-  Movement: {fileID: 8491124380792908023}
-  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
-  IsPerformingSimpleAttack: 0
-  IsPerformingHeavyAttack: 0
---- !u!114 &8067335770854407838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb2cddfd47c2634db176eadf6f39eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDefending: 0
-  PlayerAnimator: {fileID: 0}
-  Attack: {fileID: 8070404727408723846}
---- !u!114 &7134707014561844925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf921d70f23c6be459668e0d8d4d4164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerAnimator: {fileID: 0}
-  Properties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
-  Movement: {fileID: 8491124380792908023}
-  ActualRollState: 0
+  HitboxAnchor: {fileID: 4942956660897927905}
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,8 +399,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4153355543147800833}
+  - component: {fileID: 6495635343669140766}
   m_Layer: 8
-  m_Name: AttackPosition
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -400,9 +415,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4927003519585448994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4942956660897927905}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6495635343669140766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927003519585448994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44560c6345a01f54aadf29ce403d1254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  Anchor: {fileID: 4942956660897927905}
+  HitboxSize: {x: 1, y: 1.75, z: 0}

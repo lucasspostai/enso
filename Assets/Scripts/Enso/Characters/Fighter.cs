@@ -5,7 +5,7 @@ namespace Enso.Characters
 {
     [RequireComponent(typeof(HealthSystem))]
     [RequireComponent(typeof(BalanceSystem))]
-    public abstract class Fighter : MonoBehaviour, IDamageable
+    public abstract class Fighter : MonoBehaviour
     {
         private HealthSystem healthSystem;
         private BalanceSystem balanceSystem;
@@ -18,29 +18,20 @@ namespace Enso.Characters
             balanceSystem = GetComponent<BalanceSystem>();
         }
 
-        protected virtual void Update()
+        public HealthSystem GetHealthSystem()
         {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                TakeDamage(2);
-            }
+            return healthSystem;
         }
+        
+        public BalanceSystem GetBalanceSystem()
+        {
+            return balanceSystem;
+        }
+
 
         public FighterProperties GetBaseProperties()
         {
             return BaseProperties;
-        }
-
-        public void TakeDamage(int damageAmount)
-        {
-            if (balanceSystem.GetBalance() > 0)
-            {
-                balanceSystem.TakeDamage(damageAmount);
-            }
-            else
-            {
-                healthSystem.TakeDamage(damageAmount);
-            }
         }
     }
 }

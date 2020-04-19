@@ -76,7 +76,7 @@ namespace Enso.Characters.Player
 
             if (HealingCharges > 0)
             {
-                player.Health.Heal(player.Health.GetMaxHealth());
+                player.GetHealthSystem().Heal(player.GetHealthSystem().GetMaxHealth());
 
                 HealingCharges--;
 
