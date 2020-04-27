@@ -12,6 +12,7 @@ namespace Enso.Characters.Player
         private Player player;
 
         [HideInInspector] public Vector3 Velocity;
+        [HideInInspector] public Vector3 CurrentDirection;
 
         [SerializeField] private Transform HitboxAnchor;
 
@@ -19,28 +20,20 @@ namespace Enso.Characters.Player
         {
             player = GetComponent<Player>();
             currentSpeed = player.GetProperties().MoveSpeed;
-        }
 
-        // private void OnEnable()
-        // {
-        //     PlayerInput.DefenseInputDown += StartDefending;
-        //     PlayerInput.DefenseInputUp += StopDefending;
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     PlayerInput.DefenseInputDown -= StartDefending;
-        //     PlayerInput.DefenseInputUp -= StopDefending;
-        // }
+            SetDirection(Vector3.down);
+        }
 
         private void Update()
         {
-            if (PlayerInput.Movement != Vector2.zero)
+            if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation)
             {
-                player.Animator.SetFloat(CharacterAnimations.FaceX, PlayerInput.Movement.x);
-                player.Animator.SetFloat(CharacterAnimations.FaceY, PlayerInput.Movement.y);
+                SetDirection(PlayerInput.Movement);
             }
-        
+            
+            if (player.AttackController.IsAttackAnimationPlaying)
+                return;
+
             //Check Collisions
             if (player.Collisions.Info.Above || player.Collisions.Info.Below)
                 Velocity.y = 0;
@@ -48,12 +41,11 @@ namespace Enso.Characters.Player
             if (player.Collisions.Info.Left || player.Collisions.Info.Right)
                 Velocity.x = 0;
 
-            // if (player.DodgeRoll.ActualRollState == RollState.Sliding)
-            //     return;
-        
             //Move
             targetVelocity = PlayerInput.Movement * currentSpeed;
-            Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity, player.GetProperties().AccelerationTime);
+            Velocity = Vector3.SmoothDamp(Velocity, targetVelocity, ref currentVelocity,
+                player.GetProperties().AccelerationTime);
+            
             Move(Velocity * Time.deltaTime);
 
             UpdateHitBoxAnchorRotation();
@@ -64,23 +56,23 @@ namespace Enso.Characters.Player
             player.Collisions.UpdateRaycastOrigins();
             player.Collisions.Info.Reset();
 
-            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone){}
+            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone)
                 player.Collisions.GetHorizontalCollisions(ref moveAmount);
 
-                if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
-                    player.Collisions.GetVerticalCollisions(ref moveAmount);
+            if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
+                player.Collisions.GetVerticalCollisions(ref moveAmount);
 
             transform.Translate(moveAmount);
-
-            // if (Attack.IsPerformingSimpleAttack || Attack.IsPerformingHeavyAttack || DodgeRoll.ActualRollState == RollState.Sliding || Defense.IsDefending)
-            //     return;
 
             PlayMovementAnimation();
         }
 
         private void PlayMovementAnimation()
         {
-            switch(PlayerInput.ActualMovementState)
+            if (player.AttackController.IsAttackAnimationPlaying)
+                return;
+
+            switch (PlayerInput.ActualMovementState)
             {
                 case PlayerInput.MovementState.Idle:
                     player.Animator.Play(CharacterAnimations.IdleState);
@@ -100,20 +92,18 @@ namespace Enso.Characters.Player
             }
         }
 
+        private void SetDirection(Vector3 direction)
+        {
+            player.Animator.SetFloat(CharacterAnimations.FaceX, direction.x);
+            player.Animator.SetFloat(CharacterAnimations.FaceY, direction.y);
+                
+            CurrentDirection = direction;
+        }
+
         private void UpdateHitBoxAnchorRotation()
         {
             float angle = Mathf.Atan2(Velocity.y, Velocity.x) * Mathf.Rad2Deg;
             HitboxAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-
-        // private void StartDefending()
-        // {
-        //     currentSpeed = player.Properties.MoveSpeedWhileDefending;
-        // }
-        //
-        // private void StopDefending()
-        // {
-        //     currentSpeed = player.Properties.MoveSpeed;
-        // }
     }
 }

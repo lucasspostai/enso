@@ -6,20 +6,20 @@ namespace Framework.Animations
     public class FrameChecker
     {
         private IFrameCheckHandler thisFrameCheckHandler;
-        private ExtendedAnimationClip thisExtendedAnimationClip;
+        private AnimationClipHolder thisAnimationClipHolder;
         private bool checkedHitFrameStart;
         private bool checkedHitFrameEnd;
-        private bool lastFrame;
+        private bool checkedCanCut;
+        private bool checkedLastFrame;
         
-        public int HitFrameStart;
-        public int HitFrameEnd;
-        public int TotalFrames;
+        public int HitFrameStart = 1;
+        public int HitFrameEnd = 2;
+        public int CanCutFrame;
 
-        public void Initialize(IFrameCheckHandler frameCheckHandler, ExtendedAnimationClip extendedAnimationClip)
+        public void Initialize(IFrameCheckHandler frameCheckHandler, AnimationClipHolder animationClipHolder)
         {
             thisFrameCheckHandler = frameCheckHandler;
-            thisExtendedAnimationClip = extendedAnimationClip;
-            TotalFrames = extendedAnimationClip.GetTotalFrames();
+            thisAnimationClipHolder = animationClipHolder;
 
             ResetProperties();
         }
@@ -28,37 +28,43 @@ namespace Framework.Animations
         {
             checkedHitFrameStart = false;
             checkedHitFrameEnd = false;
-            lastFrame = false;
+            checkedCanCut = false;
+            checkedLastFrame = false;
         }
 
         public void CheckFrames()
         {
-            if (lastFrame)
+            if (checkedLastFrame)
             {
-                lastFrame = false;
+                checkedLastFrame = false;
                 
                 thisFrameCheckHandler.OnLastFrameEnd();
             }
 
-            if (!thisExtendedAnimationClip.IsActive())
+            if (!thisAnimationClipHolder.IsActive())
                 return;
 
             // Hit frame start
-            if (!checkedHitFrameStart && thisExtendedAnimationClip.IsBiggerOrEqualThanFrame(HitFrameStart))
+            if (!checkedHitFrameStart && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(HitFrameStart))
             {
                 thisFrameCheckHandler.OnHitFrameStart();
                 checkedHitFrameStart = true;
             } // Hit frame end
-            else if (!checkedHitFrameEnd && thisExtendedAnimationClip.IsBiggerOrEqualThanFrame(HitFrameEnd))
+            else if (!checkedHitFrameEnd && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(HitFrameEnd))
             {
                 thisFrameCheckHandler.OnHitFrameEnd();
                 checkedHitFrameEnd = true;
             }
+            else if (!checkedCanCut && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(CanCutFrame))
+            {
+                thisFrameCheckHandler.OnCanCutAnimation();
+                checkedCanCut = true;
+            }
 
-            if (!lastFrame && thisExtendedAnimationClip.ItsOnLastFrame())
+            if (!checkedLastFrame && thisAnimationClipHolder.ItsOnLastFrame())
             {
                 thisFrameCheckHandler.OnLastFrameStart();
-                lastFrame = true; //This test is done to make sure the last frame will not be skipped
+                checkedLastFrame = true; //This test is done to make sure the last frame will not be skipped
             }
         }
     }

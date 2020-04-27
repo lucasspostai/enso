@@ -6,7 +6,7 @@ namespace Framework
     public class RaycastController : MonoBehaviour
     {
         protected const float SkinWidth = .015f;
-        protected const float DistanceBetweenRays = .25f;
+        protected const float DistanceBetweenRays = .1f;
 
         [HideInInspector] public float HorizontalRaySpacing;
         [HideInInspector] public float VerticalRaySpacing;

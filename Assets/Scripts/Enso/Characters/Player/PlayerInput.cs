@@ -90,8 +90,8 @@ namespace Enso.Characters.Player
         
         private void UpdateMovement()
         {
-            Movement.x = Input.GetAxisRaw("Horizontal");
-            Movement.y = Input.GetAxisRaw("Vertical");
+            Movement.x = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+            Movement.y = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
             Movement.Normalize();
             
             if (Movement != Vector2.zero)

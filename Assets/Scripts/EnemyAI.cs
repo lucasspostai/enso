@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     private bool isAttacking;
     private bool isDefending;
     private float currentSpeed;
-    private PlayerAttack playerAttack;
+    private PlayerAttackController playerAttackController;
     private Transform player;
     private Vector2 movement;
     private Vector3 currentVelocity;
@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     {
         currentSpeed = Properties.MoveSpeed;
         player = FindObjectOfType<Player>().transform;
-        playerAttack = FindObjectOfType<PlayerAttack>();
+        playerAttackController = FindObjectOfType<PlayerAttackController>();
     }
 
     private void OnEnable()
@@ -51,17 +51,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Defend()
     {
-        if (playerAttack.IsPerformingSimpleAttack)
-        {
-            StartDefending();
-            isDefending = true;
-            EnemyAnimator.Play(CharacterAnimations.DefenseState);
-        }
-        else
-        {
-            isDefending = false;
-            StopDefending();
-        }
+        // if (playerAttack.IsPerformingSimpleAttack)
+        // {
+        //     StartDefending();
+        //     isDefending = true;
+        //     EnemyAnimator.Play(CharacterAnimations.DefenseState);
+        // }
+        // else
+        // {
+        //     isDefending = false;
+        //     StopDefending();
+        // }
     }
 
     private void Attack()
@@ -73,7 +73,7 @@ public class EnemyAI : MonoBehaviour
         {
             isAttacking = true;
             
-            EnemyAnimator.Play(CharacterAnimations.BasicAttackState);
+            //EnemyAnimator.Play(CharacterAnimations.BasicAttackState);
         }
         else
         {
@@ -144,7 +144,7 @@ public class EnemyAI : MonoBehaviour
             return;
         }*/
 
-        EnemyAnimator.Play(CharacterAnimations.RunningState);
+        //EnemyAnimator.Play(CharacterAnimations.RunningState);
     }
 
     private void StartDefending()

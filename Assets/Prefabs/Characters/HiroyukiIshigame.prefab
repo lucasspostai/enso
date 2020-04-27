@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 7339120810423616055}
   - component: {fileID: 5589958904590343412}
   - component: {fileID: 7622270846077408965}
-  - component: {fileID: 3551470306229874877}
   - component: {fileID: 4116229603299559527}
   - component: {fileID: 8491124380792908023}
+  - component: {fileID: 7059184826251289228}
   m_Layer: 8
   m_Name: HiroyukiIshigame
   m_TagString: Player
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.25}
+  m_Size: {x: 0.5, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &8528520040655336778
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   BaseProperties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Animator: {fileID: 5783155035047645049}
   Movement: {fileID: 8491124380792908023}
-  Attack: {fileID: 0}
+  AttackController: {fileID: 7059184826251289228}
   Defense: {fileID: 0}
   Collisions: {fileID: 4116229603299559527}
   DodgeRoll: {fileID: 0}
@@ -216,29 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f714e2ec9e564e9e76af500d9ba90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3551470306229874877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91b16daa5dde0c4395ceec1e85fe070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackHitbox: {fileID: 6495635343669140766}
-  AttackAnimationClip:
-    ThisAnimator: {fileID: 5783155035047645049}
-    ThisAnimationClip: {fileID: 7400000, guid: 70f101b95008dba40bf2b52723d0871b, type: 2}
-    AnimatorStateName: IttoCombat_Run
-    LayerNumber: 0
-  AttackFrameChecker:
-    HitFrameStart: 4
-    HitFrameEnd: 6
-    TotalFrames: 7
-  Damage: 10
 --- !u!114 &4116229603299559527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +254,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Velocity: {x: 0, y: 0, z: 0}
   HitboxAnchor: {fileID: 4942956660897927905}
+--- !u!114 &7059184826251289228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7150528a2973bce49abe8c835b1a247d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAttackAnimationPlaying: 0
+  CanCutAnimation: 1
+  AttackHitbox: {fileID: 6495635343669140766}
+  LightAttacks:
+  - {fileID: 11400000, guid: b739724d252312246baf3955772256d3, type: 2}
+  - {fileID: 11400000, guid: c753a4b27fde19c47ae78ff9599b4daf, type: 2}
+  - {fileID: 11400000, guid: d3b0e1814ba8625479667f753f433bf7, type: 2}
+  StrongAttack: {fileID: 0}
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,4 +434,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   Anchor: {fileID: 4942956660897927905}
-  HitboxSize: {x: 1, y: 1.75, z: 0}
+  HitboxSize: {x: 1.15, y: 1.8, z: 0}

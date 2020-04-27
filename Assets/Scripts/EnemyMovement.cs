@@ -79,11 +79,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (PlayerInput.Movement == Vector2.zero)
         {
-            EnemyAnimator.Play(CharacterAnimations.IdleState);
+            //EnemyAnimator.Play(CharacterAnimations.IdleState);
             return;
         }
 
-        EnemyAnimator.Play(CharacterAnimations.RunningState);
+        //EnemyAnimator.Play(CharacterAnimations.RunningState);
     }
 
     /*private void StartDefending()

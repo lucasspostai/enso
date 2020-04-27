@@ -23,7 +23,7 @@ namespace Enso.CombatSystem
         
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(transform.position, HurtboxSize);
         }
     }

@@ -18,6 +18,16 @@ namespace Enso.CombatSystem
         {
             hitboxResponder = responder;
         }
+
+        public void SetColliderState(ColliderState state)
+        {
+            colliderState = state;
+        }
+
+        public void SetHitBoxSize(Vector3 hitboxSize)
+        {
+            HitboxSize = hitboxSize;
+        }
         
         private void Update()
         {
@@ -31,7 +41,7 @@ namespace Enso.CombatSystem
                 hitboxResponder?.CollidedWith(colliderOverlapped);
             }
 
-            colliderState = collidersOverlapped.Length > 0 ? ColliderState.Colliding : ColliderState.Open;
+            SetColliderState(collidersOverlapped.Length > 0 ? ColliderState.Colliding : ColliderState.Open);
         }
         
         private void OnDrawGizmosSelected()
@@ -39,7 +49,7 @@ namespace Enso.CombatSystem
             var previousColor = Gizmos.color;
             var previousMatrix = Gizmos.matrix;
 
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.red;
             Gizmos.matrix = transform.localToWorldMatrix;
             
             Gizmos.DrawWireCube(Anchor.position, HitboxSize);

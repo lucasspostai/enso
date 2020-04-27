@@ -17,14 +17,14 @@ MonoBehaviour:
   DelayToRecoverAfterLosingBalance: 5
   DelayToRecoverAfterDamage: 2
   TimeToFullyRecoverBalance: 10
-  MoveSpeed: 7
+  MoveSpeed: 5
   SprintSpeed: 10
   MoveSpeedWhileDefending: 3
-  AccelerationTime: 0
+  AccelerationTime: 0.05
   DeadZone: 0
   HealingCharges: 3
   DelayToHealAgain: 1
-  SlidingSpeed: 20
+  SlidingSpeed: 1
   SlidingLength: 1
   AttackRange: {x: 2.5, y: 2}
   SimpleAttackDamage: 1

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: LightAttackC
+  m_EditorClassIdentifier: 
+  AttackAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 01c1e99868bb4df4d9ea91ecffab5e65, type: 2}
+    - {fileID: 7400000, guid: 53d79c567ff668341ab033d2c21598dd, type: 2}
+    - {fileID: 7400000, guid: 407553a71ca759a41a95eec3add97db3, type: 2}
+    - {fileID: 7400000, guid: a732b91f48677f149a72adef759ab296, type: 2}
+    - {fileID: 7400000, guid: 301444005c65f514bb85ebe660a2dc40, type: 2}
+    - {fileID: 7400000, guid: 089ce352775337941b824c1d2da86f39, type: 2}
+    - {fileID: 7400000, guid: d43cb3134a307fe4981e4957ca488f43, type: 2}
+    - {fileID: 7400000, guid: 1831ed93b6198454db33c357d1738a25, type: 2}
+    AnimatorStateName: OneSword_LightAttackC
+    LayerNumber: 0
+  AttackFrameChecker:
+    HitFrameStart: 5
+    HitFrameEnd: 6
+    CanCutFrame: 5
+  HitboxSize: {x: 1.15, y: 1.8, z: 0}
+  Damage: 1
+  CanBeCut: 0
+  MovementOffset: 1

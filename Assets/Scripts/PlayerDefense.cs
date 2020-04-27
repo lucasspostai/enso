@@ -7,7 +7,7 @@ public class PlayerDefense : MonoBehaviour
     [HideInInspector] public bool IsDefending;
 
     [SerializeField] private Animator PlayerAnimator;
-    [SerializeField] private PlayerAttack Attack;
+    [SerializeField] private PlayerAttackController AttackController;
     
     private void OnEnable()
     {
@@ -23,13 +23,13 @@ public class PlayerDefense : MonoBehaviour
 
     private void StartDefense()
     {
-        if (Attack.IsPerformingSimpleAttack)
-            return;
+        //if (Attack.IsPerformingSimpleAttack)
+      //      return;
         
         Debug.Log("StartDefense");
         IsDefending = true;
         
-        PlayerAnimator.Play(CharacterAnimations.DefenseState);
+        //PlayerAnimator.Play(CharacterAnimations.DefenseState);
     }
 
     private void StopDefense()

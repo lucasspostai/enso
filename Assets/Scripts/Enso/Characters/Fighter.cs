@@ -11,6 +11,8 @@ namespace Enso.Characters
         private BalanceSystem balanceSystem;
         
         [SerializeField] protected FighterProperties BaseProperties;
+        
+        public Animator Animator;
 
         protected virtual void Awake()
         {

@@ -1,25 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Framework.Animations
 {
     [System.Serializable]
-    public class ExtendedAnimationClip
+    public class AnimationClipHolder
     {
+        private Animator thisAnimator;
         private int totalFrames;
         private int animationFullNameHash;
-        
-        public Animator ThisAnimator;
-        public AnimationClip ThisAnimationClip;
-        public string AnimatorStateName;
+
+        public List<AnimationClip> AnimationClips = new List<AnimationClip>(8);
+        public string AnimatorStateName = "AnimatorStateName";
         public int LayerNumber;
 
-        public void Initialize()
+        public void Initialize(Animator animator)
         {
-            totalFrames = Mathf.RoundToInt(ThisAnimationClip.length * ThisAnimationClip.frameRate);
+            thisAnimator = animator;
+            
+            totalFrames = Mathf.RoundToInt(AnimationClips[0].length * AnimationClips[0].frameRate);
 
-            if (ThisAnimator.isActiveAndEnabled)
+            if (thisAnimator.isActiveAndEnabled)
             {
-                string name = ThisAnimator.GetLayerName(LayerNumber) + "." + AnimatorStateName;
+                string name = animator.GetLayerName(LayerNumber) + "." + AnimatorStateName;
                 animationFullNameHash = Animator.StringToHash(name);
             }
         }
@@ -31,7 +34,7 @@ namespace Framework.Animations
 
         public bool IsActive()
         {
-            return ThisAnimator.IsPlayingOnLayer(animationFullNameHash, 0);
+            return thisAnimator.IsPlayingOnLayer(animationFullNameHash, 0);
         }
 
         private double PercentageOnFrame(int frameNumber)
@@ -41,13 +44,13 @@ namespace Framework.Animations
 
         public bool IsBiggerOrEqualThanFrame(int frameNumber)
         {
-            double percentage = ThisAnimator.NormalizedTime(LayerNumber);
+            double percentage = thisAnimator.NormalizedTime(LayerNumber);
             return percentage >= PercentageOnFrame(frameNumber);
         }
 
         public bool ItsOnLastFrame()
         {
-            double percentage = ThisAnimator.NormalizedTime(LayerNumber);
+            double percentage = thisAnimator.NormalizedTime(LayerNumber);
             return percentage > PercentageOnFrame(totalFrames - 1);
         }
     }

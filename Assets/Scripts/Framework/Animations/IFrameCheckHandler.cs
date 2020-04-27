@@ -4,6 +4,7 @@
     {
         void OnHitFrameStart();
         void OnHitFrameEnd();
+        void OnCanCutAnimation();
         void OnLastFrameStart();
         void OnLastFrameEnd();
     }
