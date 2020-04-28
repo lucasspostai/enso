@@ -92,7 +92,7 @@ namespace Enso.Characters.Player
             }
         }
 
-        private void SetDirection(Vector3 direction)
+        public void SetDirection(Vector3 direction)
         {
             player.Animator.SetFloat(CharacterAnimations.FaceX, direction.x);
             player.Animator.SetFloat(CharacterAnimations.FaceY, direction.y);

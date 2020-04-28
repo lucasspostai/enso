@@ -54,6 +54,9 @@ namespace Enso.Characters.Player
             {
                 if (CurrentAttack != attack)
                 {
+                    if(PlayerInput.Movement != Vector2.zero)
+                        player.Movement.SetDirection(PlayerInput.Movement);
+                    
                     StartAttack(attack);
                     lightAttacksAvailable.Remove(attack);
                     break;

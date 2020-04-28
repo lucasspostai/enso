@@ -17,8 +17,6 @@ namespace Framework.Animations
         public void Initialize(Animator animator)
         {
             thisAnimator = animator;
-            
-            totalFrames = Mathf.RoundToInt(AnimationClips[0].length * AnimationClips[0].frameRate);
 
             if (thisAnimator.isActiveAndEnabled)
             {
@@ -29,7 +27,7 @@ namespace Framework.Animations
 
         public int GetTotalFrames()
         {
-            return totalFrames;
+            return Mathf.RoundToInt(AnimationClips[0].length * AnimationClips[0].frameRate);
         }
 
         public bool IsActive()
@@ -39,7 +37,7 @@ namespace Framework.Animations
 
         private double PercentageOnFrame(int frameNumber)
         {
-            return (double) frameNumber / totalFrames;
+            return (double) frameNumber / GetTotalFrames();
         }
 
         public bool IsBiggerOrEqualThanFrame(int frameNumber)
@@ -51,7 +49,7 @@ namespace Framework.Animations
         public bool ItsOnLastFrame()
         {
             double percentage = thisAnimator.NormalizedTime(LayerNumber);
-            return percentage > PercentageOnFrame(totalFrames - 1);
+            return percentage > PercentageOnFrame(GetTotalFrames() - 1);
         }
     }
 }

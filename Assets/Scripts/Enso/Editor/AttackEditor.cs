@@ -1,4 +1,5 @@
-﻿using Enso.CombatSystem;
+﻿using System.Runtime.InteropServices;
+using Enso.CombatSystem;
 using Framework.Editor;
 using UnityEditor;
 using UnityEditorInternal;
@@ -151,7 +152,7 @@ namespace Enso.Editor
 
             AttackTarget.AttackFrameChecker.HitFrameStart = Mathf.RoundToInt(hitFrameStart);
             AttackTarget.AttackFrameChecker.HitFrameEnd = Mathf.RoundToInt(hitFrameEnd);
-            
+
             GUILayout.BeginHorizontal();
             GUILayout.Label( hitFrameStartText + " | " + hitFrameEndText, Styles.NormalTextCenterStyle);
             
