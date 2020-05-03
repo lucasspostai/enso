@@ -11,48 +11,52 @@ namespace Enso.Editor
     public class AttackEditor : UnityEditor.Editor
     {
         private Attack AttackTarget => target as Attack;
-        
+
         public override void OnInspectorGUI()
         {
             //base.OnInspectorGUI();
-            
-            Undo.RecordObject(AttackTarget, "Sound Cue Properties");
-            
+
             EditorGUILayout.Separator();
 
             Undo.RecordObject(AttackTarget, "Attack Properties");
 
             GUILayout.BeginHorizontal();
-            
+
             DrawAnimatorStateName();
             DrawAnimatorLayerNumber();
-            
-            GUILayout.EndHorizontal();
-            
-            EditorGUILayout.Separator();
-            
-            //Animation Clips ReorderableList
-            clipsList.DoLayoutList();
-            
-            DrawFrameChecker();
 
+            GUILayout.EndHorizontal();
+
+            EditorGUILayout.Separator();
+
+            //Animation Clips ReorderableList
+            clipsList?.DoLayoutList();
+
+            if (AttackTarget.AttackAnimationClipHolder.AnimationClips.Count <= 0 ||
+                AttackTarget.AttackAnimationClipHolder.AnimationClips[0] == null)
+                return;
+
+            DrawFrameChecker();
             GUILayout.BeginHorizontal();
-            
+
             DrawHitboxSize();
             DrawMovementOffset();
-            
+
             GUILayout.EndHorizontal();
         }
 
         private void DrawAnimatorStateName()
         {
-            AttackTarget.AttackAnimationClipHolder.AnimatorStateName = EditorGUILayout.TextField(AttackTarget.AttackAnimationClipHolder.AnimatorStateName, Styles.MiddleLeftTextStyle);
+            AttackTarget.AttackAnimationClipHolder.AnimatorStateName =
+                EditorGUILayout.TextField(AttackTarget.AttackAnimationClipHolder.AnimatorStateName,
+                    Styles.MiddleCenterTextStyle);
         }
-        
+
         private void DrawAnimatorLayerNumber()
         {
             AttackTarget.AttackAnimationClipHolder.LayerNumber =
-                EditorGUILayout.IntField(AttackTarget.AttackAnimationClipHolder.LayerNumber, Styles.MiddleLeftTextStyle, GUILayout.MaxWidth(50));
+                EditorGUILayout.IntField(AttackTarget.AttackAnimationClipHolder.LayerNumber, Styles.MiddleCenterTextStyle,
+                    GUILayout.MaxWidth(50));
         }
 
         #region Animation Clips Reoderable List
@@ -61,7 +65,19 @@ namespace Enso.Editor
 
         private void OnEnable()
         {
-            clipsList = new ReorderableList(AttackTarget.AttackAnimationClipHolder.AnimationClips, typeof(AnimationClip), true, true, false, false);
+            if (AttackTarget.AttackAnimationClipHolder == null)
+                return;
+            
+            clipsList = new ReorderableList(AttackTarget.AttackAnimationClipHolder.AnimationClips,
+                typeof(AnimationClip), true, true, false, false);
+
+            if (AttackTarget.AttackAnimationClipHolder.AnimationClips.Count < 8)
+            {
+                for (int i = 0; AttackTarget.AttackAnimationClipHolder.AnimationClips.Count < 8; i++)
+                {
+                    AddItem(clipsList);
+                }
+            }
 
             clipsList.drawHeaderCallback += DrawHeader;
             clipsList.drawElementCallback += DrawElement;
@@ -72,6 +88,9 @@ namespace Enso.Editor
 
         private void OnDisable()
         {
+            if (clipsList == null)
+                return;
+
             clipsList.drawHeaderCallback -= DrawHeader;
             clipsList.drawElementCallback -= DrawElement;
 
@@ -118,44 +137,48 @@ namespace Enso.Editor
         }
 
         #endregion
-        
+
         private void DrawFrameChecker()
         {
             float hitFrameStart = AttackTarget.AttackFrameChecker.HitFrameStart;
             float hitFrameEnd = AttackTarget.AttackFrameChecker.HitFrameEnd;
-            
+
             //Texts
-            string totalFramesText = "Total Frames: <b>" + AttackTarget.AttackAnimationClipHolder.GetTotalFrames() + "</b>";
+            string totalFramesText =
+                "Total Frames: <b>" + AttackTarget.AttackAnimationClipHolder.GetTotalFrames() + "</b>";
             string startUpText = "<color=green>Startup: <b>" + (hitFrameStart) + "</b></color>";
             string activeText = "<color=red>Active: <b>" + (hitFrameEnd - hitFrameStart + 1) + "</b></color>";
-            string recoveryText = "<color=blue>Recovery: <b>" + (AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - hitFrameEnd - 1) + "</b></color>";
+            string recoveryText = "<color=blue>Recovery: <b>" +
+                                  (AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - hitFrameEnd - 1) +
+                                  "</b></color>";
             string hitFrameStartText = "Hit Start: <b>" + AttackTarget.AttackFrameChecker.HitFrameStart + "</b>";
             string hitFrameEndText = "Hit End: <b>" + AttackTarget.AttackFrameChecker.HitFrameEnd + "</b>";
             string canCutFrameText = "Cut Frame: <b>" + AttackTarget.AttackFrameChecker.CanCutFrame + "</b>";
-            
+
             //All Frames
             GUILayout.BeginHorizontal();
-            
-            GUILayout.Label( startUpText + " | " + activeText + " | " + recoveryText, Styles.NormalTextLeftStyle);
+
+            GUILayout.Label(startUpText + " | " + activeText + " | " + recoveryText, Styles.NormalTextLeftStyle);
             GUILayout.Label(totalFramesText, Styles.NormalTextRightStyle);
 
             GUILayout.EndHorizontal();
-            
+
             //Hitbox Frames
             GUILayout.BeginVertical(Styles.BoxStyle);
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("Hitbox Frames", Styles.NormalTextLeftStyle);
-            
+
             GUILayout.EndHorizontal();
-            EditorGUILayout.MinMaxSlider(ref hitFrameStart, ref hitFrameEnd, 0, AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - 1);
+            EditorGUILayout.MinMaxSlider(ref hitFrameStart, ref hitFrameEnd, 0,
+                AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - 1);
 
             AttackTarget.AttackFrameChecker.HitFrameStart = Mathf.RoundToInt(hitFrameStart);
             AttackTarget.AttackFrameChecker.HitFrameEnd = Mathf.RoundToInt(hitFrameEnd);
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label( hitFrameStartText + " | " + hitFrameEndText, Styles.NormalTextCenterStyle);
-            
+            GUILayout.Label(hitFrameStartText + " | " + hitFrameEndText, Styles.NormalTextCenterStyle);
+
             GUILayout.EndHorizontal();
 
             GUILayout.EndVertical();
@@ -168,35 +191,35 @@ namespace Enso.Editor
             if (AttackTarget.CanBeCut)
             {
                 float canCutFrame = GUILayout.HorizontalSlider(
-                    AttackTarget.AttackFrameChecker.CanCutFrame, 
+                    AttackTarget.AttackFrameChecker.CanCutFrame,
                     0,
                     AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - 1);
 
                 AttackTarget.AttackFrameChecker.CanCutFrame = Mathf.RoundToInt(canCutFrame);
-                
+
                 GUILayout.Label(canCutFrameText, Styles.NormalTextCenterStyle);
             }
-            
+
             GUILayout.EndVertical();
         }
-        
+
         private void DrawHitboxSize()
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
-            
+
             GUILayout.Label("Hitbox Size", Styles.NormalTextLeftStyle);
-            
+
             AttackTarget.HitboxSize = EditorGUILayout.Vector2Field("", AttackTarget.HitboxSize);
 
             GUILayout.EndVertical();
         }
-        
+
         private void DrawMovementOffset()
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
-            
+
             GUILayout.Label("Movement Offset", Styles.NormalTextLeftStyle);
-            
+
             AttackTarget.MovementOffset = EditorGUILayout.FloatField(AttackTarget.MovementOffset);
 
             GUILayout.EndVertical();

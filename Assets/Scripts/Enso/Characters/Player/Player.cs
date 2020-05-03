@@ -1,4 +1,5 @@
-﻿using Framework;
+﻿using Enso.CombatSystem;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Player
@@ -8,7 +9,7 @@ namespace Enso.Characters.Player
         [Header("References")] 
         public PlayerMovement Movement;
         public PlayerAttackController AttackController;
-        public PlayerDefense Defense;
+        public GuardController Defense;
         public CharacterCollisions Collisions;
         public PlayerDodgeRoll DodgeRoll;
 

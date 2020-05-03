@@ -14,7 +14,7 @@ namespace Framework.Editor
             normal = {textColor = Color.grey}
         };
         
-        public static readonly GUIStyle MiddleLeftTextStyle = new GUIStyle(EditorStyles.textField)
+        public static readonly GUIStyle MiddleCenterTextStyle = new GUIStyle(EditorStyles.textField)
         {
             richText = true,
             alignment = TextAnchor.MiddleCenter,
