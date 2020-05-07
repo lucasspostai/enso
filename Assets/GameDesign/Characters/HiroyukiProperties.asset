@@ -19,9 +19,9 @@ MonoBehaviour:
   TimeToFullyRecoverBalance: 10
   MoveSpeed: 5
   SprintSpeed: 10
-  MoveSpeedWhileDefending: 3
+  MoveSpeedWhileDefending: 1
   AccelerationTime: 0.05
-  DeadZone: 0
+  DeadZone: 0.1
   HealingCharges: 3
   DelayToHealAgain: 1
   SlidingSpeed: 1

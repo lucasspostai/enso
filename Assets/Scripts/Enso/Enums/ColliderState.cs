@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Enso.Enums
+﻿namespace Enso.Enums
 {
     public enum ColliderState
     {

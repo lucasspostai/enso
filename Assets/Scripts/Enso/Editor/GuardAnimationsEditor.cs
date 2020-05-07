@@ -54,7 +54,7 @@ namespace Enso.Editor
             
             EditorGUILayout.Separator();
 
-            if (GuardAnimationsTarget.StartGuardAnimationClipHolder.AnimationClips.Count > 0)
+            if (animationClipHolder.AnimationClips.Count > 0)
                 DrawAnimationClip(animationClipHolder);
             
             GUILayout.EndVertical();

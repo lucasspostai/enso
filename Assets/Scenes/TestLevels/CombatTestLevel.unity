@@ -863,6 +863,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &1251449657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1280250463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1280250463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,17 +982,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0.1
+  m_LookaheadTime: 0.2
   m_LookaheadSmoothing: 30
   m_LookaheadIgnoreY: 0
-  m_XDamping: 0.5
-  m_YDamping: 0.5
+  m_XDamping: 2
+  m_YDamping: 2
   m_ZDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.47999996
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -1236,7 +1242,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 1251449657}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7
@@ -1274,7 +1280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631550174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff542032cc0f32542bd55d79dcfef8f8, type: 3}
   m_Name: 

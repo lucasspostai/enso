@@ -1,4 +1,5 @@
 ﻿using System;
+using Enso.Enums;
 using UnityEngine;
 
 namespace Enso.Characters
@@ -7,7 +8,7 @@ namespace Enso.Characters
     public sealed class HealthSystem : MonoBehaviour
     {
         private Fighter fighter;
-
+        
         private int health;
 
         private int Health
@@ -17,12 +18,19 @@ namespace Enso.Characters
             {
                 health = value;
 
-                if (health < 0)
-                    health = 0;
-
                 if (health > maxHealth)
                     health = maxHealth;
-
+                
+                if (health <= 0)
+                {
+                    health = 0;
+                    OnDeath();
+                }
+                else if (health < maxHealth)
+                {
+                    OnDamage();
+                }
+                
                 OnHealthValueChanged();
             }
         }
@@ -30,7 +38,10 @@ namespace Enso.Characters
         private int maxHealth;
 
         public event Action HealthValueChanged;
+        public event Action Damage;
         public event Action Death;
+        
+        [HideInInspector] public AttackType CurrentAttackType;
 
         private void Awake()
         {
@@ -54,8 +65,9 @@ namespace Enso.Characters
             return (float) Health / maxHealth;
         }
 
-        public void TakeDamage(int damageAmount)
+        public void TakeDamage(int damageAmount, AttackType attackType = AttackType.Light)
         {
+            CurrentAttackType = attackType;
             Health -= damageAmount;
         }
 
@@ -67,6 +79,11 @@ namespace Enso.Characters
         private void OnHealthValueChanged()
         {
             HealthValueChanged?.Invoke();
+        }
+        
+        private void OnDamage()
+        {
+            Damage?.Invoke();
         }
 
         private void OnDeath()

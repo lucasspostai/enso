@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Enso.CombatSystem;
+using Enso.Enums;
 using Framework.Editor;
 using UnityEditor;
 using UnityEditorInternal;
@@ -41,8 +42,13 @@ namespace Enso.Editor
 
             DrawHitboxSize();
             DrawMovementOffset();
+            DrawAttackType();
+
 
             GUILayout.EndHorizontal();
+
+            EditorGUILayout.Separator();
+            
         }
 
         private void DrawAnimatorStateName()
@@ -140,8 +146,8 @@ namespace Enso.Editor
 
         private void DrawFrameChecker()
         {
-            float hitFrameStart = AttackTarget.AttackFrameChecker.HitFrameStart;
-            float hitFrameEnd = AttackTarget.AttackFrameChecker.HitFrameEnd;
+            float hitFrameStart = AttackTarget.AttackFrameChecker.StartHitFrame;
+            float hitFrameEnd = AttackTarget.AttackFrameChecker.EndHitFrame;
 
             //Texts
             string totalFramesText =
@@ -151,8 +157,8 @@ namespace Enso.Editor
             string recoveryText = "<color=blue>Recovery: <b>" +
                                   (AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - hitFrameEnd - 1) +
                                   "</b></color>";
-            string hitFrameStartText = "Hit Start: <b>" + AttackTarget.AttackFrameChecker.HitFrameStart + "</b>";
-            string hitFrameEndText = "Hit End: <b>" + AttackTarget.AttackFrameChecker.HitFrameEnd + "</b>";
+            string hitFrameStartText = "Hit Start: <b>" + AttackTarget.AttackFrameChecker.StartHitFrame + "</b>";
+            string hitFrameEndText = "Hit End: <b>" + AttackTarget.AttackFrameChecker.EndHitFrame + "</b>";
             string canCutFrameText = "Cut Frame: <b>" + AttackTarget.AttackFrameChecker.CanCutFrame + "</b>";
 
             //All Frames
@@ -173,8 +179,8 @@ namespace Enso.Editor
             EditorGUILayout.MinMaxSlider(ref hitFrameStart, ref hitFrameEnd, 0,
                 AttackTarget.AttackAnimationClipHolder.GetTotalFrames() - 1);
 
-            AttackTarget.AttackFrameChecker.HitFrameStart = Mathf.RoundToInt(hitFrameStart);
-            AttackTarget.AttackFrameChecker.HitFrameEnd = Mathf.RoundToInt(hitFrameEnd);
+            AttackTarget.AttackFrameChecker.StartHitFrame = Mathf.RoundToInt(hitFrameStart);
+            AttackTarget.AttackFrameChecker.EndHitFrame = Mathf.RoundToInt(hitFrameEnd);
 
             GUILayout.BeginHorizontal();
             GUILayout.Label(hitFrameStartText + " | " + hitFrameEndText, Styles.NormalTextCenterStyle);
@@ -222,6 +228,16 @@ namespace Enso.Editor
 
             AttackTarget.MovementOffset = EditorGUILayout.FloatField(AttackTarget.MovementOffset);
 
+            GUILayout.EndVertical();
+        }
+        
+        private void DrawAttackType()
+        {
+            GUILayout.BeginVertical(Styles.BoxStyle);
+            
+            GUILayout.Label("Attack Type", Styles.NormalTextLeftStyle);
+            AttackTarget.Type = (AttackType)EditorGUILayout.EnumPopup(AttackTarget.Type);
+            
             GUILayout.EndVertical();
         }
     }

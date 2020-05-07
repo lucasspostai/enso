@@ -1,4 +1,5 @@
-﻿using Enso.Interfaces;
+﻿using Enso.CombatSystem;
+using Enso.Interfaces;
 using UnityEngine;
 
 namespace Enso.Characters
@@ -11,8 +12,9 @@ namespace Enso.Characters
         private BalanceSystem balanceSystem;
         
         [SerializeField] protected FighterProperties BaseProperties;
-        
+
         public Animator Animator;
+        public DamageController DamageController;
 
         protected virtual void Awake()
         {
@@ -22,14 +24,19 @@ namespace Enso.Characters
 
         public HealthSystem GetHealthSystem()
         {
+            if(!healthSystem)
+                healthSystem = GetComponent<HealthSystem>();
+                
             return healthSystem;
         }
         
         public BalanceSystem GetBalanceSystem()
         {
+            if(!balanceSystem)
+                balanceSystem = GetComponent<BalanceSystem>();
+                
             return balanceSystem;
         }
-
 
         public FighterProperties GetBaseProperties()
         {

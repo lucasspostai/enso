@@ -1,20 +1,24 @@
-﻿using UnityEngine;
-
-namespace Framework.Animations
+﻿namespace Framework.Animations
 {
     [System.Serializable]
     public class FrameChecker
     {
         private IFrameCheckHandler thisFrameCheckHandler;
         private AnimationClipHolder thisAnimationClipHolder;
-        private bool checkedHitFrameStart;
-        private bool checkedHitFrameEnd;
-        private bool checkedCanCut;
+        private bool checkedStartHitFrame;
+        private bool checkedEndHitFrame;
+        private bool checkedPlayAudioFrame;
+        private bool checkedStartMovementFrame;
+        private bool checkedEndMovementFrame;
+        private bool checkedCanCutFrame;
         private bool checkedLastFrame;
         
-        public int HitFrameStart = 1;
-        public int HitFrameEnd = 2;
-        public int CanCutFrame;
+        public int StartHitFrame = 1;
+        public int EndHitFrame = 2;
+        public int CanCutFrame = 3;
+        public int PlayAudioFrame = 0;
+        public int StartMovementFrame = 0;
+        public int EndMovementFrame = 2;
 
         public void Initialize(IFrameCheckHandler frameCheckHandler, AnimationClipHolder animationClipHolder)
         {
@@ -26,9 +30,9 @@ namespace Framework.Animations
 
         public void ResetProperties()
         {
-            checkedHitFrameStart = false;
-            checkedHitFrameEnd = false;
-            checkedCanCut = false;
+            checkedStartHitFrame = false;
+            checkedEndHitFrame = false;
+            checkedCanCutFrame = false;
             checkedLastFrame = false;
         }
 
@@ -45,22 +49,46 @@ namespace Framework.Animations
                 return;
 
             // Hit frame start
-            if (!checkedHitFrameStart && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(HitFrameStart))
+            if (!checkedStartHitFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(StartHitFrame))
             {
                 thisFrameCheckHandler.OnHitFrameStart();
-                checkedHitFrameStart = true;
+                checkedStartHitFrame = true;
             } // Hit frame end
-            else if (!checkedHitFrameEnd && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(HitFrameEnd))
+            else if (!checkedEndHitFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(EndHitFrame))
             {
                 thisFrameCheckHandler.OnHitFrameEnd();
-                checkedHitFrameEnd = true;
+                checkedEndHitFrame = true;
             }
-            else if (!checkedCanCut && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(CanCutFrame))
+            
+            //Can Cut
+            if (!checkedCanCutFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(CanCutFrame))
             {
                 thisFrameCheckHandler.OnCanCutAnimation();
-                checkedCanCut = true;
+                checkedCanCutFrame = true;
+            }
+            
+            //Play Audio
+            if (!checkedPlayAudioFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(PlayAudioFrame))
+            {
+                thisFrameCheckHandler.OnPlayAudio();
+                checkedPlayAudioFrame = true;
+            }
+            
+            //Start Movement
+            if (!checkedStartMovementFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(StartMovementFrame))
+            {
+                thisFrameCheckHandler.OnStartMovement();
+                checkedStartMovementFrame = true;
+            }
+            
+            //End Movement
+            if (!checkedEndMovementFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(EndMovementFrame))
+            {
+                thisFrameCheckHandler.OnEndMovement();
+                checkedEndMovementFrame = true;
             }
 
+            //Last Frame
             if (!checkedLastFrame && thisAnimationClipHolder.ItsOnLastFrame())
             {
                 thisFrameCheckHandler.OnLastFrameStart();

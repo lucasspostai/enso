@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisFighter: {fileID: 8528520040655336778}
   HurtboxSize: {x: 0.4, y: 0.87, z: 0}
+  Guard: {fileID: 0}
 --- !u!1 &2784454056699770331
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +95,8 @@ GameObject:
   - component: {fileID: 4116229603299559527}
   - component: {fileID: 8491124380792908023}
   - component: {fileID: 7059184826251289228}
-  - component: {fileID: 7255687151486368881}
+  - component: {fileID: 813916947705230572}
+  - component: {fileID: 7997557526909049030}
   m_Layer: 8
   m_Name: HiroyukiIshigame
   m_TagString: Player
@@ -159,9 +161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseProperties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Animator: {fileID: 5783155035047645049}
+  DamageController: {fileID: 7997557526909049030}
   Movement: {fileID: 8491124380792908023}
   AttackController: {fileID: 7059184826251289228}
-  Defense: {fileID: 0}
+  GuardController: {fileID: 813916947705230572}
   Collisions: {fileID: 4116229603299559527}
   DodgeRoll: {fileID: 0}
 --- !u!114 &5583368025677090078
@@ -178,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SprintButton: 351
   AttackButton: 355
-  DefenseButton: 354
+  GuardButton: 354
   DodgeButton: 352
   HealButton: 350
 --- !u!114 &7339120810423616055
@@ -193,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c48629e5d09f345985519c4dbaf18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentAttackType: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +280,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c753a4b27fde19c47ae78ff9599b4daf, type: 2}
   - {fileID: 11400000, guid: d3b0e1814ba8625479667f753f433bf7, type: 2}
   StrongAttack: {fileID: 0}
---- !u!114 &7255687151486368881
+--- !u!114 &813916947705230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,11 +289,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 2784454056699770331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb2cddfd47c2634db176eadf6f39eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 09e35c6a0c26c624caaa967743d95be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsGuardAnimationPlaying: 0
+  IsAnyGuardAnimationPlaying: 0
+  StartingGuard: 0
+  EndingGuard: 0
+  IsGuarding: 0
+  IsBlocking: 0
   Animations: {fileID: 11400000, guid: c992d6ed723d5534c9fc6f65f7af8edc, type: 2}
+--- !u!114 &7997557526909049030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511259e85503c5b46af17596fed83691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnyDamageAnimationPlaying: 0
+  IsDying: 0
+  Animations: {fileID: 11400000, guid: cd3dbc57d9f878d478321af7a8e4212d, type: 2}
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,8 +50,7 @@ namespace Enso.CombatSystem
             
             attackAnimationClipHolder.Initialize(ThisFighter.Animator);
             attackFrameChecker.Initialize(this, attackAnimationClipHolder);
-            
-            MustMove = true;
+
             IsAttackAnimationPlaying = true;
         }
         
@@ -84,6 +83,11 @@ namespace Enso.CombatSystem
             
         }
 
+        public void OnPlayAudio()
+        {
+            
+        }
+
         public virtual void OnHitFrameStart()
         {
             damagedHurtboxes.Clear();
@@ -94,8 +98,6 @@ namespace Enso.CombatSystem
         {
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Closed);
-
-            MustMove = false;
         }
 
         public virtual void OnCanCutAnimation()
@@ -104,6 +106,16 @@ namespace Enso.CombatSystem
                 return;
             
             CanCutAnimation = true;
+        }
+
+        public void OnStartMovement()
+        {
+            MustMove = true;
+        }
+
+        public void OnEndMovement()
+        {
+            MustMove = false;
         }
 
         public virtual void OnLastFrameStart()

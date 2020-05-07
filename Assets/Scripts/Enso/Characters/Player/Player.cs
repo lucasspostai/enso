@@ -9,7 +9,7 @@ namespace Enso.Characters.Player
         [Header("References")] 
         public PlayerMovement Movement;
         public PlayerAttackController AttackController;
-        public GuardController Defense;
+        public PlayerGuardController GuardController;
         public CharacterCollisions Collisions;
         public PlayerDodgeRoll DodgeRoll;
 

@@ -1,10 +1,11 @@
 ﻿using System;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Player
 {
     [RequireComponent(typeof(Player))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : CharacterMovement
     {
         private float currentSpeed;
         private Vector3 targetVelocity;
@@ -20,12 +21,17 @@ namespace Enso.Characters.Player
         {
             player = GetComponent<Player>();
             currentSpeed = player.GetProperties().MoveSpeed;
+            
+            SetCharacterCollisions(player.Collisions);
 
             SetDirection(Vector3.down);
         }
 
         private void Update()
         {
+            if (player.GuardController.StartingGuard || player.GuardController.EndingGuard || player.DamageController.IsAnyDamageAnimationPlaying)
+                return;
+            
             if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation)
             {
                 SetDirection(PlayerInput.Movement);
@@ -51,25 +57,9 @@ namespace Enso.Characters.Player
             UpdateHitBoxAnchorRotation();
         }
 
-        public void Move(Vector2 moveAmount)
+        protected override void PlayMovementAnimation()
         {
-            player.Collisions.UpdateRaycastOrigins();
-            player.Collisions.Info.Reset();
-
-            if (Math.Abs(moveAmount.x) > player.GetProperties().DeadZone)
-                player.Collisions.GetHorizontalCollisions(ref moveAmount);
-
-            if (Math.Abs(moveAmount.y) > player.GetProperties().DeadZone)
-                player.Collisions.GetVerticalCollisions(ref moveAmount);
-
-            transform.Translate(moveAmount);
-
-            PlayMovementAnimation();
-        }
-
-        private void PlayMovementAnimation()
-        {
-            if (player.AttackController.IsAttackAnimationPlaying)
+            if (player.AttackController.IsAttackAnimationPlaying || player.GuardController.IsAnyGuardAnimationPlaying || player.DamageController.IsAnyDamageAnimationPlaying)
                 return;
 
             switch (PlayerInput.ActualMovementState)
@@ -98,6 +88,11 @@ namespace Enso.Characters.Player
             player.Animator.SetFloat(CharacterAnimations.FaceY, direction.y);
                 
             CurrentDirection = direction;
+        }
+
+        public void SetSpeed(float speed)
+        {
+            currentSpeed = speed;
         }
 
         private void UpdateHitBoxAnchorRotation()

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa277d98d2693c438d48eb11d76d091, type: 3}
+  m_Name: Hiroyuki_OneSword_DamageAnimations
+  m_EditorClassIdentifier: 
+  LoseBalanceAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 2bfe5d8803622df4ba7f5d20431afaa4, type: 2}
+    AnimatorStateName: OneSword_LoseBalance
+    LayerNumber: 0
+  DamageAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 23391653b43d0034a800d15da1c84f85, type: 2}
+    AnimatorStateName: OneSword_Damage
+    LayerNumber: 0
+  HeavyAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 17f66afcc3942d345bc4af720e1f053b, type: 2}
+    AnimatorStateName: OneSword_HeavyDamage
+    LayerNumber: 0
+  DeathAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: a85900ec3a5555843a0ef914f79acc75, type: 2}
+    AnimatorStateName: OneSword_Death
+    LayerNumber: 0

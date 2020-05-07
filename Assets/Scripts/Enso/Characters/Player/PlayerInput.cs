@@ -16,22 +16,22 @@ namespace Enso.Characters.Player
         private bool sprintInputDownCalled;
         private bool attackInputDownCalled;
         private bool attackInputUpCalled;
-        private bool defenseInputDownCalled;
-        private bool defenseInputUpCalled;
+        private bool guardInputDownCalled;
+        private bool guardInputUpCalled;
         private bool dodgeInputDownCalled;
         private bool healInputDownCalled;
 
         [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button5;
-        [SerializeField] private KeyCode DefenseButton = KeyCode.Joystick1Button4;
+        [SerializeField] private KeyCode GuardButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode DodgeButton = KeyCode.Joystick1Button2;
         [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button0;
     
         public static event Action SprintInputDown;
         public static event Action AttackInputDown;
         public static event Action AttackInputUp;
-        public static event Action DefenseInputDown;
-        public static event Action DefenseInputUp;
+        public static event Action GuardInputDown;
+        public static event Action GuardInputUp;
         public static event Action DodgeInputDown;
         public static event Action HealInputDown;
     
@@ -45,8 +45,8 @@ namespace Enso.Characters.Player
             sprintInputDownCalled = Input.GetKeyDown(SprintButton);
             attackInputDownCalled = Input.GetKeyDown(AttackButton);
             attackInputUpCalled = Input.GetKeyUp(AttackButton);
-            defenseInputDownCalled = Input.GetKeyDown(DefenseButton);
-            defenseInputUpCalled = Input.GetKeyUp(DefenseButton);
+            guardInputDownCalled = Input.GetKeyDown(GuardButton);
+            guardInputUpCalled = Input.GetKeyUp(GuardButton);
             dodgeInputDownCalled = Input.GetKeyDown(DodgeButton);
             healInputDownCalled = Input.GetKeyDown(HealButton);
 
@@ -65,12 +65,12 @@ namespace Enso.Characters.Player
                 OnAttackInputUp();
             }
 
-            if (defenseInputDownCalled)
+            if (guardInputDownCalled)
             {
                 OnDefenseInputDown();
             }
         
-            if (defenseInputUpCalled)
+            if (guardInputUpCalled)
             {
                 OnDefenseInputUp();
             }
@@ -131,7 +131,7 @@ namespace Enso.Characters.Player
 
         private static void OnDefenseInputDown()
         {
-            DefenseInputDown?.Invoke();
+            GuardInputDown?.Invoke();
         }
 
         private static void OnDodgeInputDown()
@@ -141,7 +141,7 @@ namespace Enso.Characters.Player
 
         private static void OnDefenseInputUp()
         {
-            DefenseInputUp?.Invoke();
+            GuardInputUp?.Invoke();
         }
 
         private static void OnAttackInputUp()

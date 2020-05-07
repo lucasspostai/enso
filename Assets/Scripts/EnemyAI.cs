@@ -32,14 +32,14 @@ public class EnemyAI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerInput.DefenseInputDown += StartDefending;
-        PlayerInput.DefenseInputUp += StopDefending;
+        PlayerInput.GuardInputDown += StartDefending;
+        PlayerInput.GuardInputUp += StopDefending;
     }
     
     private void OnDisable()
     {
-        PlayerInput.DefenseInputDown -= StartDefending;
-        PlayerInput.DefenseInputUp -= StopDefending;
+        PlayerInput.GuardInputDown -= StartDefending;
+        PlayerInput.GuardInputUp -= StopDefending;
     }
 
     private void Update()

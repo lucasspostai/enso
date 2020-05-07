@@ -1,4 +1,5 @@
-﻿using Framework.Animations;
+﻿using Enso.Enums;
+using Framework.Animations;
 using UnityEngine;
 
 namespace Enso.CombatSystem
@@ -12,5 +13,6 @@ namespace Enso.CombatSystem
         public int Damage = 1;
         public bool CanBeCut = true;
         public float MovementOffset;
+        public AttackType Type;
     }
 }

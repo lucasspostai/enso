@@ -1,5 +1,4 @@
-﻿using System;
-using Enso.Characters;
+﻿using Enso.Characters;
 using Framework.Animations;
 using UnityEngine;
 
@@ -9,14 +8,18 @@ namespace Enso.CombatSystem
     {
         private AnimationClipHolder guardAnimationClipHolder;
         private FrameChecker guardFrameChecker;
-        
+
         protected Fighter ThisFighter;
 
-        [HideInInspector] public bool IsGuardAnimationPlaying;
-        
-        [SerializeField] private GuardAnimations Animations;
+        [HideInInspector] public bool IsAnyGuardAnimationPlaying;
+        [HideInInspector] public bool StartingGuard;
+        [HideInInspector] public bool EndingGuard;
+        [HideInInspector] public bool IsGuarding;
+        [HideInInspector] public bool IsBlocking;
 
-        protected void Start()
+        [SerializeField] protected GuardAnimations Animations;
+
+        protected virtual void Start()
         {
             guardFrameChecker = new FrameChecker();
             
@@ -27,10 +30,13 @@ namespace Enso.CombatSystem
 
         protected virtual void Update()
         {
-            if (!IsGuardAnimationPlaying)
+            if (!IsAnyGuardAnimationPlaying)
                 return;
             
             guardFrameChecker.CheckFrames();
+
+            if (IsGuarding && !EndingGuard && !IsBlocking)
+                PlayMovementAnimation();
         }
         
         private void SetAnimationProperties(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
@@ -41,40 +47,97 @@ namespace Enso.CombatSystem
             guardAnimationClipHolder.Initialize(ThisFighter.Animator);
             guardFrameChecker.Initialize(this, guardAnimationClipHolder);
 
-            IsGuardAnimationPlaying = true;
+            IsAnyGuardAnimationPlaying = true;
         }
         
-        protected void StartGuard(AnimationClipHolder animationClipHolder)
+        protected virtual void StartGuard()
         {
-            if (IsGuardAnimationPlaying)
+            if (IsAnyGuardAnimationPlaying)
                 return;
 
+            StartingGuard = true;
+
+            SetAnimationProperties(Animations.StartGuardAnimationClipHolder, guardFrameChecker);
+            ThisFighter.Animator.Play(Animations.StartGuardAnimationClipHolder.AnimatorStateName);
+        }
+
+        protected void EndGuard()
+        {
+            if (!IsAnyGuardAnimationPlaying)
+                return;
+
+            EndingGuard = true;
+
+            SetAnimationProperties(Animations.EndGuardAnimationClipHolder, guardFrameChecker);
+            ThisFighter.Animator.Play(Animations.EndGuardAnimationClipHolder.AnimatorStateName);
+        }
+
+        protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder)
+        {
+            if (!IsAnyGuardAnimationPlaying)
+                return;
+            
             SetAnimationProperties(animationClipHolder, guardFrameChecker);
             ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
+        }
+
+        public void Block()
+        {
+            if (!IsAnyGuardAnimationPlaying)
+                return;
+            
+            IsBlocking = true;
+            
+            SetAnimationProperties(Animations.BlockAnimationClipHolder, guardFrameChecker);
+            ThisFighter.Animator.Play(Animations.BlockAnimationClipHolder.AnimatorStateName);
+        }
+
+        protected virtual void PlayMovementAnimation() { }
+
+        public void OnPlayAudio()
+        {
+            
         }
 
         public void OnHitFrameStart() { }
 
         public void OnHitFrameEnd() { }
 
-        public void OnCanCutAnimation()
+        public void OnCanCutAnimation() { }
+        public void OnStartMovement()
         {
             
         }
 
-        public void OnLastFrameStart()
+        public void OnEndMovement()
         {
             
         }
+
+        public void OnLastFrameStart() { }
 
         public void OnLastFrameEnd()
         {
-            
+            if (StartingGuard)
+            {
+                IsGuarding = true;
+                StartingGuard = false;
+            }
+
+            if (IsBlocking)
+                IsBlocking = false;
+
+            if(EndingGuard)
+                ResetAllProperties();
         }
         
-        private void ResetAllProperties()
+        protected virtual void ResetAllProperties()
         {
-            IsGuardAnimationPlaying = false;
+            IsAnyGuardAnimationPlaying = false;
+            IsGuarding = false;
+            StartingGuard = false;
+            EndingGuard = false;
+            IsBlocking = false;
         }
     }
 }
