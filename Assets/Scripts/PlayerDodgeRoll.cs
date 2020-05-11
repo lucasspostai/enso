@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enso.Characters.Player;
+using UnityEngine;
 
 public enum RollState
 {
@@ -24,13 +25,13 @@ public class PlayerDodgeRoll : MonoBehaviour
     private void OnEnable()
     {
         PlayerInput.DodgeInputDown += Roll;
-        CharacterAnimations.EndRollAnimation += StopSliding;
+        //CharacterAnimations.EndRollAnimation += StopSliding;
     }
 
     private void OnDisable()
     {
         PlayerInput.DodgeInputDown -= Roll;
-        CharacterAnimations.EndRollAnimation -= StopSliding;
+        //CharacterAnimations.EndRollAnimation -= StopSliding;
     }
 
     private void Update()
@@ -44,7 +45,7 @@ public class PlayerDodgeRoll : MonoBehaviour
         if (ActualRollState == RollState.Normal)
         {
             ActualRollState = RollState.Sliding;
-            PlayerAnimator.Play(CharacterAnimations.DodgingState);
+            //PlayerAnimator.Play(CharacterAnimations.DodgingState);
         }
     }
 

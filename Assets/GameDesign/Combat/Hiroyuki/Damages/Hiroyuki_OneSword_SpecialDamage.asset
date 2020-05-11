@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Hiroyuki_OneSword_SpecialDamage
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 17f66afcc3942d345bc4af720e1f053b, type: 2}
+    - {fileID: 7400000, guid: da551fe16f1156b4abd090d92b95d245, type: 2}
+    - {fileID: 7400000, guid: 47f76232cd388934cb602ca00dd537fb, type: 2}
+    - {fileID: 7400000, guid: f0598e5c92ba6c94094d237e5adfe13a, type: 2}
+    - {fileID: 7400000, guid: 7a68a299e634fb1458b70a24d4bc4545, type: 2}
+    - {fileID: 7400000, guid: 16e9bc974d46fff4bac74d876b9b2cb5, type: 2}
+    - {fileID: 7400000, guid: fe05c1e947f765d43a039429e88f4a75, type: 2}
+    - {fileID: 7400000, guid: 1a929ab1cc1a8c043989a458ea4a9d3e, type: 2}
+    AnimatorStateName: AnimatorStateName
+    LayerNumber: 0
+  AnimationFrameChecker:
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1

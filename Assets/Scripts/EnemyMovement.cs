@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enso.Characters.Enemies;
+using Enso.Characters.Player;
+using Framework;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -76,11 +79,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (PlayerInput.Movement == Vector2.zero)
         {
-            EnemyAnimator.Play(CharacterAnimations.IdleState);
+            //EnemyAnimator.Play(CharacterAnimations.IdleState);
             return;
         }
 
-        EnemyAnimator.Play(CharacterAnimations.RunningState);
+        //EnemyAnimator.Play(CharacterAnimations.RunningState);
     }
 
     /*private void StartDefending()

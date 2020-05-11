@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0f8339bce6c2a4c940cbd3e05d2d75, type: 3}
+  m_Name: Hiroyuki_OneSword_GuardAnimations
+  m_EditorClassIdentifier: 
+  StartGuardAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 136f2e9054234214a81778c4130f07a0, type: 2}
+    AnimatorStateName: OneSword_StartGuard
+    LayerNumber: 0
+  GuardIdleAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 828468f9e01d4f64f9d55d5418dfc9d2, type: 2}
+    AnimatorStateName: OneSword_GuardIdle
+    LayerNumber: 0
+  EndGuardAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 0b948331275cd12479a41d9b1b60d518, type: 2}
+    AnimatorStateName: OneSword_EndGuard
+    LayerNumber: 0
+  ForwardGuardWalkAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 22e4a62e762c0e0459c2b1db1e0e367e, type: 2}
+    AnimatorStateName: OneSword_GuardWalk_Forward
+    LayerNumber: 0
+  BackwardGuardWalkAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 78b97ba75ad911845b7cf7c7e4cd62ae, type: 2}
+    AnimatorStateName: OneSword_GuardWalk_Backward
+    LayerNumber: 0
+  LeftGuardWalkAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: e83411b412fe535498a59d66c3e01062, type: 2}
+    AnimatorStateName: OneSword_GuardWalk_Left
+    LayerNumber: 0
+  RightGuardWalkAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 67d9e4eda1ed4ad419b1673e7399b2ba, type: 2}
+    AnimatorStateName: OneSword_GuardWalk_Right
+    LayerNumber: 0
+  BlockAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 91aee33c8f67b8940a4e1e7f06f338de, type: 2}
+    AnimatorStateName: OneSword_Block
+    LayerNumber: 0
+  ParryAnimationClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: aeb7e6d33ab2af7489f45b68aeb2eb08, type: 2}
+    AnimatorStateName: OneSword_Parry
+    LayerNumber: 0

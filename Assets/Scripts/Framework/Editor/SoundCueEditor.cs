@@ -42,6 +42,13 @@ namespace Framework.Editor
         {
             clipsList = new ReorderableList(SoundCueTarget.Clips, typeof(AudioClip), true, true, true, true);
 
+            if (SoundCueTarget.Clips.Count == 0)
+            {
+                AddItem(clipsList);
+            }
+            
+            SoundCueTarget.UpdateRandomClips();
+            
             clipsList.drawHeaderCallback += DrawHeader;
             clipsList.drawElementCallback += DrawElement;
 
@@ -121,7 +128,7 @@ namespace Framework.Editor
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
 
-            GUILayout.Label("Audio Mixer Group", EditorStyles.whiteLabel);
+            GUILayout.Label("Audio Mixer Group", Styles.NormalTextLeftStyle);
 
             SoundCueTarget.MixerGroup = (AudioMixerGroup) EditorGUILayout.ObjectField(
                 SoundCueTarget.MixerGroup,
@@ -136,7 +143,7 @@ namespace Framework.Editor
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
 
-            GUILayout.Label("Volume", EditorStyles.whiteLabel);
+            GUILayout.Label("Volume", Styles.NormalTextLeftStyle);
 
             SoundCueTarget.Volume = EditorGUILayout.Slider(SoundCueTarget.Volume, 0f, 1f);
 
@@ -154,7 +161,7 @@ namespace Framework.Editor
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
 
-            GUILayout.Label("Pitch Variation", EditorStyles.whiteLabel);
+            GUILayout.Label("Pitch Variation", Styles.NormalTextLeftStyle);
             EditorGUILayout.MinMaxSlider(ref SoundCueTarget.MinPitch, ref SoundCueTarget.MaxPitch, 0.5f, 1.5f);
 
             SoundCueTarget.MinPitch = (float) Math.Round(SoundCueTarget.MinPitch, 2);
@@ -175,7 +182,7 @@ namespace Framework.Editor
         {
             GUILayout.BeginVertical(Styles.BoxStyle);
 
-            GUILayout.Label("Spatial Blend", EditorStyles.whiteLabel);
+            GUILayout.Label("Spatial Blend", Styles.NormalTextLeftStyle);
             SoundCueTarget.SpatialBlend = EditorGUILayout.Slider(SoundCueTarget.SpatialBlend, 0f, 1f);
 
             GUILayout.BeginHorizontal(GUILayout.Width(Screen.width - 85f));
@@ -192,6 +199,9 @@ namespace Framework.Editor
 
         private static void PlayClip(AudioClip clip, int startSample = 0, bool loop = false)
         {
+            if (clip == null)
+                return;
+            
             Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
             Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
             MethodInfo method = audioUtilClass.GetMethod(
