@@ -2,21 +2,24 @@
 using Enso.Characters;
 using Enso.Enums;
 using Enso.Interfaces;
+using Framework;
 using Framework.Animations;
+using Framework.Audio;
 using UnityEngine;
 
 namespace Enso.CombatSystem
 {
     public abstract class AttackController : MonoBehaviour, IHitboxResponder, IFrameCheckHandler
     {
-        private int currentDamage;
         private AnimationClipHolder attackAnimationClipHolder;
+        private bool mustMove;
+        private CharacterMovement characterMovement;
+        private Fighter thisFighter;
         private FrameChecker attackFrameChecker;
+        private int currentDamage;
         private List<Hurtbox> damagedHurtboxes = new List<Hurtbox>();
 
         protected Attack CurrentAttack;
-        protected bool MustMove;
-        protected Fighter ThisFighter;
 
         [HideInInspector] public bool IsAttackAnimationPlaying;
         [HideInInspector] public bool CanCutAnimation;
@@ -25,7 +28,9 @@ namespace Enso.CombatSystem
 
         protected virtual void Start()
         {
-            ThisFighter = GetComponent<Fighter>();
+            thisFighter = GetComponent<Fighter>();
+            characterMovement = thisFighter.GetComponent<CharacterMovement>();
+            
             AttackHitbox.SetHitboxResponder(this);
             
             ResetAllProperties();
@@ -37,6 +42,9 @@ namespace Enso.CombatSystem
                 return;
             
             attackFrameChecker.CheckFrames();
+
+            if (mustMove)
+                characterMovement.Move(characterMovement.CurrentDirection * (CurrentAttack.AnimationFrameChecker.MovementOffset * Time.deltaTime));
         }
 
         private void SetAnimationProperties(AnimationClipHolder animationClipHolder, FrameChecker frameChecker, Vector3 hitboxSize, int damage)
@@ -48,7 +56,7 @@ namespace Enso.CombatSystem
 
             currentDamage = damage;
             
-            attackAnimationClipHolder.Initialize(ThisFighter.Animator);
+            attackAnimationClipHolder.Initialize(thisFighter.Animator);
             attackFrameChecker.Initialize(this, attackAnimationClipHolder);
 
             IsAttackAnimationPlaying = true;
@@ -63,8 +71,8 @@ namespace Enso.CombatSystem
 
             CurrentAttack = attack;
             
-            SetAnimationProperties(CurrentAttack.AttackAnimationClipHolder, CurrentAttack.AttackFrameChecker, CurrentAttack.HitboxSize, CurrentAttack.Damage);
-            ThisFighter.Animator.Play(CurrentAttack.AttackAnimationClipHolder.AnimatorStateName);
+            SetAnimationProperties(CurrentAttack.ClipHolder, CurrentAttack.AnimationFrameChecker, CurrentAttack.HitboxSize, CurrentAttack.Damage);
+            thisFighter.Animator.Play(CurrentAttack.ClipHolder.AnimatorStateName);
         }
 
         public void CollidedWith(Collider2D otherCollider)
@@ -78,14 +86,9 @@ namespace Enso.CombatSystem
             }
         }
 
-        protected virtual void Move()
-        {
-            
-        }
-
         public void OnPlayAudio()
         {
-            
+            AudioManager.Instance.Play(attackFrameChecker.AnimationSoundCue, transform.position, transform.rotation);
         }
 
         public virtual void OnHitFrameStart()
@@ -110,12 +113,12 @@ namespace Enso.CombatSystem
 
         public void OnStartMovement()
         {
-            MustMove = true;
+            mustMove = true;
         }
 
         public void OnEndMovement()
         {
-            MustMove = false;
+            mustMove = false;
         }
 
         public virtual void OnLastFrameStart()
@@ -128,11 +131,16 @@ namespace Enso.CombatSystem
             ResetAllProperties();
         }
 
+        public void OnInterrupted()
+        {
+            ResetAllProperties();
+        }
+
         private void ResetAllProperties()
         {
             IsAttackAnimationPlaying = false;
             CanCutAnimation = true;
-            MustMove = false;
+            mustMove = false;
             CurrentAttack = null;
         }
     }

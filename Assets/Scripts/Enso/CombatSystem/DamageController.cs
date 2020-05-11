@@ -17,8 +17,12 @@ namespace Enso.CombatSystem
         
         [HideInInspector] public bool IsAnyDamageAnimationPlaying;
         [HideInInspector] public bool IsDying;
-        
-        [SerializeField] protected DamageAnimations Animations;
+
+        [SerializeField] protected Damage RegularDamageAnimation;
+        [SerializeField] protected Damage HeavyDamageAnimation;
+        [SerializeField] protected Damage SpecialDamageAnimation;
+        [SerializeField] protected Damage LoseBalanceAnimation;
+        [SerializeField] protected Damage DeathAnimation;
 
         private void Awake()
         {
@@ -52,8 +56,8 @@ namespace Enso.CombatSystem
             
             damageFrameChecker.CheckFrames();
             
-            //if(mustMove)
-                //characterMovement.Move(player.Movement.CurrentDirection * (CurrentAttack.MovementOffset * Time.deltaTime));
+            if(mustMove)
+                characterMovement.Move(characterMovement.CurrentDirection * (damageFrameChecker.MovementOffset * Time.deltaTime));
         }
         
         private void SetAnimationProperties(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
@@ -65,15 +69,17 @@ namespace Enso.CombatSystem
             damageFrameChecker.Initialize(this, damageAnimationClipHolder);
 
             IsAnyDamageAnimationPlaying = true;
+            
+            thisFighter.GetComponent<AttackController>()?.OnInterrupted();
         }
         
-        private void PlayDamageAnimation(AnimationClipHolder animationClipHolder)
+        private void PlayDamageAnimation(Damage damage)
         {
             if (IsAnyDamageAnimationPlaying)
                 return;
 
-            SetAnimationProperties(animationClipHolder, damageFrameChecker);
-            thisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
+            SetAnimationProperties(damage.ClipHolder, damage.AnimationFrameChecker);
+            thisFighter.Animator.Play(damage.ClipHolder.AnimatorStateName);
         }
 
         private void Damage()
@@ -81,16 +87,16 @@ namespace Enso.CombatSystem
             switch (thisFighter.GetHealthSystem().CurrentAttackType)
             {
                 case AttackType.Light:
-                    PlayDamageAnimation(Animations.DamageAnimationClipHolder);
+                    PlayDamageAnimation(RegularDamageAnimation);
                     break;
                 case AttackType.Strong:
-                    PlayDamageAnimation(Animations.HeavyAnimationClipHolder);
+                    PlayDamageAnimation(HeavyDamageAnimation);
                     break;
                 case AttackType.Special:
-                    PlayDamageAnimation(Animations.HeavyAnimationClipHolder);
+                    PlayDamageAnimation(SpecialDamageAnimation);
                     break;
                 default:
-                    PlayDamageAnimation(Animations.DamageAnimationClipHolder);
+                    PlayDamageAnimation(RegularDamageAnimation);
                     break;
             }
         }
@@ -99,7 +105,7 @@ namespace Enso.CombatSystem
         {
             IsDying = true;
             
-            PlayDamageAnimation(Animations.DeathAnimationClipHolder);
+            PlayDamageAnimation(DeathAnimation);
         }
 
         public void OnPlayAudio()
@@ -132,7 +138,12 @@ namespace Enso.CombatSystem
 
             ResetAllProperties();
         }
-        
+
+        public void OnInterrupted()
+        {
+            
+        }
+
         private void ResetAllProperties()
         {
             IsAnyDamageAnimationPlaying = false;

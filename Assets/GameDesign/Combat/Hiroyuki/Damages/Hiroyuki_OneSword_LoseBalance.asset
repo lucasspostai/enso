@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Hiroyuki_OneSword_LoseBalance
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 2bfe5d8803622df4ba7f5d20431afaa4, type: 2}
+    - {fileID: 7400000, guid: 746a0d3e897f87f468a3ae95c37aa293, type: 2}
+    - {fileID: 7400000, guid: 4217bcf4f936234429c3c39e2a4b5ad2, type: 2}
+    - {fileID: 7400000, guid: ecfdf3f1d3656f94082c572dfc8b9b1b, type: 2}
+    - {fileID: 7400000, guid: e787a1be3747f1d459ab4f15a298a5ad, type: 2}
+    - {fileID: 7400000, guid: ccd7890f33bfd344dbe2c37e47225f81, type: 2}
+    - {fileID: 7400000, guid: 40635ebe3384fb74a81aabb6c2d10614, type: 2}
+    - {fileID: 7400000, guid: 4b993a6f9c9df3646ba4adcd410e1a56, type: 2}
+    AnimatorStateName: OneSword_LoseBalance
+    LayerNumber: 0
+  AnimationFrameChecker:
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1

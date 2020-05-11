@@ -13,7 +13,6 @@ namespace Enso.Characters.Player
         private Player player;
 
         [HideInInspector] public Vector3 Velocity;
-        [HideInInspector] public Vector3 CurrentDirection;
 
         [SerializeField] private Transform HitboxAnchor;
 
@@ -30,9 +29,12 @@ namespace Enso.Characters.Player
         private void Update()
         {
             if (player.GuardController.StartingGuard || player.GuardController.EndingGuard || player.DamageController.IsAnyDamageAnimationPlaying)
+            {
+                Velocity = Vector3.zero;
                 return;
+            }
             
-            if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation)
+            if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation && !player.GuardController.IsAnyGuardAnimationPlaying)
             {
                 SetDirection(PlayerInput.Movement);
             }

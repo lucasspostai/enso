@@ -1,4 +1,7 @@
-﻿namespace Framework.Animations
+﻿using Framework.Audio;
+using UnityEngine;
+
+namespace Framework.Animations
 {
     [System.Serializable]
     public class FrameChecker
@@ -19,6 +22,8 @@
         public int PlayAudioFrame = 0;
         public int StartMovementFrame = 0;
         public int EndMovementFrame = 2;
+        public float MovementOffset;
+        public SoundCue AnimationSoundCue;
 
         public void Initialize(IFrameCheckHandler frameCheckHandler, AnimationClipHolder animationClipHolder)
         {
@@ -34,6 +39,9 @@
             checkedEndHitFrame = false;
             checkedCanCutFrame = false;
             checkedLastFrame = false;
+            checkedStartMovementFrame = false;
+            checkedEndMovementFrame = false;
+            checkedPlayAudioFrame = false;
         }
 
         public void CheckFrames()
@@ -73,7 +81,7 @@
                 thisFrameCheckHandler.OnPlayAudio();
                 checkedPlayAudioFrame = true;
             }
-            
+
             //Start Movement
             if (!checkedStartMovementFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(StartMovementFrame))
             {

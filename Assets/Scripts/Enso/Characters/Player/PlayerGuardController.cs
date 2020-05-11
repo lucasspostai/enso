@@ -30,6 +30,11 @@ namespace Enso.Characters.Player
             base.Start();
 
             player = GetComponent<Player>();
+            
+            Debug.Log((new Vector2(0,1) - new Vector2(0,-1)).magnitude);
+            Debug.Log((new Vector2(0,1) - new Vector2(1,0)));
+            Debug.Log((new Vector2(0,1) - new Vector2(-1,0)));
+            Debug.Log((new Vector2(0,1) - new Vector2(0,1)).magnitude);
         }
 
         protected override void PlayMovementAnimation()
@@ -42,9 +47,32 @@ namespace Enso.Characters.Player
             }
             else
             {
-                PlayGuardAnimation(Animations.ForwardGuardWalkAnimationClipHolder);
+                float magnitude =
+                    GetMagnitudeFromVectorDifference(player.Movement.CurrentDirection, PlayerInput.Movement);
+                
+                if(magnitude <= 0.5f)
+                    PlayGuardAnimation(Animations.ForwardGuardWalkAnimationClipHolder, true);
+                else if (magnitude >= 1.5f)
+                    PlayGuardAnimation(Animations.BackwardGuardWalkAnimationClipHolder, true);
+                else
+                {
+                    PlayGuardAnimation(InputIsLeft(player.Movement.CurrentDirection, PlayerInput.Movement)
+                        ? Animations.LeftGuardWalkAnimationClipHolder
+                        : Animations.RightGuardWalkAnimationClipHolder, 
+                        true);
+                }
             }
                 
+        }
+
+        private float GetMagnitudeFromVectorDifference(Vector3 vectorA, Vector3 vectorB)
+        {
+            return (vectorA - vectorB).magnitude;
+        }
+        
+        private bool InputIsLeft(Vector2 vectorA, Vector2 vectorB)
+        {
+            return -vectorA.x * vectorB.y + vectorA.y * vectorB.x < 0;
         }
 
         protected override void StartGuard()

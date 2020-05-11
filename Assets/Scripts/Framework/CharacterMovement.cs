@@ -7,6 +7,8 @@ namespace Framework
     {
         protected float MovementDeadZone = 0f;
         protected CharacterCollisions Collisions;
+        
+        [HideInInspector] public Vector3 CurrentDirection;
 
         protected void SetCharacterCollisions(CharacterCollisions collisions)
         {

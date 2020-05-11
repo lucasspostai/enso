@@ -257,8 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf9777cf6de899468708ed9b397410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0, z: 0}
   CurrentDirection: {x: 0, y: 0, z: 0}
+  Velocity: {x: 0, y: 0, z: 0}
   HitboxAnchor: {fileID: 4942956660897927905}
 --- !u!114 &7059184826251289228
 MonoBehaviour:
@@ -280,6 +280,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c753a4b27fde19c47ae78ff9599b4daf, type: 2}
   - {fileID: 11400000, guid: d3b0e1814ba8625479667f753f433bf7, type: 2}
   StrongAttack: {fileID: 0}
+  SpecialAttack: {fileID: 0}
 --- !u!114 &813916947705230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +313,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAnyDamageAnimationPlaying: 0
   IsDying: 0
-  Animations: {fileID: 11400000, guid: cd3dbc57d9f878d478321af7a8e4212d, type: 2}
+  RegularDamageAnimation: {fileID: 11400000, guid: f35f4b04d83882f4381d0ce9daca74b7,
+    type: 2}
+  HeavyDamageAnimation: {fileID: 11400000, guid: c1461c6bf3de59f4097b50066abd9e34,
+    type: 2}
+  SpecialDamageAnimation: {fileID: 11400000, guid: d054427ec3ec0804385d471c2a699b78,
+    type: 2}
+  LoseBalanceAnimation: {fileID: 11400000, guid: 66ddccb91bf1f7e44a0afa0ff2db0c80,
+    type: 2}
+  DeathAnimation: {fileID: 11400000, guid: d4e32998ce2cc634c8259d1001df936b, type: 2}
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0

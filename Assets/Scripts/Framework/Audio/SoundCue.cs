@@ -21,8 +21,7 @@ namespace Framework.Audio
 
         private void OnEnable()
         {
-            if (Clips != null)
-                uniqueRandom = new UniqueRandom(0, Clips.Count);
+            UpdateRandomClips();
         }
 
         public AudioClip GetClip()
@@ -41,6 +40,12 @@ namespace Framework.Audio
             float panStereo = Mathf.Lerp(-1f, 1f, Mathf.InverseLerp(0, Screen.width, xPosition));
             
             return panStereo;
+        }
+
+        public void UpdateRandomClips()
+        {
+            if (Clips != null)
+                uniqueRandom = new UniqueRandom(0, Clips.Count);
         }
     }
 }

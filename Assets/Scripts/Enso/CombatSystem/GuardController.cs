@@ -22,9 +22,9 @@ namespace Enso.CombatSystem
         protected virtual void Start()
         {
             guardFrameChecker = new FrameChecker();
-            
+
             ThisFighter = GetComponent<Fighter>();
-            
+
             ResetAllProperties();
         }
 
@@ -32,13 +32,13 @@ namespace Enso.CombatSystem
         {
             if (!IsAnyGuardAnimationPlaying)
                 return;
-            
+
             guardFrameChecker.CheckFrames();
 
             if (IsGuarding && !EndingGuard && !IsBlocking)
                 PlayMovementAnimation();
         }
-        
+
         private void SetAnimationProperties(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
         {
             guardAnimationClipHolder = animationClipHolder;
@@ -49,7 +49,7 @@ namespace Enso.CombatSystem
 
             IsAnyGuardAnimationPlaying = true;
         }
-        
+
         protected virtual void StartGuard()
         {
             if (IsAnyGuardAnimationPlaying)
@@ -72,49 +72,71 @@ namespace Enso.CombatSystem
             ThisFighter.Animator.Play(Animations.EndGuardAnimationClipHolder.AnimatorStateName);
         }
 
-        protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder)
+        protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder, bool atNextFrame = false)
         {
             if (!IsAnyGuardAnimationPlaying)
                 return;
+
+            float nextFramePercentage = guardAnimationClipHolder.GetNextFramePercentage();
             
+            if (Animator.StringToHash(ThisFighter.Animator.GetLayerName(animationClipHolder.LayerNumber) + "." +
+                                      animationClipHolder.AnimatorStateName) ==
+                guardAnimationClipHolder.GetAnimationFullNameHash())
+                return;
+
             SetAnimationProperties(animationClipHolder, guardFrameChecker);
-            ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
+
+            if (!atNextFrame)
+                ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
+            else
+            {
+                ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName, animationClipHolder.LayerNumber,
+                    nextFramePercentage);
+            }
         }
 
         public void Block()
         {
             if (!IsAnyGuardAnimationPlaying)
                 return;
-            
+
             IsBlocking = true;
-            
+
             SetAnimationProperties(Animations.BlockAnimationClipHolder, guardFrameChecker);
             ThisFighter.Animator.Play(Animations.BlockAnimationClipHolder.AnimatorStateName);
         }
 
-        protected virtual void PlayMovementAnimation() { }
+        protected virtual void PlayMovementAnimation()
+        {
+        }
 
         public void OnPlayAudio()
         {
-            
         }
 
-        public void OnHitFrameStart() { }
+        public void OnHitFrameStart()
+        {
+        }
 
-        public void OnHitFrameEnd() { }
+        public void OnHitFrameEnd()
+        {
+        }
 
-        public void OnCanCutAnimation() { }
+        public void OnCanCutAnimation()
+        {
+        }
+
         public void OnStartMovement()
         {
-            
         }
 
         public void OnEndMovement()
         {
-            
         }
 
-        public void OnLastFrameStart() { }
+        public void OnLastFrameStart()
+        {
+        }
 
         public void OnLastFrameEnd()
         {
@@ -127,10 +149,14 @@ namespace Enso.CombatSystem
             if (IsBlocking)
                 IsBlocking = false;
 
-            if(EndingGuard)
+            if (EndingGuard)
                 ResetAllProperties();
         }
-        
+
+        public void OnInterrupted()
+        {
+        }
+
         protected virtual void ResetAllProperties()
         {
             IsAnyGuardAnimationPlaying = false;

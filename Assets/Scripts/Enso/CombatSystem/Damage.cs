@@ -1,12 +1,11 @@
 ﻿using Framework.Animations;
+using UnityEngine;
 
 namespace Enso.CombatSystem
 {
-    [System.Serializable]
-    public class Damage
+    [CreateAssetMenu(fileName = "NewDamageAnimation", menuName = "Enso/Combat/Damage Animation")]
+    public class Damage: CharacterAnimation
     {
-        public AnimationClipHolder DamageAnimationClipHolder;
-        public FrameChecker DamageFrameChecker;
-        public float MovementOffset;
+        
     }
 }

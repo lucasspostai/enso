@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Hiroyuki_OneSword_Death
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: a85900ec3a5555843a0ef914f79acc75, type: 2}
+    - {fileID: 7400000, guid: af6c9de842449e047a0e005a5d29eb87, type: 2}
+    - {fileID: 7400000, guid: 3c744383de07e2f4d95e55724d46962b, type: 2}
+    - {fileID: 7400000, guid: 480c4b70337406f499420f184ec326e4, type: 2}
+    - {fileID: 7400000, guid: 2804da44350cbc84ead53d13b2a52aab, type: 2}
+    - {fileID: 7400000, guid: d36a18e9d5d1a814693ceb0e306161f9, type: 2}
+    - {fileID: 7400000, guid: cb5d90d169e56214fa23cebd58abe932, type: 2}
+    - {fileID: 7400000, guid: 2b5402ffe15ba9e46a3dd9bdf7ac87b9, type: 2}
+    AnimatorStateName: OneSword_Death
+    LayerNumber: 0
+  AnimationFrameChecker:
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1

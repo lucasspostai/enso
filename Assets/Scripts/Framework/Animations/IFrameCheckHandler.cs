@@ -10,5 +10,6 @@
         void OnEndMovement();
         void OnLastFrameStart();
         void OnLastFrameEnd();
+        void OnInterrupted();
     }
 }

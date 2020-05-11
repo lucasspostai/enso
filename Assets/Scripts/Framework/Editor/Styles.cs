@@ -10,8 +10,7 @@ namespace Framework.Editor
             margin = new RectOffset(5, 5, 4, 4),
             padding = new RectOffset(5, 5, 3, 8),
             richText = true,
-            alignment = TextAnchor.MiddleLeft,
-            normal = {textColor = Color.grey}
+            alignment = TextAnchor.MiddleLeft
         };
         
         public static readonly GUIStyle MiddleCenterTextStyle = new GUIStyle(EditorStyles.textField)
@@ -19,11 +18,7 @@ namespace Framework.Editor
             richText = true,
             alignment = TextAnchor.MiddleCenter,
             fontSize = 12,
-            fixedHeight = 20,
-            normal =
-            {
-                textColor = Color.black
-            }
+            fixedHeight = 20
         };
         
         public static readonly GUIStyle MiniTextLeftStyle = new GUIStyle()
@@ -31,11 +26,7 @@ namespace Framework.Editor
             richText = true,
             alignment = TextAnchor.MiddleLeft,
             fontSize = 8,
-            fixedHeight = 5,
-            normal =
-            {
-                textColor = Color.grey
-            }
+            fixedHeight = 5
         };
         
         public static readonly GUIStyle MiniTextRightStyle = new GUIStyle()
@@ -43,11 +34,7 @@ namespace Framework.Editor
             richText = true,
             alignment = TextAnchor.MiddleRight,
             fontSize = 8,
-            fixedHeight = 5,
-            normal =
-            {
-                textColor = Color.grey
-            }
+            fixedHeight = 5
         };
         
         public static readonly GUIStyle MiniTextCenterStyle = new GUIStyle()
@@ -55,11 +42,7 @@ namespace Framework.Editor
             richText = true,
             alignment = TextAnchor.MiddleCenter,
             fontSize = 8,
-            fixedHeight = 5,
-            normal =
-            {
-                textColor = Color.grey
-            }
+            fixedHeight = 5
         };
         
         public static readonly GUIStyle NormalTextCenterStyle = new GUIStyle()

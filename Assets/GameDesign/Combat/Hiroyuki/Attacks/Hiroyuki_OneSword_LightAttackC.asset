@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
   m_Name: Hiroyuki_OneSword_LightAttackC
   m_EditorClassIdentifier: 
-  AttackAnimationClipHolder:
+  ClipHolder:
     AnimationClips:
     - {fileID: 7400000, guid: 01c1e99868bb4df4d9ea91ecffab5e65, type: 2}
     - {fileID: 7400000, guid: 53d79c567ff668341ab033d2c21598dd, type: 2}
@@ -24,11 +24,16 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 1831ed93b6198454db33c357d1738a25, type: 2}
     AnimatorStateName: OneSword_LightAttackC
     LayerNumber: 0
-  AttackFrameChecker:
-    HitFrameStart: 5
-    HitFrameEnd: 6
-    CanCutFrame: 5
+  AnimationFrameChecker:
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
   HitboxSize: {x: 1.15, y: 1.8, z: 0}
   Damage: 1
-  CanBeCut: 0
-  MovementOffset: 1
+  Type: 0

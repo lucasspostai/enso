@@ -35,6 +35,11 @@ namespace Framework.Animations
             return thisAnimator.IsPlayingOnLayer(animationFullNameHash, 0);
         }
 
+        public int GetAnimationFullNameHash()
+        {
+            return animationFullNameHash;
+        }
+
         private double PercentageOnFrame(int frameNumber)
         {
             return (double) frameNumber / GetTotalFrames();
@@ -50,6 +55,17 @@ namespace Framework.Animations
         {
             double percentage = thisAnimator.NormalizedTime(LayerNumber);
             return percentage > PercentageOnFrame(GetTotalFrames() - 1);
+        }
+
+        public float GetNextFramePercentage()
+        {
+            if (ItsOnLastFrame())
+                return 0;
+            
+            int nextFrame = (int)(thisAnimator.NormalizedTime(LayerNumber) * AnimationClips[0].frameRate) + 1;
+            Debug.Log(nextFrame);
+            
+            return (float)PercentageOnFrame(nextFrame);
         }
     }
 }

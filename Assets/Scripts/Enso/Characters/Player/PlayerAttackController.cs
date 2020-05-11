@@ -13,6 +13,7 @@ namespace Enso.Characters.Player
 
         [SerializeField] private List<Attack> LightAttacks = new List<Attack>();
         [SerializeField] private Attack StrongAttack;
+        [SerializeField] private Attack SpecialAttack;
 
         #region Delegates
 
@@ -71,21 +72,7 @@ namespace Enso.Characters.Player
 
         private void StartSpecialAttack()
         {
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-
-            Move();
-        }
-
-        protected override void Move()
-        {
-            base.Move();
-
-            if (MustMove)
-                player.Movement.Move(player.Movement.CurrentDirection * (CurrentAttack.MovementOffset * Time.deltaTime));
+            StartAttack(SpecialAttack);
         }
 
         private void ResetCombo()
