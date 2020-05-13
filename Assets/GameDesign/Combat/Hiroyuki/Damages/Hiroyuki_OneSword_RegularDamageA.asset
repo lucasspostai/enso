@@ -22,7 +22,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: f12d65d9dda1fc8438547b833579d256, type: 2}
     - {fileID: 7400000, guid: 136f16e746483da408aeb9bec26169ce, type: 2}
     - {fileID: 7400000, guid: ba1aa79cbe00069488330a47603b8a37, type: 2}
-    AnimatorStateName: AnimatorStateName
+    AnimatorStateName: OneSword_Damage
     LayerNumber: 0
   AnimationFrameChecker:
     StartHitFrame: 1
@@ -31,6 +31,7 @@ MonoBehaviour:
     PlayAudioFrame: 0
     StartMovementFrame: 0
     EndMovementFrame: 2
-    MovementOffset: 0
-    AnimationSoundCue: {fileID: 0}
+    MovementOffset: -1
+    AnimationSoundCue: {fileID: 11400000, guid: 1480cb3bd9ea99e45a3973bc9e480b88,
+      type: 2}
   CanBeCut: 1

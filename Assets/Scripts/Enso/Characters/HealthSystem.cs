@@ -97,6 +97,11 @@ namespace Enso.Characters
             {
                 TakeDamage(1);
             }
+            
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                TakeDamage(2, AttackType.Strong);
+            }
         }
     }
 }

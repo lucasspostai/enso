@@ -28,18 +28,18 @@ namespace Enso.Characters.Player
 
         private void Update()
         {
-            if (player.GuardController.StartingGuard || player.GuardController.EndingGuard || player.DamageController.IsAnyDamageAnimationPlaying)
+            if (player.GuardController.StartingGuard || player.GuardController.EndingGuard || player.DamageController.IsAnimationPlaying)
             {
                 Velocity = Vector3.zero;
                 return;
             }
             
-            if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation && !player.GuardController.IsAnyGuardAnimationPlaying)
+            if (PlayerInput.Movement != Vector2.zero && player.AttackController.CanCutAnimation && !player.GuardController.IsAnimationPlaying)
             {
                 SetDirection(PlayerInput.Movement);
             }
             
-            if (player.AttackController.IsAttackAnimationPlaying)
+            if (player.AttackController.IsAnimationPlaying)
                 return;
 
             //Check Collisions
@@ -61,7 +61,7 @@ namespace Enso.Characters.Player
 
         protected override void PlayMovementAnimation()
         {
-            if (player.AttackController.IsAttackAnimationPlaying || player.GuardController.IsAnyGuardAnimationPlaying || player.DamageController.IsAnyDamageAnimationPlaying)
+            if (player.AttackController.IsAnimationPlaying || player.GuardController.IsAnimationPlaying || player.DamageController.IsAnimationPlaying)
                 return;
 
             switch (PlayerInput.ActualMovementState)

@@ -40,7 +40,7 @@ namespace Enso.Characters.Player
 
         private void StartLightAttack()
         {
-            if (!CanCutAnimation && IsAttackAnimationPlaying)
+            if (!CanCutAnimation && IsAnimationPlaying)
             {
                 attackQueued = true;
                 return;
@@ -53,7 +53,7 @@ namespace Enso.Characters.Player
 
             foreach (var attack in lightAttacksAvailable)
             {
-                if (CurrentAttack != attack)
+                if (CurrentCharacterAnimation != attack)
                 {
                     if(PlayerInput.Movement != Vector2.zero)
                         player.Movement.SetDirection(PlayerInput.Movement);

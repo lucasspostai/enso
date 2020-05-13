@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d5ea72828f91d43ba647ca24ab889d, type: 3}
-  m_Name: SFX_LightAttack_Swing
+  m_Name: SFX_LightAttackB_Swing
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 2a051a77af7200242964fcb711a37d0c, type: 3}
   - {fileID: 8300000, guid: dca84802b03ff084393ae52b33b726bb, type: 3}
-  - {fileID: 8300000, guid: 1461d8d4a52283c4db222999beabeccc, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05

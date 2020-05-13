@@ -4,14 +4,8 @@ using UnityEngine;
 
 namespace Enso.CombatSystem
 {
-    public class GuardController : MonoBehaviour, IFrameCheckHandler
+    public class GuardController : CustomAnimationController
     {
-        private AnimationClipHolder guardAnimationClipHolder;
-        private FrameChecker guardFrameChecker;
-
-        protected Fighter ThisFighter;
-
-        [HideInInspector] public bool IsAnyGuardAnimationPlaying;
         [HideInInspector] public bool StartingGuard;
         [HideInInspector] public bool EndingGuard;
         [HideInInspector] public bool IsGuarding;
@@ -19,72 +13,60 @@ namespace Enso.CombatSystem
 
         [SerializeField] protected GuardAnimations Animations;
 
-        protected virtual void Start()
+        protected override void Start()
         {
-            guardFrameChecker = new FrameChecker();
-
-            ThisFighter = GetComponent<Fighter>();
-
-            ResetAllProperties();
+            base.Start();
+            
+            CurrentFrameChecker = new FrameChecker();
         }
 
-        protected virtual void Update()
+        protected override void Update()
         {
-            if (!IsAnyGuardAnimationPlaying)
-                return;
-
-            guardFrameChecker.CheckFrames();
+            base.Update();
 
             if (IsGuarding && !EndingGuard && !IsBlocking)
                 PlayMovementAnimation();
         }
-
-        private void SetAnimationProperties(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
-        {
-            guardAnimationClipHolder = animationClipHolder;
-            guardFrameChecker = frameChecker;
-
-            guardAnimationClipHolder.Initialize(ThisFighter.Animator);
-            guardFrameChecker.Initialize(this, guardAnimationClipHolder);
-
-            IsAnyGuardAnimationPlaying = true;
-        }
+        
+        
 
         protected virtual void StartGuard()
         {
-            if (IsAnyGuardAnimationPlaying)
+            if (IsAnimationPlaying)
                 return;
 
             StartingGuard = true;
 
-            SetAnimationProperties(Animations.StartGuardAnimationClipHolder, guardFrameChecker);
-            ThisFighter.Animator.Play(Animations.StartGuardAnimationClipHolder.AnimatorStateName);
+            SetAnimationPropertiesAndPlay(Animations.StartGuardAnimationClipHolder, CurrentFrameChecker);
         }
 
         protected void EndGuard()
         {
-            if (!IsAnyGuardAnimationPlaying)
+            if (!IsAnimationPlaying)
                 return;
 
             EndingGuard = true;
 
-            SetAnimationProperties(Animations.EndGuardAnimationClipHolder, guardFrameChecker);
+            SetAnimationPropertiesAndPlay(Animations.EndGuardAnimationClipHolder, CurrentFrameChecker);
             ThisFighter.Animator.Play(Animations.EndGuardAnimationClipHolder.AnimatorStateName);
         }
 
         protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder, bool atNextFrame = false)
         {
-            if (!IsAnyGuardAnimationPlaying)
+            if (!IsAnimationPlaying)
                 return;
 
-            float nextFramePercentage = guardAnimationClipHolder.GetNextFramePercentage();
+            var nextFramePercentage = CurrentAnimationClipHolder.GetNextFramePercentage();
+
+            if (nextFramePercentage > animationClipHolder.PercentageOnFrame(animationClipHolder.GetTotalFrames()))
+                atNextFrame = false;
             
             if (Animator.StringToHash(ThisFighter.Animator.GetLayerName(animationClipHolder.LayerNumber) + "." +
                                       animationClipHolder.AnimatorStateName) ==
-                guardAnimationClipHolder.GetAnimationFullNameHash())
+                CurrentAnimationClipHolder.GetAnimationFullNameHash())
                 return;
 
-            SetAnimationProperties(animationClipHolder, guardFrameChecker);
+            SetAnimationPropertiesAndPlay(animationClipHolder, CurrentFrameChecker);
 
             if (!atNextFrame)
                 ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
@@ -97,48 +79,17 @@ namespace Enso.CombatSystem
 
         public void Block()
         {
-            if (!IsAnyGuardAnimationPlaying)
+            if (!IsAnimationPlaying)
                 return;
 
             IsBlocking = true;
 
-            SetAnimationProperties(Animations.BlockAnimationClipHolder, guardFrameChecker);
-            ThisFighter.Animator.Play(Animations.BlockAnimationClipHolder.AnimatorStateName);
+            SetAnimationPropertiesAndPlay(Animations.BlockAnimationClipHolder, CurrentFrameChecker);
         }
 
-        protected virtual void PlayMovementAnimation()
-        {
-        }
+        protected virtual void PlayMovementAnimation() { }
 
-        public void OnPlayAudio()
-        {
-        }
-
-        public void OnHitFrameStart()
-        {
-        }
-
-        public void OnHitFrameEnd()
-        {
-        }
-
-        public void OnCanCutAnimation()
-        {
-        }
-
-        public void OnStartMovement()
-        {
-        }
-
-        public void OnEndMovement()
-        {
-        }
-
-        public void OnLastFrameStart()
-        {
-        }
-
-        public void OnLastFrameEnd()
+        public override void OnLastFrameEnd()
         {
             if (StartingGuard)
             {
@@ -150,16 +101,13 @@ namespace Enso.CombatSystem
                 IsBlocking = false;
 
             if (EndingGuard)
-                ResetAllProperties();
+                base.OnLastFrameEnd();
         }
 
-        public void OnInterrupted()
+        protected override void ResetAllProperties()
         {
-        }
-
-        protected virtual void ResetAllProperties()
-        {
-            IsAnyGuardAnimationPlaying = false;
+            base.ResetAllProperties();
+            
             IsGuarding = false;
             StartingGuard = false;
             EndingGuard = false;

@@ -15,6 +15,8 @@ namespace Enso.Editor
         public override void OnInspectorGUI()
         {
             //base.OnInspectorGUI();
+            
+            EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.Separator();
 
@@ -37,6 +39,9 @@ namespace Enso.Editor
                 return;
 
             DrawFrameChecker();
+            
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(target);
         }
 
         private void DrawAnimatorStateName()
