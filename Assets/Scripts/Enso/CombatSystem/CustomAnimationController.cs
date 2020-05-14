@@ -10,7 +10,7 @@ namespace Enso.CombatSystem
     public abstract class CustomAnimationController : MonoBehaviour, IFrameCheckHandler
     {
         private bool mustMove;
-        private CharacterMovement characterMovement;
+        private CharacterMovementController characterMovementController;
 
         protected AnimationClipHolder CurrentAnimationClipHolder;
         protected CharacterAnimation CurrentCharacterAnimation;
@@ -23,36 +23,38 @@ namespace Enso.CombatSystem
         private void Awake()
         {
             ThisFighter = GetComponent<Fighter>();
-            characterMovement = ThisFighter.GetComponent<CharacterMovement>();
+            characterMovementController = ThisFighter.GetComponent<CharacterMovementController>();
         }
 
         protected virtual void Start()
         {
             ResetAllProperties();
         }
-        
+
         protected virtual void Update()
         {
             if (!IsAnimationPlaying)
                 return;
-            
+
             CurrentFrameChecker.CheckFrames();
 
             if (mustMove && CurrentCharacterAnimation)
-                characterMovement.Move(characterMovement.CurrentDirection * (CurrentCharacterAnimation.AnimationFrameChecker.MovementOffset * Time.deltaTime));
+                characterMovementController.Move(ThisFighter.AnimationHandler.CurrentDirection *
+                                                 (CurrentCharacterAnimation.AnimationFrameChecker.MovementOffset *
+                                                  Time.deltaTime));
         }
-        
+
         protected void SetAnimationPropertiesAndPlay(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
         {
             CurrentAnimationClipHolder = animationClipHolder;
             CurrentFrameChecker = frameChecker;
 
-            CurrentAnimationClipHolder.Initialize(ThisFighter.Animator);
+            CurrentAnimationClipHolder.Initialize(ThisFighter.AnimationHandler.CharacterAnimator);
             CurrentFrameChecker.Initialize(this, CurrentAnimationClipHolder);
 
             IsAnimationPlaying = true;
-            
-            ThisFighter.Animator.Play(CurrentAnimationClipHolder.AnimatorStateName);
+
+            ThisFighter.AnimationHandler.Play(this, CurrentAnimationClipHolder.AnimatorStateName);
         }
 
         public virtual void OnPlayAudio()
@@ -60,15 +62,19 @@ namespace Enso.CombatSystem
             AudioManager.Instance.Play(CurrentFrameChecker.AnimationSoundCue, transform.position, transform.rotation);
         }
 
-        public virtual void OnHitFrameStart() { }
+        public virtual void OnHitFrameStart()
+        {
+        }
 
-        public virtual void OnHitFrameEnd() { }
+        public virtual void OnHitFrameEnd()
+        {
+        }
 
         public virtual void OnCanCutAnimation()
         {
             if (CurrentCharacterAnimation && !CurrentCharacterAnimation.CanBeCut)
                 return;
-            
+
             CanCutAnimation = true;
         }
 
@@ -84,7 +90,6 @@ namespace Enso.CombatSystem
 
         public virtual void OnLastFrameStart()
         {
-            
         }
 
         public virtual void OnLastFrameEnd()

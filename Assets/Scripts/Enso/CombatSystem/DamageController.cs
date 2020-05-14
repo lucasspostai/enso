@@ -10,11 +10,11 @@ namespace Enso.CombatSystem
     {
         [HideInInspector] public bool IsDying;
 
-        [SerializeField] protected Damage RegularDamageAnimation;
-        [SerializeField] protected Damage HeavyDamageAnimation;
-        [SerializeField] protected Damage SpecialDamageAnimation;
-        [SerializeField] protected Damage LoseBalanceAnimation;
-        [SerializeField] protected Damage DeathAnimation;
+        [SerializeField] protected DamageAnimation RegularDamageAnimation;
+        [SerializeField] protected DamageAnimation HeavyDamageAnimation;
+        [SerializeField] protected DamageAnimation SpecialDamageAnimation;
+        [SerializeField] protected DamageAnimation LoseBalanceAnimation;
+        [SerializeField] protected DamageAnimation DeathAnimation;
 
         private void OnEnable()
         {
@@ -28,14 +28,14 @@ namespace Enso.CombatSystem
             ThisFighter.GetHealthSystem().Death -= Death;
         }
         
-        private void PlayDamageAnimation(Damage damage)
+        private void PlayDamageAnimation(DamageAnimation damageAnimation)
         {
             if (IsAnimationPlaying)
                 return;
 
-            CurrentCharacterAnimation = damage;
+            CurrentCharacterAnimation = damageAnimation;
 
-            SetAnimationPropertiesAndPlay(damage.ClipHolder, damage.AnimationFrameChecker);
+            SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
             
             ThisFighter.GetComponent<AttackController>()?.OnInterrupted();
         }

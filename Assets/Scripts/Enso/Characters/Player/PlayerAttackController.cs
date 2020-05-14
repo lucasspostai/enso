@@ -8,12 +8,12 @@ namespace Enso.Characters.Player
     public class PlayerAttackController : AttackController
     {
         private bool attackQueued;
-        private readonly List<Attack> lightAttacksAvailable = new List<Attack>();
+        private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Player player;
 
-        [SerializeField] private List<Attack> LightAttacks = new List<Attack>();
-        [SerializeField] private Attack StrongAttack;
-        [SerializeField] private Attack SpecialAttack;
+        [SerializeField] private List<AttackAnimation> LightAttacks = new List<AttackAnimation>();
+        [SerializeField] private AttackAnimation StrongAttack;
+        [SerializeField] private AttackAnimation SpecialAttack;
 
         #region Delegates
 
@@ -40,6 +40,9 @@ namespace Enso.Characters.Player
 
         private void StartLightAttack()
         {
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying())
+                return;
+            
             if (!CanCutAnimation && IsAnimationPlaying)
             {
                 attackQueued = true;
@@ -56,7 +59,7 @@ namespace Enso.Characters.Player
                 if (CurrentCharacterAnimation != attack)
                 {
                     if(PlayerInput.Movement != Vector2.zero)
-                        player.Movement.SetDirection(PlayerInput.Movement);
+                        player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
                     
                     StartAttack(attack);
                     lightAttacksAvailable.Remove(attack);
@@ -96,6 +99,13 @@ namespace Enso.Characters.Player
         {
             base.OnLastFrameEnd();
 
+            ResetCombo();
+        }
+
+        public override void OnInterrupted()
+        {
+            base.OnInterrupted();
+            
             ResetCombo();
         }
     }

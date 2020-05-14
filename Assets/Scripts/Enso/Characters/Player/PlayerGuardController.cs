@@ -37,14 +37,14 @@ namespace Enso.Characters.Player
         {
             base.PlayMovementAnimation();
 
-            if (player.Movement.Velocity == Vector3.zero)
+            if (player.MovementController.Velocity == Vector3.zero)
             {
                 PlayGuardAnimation(Animations.GuardIdleAnimationClipHolder);
             }
             else
             {
                 var magnitude = VectorExtender.GetMagnitudeFromVectorDifference(
-                    player.Movement.CurrentDirection,
+                    player.AnimationHandler.CurrentDirection,
                     PlayerInput.Movement
                 );
 
@@ -55,7 +55,7 @@ namespace Enso.Characters.Player
                 else
                 {
                     PlayGuardAnimation(
-                        VectorExtender.InputIsLeft(player.Movement.CurrentDirection, PlayerInput.Movement)
+                        VectorExtender.InputIsLeft(player.AnimationHandler.CurrentDirection, PlayerInput.Movement)
                             ? Animations.LeftGuardWalkAnimationClipHolder
                             : Animations.RightGuardWalkAnimationClipHolder,
                         true
@@ -68,7 +68,7 @@ namespace Enso.Characters.Player
         {
             base.StartGuard();
 
-            player.Movement.SetSpeed(player.GetProperties().MoveSpeedWhileDefending);
+            player.MovementController.SetSpeed(player.GetBaseProperties().GuardSpeed);
         }
 
         protected override void ResetAllProperties()
@@ -76,7 +76,7 @@ namespace Enso.Characters.Player
             base.ResetAllProperties();
 
             if (player)
-                player.Movement.SetSpeed(player.GetProperties().MoveSpeed);
+                player.MovementController.SetSpeed(player.GetBaseProperties().RunSpeed);
         }
     }
 }

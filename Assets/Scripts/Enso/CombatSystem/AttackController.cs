@@ -19,7 +19,7 @@ namespace Enso.CombatSystem
         protected override void Start()
         {
             base.Start();
-            
+
             AttackHitbox.SetHitboxResponder(this);
         }
 
@@ -28,18 +28,19 @@ namespace Enso.CombatSystem
             AttackHitbox.SetHitBoxSize(hitboxSize);
             currentDamage = damage;
         }
-        
-        protected void StartAttack(Attack attack)
+
+        protected void StartAttack(AttackAnimation attackAnimation)
         {
-            if (!CanCutAnimation && IsAnimationPlaying)
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                !CanCutAnimation && IsAnimationPlaying)
                 return;
 
             CanCutAnimation = false;
-            
-            CurrentCharacterAnimation = attack;
-            
-            SetDamageProperties(attack.HitboxSize, attack.Damage);
-            SetAnimationPropertiesAndPlay(attack.ClipHolder, attack.AnimationFrameChecker);
+
+            CurrentCharacterAnimation = attackAnimation;
+
+            SetDamageProperties(attackAnimation.HitboxSize, attackAnimation.Damage);
+            SetAnimationPropertiesAndPlay(attackAnimation.ClipHolder, attackAnimation.AnimationFrameChecker);
         }
 
         public void CollidedWith(Collider2D otherCollider)
@@ -63,16 +64,6 @@ namespace Enso.CombatSystem
         {
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Closed);
-        }
-        
-        public override void OnCanCutAnimation()
-        {
-            base.OnCanCutAnimation();
-        }
-
-        public override void OnLastFrameEnd()
-        {
-            base.OnLastFrameEnd();
         }
     }
 }

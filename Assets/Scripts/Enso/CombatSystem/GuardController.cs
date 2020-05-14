@@ -27,12 +27,10 @@ namespace Enso.CombatSystem
             if (IsGuarding && !EndingGuard && !IsBlocking)
                 PlayMovementAnimation();
         }
-        
-        
 
         protected virtual void StartGuard()
         {
-            if (IsAnimationPlaying)
+            if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;
 
             StartingGuard = true;
@@ -48,7 +46,7 @@ namespace Enso.CombatSystem
             EndingGuard = true;
 
             SetAnimationPropertiesAndPlay(Animations.EndGuardAnimationClipHolder, CurrentFrameChecker);
-            ThisFighter.Animator.Play(Animations.EndGuardAnimationClipHolder.AnimatorStateName);
+            ThisFighter.AnimationHandler.Play(this ,Animations.EndGuardAnimationClipHolder.AnimatorStateName);
         }
 
         protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder, bool atNextFrame = false)
@@ -61,7 +59,7 @@ namespace Enso.CombatSystem
             if (nextFramePercentage > animationClipHolder.PercentageOnFrame(animationClipHolder.GetTotalFrames()))
                 atNextFrame = false;
             
-            if (Animator.StringToHash(ThisFighter.Animator.GetLayerName(animationClipHolder.LayerNumber) + "." +
+            if (Animator.StringToHash(ThisFighter.AnimationHandler.CharacterAnimator.GetLayerName(animationClipHolder.LayerNumber) + "." +
                                       animationClipHolder.AnimatorStateName) ==
                 CurrentAnimationClipHolder.GetAnimationFullNameHash())
                 return;
@@ -69,10 +67,10 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(animationClipHolder, CurrentFrameChecker);
 
             if (!atNextFrame)
-                ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName);
+                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName);
             else
             {
-                ThisFighter.Animator.Play(animationClipHolder.AnimatorStateName, animationClipHolder.LayerNumber,
+                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName, animationClipHolder.LayerNumber,
                     nextFramePercentage);
             }
         }
@@ -112,6 +110,11 @@ namespace Enso.CombatSystem
             StartingGuard = false;
             EndingGuard = false;
             IsBlocking = false;
+        }
+
+        public bool IsPlayingAnimationThatDoesNotAllowLocomotion()
+        {
+            return StartingGuard || EndingGuard || IsBlocking; 
         }
     }
 }

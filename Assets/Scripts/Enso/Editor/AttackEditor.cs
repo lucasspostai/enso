@@ -8,16 +8,16 @@ using UnityEngine;
 
 namespace Enso.Editor
 {
-    [CustomEditor(typeof(Attack))]
+    [CustomEditor(typeof(AttackAnimation))]
     public class AttackEditor : CharacterAnimationEditor
     {
-        private Attack AttackTarget => target as Attack;
+        private AttackAnimation AttackAnimationTarget => target as AttackAnimation;
 
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             
-            Undo.RecordObject(AttackTarget, "Attack Properties");
+            Undo.RecordObject(AttackAnimationTarget, "Attack Properties");
 
             EditorGUILayout.Separator();
             
@@ -42,7 +42,7 @@ namespace Enso.Editor
         
             GUILayout.Label("Hitbox Size", Styles.NormalTextLeftStyle);
         
-            AttackTarget.HitboxSize = EditorGUILayout.Vector2Field("", AttackTarget.HitboxSize);
+            AttackAnimationTarget.HitboxSize = EditorGUILayout.Vector2Field("", AttackAnimationTarget.HitboxSize);
         
             GUILayout.EndVertical();
         }
@@ -52,7 +52,7 @@ namespace Enso.Editor
             GUILayout.BeginVertical(Styles.BoxStyle);
             
             GUILayout.Label("Attack Type", Styles.NormalTextLeftStyle);
-            AttackTarget.Type = (AttackType)EditorGUILayout.EnumPopup(AttackTarget.Type);
+            AttackAnimationTarget.Type = (AttackType)EditorGUILayout.EnumPopup(AttackAnimationTarget.Type);
             
             GUILayout.EndVertical();
         }
@@ -62,7 +62,7 @@ namespace Enso.Editor
             GUILayout.BeginVertical(Styles.BoxStyle);
             
             GUILayout.Label("Damage", Styles.NormalTextLeftStyle);
-            AttackTarget.Damage = EditorGUILayout.IntField(AttackTarget.Damage);
+            AttackAnimationTarget.Damage = EditorGUILayout.IntField(AttackAnimationTarget.Damage);
             
             GUILayout.EndVertical();
         }

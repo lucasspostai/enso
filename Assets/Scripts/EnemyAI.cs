@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     
     private void Start()
     {
-        currentSpeed = Properties.MoveSpeed;
+        //currentSpeed = Properties.MoveSpeed;
         player = FindObjectOfType<Player>().transform;
         playerAttackController = FindObjectOfType<PlayerAttackController>();
     }
@@ -149,11 +149,11 @@ public class EnemyAI : MonoBehaviour
 
     private void StartDefending()
     {
-        currentSpeed = Properties.MoveSpeedWhileDefending;
+        //currentSpeed = Properties.MoveSpeedWhileDefending;
     }
     
     private void StopDefending()
     {
-        currentSpeed = Properties.MoveSpeed;
+        //currentSpeed = Properties.MoveSpeed;
     }
 }

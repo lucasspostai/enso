@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        currentSpeed = Properties.MoveSpeed;
+        //currentSpeed = Properties.MoveSpeed;
     }
 
     /*private void OnEnable()
