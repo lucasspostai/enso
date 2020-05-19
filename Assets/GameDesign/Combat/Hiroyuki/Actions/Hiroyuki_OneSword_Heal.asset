@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: Hiroyuki_OneSword_Heal
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: f5825794fdaf12c4d95410079775936b, type: 2}
+    - {fileID: 7400000, guid: c54b8139d3985a04b9e9773c60b67666, type: 2}
+    - {fileID: 7400000, guid: 26e8b570d964c4744a8c8baa8cbb3db5, type: 2}
+    - {fileID: 7400000, guid: be996f626b10c4b41b2efce768c741b5, type: 2}
+    - {fileID: 7400000, guid: ac166bedeacf3f44999a681f73c3fbff, type: 2}
+    - {fileID: 7400000, guid: eec1dcd5dcbb1ae4987b196acdd15c51, type: 2}
+    - {fileID: 7400000, guid: 2e4a2e5803dd07745b62c093ae6e468f, type: 2}
+    - {fileID: 7400000, guid: 2deafb78eb860de43a7b5c51ac1955de, type: 2}
+    AnimatorStateName: OneSword_Heal
+    LayerNumber: 0
+  AnimationFrameChecker:
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

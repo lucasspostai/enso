@@ -76,6 +76,11 @@ namespace Enso.Characters
             Health += healAmount;
         }
 
+        public bool CheckIfHealthIsAtMaximumValue()
+        {
+            return GetHealth() >= GetMaxHealth();
+        }
+
         private void OnHealthValueChanged()
         {
             HealthValueChanged?.Invoke();

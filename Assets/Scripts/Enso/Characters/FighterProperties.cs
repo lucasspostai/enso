@@ -18,5 +18,9 @@ namespace Enso.Characters
         public float DelayToRecoverAfterLosingBalance = 5f;
         public float DelayToRecoverAfterDamage = 2f;
         public float TimeToFullyRecoverBalance = 10f;
+        
+        [Header("Healing")] 
+        public int HealingCharges;
+        public float DelayToHealAgain;
     }
 }

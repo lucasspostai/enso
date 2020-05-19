@@ -20,7 +20,7 @@ namespace Enso.CombatSystem
         [HideInInspector] public bool IsAnimationPlaying;
         [HideInInspector] public bool CanCutAnimation;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             ThisFighter = GetComponent<Fighter>();
             characterMovementController = ThisFighter.GetComponent<CharacterMovementController>();

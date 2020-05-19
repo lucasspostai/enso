@@ -92,13 +92,13 @@ GameObject:
   - component: {fileID: 9174633466840254987}
   - component: {fileID: 7339120810423616055}
   - component: {fileID: 5589958904590343412}
-  - component: {fileID: 7622270846077408965}
   - component: {fileID: 4116229603299559527}
   - component: {fileID: 8491124380792908023}
   - component: {fileID: 7059184826251289228}
   - component: {fileID: 813916947705230572}
   - component: {fileID: 7997557526909049030}
   - component: {fileID: 8218683346449343016}
+  - component: {fileID: 7622270846077408965}
   m_Layer: 8
   m_Name: HiroyukiIshigame
   m_TagString: Player
@@ -200,6 +200,7 @@ MonoBehaviour:
   Damage: {fileID: 7997557526909049030}
   ActionAnimationControllers:
   - {fileID: 8218683346449343016}
+  - {fileID: 7622270846077408965}
   Attack: {fileID: 7059184826251289228}
   Guard: {fileID: 813916947705230572}
   MovementController: {fileID: 8491124380792908023}
@@ -228,18 +229,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae92e84467103764e8b51f02659e59ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7622270846077408965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16f714e2ec9e564e9e76af500d9ba90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4116229603299559527
@@ -362,6 +351,21 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   RollAnimation: {fileID: 11400000, guid: c4b51583584fed94d8e11e61c315c8e0, type: 2}
+--- !u!114 &7622270846077408965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16f714e2ec9e564e9e76af500d9ba90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  HealAnimation: {fileID: 11400000, guid: 71078de54e00c6d46b8c545aefafb3bf, type: 2}
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
