@@ -98,7 +98,7 @@ namespace Framework
 
         private void PlayMovementAnimation()
         {
-            if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
+            if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying() || ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
 
             if (Velocity != Vector3.zero)
