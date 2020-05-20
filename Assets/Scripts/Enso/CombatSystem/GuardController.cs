@@ -34,6 +34,8 @@ namespace Enso.CombatSystem
                 return;
 
             StartingGuard = true;
+            
+            ThisFighter.MovementController.SetSpeed(ThisFighter.GetBaseProperties().GuardSpeed);
 
             SetAnimationPropertiesAndPlay(Animations.StartGuardAnimationClipHolder, CurrentFrameChecker);
         }

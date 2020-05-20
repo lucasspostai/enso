@@ -32,6 +32,7 @@ namespace Enso.CombatSystem
         protected void StartAttack(AttackAnimation attackAnimation)
         {
             if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying() ||
                 !CanCutAnimation && IsAnimationPlaying)
                 return;
 

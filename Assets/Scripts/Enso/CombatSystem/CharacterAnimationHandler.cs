@@ -52,6 +52,11 @@ namespace Enso.CombatSystem
             return Attack.CanCutAnimation;
         }
 
+        public void InterruptAllGuardAnimations()
+        {
+            Guard.OnInterrupted();
+        }
+
         public bool IsAnyAnimationDifferentThanAttackPlaying()
         {
             return IsDamageAnimationPlaying() ||

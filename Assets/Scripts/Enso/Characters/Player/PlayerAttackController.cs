@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enso.CombatSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Enso.Characters.Player
 {
@@ -8,23 +9,34 @@ namespace Enso.Characters.Player
     public class PlayerAttackController : AttackController
     {
         private bool attackQueued;
+        private bool isHoldingAttackButton;
+        private bool preparingStrongAttack;
+        private bool holdingStrongAttack;
+        private float holdingTime;
         private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Player player;
 
-        [SerializeField] private List<AttackAnimation> LightAttacks = new List<AttackAnimation>();
-        [SerializeField] private AttackAnimation StrongAttack;
+        [SerializeField] private List<AttackAnimation> LightAttackAnimations = new List<AttackAnimation>();
+        [SerializeField] private AttackAnimation PrepareStrongAttackAnimation;
+        [SerializeField] private AttackAnimation HoldStrongAttackAnimation;
+        [SerializeField] private AttackAnimation ReleaseStrongAttackAnimation;
         [SerializeField] private AttackAnimation SpecialAttack;
+        [SerializeField] private float StrongAttackDeadZoneTime;
 
         #region Delegates
 
         private void OnEnable()
         {
-            PlayerInput.AttackInputDown += StartLightAttack;
+            PlayerInput.AttackInputDown += PressAttackButton;
+            PlayerInput.AttackInputUp += ReleaseAttackButton;
+            PlayerInput.SpecialAttackInputDown += StartSpecialAttack;
         }
 
         private void OnDisable()
         {
-            PlayerInput.AttackInputDown -= StartLightAttack;
+            PlayerInput.AttackInputDown -= PressAttackButton;
+            PlayerInput.AttackInputUp -= ReleaseAttackButton;
+            PlayerInput.SpecialAttackInputDown -= StartSpecialAttack;
         }
 
         #endregion
@@ -38,17 +50,48 @@ namespace Enso.Characters.Player
             ResetCombo();
         }
 
+        protected override void Update()
+        {
+            base.Update();
+
+            if (isHoldingAttackButton)
+                holdingTime += Time.deltaTime;
+        }
+
+        private void PressAttackButton()
+        {
+            isHoldingAttackButton = true;
+
+            StartLightAttack();
+        }
+
+        private void ReleaseAttackButton()
+        {
+            if (holdingStrongAttack)
+            {
+                ReleaseStrongAttack();
+            }
+            else
+            {
+                if (CanCutAnimation)
+                    StartLightAttack();
+            }
+
+            ResetStrongAttackProperties();
+        }
+
         private void StartLightAttack()
         {
-            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying())
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
-            
+
             if (!CanCutAnimation && IsAnimationPlaying)
             {
                 attackQueued = true;
                 return;
             }
-            
+
             attackQueued = false;
 
             if (lightAttacksAvailable.Count == 0)
@@ -58,9 +101,9 @@ namespace Enso.Characters.Player
             {
                 if (CurrentCharacterAnimation != attack)
                 {
-                    if(PlayerInput.Movement != Vector2.zero)
+                    if (PlayerInput.Movement != Vector2.zero)
                         player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
-                    
+
                     StartAttack(attack);
                     lightAttacksAvailable.Remove(attack);
                     break;
@@ -70,23 +113,77 @@ namespace Enso.Characters.Player
 
         private void StartStrongAttack()
         {
-            StartAttack(StrongAttack);
+            preparingStrongAttack = true;
+
+            CurrentCharacterAnimation = PrepareStrongAttackAnimation;
+
+            SetAnimationPropertiesAndPlay(PrepareStrongAttackAnimation.ClipHolder,
+                PrepareStrongAttackAnimation.AnimationFrameChecker);
+        }
+
+        private void HoldStrongAttack()
+        {
+            if (!IsAnimationPlaying)
+                return;
+
+            holdingStrongAttack = true;
+
+            CurrentCharacterAnimation = HoldStrongAttackAnimation;
+
+            SetAnimationPropertiesAndPlay(HoldStrongAttackAnimation.ClipHolder,
+                HoldStrongAttackAnimation.AnimationFrameChecker);
+        }
+
+        private void ReleaseStrongAttack()
+        {
+            if (!IsAnimationPlaying)
+                return;
+
+            if (PlayerInput.Movement != Vector2.zero)
+                player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
+
+            StartAttack(ReleaseStrongAttackAnimation);
+
+            isHoldingAttackButton = false;
         }
 
         private void StartSpecialAttack()
         {
+            if (!CanCutAnimation && (LightAttackAnimations.Count - lightAttacksAvailable.Count > 1 ||
+                                     ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                                     !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying()))
+                return;
+
+            ResetCombo();
+            ResetStrongAttackProperties();
+
+            ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
+
+            print("Special Attack");
+
             StartAttack(SpecialAttack);
         }
 
         private void ResetCombo()
         {
             lightAttacksAvailable.Clear();
-            lightAttacksAvailable.AddRange(LightAttacks);
+            lightAttacksAvailable.AddRange(LightAttackAnimations);
+
+            attackQueued = false;
         }
 
         public override void OnCanCutAnimation()
         {
+            if (holdingStrongAttack)
+                return;
+
             base.OnCanCutAnimation();
+
+            if (isHoldingAttackButton && holdingTime >= StrongAttackDeadZoneTime)
+            {
+                StartStrongAttack();
+                return;
+            }
 
             if (!attackQueued)
                 return;
@@ -97,6 +194,18 @@ namespace Enso.Characters.Player
 
         public override void OnLastFrameEnd()
         {
+            if (holdingStrongAttack)
+                return;
+
+            if (preparingStrongAttack)
+            {
+                HoldStrongAttack();
+
+                preparingStrongAttack = false;
+
+                return;
+            }
+
             base.OnLastFrameEnd();
 
             ResetCombo();
@@ -105,7 +214,24 @@ namespace Enso.Characters.Player
         public override void OnInterrupted()
         {
             base.OnInterrupted();
-            
+
+            ResetCombo();
+        }
+
+        private void ResetStrongAttackProperties()
+        {
+            isHoldingAttackButton = false;
+            preparingStrongAttack = false;
+            holdingStrongAttack = false;
+            holdingTime = 0f;
+        }
+
+        protected override void ResetAllProperties()
+        {
+            base.ResetAllProperties();
+
+            ResetStrongAttackProperties();
+
             ResetCombo();
         }
     }

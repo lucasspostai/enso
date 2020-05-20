@@ -64,13 +64,6 @@ namespace Enso.Characters.Player
             }
         }
 
-        protected override void StartGuard()
-        {
-            base.StartGuard();
-
-            player.MovementController.SetSpeed(player.GetBaseProperties().GuardSpeed);
-        }
-
         protected override void ResetAllProperties()
         {
             base.ResetAllProperties();

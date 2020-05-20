@@ -185,6 +185,7 @@ MonoBehaviour:
   GuardButton: 354
   RollButton: 352
   HealButton: 350
+  SpecialAttackDeadZone: 0.2
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,12 +288,18 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 1
   AttackHitbox: {fileID: 6495635343669140766}
-  LightAttacks:
+  LightAttackAnimations:
   - {fileID: 11400000, guid: b739724d252312246baf3955772256d3, type: 2}
   - {fileID: 11400000, guid: c753a4b27fde19c47ae78ff9599b4daf, type: 2}
   - {fileID: 11400000, guid: d3b0e1814ba8625479667f753f433bf7, type: 2}
-  StrongAttack: {fileID: 0}
-  SpecialAttack: {fileID: 0}
+  PrepareStrongAttackAnimation: {fileID: 11400000, guid: 947f25df1d97afc4980dfa9f1ccbca46,
+    type: 2}
+  HoldStrongAttackAnimation: {fileID: 11400000, guid: 6a62de98e1419234ca08da88a3df30e0,
+    type: 2}
+  ReleaseStrongAttackAnimation: {fileID: 11400000, guid: e0db53736afd0af408eeb6d72af456f3,
+    type: 2}
+  SpecialAttack: {fileID: 11400000, guid: 269af5e8f0a87884bb0a3e6269e9cd6f, type: 2}
+  StrongAttackDeadZoneTime: 0.1
 --- !u!114 &813916947705230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,4 +533,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   Anchor: {fileID: 4942956660897927905}
-  HitboxSize: {x: 1.15, y: 1.8, z: 0}
+  HitboxSize: {x: 1, y: 1.5, z: 0}
