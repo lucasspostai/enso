@@ -28,7 +28,7 @@ MonoBehaviour:
     StartHitFrame: 1
     EndHitFrame: 2
     CanCutFrame: 3
-    PlayAudioFrame: 0
+    PlayAudioFrame: 2
     StartMovementFrame: 0
     EndMovementFrame: 4
     MovementOffset: 1

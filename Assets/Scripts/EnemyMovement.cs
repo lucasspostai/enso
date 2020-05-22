@@ -43,8 +43,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (PlayerInput.Movement != Vector2.zero)
         {
-            EnemyAnimator.SetFloat(CharacterAnimations.FaceX, PlayerInput.Movement.x);
-            EnemyAnimator.SetFloat(CharacterAnimations.FaceY, PlayerInput.Movement.y);
+            //EnemyAnimator.SetFloat(CharacterAnimations.FaceX, PlayerInput.Movement.x);
+            //EnemyAnimator.SetFloat(CharacterAnimations.FaceY, PlayerInput.Movement.y);
         }
         
         if (Collisions.Info.Above || Collisions.Info.Below)

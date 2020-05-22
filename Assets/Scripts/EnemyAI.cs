@@ -108,8 +108,8 @@ public class EnemyAI : MonoBehaviour
         else
             direction.y = 0;
 
-        EnemyAnimator.SetFloat(CharacterAnimations.FaceX, - direction.x);
-        EnemyAnimator.SetFloat(CharacterAnimations.FaceY, - direction.y);
+        //EnemyAnimator.SetFloat(CharacterAnimations.FaceX, - direction.x);
+        //EnemyAnimator.SetFloat(CharacterAnimations.FaceY, - direction.y);
 
         if (Collisions.Info.Above || Collisions.Info.Below) 
             Velocity.y = 0;

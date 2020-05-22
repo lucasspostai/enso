@@ -31,14 +31,16 @@ namespace Enso.CombatSystem
 
         protected void StartAttack(AttackAnimation attackAnimation)
         {
-            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
-                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying() ||
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() &&
+                !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying() ||
                 !CanCutAnimation && IsAnimationPlaying)
                 return;
 
             CanCutAnimation = false;
 
             CurrentCharacterAnimation = attackAnimation;
+            
+            ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
             SetDamageProperties(attackAnimation.HitboxSize, attackAnimation.Damage);
             SetAnimationPropertiesAndPlay(attackAnimation.ClipHolder, attackAnimation.AnimationFrameChecker);

@@ -72,11 +72,17 @@ namespace Framework
 
         protected void SetSprintSpeed()
         {
+            if (ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+                return;
+            
             currentSpeed = ThisFighter.GetBaseProperties().SprintSpeed;
         }
         
         protected void SetRegularRunSpeed()
         {
+            if (ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+                return;
+            
             currentSpeed = ThisFighter.GetBaseProperties().RunSpeed;
         }
 

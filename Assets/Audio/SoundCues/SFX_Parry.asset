@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SFX_Parry
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 605953ce18a5b594a840928aaf0fd952, type: 3}
+  - {fileID: 8300000, guid: 3d3a7911950167b43a7af3741b6911ba, type: 3}
+  - {fileID: 8300000, guid: 14af5145f55621a4ab09f845f4eee682, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05

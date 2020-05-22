@@ -31,6 +31,9 @@ namespace Enso.Characters.Player
         [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button0;
         [SerializeField] private float SpecialAttackDeadZone = 0.1f;
 
+        public static bool HoldingGuardInput;
+        public static bool HoldingHealInput;
+
         public static event Action SprintInputDown;
         public static event Action SprintInputUp;
         public static event Action AttackInputDown;
@@ -57,6 +60,9 @@ namespace Enso.Characters.Player
             healInputDownCalled = Input.GetKeyDown(HealButton);
             specialAttackInputDownCalled = Input.GetKey(AttackButton) && Input.GetKey(GuardButton) &&
                                            specialAttackInputPressedTime < SpecialAttackDeadZone;
+            
+            HoldingGuardInput = Input.GetKey(GuardButton);
+            HoldingHealInput = Input.GetKey(HealButton);
 
             if (sprintInputDownCalled)
             {

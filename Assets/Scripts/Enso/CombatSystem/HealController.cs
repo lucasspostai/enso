@@ -79,7 +79,7 @@ namespace Enso.CombatSystem
             Heal();
         }
 
-        protected void TryHeal()
+        public void TryHeal()
         {
             if (!healingEnabled || HealingCharges <= 0 || ThisFighter.GetHealthSystem().CheckIfHealthIsAtMaximumValue())
                 return;

@@ -55,7 +55,12 @@ namespace Enso.Characters.Player
             base.Update();
 
             if (isHoldingAttackButton)
+            {
                 holdingTime += Time.deltaTime;
+
+                if (holdingTime >= StrongAttackDeadZoneTime && CanCutAnimation && !preparingStrongAttack)
+                    StartStrongAttack();
+            }
         }
 
         private void PressAttackButton()
@@ -82,8 +87,8 @@ namespace Enso.Characters.Player
 
         private void StartLightAttack()
         {
-            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
-                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() &&
+                !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
 
             if (!CanCutAnimation && IsAnimationPlaying)
@@ -101,7 +106,8 @@ namespace Enso.Characters.Player
             {
                 if (CurrentCharacterAnimation != attack)
                 {
-                    if (PlayerInput.Movement != Vector2.zero)
+                    if (PlayerInput.Movement != Vector2.zero &&
+                        !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                         player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
 
                     StartAttack(attack);
@@ -113,6 +119,12 @@ namespace Enso.Characters.Player
 
         private void StartStrongAttack()
         {
+            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+                return;
+
+            holdingTime = 0;
+
             preparingStrongAttack = true;
 
             CurrentCharacterAnimation = PrepareStrongAttackAnimation;
@@ -125,6 +137,8 @@ namespace Enso.Characters.Player
         {
             if (!IsAnimationPlaying)
                 return;
+
+            CanCutAnimation = false;
 
             holdingStrongAttack = true;
 
@@ -141,6 +155,8 @@ namespace Enso.Characters.Player
 
             if (PlayerInput.Movement != Vector2.zero)
                 player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
+
+            CanCutAnimation = true;
 
             StartAttack(ReleaseStrongAttackAnimation);
 
@@ -159,8 +175,6 @@ namespace Enso.Characters.Player
 
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
-            print("Special Attack");
-
             StartAttack(SpecialAttack);
         }
 
@@ -174,18 +188,12 @@ namespace Enso.Characters.Player
 
         public override void OnCanCutAnimation()
         {
-            if (holdingStrongAttack)
+            if (holdingStrongAttack || preparingStrongAttack)
                 return;
 
             base.OnCanCutAnimation();
 
-            if (isHoldingAttackButton && holdingTime >= StrongAttackDeadZoneTime)
-            {
-                StartStrongAttack();
-                return;
-            }
-
-            if (!attackQueued)
+            if (!attackQueued || isHoldingAttackButton)
                 return;
 
             attackQueued = false;
@@ -209,6 +217,15 @@ namespace Enso.Characters.Player
             base.OnLastFrameEnd();
 
             ResetCombo();
+            
+            if (PlayerInput.HoldingGuardInput)
+            {
+                player.GuardController.StartGuard();
+            }
+            else if (PlayerInput.HoldingHealInput)
+            {
+                player.HealController.TryHeal();
+            }
         }
 
         public override void OnInterrupted()

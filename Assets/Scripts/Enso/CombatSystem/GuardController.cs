@@ -28,7 +28,7 @@ namespace Enso.CombatSystem
                 PlayMovementAnimation();
         }
 
-        protected virtual void StartGuard()
+        public virtual void StartGuard()
         {
             if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;

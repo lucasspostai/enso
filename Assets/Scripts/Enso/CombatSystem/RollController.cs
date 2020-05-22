@@ -12,9 +12,15 @@ namespace Enso.CombatSystem
                 !ThisFighter.AnimationHandler.CanCutAttackAnimation())
                 return;
 
+            ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
+            
             CurrentCharacterAnimation = RollAnimation;
+
+            SetDirection();
 
             SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker);
         }
+
+        protected virtual void SetDirection() {}
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_StrongAttack_Swing
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 32cbeaa05e915af4fbdea18438be2b66, type: 3}
+  - {fileID: 8300000, guid: 44aa1818a2add4d4896872edc477362a, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05

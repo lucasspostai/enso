@@ -168,6 +168,7 @@ MonoBehaviour:
   AttackController: {fileID: 7059184826251289228}
   GuardController: {fileID: 813916947705230572}
   RollController: {fileID: 8218683346449343016}
+  HealController: {fileID: 7622270846077408965}
 --- !u!114 &5583368025677090078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ MonoBehaviour:
   CanCutAnimation: 0
   Velocity: {x: 0, y: 0, z: 0}
   Animations: {fileID: 11400000, guid: 484a1b6162f13f84796114a7ccebe2d0, type: 2}
+  SprintDeadZoneTime: 0.3
   HitboxAnchor: {fileID: 4942956660897927905}
 --- !u!114 &7059184826251289228
 MonoBehaviour:
@@ -383,7 +385,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2784454057411166859}
   - component: {fileID: 2784454057411166858}
-  - component: {fileID: 3168004120014472548}
   - component: {fileID: 5783155035047645049}
   m_Layer: 8
   m_Name: Animations
@@ -455,18 +456,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3168004120014472548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454057411166856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdefe83697e92654d8a504f86c7a88ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &5783155035047645049
 Animator:
   serializedVersion: 3

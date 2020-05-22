@@ -10,6 +10,7 @@ namespace Enso.Characters.Player
         public PlayerAttackController AttackController;
         public PlayerGuardController GuardController;
         public PlayerRollController RollController;
+        public PlayerHealController HealController;
 
         public PlayerProperties GetProperties()
         {
