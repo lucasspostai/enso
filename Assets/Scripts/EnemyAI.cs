@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     
     private void Start()
     {
-        currentSpeed = Properties.MoveSpeed;
+        //currentSpeed = Properties.MoveSpeed;
         player = FindObjectOfType<Player>().transform;
         playerAttackController = FindObjectOfType<PlayerAttackController>();
     }
@@ -108,8 +108,8 @@ public class EnemyAI : MonoBehaviour
         else
             direction.y = 0;
 
-        EnemyAnimator.SetFloat(CharacterAnimations.FaceX, - direction.x);
-        EnemyAnimator.SetFloat(CharacterAnimations.FaceY, - direction.y);
+        //EnemyAnimator.SetFloat(CharacterAnimations.FaceX, - direction.x);
+        //EnemyAnimator.SetFloat(CharacterAnimations.FaceY, - direction.y);
 
         if (Collisions.Info.Above || Collisions.Info.Below) 
             Velocity.y = 0;
@@ -149,11 +149,11 @@ public class EnemyAI : MonoBehaviour
 
     private void StartDefending()
     {
-        currentSpeed = Properties.MoveSpeedWhileDefending;
+        //currentSpeed = Properties.MoveSpeedWhileDefending;
     }
     
     private void StopDefending()
     {
-        currentSpeed = Properties.MoveSpeed;
+        //currentSpeed = Properties.MoveSpeed;
     }
 }

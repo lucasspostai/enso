@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Hiroyuki_OneSword_ReleaseStrongAttack
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 31c0d1d2a0ca519479aab6f69cb429bd, type: 2}
+    - {fileID: 7400000, guid: 31d736b46d5f26d43987062d5c8b6826, type: 2}
+    - {fileID: 7400000, guid: 62f80028e6ead594e800902620144dad, type: 2}
+    - {fileID: 7400000, guid: 54fedab39351a8d40a4551b311f0fd6d, type: 2}
+    - {fileID: 7400000, guid: efa11bac89b4d7643b68b1b67b26eebb, type: 2}
+    - {fileID: 7400000, guid: 254a8cfd99eddba4f8519dc39a2d4303, type: 2}
+    - {fileID: 7400000, guid: 9891d8a10f9aeab40bf7e39d53893fe8, type: 2}
+    - {fileID: 7400000, guid: e473e4e45448e1e4895c9fd46ef54f8a, type: 2}
+    AnimatorStateName: OneSword_ReleaseStrongAttack
+    LayerNumber: 0
+  AnimationFrameChecker:
+    StartHitFrame: 2
+    EndHitFrame: 3
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 11400000, guid: e84555184fc55bb4695b7f7adc6fc5d3,
+      type: 2}
+  CanBeCut: 0
+  HitboxSize: {x: 1.45, y: 2.05, z: 0}
+  Damage: 3
+  Type: 1

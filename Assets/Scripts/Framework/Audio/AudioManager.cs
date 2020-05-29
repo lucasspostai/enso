@@ -19,7 +19,7 @@ namespace Framework.Audio
             GameObject audioGameObject = PoolManager.Instance.ReuseObject(AudioPrefab, position, rotation).GameObject;
             var audioSource = audioGameObject.GetComponent<AudioSource>();
 
-            if (audioSource == null) 
+            if (audioSource == null || soundCue == null) 
                 return;
             
             audioSource.clip = soundCue.GetClip();

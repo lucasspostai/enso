@@ -15,6 +15,10 @@ namespace Enso.Editor
         {
             EditorGUILayout.Separator();
             
+            Undo.RecordObject(GuardAnimationsTarget, "Guard Properties");
+            
+            EditorGUI.BeginChangeCheck();
+            
             GUILayout.Label("Guard", EditorStyles.miniLabel);
             DrawElements(GuardAnimationsTarget.StartGuardAnimationClipHolder, "Start Guard");
             DrawElements(GuardAnimationsTarget.GuardIdleAnimationClipHolder, "Guard Idle");
@@ -33,6 +37,9 @@ namespace Enso.Editor
             GUILayout.Label("Actions", EditorStyles.miniLabel);
             DrawElements(GuardAnimationsTarget.BlockAnimationClipHolder, "Block");
             DrawElements(GuardAnimationsTarget.ParryAnimationClipHolder, "Parry");
+            
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(target);
         }
 
         private void DrawElements(AnimationClipHolder animationClipHolder, string animationName)

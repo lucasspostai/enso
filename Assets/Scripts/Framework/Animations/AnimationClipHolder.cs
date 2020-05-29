@@ -40,7 +40,7 @@ namespace Framework.Animations
             return animationFullNameHash;
         }
 
-        private double PercentageOnFrame(int frameNumber)
+        public double PercentageOnFrame(int frameNumber)
         {
             return (double) frameNumber / GetTotalFrames();
         }
@@ -63,7 +63,6 @@ namespace Framework.Animations
                 return 0;
             
             int nextFrame = (int)(thisAnimator.NormalizedTime(LayerNumber) * AnimationClips[0].frameRate) + 1;
-            Debug.Log(nextFrame);
             
             return (float)PercentageOnFrame(nextFrame);
         }

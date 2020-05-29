@@ -76,6 +76,11 @@ namespace Enso.Characters
             Health += healAmount;
         }
 
+        public bool CheckIfHealthIsAtMaximumValue()
+        {
+            return GetHealth() >= GetMaxHealth();
+        }
+
         private void OnHealthValueChanged()
         {
             HealthValueChanged?.Invoke();
@@ -96,6 +101,11 @@ namespace Enso.Characters
             if (Input.GetKeyDown(KeyCode.U))
             {
                 TakeDamage(1);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                TakeDamage(2, AttackType.Strong);
             }
         }
     }

@@ -7,11 +7,10 @@ namespace Enso.Characters.Player
     public class Player : Fighter
     {
         [Header("References")] 
-        public PlayerMovement Movement;
         public PlayerAttackController AttackController;
         public PlayerGuardController GuardController;
-        public CharacterCollisions Collisions;
-        public PlayerDodgeRoll DodgeRoll;
+        public PlayerRollController RollController;
+        public PlayerHealController HealController;
 
         public PlayerProperties GetProperties()
         {

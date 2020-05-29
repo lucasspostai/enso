@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d5ea72828f91d43ba647ca24ab889d, type: 3}
+  m_Name: SFX_LightAttackA_Swing
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: 87d3ccf2362c5a343a1b578ab99ce993, type: 3}
+  Volume: 1
+  MinPitch: 0.95
+  MaxPitch: 1.05
+  Loop: 0
+  SpatialBlend: 0
+  MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,
+    type: 2}

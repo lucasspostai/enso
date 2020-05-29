@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SFX_Sword_Impact
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: a63ab64da218e21408d0ecc1618470f6, type: 3}
-  - {fileID: 8300000, guid: 392ca66227c695649aa227c893866aae, type: 3}
+  - {fileID: 8300000, guid: 2133d7c53a85b7348b42727cd73bdb17, type: 3}
+  - {fileID: 8300000, guid: 7c0e03a3c77882f48b29c93e769ae253, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05
