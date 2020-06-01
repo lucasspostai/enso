@@ -20,6 +20,7 @@ namespace Enso.CombatSystem
         [HideInInspector] public Vector3 CurrentDirection;
         
         public Animator CharacterAnimator;
+        public SpriteRenderer CharacterSpriteRenderer;
 
         private void Awake()
         {

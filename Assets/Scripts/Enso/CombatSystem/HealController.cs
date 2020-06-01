@@ -107,6 +107,11 @@ namespace Enso.CombatSystem
             HealingCharges = maxHealingCharges;
         }
 
+        public int GetHealingValue()
+        {
+            return healingCharges;
+        }
+
         private IEnumerator WaitAndEnableHealing()
         {
             healingEnabled = false;

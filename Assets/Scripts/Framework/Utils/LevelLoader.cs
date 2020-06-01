@@ -8,9 +8,14 @@ namespace Framework.Utils
     {
         public Animator TransitionAnimator;
         
-        public void LoadLevel(Object scene)
+        public void LoadLevel(Object scene = null)
         {
             StartCoroutine(LoadSceneAsynchronously(scene.name));
+        }
+        
+        public void ReloadLevel()
+        {
+            StartCoroutine(LoadSceneAsynchronously(SceneManager.GetActiveScene().name));
         }
 
         private IEnumerator LoadSceneAsynchronously(string sceneName)
@@ -27,6 +32,20 @@ namespace Framework.Utils
             }
             
             TransitionAnimator.Play("LoadScreen_EndTransition");
+        }
+
+        public void QuitGame()
+        {
+            StartCoroutine(CloseGame());
+        }
+
+        private IEnumerator CloseGame()
+        {
+            TransitionAnimator.Play("LoadScreen_StartTransition");
+            
+            yield return new WaitForSeconds(1);
+            
+            Application.Quit();
         }
     }
 }

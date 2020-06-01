@@ -15,6 +15,8 @@ namespace Enso.CombatSystem
         [SerializeField] protected DamageAnimation SpecialDamageAnimation;
         [SerializeField] protected DamageAnimation LoseBalanceAnimation;
         [SerializeField] protected DamageAnimation DeathAnimation;
+        [SerializeField] protected GameObject RegularDamageParticle;
+        [SerializeField] protected GameObject HeavyDamageParticle;
 
         private void OnEnable()
         {
@@ -46,9 +48,11 @@ namespace Enso.CombatSystem
             {
                 case AttackType.Light:
                     PlayDamageAnimation(RegularDamageAnimation);
+                    Instantiate(RegularDamageParticle, transform.position, RegularDamageParticle.transform.rotation);
                     break;
                 case AttackType.Strong:
                     PlayDamageAnimation(HeavyDamageAnimation);
+                    Instantiate(HeavyDamageParticle, transform.position, HeavyDamageParticle.transform.rotation);
                     break;
                 case AttackType.Special:
                     PlayDamageAnimation(SpecialDamageAnimation);
@@ -62,6 +66,8 @@ namespace Enso.CombatSystem
         private void Death()
         {
             IsDying = true;
+            
+            Instantiate(HeavyDamageParticle, transform.position, HeavyDamageParticle.transform.rotation);
             
             PlayDamageAnimation(DeathAnimation);
         }

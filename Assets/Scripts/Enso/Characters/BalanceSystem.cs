@@ -7,6 +7,7 @@ namespace Enso.Characters
     [RequireComponent(typeof(Fighter))]
     public sealed class BalanceSystem : MonoBehaviour
     {
+        private bool specialAvailable;
         private bool canRecover;
         private Coroutine waitThenRecoverCoroutine;
         private Fighter fighter;
@@ -21,9 +22,7 @@ namespace Enso.Characters
                 balance = value;
 
                 if (balance <= 0)
-                {
                     balance = 0;
-                }
 
                 if (balance > maxBalance)
                     balance = maxBalance;
@@ -37,6 +36,8 @@ namespace Enso.Characters
         public event Action BalanceValueChanged;
         public event Action BreakBalance;
         public event Action LoseBalance;
+        public event Action RecoverBalance;
+        public event Action EnableSpecialAttack;
 
         #region Unity Event Functions
         
@@ -57,6 +58,11 @@ namespace Enso.Characters
                     Time.deltaTime / fighter.GetBaseProperties().TimeToFullyRecoverBalance);
                 
                 GainBalance(valueOverTime);
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                TakeDamage(1);
             }
         }
         
@@ -82,6 +88,8 @@ namespace Enso.Characters
         public void TakeDamage(int damageAmount)
         {
             Balance -= damageAmount;
+            
+            specialAvailable = false;
 
             if (Balance <= 0) //Break Balance
             {
@@ -101,10 +109,16 @@ namespace Enso.Characters
             }
         }
 
-        public void GainBalance(float balanceAmount)
+        private void GainBalance(float balanceAmount)
         {
             Balance += balanceAmount;
-            print(balanceAmount);
+
+            if (!specialAvailable && Balance >= maxBalance)
+            {
+                specialAvailable = true;
+                
+                OnEnableSpecialAttack();
+            }
         }
 
         private IEnumerator WaitThenRecover(float delay)
@@ -114,6 +128,8 @@ namespace Enso.Characters
             yield return new WaitForSeconds(delay);
 
             canRecover = true;
+            
+            OnRecoverBalance();
         }
         
         #endregion
@@ -133,6 +149,16 @@ namespace Enso.Characters
         private void OnLoseBalance()
         {
             LoseBalance?.Invoke();
+        }
+
+        private void OnRecoverBalance()
+        {
+            RecoverBalance?.Invoke();
+        }
+
+        private void OnEnableSpecialAttack()
+        {
+            EnableSpecialAttack?.Invoke();
         }
 
         #endregion

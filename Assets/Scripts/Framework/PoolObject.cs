@@ -10,7 +10,7 @@ namespace Framework
             
         }
 
-        protected void Disable()
+        public void Disable()
         {
             gameObject.SetActive(false);
         }

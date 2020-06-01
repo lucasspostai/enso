@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using Framework;
 using Framework.Audio;
+using Framework.Utils;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,16 @@ public class TestPool : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             //AudioManager.Instance.Play(TestSoundCue, transform.position, transform.rotation);
-            //LevelLoader.Instance.LoadLevel(SceneToLoad);
-            NewCamera.gameObject.SetActive(!NewCamera.gameObject.activeSelf);
+            LevelLoader.Instance.ReloadLevel();
+            //NewCamera.gameObject.SetActive(!NewCamera.gameObject.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }
