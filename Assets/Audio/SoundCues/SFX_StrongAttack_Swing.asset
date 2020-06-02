@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: SFX_StrongAttack_Swing
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 44aa1818a2add4d4896872edc477362a, type: 3}
+  - {fileID: 8300000, guid: 2d6c5a075c46e794d9e9afedd9c597dd, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05
   Loop: 0
   SpatialBlend: 0
-  MixerGroup: {fileID: 24300002, guid: ee009ffbbf622f84e84e0a31052e2368, type: 2}
+  MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,
+    type: 2}

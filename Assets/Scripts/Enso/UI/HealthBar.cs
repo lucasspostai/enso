@@ -29,7 +29,7 @@ namespace Enso.UI
         {
             player = FindObjectOfType<Player>();
 
-            if (player == null) 
+            if (player == null)
                 return;
             
             healthSystem = player.GetComponent<HealthSystem>();

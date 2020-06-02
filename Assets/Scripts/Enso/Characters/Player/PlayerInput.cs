@@ -24,17 +24,18 @@ namespace Enso.Characters.Player
         private bool guardInputUpCalled;
         private bool rollInputDownCalled;
         private bool healInputDownCalled;
+        private bool interactionInputDownCalled;
         private bool specialAttackInputDownCalled;
-        private float specialAttackInputPressedTime;
 
         [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
-        [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button5;
-        [SerializeField] private KeyCode GuardButton = KeyCode.Joystick1Button4;
+        [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button0;
+        [SerializeField] private KeyCode GuardButton = KeyCode.Joystick1Button3;
         [SerializeField] private KeyCode RollButton = KeyCode.Joystick1Button2;
-        [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button0;
+        [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button4;
+        [SerializeField] private KeyCode SpecialAttackButton = KeyCode.Joystick1Button5;
+        [SerializeField] private KeyCode InteractionButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode PageLeftButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
-        [SerializeField] private float SpecialAttackDeadZone = 0.2f;
 
         public static bool HoldingGuardInput;
         public static bool HoldingHealInput;
@@ -48,6 +49,7 @@ namespace Enso.Characters.Player
         public static event Action RollInputDown;
         public static event Action HealInputDown;
         public static event Action SpecialAttackInputDown;
+        public static event Action InteractionInputDown;
         public static event Action PageLeftInputDown;
         public static event Action PageRightInputDown;
 
@@ -65,10 +67,9 @@ namespace Enso.Characters.Player
             guardInputUpCalled = Input.GetKeyUp(GuardButton) || Input.GetKeyUp(KeyCode.Mouse1);
             rollInputDownCalled = Input.GetKeyDown(RollButton) || Input.GetKeyDown(KeyCode.Space);
             healInputDownCalled = Input.GetKeyDown(HealButton) || Input.GetKeyDown(KeyCode.Q);
-            specialAttackInputDownCalled = (Input.GetKey(AttackButton) || Input.GetKey(KeyCode.Mouse0)) &&
-                                           (Input.GetKey(GuardButton) || Input.GetKey(KeyCode.Mouse1)) &&
-                                           specialAttackInputPressedTime < SpecialAttackDeadZone;
-            
+            specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKey(KeyCode.R);
+            interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKey(KeyCode.E);
+
             pageLeftInputDownCalled = Input.GetKeyDown(PageLeftButton) || Input.GetKeyDown(KeyCode.Q);
             pageRightInputDownCalled = Input.GetKeyDown(PageRightButton) || Input.GetKeyDown(KeyCode.E);
 
@@ -79,12 +80,12 @@ namespace Enso.Characters.Player
             {
                 OnPageLeftInputDown();
             }
-            
+
             if (pageRightInputDownCalled)
             {
                 OnPageRightInputDown();
             }
-            
+
             if (sprintInputDownCalled)
             {
                 OnSprintInputDown();
@@ -96,34 +97,25 @@ namespace Enso.Characters.Player
 
             if (specialAttackInputDownCalled)
             {
-                specialAttackInputPressedTime = 0;
-
                 OnSpecialAttackInputDown();
             }
-            else
+
+            if (attackInputDownCalled)
             {
-                if (Input.GetKey(AttackButton) || Input.GetKey(GuardButton))
-                    specialAttackInputPressedTime += Time.deltaTime;
-                else
-                    specialAttackInputPressedTime = 0;
+                OnAttackInputDown();
+            }
+            else if (attackInputUpCalled)
+            {
+                OnAttackInputUp();
+            }
 
-                if (attackInputDownCalled)
-                {
-                    OnAttackInputDown();
-                }
-                else if (attackInputUpCalled)
-                {
-                    OnAttackInputUp();
-                }
-
-                if (guardInputDownCalled)
-                {
-                    OnDefenseInputDown();
-                }
-                else if (guardInputUpCalled)
-                {
-                    OnDefenseInputUp();
-                }
+            if (guardInputDownCalled)
+            {
+                OnDefenseInputDown();
+            }
+            else if (guardInputUpCalled)
+            {
+                OnDefenseInputUp();
             }
 
             if (rollInputDownCalled)
@@ -134,6 +126,11 @@ namespace Enso.Characters.Player
             if (healInputDownCalled)
             {
                 OnHealInputDown();
+            }
+
+            if (interactionInputDownCalled)
+            {
+                OnInteractionInputDown();
             }
         }
 
@@ -193,6 +190,11 @@ namespace Enso.Characters.Player
         private static void OnSpecialAttackInputDown()
         {
             SpecialAttackInputDown?.Invoke();
+        }
+
+        private static void OnInteractionInputDown()
+        {
+            InteractionInputDown?.Invoke();
         }
 
         private static void OnPageLeftInputDown()

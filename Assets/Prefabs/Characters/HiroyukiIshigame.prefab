@@ -287,6 +287,7 @@ MonoBehaviour:
     type: 2}
   SpecialAttack: {fileID: 11400000, guid: 269af5e8f0a87884bb0a3e6269e9cd6f, type: 2}
   StrongAttackDeadZoneTime: 0.1
+  SpecialAttackCost: 0.9
 --- !u!114 &813916947705230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,8 +325,6 @@ MonoBehaviour:
   RegularDamageAnimation: {fileID: 11400000, guid: f35f4b04d83882f4381d0ce9daca74b7,
     type: 2}
   HeavyDamageAnimation: {fileID: 11400000, guid: c1461c6bf3de59f4097b50066abd9e34,
-    type: 2}
-  SpecialDamageAnimation: {fileID: 11400000, guid: d054427ec3ec0804385d471c2a699b78,
     type: 2}
   LoseBalanceAnimation: {fileID: 11400000, guid: 66ddccb91bf1f7e44a0afa0ff2db0c80,
     type: 2}
@@ -674,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 729976094265092582, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_Name
-      value: Particle_Enso_Heal
+      value: HealPArticle
       objectReference: {fileID: 0}
     - target: {fileID: 729976094265092569, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}

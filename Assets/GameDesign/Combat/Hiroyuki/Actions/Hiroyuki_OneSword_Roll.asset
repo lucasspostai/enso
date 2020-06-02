@@ -30,7 +30,8 @@ MonoBehaviour:
     CanCutFrame: 3
     PlayAudioFrame: 0
     StartMovementFrame: 0
-    EndMovementFrame: 11
-    MovementOffset: 8
-    AnimationSoundCue: {fileID: 0}
+    EndMovementFrame: 10
+    MovementOffset: 6
+    AnimationSoundCue: {fileID: 11400000, guid: 841ffef72b805b04b8940544b1e2e54e,
+      type: 2}
   CanBeCut: 0

@@ -13,6 +13,7 @@ namespace Enso.Characters.Player
         private bool preparingStrongAttack;
         private bool holdingStrongAttack;
         private float holdingTime;
+        private bool canUseSpecialAttack;
         private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Player player;
 
@@ -22,6 +23,7 @@ namespace Enso.Characters.Player
         [SerializeField] private AttackAnimation ReleaseStrongAttackAnimation;
         [SerializeField] private AttackAnimation SpecialAttack;
         [SerializeField] private float StrongAttackDeadZoneTime;
+        [SerializeField] [Range(0, 1)] private float SpecialAttackCost = 0.9f;
 
         #region Delegates
 
@@ -30,6 +32,8 @@ namespace Enso.Characters.Player
             PlayerInput.AttackInputDown += PressAttackButton;
             PlayerInput.AttackInputUp += ReleaseAttackButton;
             PlayerInput.SpecialAttackInputDown += StartSpecialAttack;
+            ThisFighter.GetBalanceSystem().EnableSpecialAttack += EnableSpecialAttack;
+            ThisFighter.GetBalanceSystem().LoseBalance += DisableSpecialAttack;
         }
 
         private void OnDisable()
@@ -37,6 +41,8 @@ namespace Enso.Characters.Player
             PlayerInput.AttackInputDown -= PressAttackButton;
             PlayerInput.AttackInputUp -= ReleaseAttackButton;
             PlayerInput.SpecialAttackInputDown -= StartSpecialAttack;
+            ThisFighter.GetBalanceSystem().EnableSpecialAttack -= EnableSpecialAttack;
+            ThisFighter.GetBalanceSystem().LoseBalance -= DisableSpecialAttack;
         }
 
         #endregion
@@ -163,11 +169,22 @@ namespace Enso.Characters.Player
             isHoldingAttackButton = false;
         }
 
+        private void EnableSpecialAttack()
+        {
+            canUseSpecialAttack = true;
+        }
+
+        private void DisableSpecialAttack()
+        {
+            canUseSpecialAttack = false;
+        }
+
         private void StartSpecialAttack()
         {
-            if (!CanCutAnimation && (LightAttackAnimations.Count - lightAttacksAvailable.Count > 1 ||
-                                     ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
-                                     !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying()))
+            if (!canUseSpecialAttack || !CanCutAnimation &&
+                (LightAttackAnimations.Count - lightAttacksAvailable.Count > 1 ||
+                 ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+                 !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying()))
                 return;
 
             ResetCombo();
@@ -176,6 +193,10 @@ namespace Enso.Characters.Player
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
             StartAttack(SpecialAttack);
+
+            //Special Attack Cost
+            player.GetBalanceSystem()
+                .TakeDamage(Mathf.RoundToInt(player.GetBalanceSystem().GetMaxBalance() * SpecialAttackCost));
         }
 
         private void ResetCombo()
@@ -217,7 +238,7 @@ namespace Enso.Characters.Player
             base.OnLastFrameEnd();
 
             ResetCombo();
-            
+
             if (PlayerInput.HoldingGuardInput)
             {
                 player.GuardController.StartGuard();

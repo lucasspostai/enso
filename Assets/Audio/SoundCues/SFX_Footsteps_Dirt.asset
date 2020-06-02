@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d5ea72828f91d43ba647ca24ab889d, type: 3}
+  m_Name: SFX_Footsteps_Dirt
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: 4c0128b668afcb443ba0667f7c6f8947, type: 3}
+  - {fileID: 8300000, guid: b54c2f477db1457428d034c65f77bdc8, type: 3}
+  - {fileID: 8300000, guid: 532ee1990b1694f468162137b52244c0, type: 3}
+  - {fileID: 8300000, guid: 683e6e015e06076418dd2a4897f9c8fb, type: 3}
+  Volume: 1
+  MinPitch: 0.95
+  MaxPitch: 1.05
+  Loop: 0
+  SpatialBlend: 0
+  MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,
+    type: 2}

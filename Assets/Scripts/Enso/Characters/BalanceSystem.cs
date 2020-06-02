@@ -45,7 +45,7 @@ namespace Enso.Characters
         {
             fighter = GetComponent<Fighter>();
             maxBalance = fighter.GetBaseProperties().BalanceAmount;
-            Balance = maxBalance;
+            GainBalance(maxBalance);
         }
 
         private void Update()

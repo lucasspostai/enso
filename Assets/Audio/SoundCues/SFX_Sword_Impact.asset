@@ -20,4 +20,5 @@ MonoBehaviour:
   MaxPitch: 1.05
   Loop: 0
   SpatialBlend: 0
-  MixerGroup: {fileID: 24300002, guid: ee009ffbbf622f84e84e0a31052e2368, type: 2}
+  MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,
+    type: 2}

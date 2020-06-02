@@ -3,7 +3,6 @@
     public enum AttackType
     {
         Light,
-        Strong,
-        Special
+        Strong
     }
 }

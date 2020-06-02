@@ -12,7 +12,6 @@ namespace Enso.CombatSystem
 
         [SerializeField] protected DamageAnimation RegularDamageAnimation;
         [SerializeField] protected DamageAnimation HeavyDamageAnimation;
-        [SerializeField] protected DamageAnimation SpecialDamageAnimation;
         [SerializeField] protected DamageAnimation LoseBalanceAnimation;
         [SerializeField] protected DamageAnimation DeathAnimation;
         [SerializeField] protected GameObject RegularDamageParticle;
@@ -20,21 +19,26 @@ namespace Enso.CombatSystem
 
         private void OnEnable()
         {
-            ThisFighter.GetHealthSystem().Damage += Damage;
+            ThisFighter.GetHealthSystem().Damage += SpawnDamageParticle;
             ThisFighter.GetHealthSystem().Death += Death;
         }
 
         private void OnDisable()
         {
-            ThisFighter.GetHealthSystem().Damage -= Damage;
+            ThisFighter.GetHealthSystem().Damage -= SpawnDamageParticle;
             ThisFighter.GetHealthSystem().Death -= Death;
         }
-        
+
+        protected override void Start()
+        {
+            base.Start();
+            
+            PoolManager.Instance.CreatePool(RegularDamageParticle, 3);
+            PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
+        }
+
         private void PlayDamageAnimation(DamageAnimation damageAnimation)
         {
-            if (IsAnimationPlaying)
-                return;
-
             CurrentCharacterAnimation = damageAnimation;
 
             SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
@@ -42,32 +46,40 @@ namespace Enso.CombatSystem
             ThisFighter.GetComponent<AttackController>()?.OnInterrupted();
         }
 
-        private void Damage()
+        private void SpawnDamageParticle()
         {
+            if (IsDying)
+                return;
+            
             switch (ThisFighter.GetHealthSystem().CurrentAttackType)
             {
                 case AttackType.Light:
                     PlayDamageAnimation(RegularDamageAnimation);
-                    Instantiate(RegularDamageParticle, transform.position, RegularDamageParticle.transform.rotation);
+                    SpawnParticle(RegularDamageParticle);
                     break;
                 case AttackType.Strong:
                     PlayDamageAnimation(HeavyDamageAnimation);
-                    Instantiate(HeavyDamageParticle, transform.position, HeavyDamageParticle.transform.rotation);
-                    break;
-                case AttackType.Special:
-                    PlayDamageAnimation(SpecialDamageAnimation);
+                    SpawnParticle(HeavyDamageParticle);
                     break;
                 default:
                     PlayDamageAnimation(RegularDamageAnimation);
+                    SpawnParticle(RegularDamageParticle);
                     break;
             }
+        }
+
+        private void SpawnParticle(GameObject particle)
+        {
+            PoolManager.Instance.ReuseObject(particle, transform.position, particle.transform.rotation);
         }
         
         private void Death()
         {
+            if (IsDying)
+                return;
+
             IsDying = true;
-            
-            Instantiate(HeavyDamageParticle, transform.position, HeavyDamageParticle.transform.rotation);
+            SpawnParticle(HeavyDamageParticle);
             
             PlayDamageAnimation(DeathAnimation);
         }

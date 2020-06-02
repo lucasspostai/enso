@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SprintButton: 351
-  AttackButton: 355
-  GuardButton: 354
+  AttackButton: 350
+  GuardButton: 353
   RollButton: 352
-  HealButton: 350
-  SpecialAttackDeadZone: 0.2
+  HealButton: 354
+  SpecialAttackButton: 355
+  InteractionButton: 351
+  PageLeftButton: 354
+  PageRightButton: 355
