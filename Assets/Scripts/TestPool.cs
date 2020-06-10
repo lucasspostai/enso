@@ -1,10 +1,7 @@
 ﻿using Cinemachine;
-using Framework;
 using Framework.Audio;
 using Framework.Utils;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TestPool : MonoBehaviour
 {

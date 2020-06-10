@@ -1356,6 +1356,7 @@ GameObject:
   - component: {fileID: 1050527237}
   - component: {fileID: 1050527239}
   - component: {fileID: 1050527238}
+  - component: {fileID: 1050527240}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1414,6 +1415,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1050527240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050527236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c2bc2c98d321d438718d77a7b19aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameSceneName: CombatTestLevel
 --- !u!1 &1185354781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,19 +1620,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642892362929677764, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642892362929677764, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1685681599}
-    - target: {fileID: 2642892362929677764, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 9999
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02, type: 3}
 --- !u!114 &1208440228 stripped
@@ -2645,7 +2649,7 @@ PrefabInstance:
     - target: {fileID: 3617123744978198631, guid: 47a44ba69e27bde448cc4360016f6b66,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3617123744978198631, guid: 47a44ba69e27bde448cc4360016f6b66,
         type: 3}
@@ -2656,11 +2660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1208440228}
+      objectReference: {fileID: 1050527240}
     - target: {fileID: 3617123744978198631, guid: 47a44ba69e27bde448cc4360016f6b66,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevel
+      value: StartGame
       objectReference: {fileID: 0}
     - target: {fileID: 3617123744978198631, guid: 47a44ba69e27bde448cc4360016f6b66,
         type: 3}
@@ -2671,8 +2675,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 102900000, guid: 0bb6350d191000b4f9ae947d5bb90e5a,
-        type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a44ba69e27bde448cc4360016f6b66, type: 3}
 --- !u!1001 &6143038704112648727

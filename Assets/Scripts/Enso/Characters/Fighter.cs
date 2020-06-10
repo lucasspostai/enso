@@ -18,6 +18,7 @@ namespace Enso.Characters
         public CharacterMovementController MovementController;
 
         [HideInInspector] public CharacterAnimationHandler AnimationHandler;
+        [HideInInspector] public Transform Target;
 
         protected virtual void Awake()
         {
@@ -50,6 +51,16 @@ namespace Enso.Characters
         public FighterProperties GetBaseProperties()
         {
             return BaseProperties;
+        }
+
+        public void EnterCombatWith(Fighter fighter)
+        {
+            Target = fighter.transform;
+        }
+
+        public void ExitCombat()
+        {
+            
         }
     }
 }

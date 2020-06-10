@@ -8,6 +8,7 @@ namespace Enso.CombatSystem
     {
         private bool isDamageNotNull;
         private bool isAttackNotNull;
+        private bool isGuardNotNull;
         private int faceXHash;
         private int faceYHash;
 
@@ -26,6 +27,7 @@ namespace Enso.CombatSystem
         {
             isDamageNotNull = Damage != null;
             isAttackNotNull = Attack != null;
+            isGuardNotNull = Guard != null;
 
             faceXHash = Animator.StringToHash(MovementController.Animations.FaceX);
             faceYHash = Animator.StringToHash(MovementController.Animations.FaceY);
@@ -55,27 +57,38 @@ namespace Enso.CombatSystem
 
         public void InterruptAllGuardAnimations()
         {
-            Guard.OnInterrupted();
+            if(isGuardNotNull)
+                Guard.OnInterrupted();
         }
 
         public bool IsAnyAnimationDifferentThanAttackPlaying()
         {
-            return IsDamageAnimationPlaying() ||
-                   IsActionAnimationPlaying() ||
-                   Guard.IsPlayingAnimationThatDoesNotAllowLocomotion();
+            if (isGuardNotNull)
+            {
+                return IsDamageAnimationPlaying() ||
+                       IsActionAnimationPlaying() ||
+                       Guard.IsPlayingAnimationThatDoesNotAllowLocomotion();
+            }
+            
+            return false;
         }
 
         public bool IsAnyGuardAnimationPlaying()
         {
-            return Guard.IsAnimationPlaying;
+            return isGuardNotNull && Guard.IsAnimationPlaying;
         }
 
         public bool IsAnyCustomAnimationPlaying()
         {
-            return IsDamageAnimationPlaying() ||
-                   IsActionAnimationPlaying() ||
-                   IsAttackAnimationPlaying() ||
-                   Guard.IsPlayingAnimationThatDoesNotAllowLocomotion();
+            if (isGuardNotNull)
+            {
+                return IsDamageAnimationPlaying() ||
+                       IsActionAnimationPlaying() ||
+                       IsAttackAnimationPlaying() ||
+                       Guard.IsPlayingAnimationThatDoesNotAllowLocomotion();
+            }
+            
+            return false;
         }
 
         private void InterruptAnyAnimationPlaying(CustomAnimationController customAnimationController)
@@ -90,7 +103,7 @@ namespace Enso.CombatSystem
 
             foreach (var controller in ActionAnimationControllers)
             {
-                if (controller != customAnimationController)
+                if (controller && controller != customAnimationController)
                 {
                     controller.OnInterrupted();
                 }

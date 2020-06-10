@@ -8,9 +8,9 @@ namespace Framework.Utils
     {
         public Animator TransitionAnimator;
         
-        public void LoadLevel(Object scene = null)
+        public void LoadLevel(string sceneName)
         {
-            StartCoroutine(LoadSceneAsynchronously(scene.name));
+            StartCoroutine(LoadSceneAsynchronously(sceneName));
         }
         
         public void ReloadLevel()
