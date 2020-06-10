@@ -1,4 +1,5 @@
-﻿using Enso.Characters;
+﻿using System;
+using Enso.Characters;
 using Enso.Interfaces;
 using UnityEngine;
 
@@ -7,12 +8,20 @@ namespace Enso.CombatSystem
     public class Hurtbox : MonoBehaviour, IDamageable
     {
         [SerializeField] private Fighter ThisFighter;
-        [SerializeField] private Vector3 HurtboxSize;
         [SerializeField] private GuardController Guard;
-        
-        public void TakeDamage(int damageAmount)
+
+        [HideInInspector] public Collider2D HurtboxCollider;
+
+        private void Start()
         {
-            if (Guard.IsGuarding)
+            HurtboxCollider = GetComponent<Collider2D>();
+        }
+
+        public void TakeDamage(int damageAmount, Vector3 direction)
+        {
+            ThisFighter.AnimationHandler.SetFacingDirection((direction * -1).normalized); //Opposite direction to damage dealer
+
+            if (Guard && Guard.IsGuarding)
             {
                 ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
 
@@ -28,15 +37,7 @@ namespace Enso.CombatSystem
             else
             {
                 ThisFighter.GetHealthSystem().TakeDamage(damageAmount);
-                
-                // Play Damage Animation
             }
-        }
-        
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(transform.position, HurtboxSize);
         }
     }
 }

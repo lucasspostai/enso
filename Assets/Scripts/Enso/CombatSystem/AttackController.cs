@@ -53,7 +53,7 @@ namespace Enso.CombatSystem
             if (hurtbox != null && !damagedHurtboxes.Contains(hurtbox))
             {
                 damagedHurtboxes.Add(hurtbox);
-                hurtbox.TakeDamage(currentDamage);
+                hurtbox.TakeDamage(currentDamage, ThisFighter.AnimationHandler.CurrentDirection);
             }
         }
 

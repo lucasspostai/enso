@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
-  m_Name: Hiroyuki_OneSword_HeavyDamage
+  m_Name: Naosuke_Combat_HeavyDamage
   m_EditorClassIdentifier: 
   ClipHolder:
     AnimationClips:
     - {fileID: 7400000, guid: fe1f60d93ba531a498149645d2a9d801, type: 2}
-    - {fileID: 7400000, guid: da551fe16f1156b4abd090d92b95d245, type: 2}
-    - {fileID: 7400000, guid: 47f76232cd388934cb602ca00dd537fb, type: 2}
-    - {fileID: 7400000, guid: f0598e5c92ba6c94094d237e5adfe13a, type: 2}
-    - {fileID: 7400000, guid: 7a68a299e634fb1458b70a24d4bc4545, type: 2}
-    - {fileID: 7400000, guid: 16e9bc974d46fff4bac74d876b9b2cb5, type: 2}
-    - {fileID: 7400000, guid: fe05c1e947f765d43a039429e88f4a75, type: 2}
-    - {fileID: 7400000, guid: 1a929ab1cc1a8c043989a458ea4a9d3e, type: 2}
-    AnimatorStateName: OneSword_HeavyDamage
+    - {fileID: 7400000, guid: 1b5cab8049f62b349afc35676bcc14f9, type: 2}
+    - {fileID: 7400000, guid: 6ad21dbf8539120419fb47dd6f5adb75, type: 2}
+    - {fileID: 7400000, guid: f09e23f3e0d298b47a368e3bb73e9361, type: 2}
+    - {fileID: 7400000, guid: 932c756b7df5dad4c88021cb49f149a2, type: 2}
+    - {fileID: 7400000, guid: 2812197766638f4418e572f4701295fb, type: 2}
+    - {fileID: 7400000, guid: bd332d7abbfa774419778cb3092b688a, type: 2}
+    - {fileID: 7400000, guid: c67a148fa97775e42a964e5fc93851d6, type: 2}
+    AnimatorStateName: Combat_HeavyDamage
     LayerNumber: 0
   AnimationFrameChecker:
     DealDamage: 1

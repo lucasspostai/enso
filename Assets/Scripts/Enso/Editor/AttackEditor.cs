@@ -26,14 +26,70 @@ namespace Enso.Editor
                 return;
             
             DrawHitBoxFrames();
+        }
+        
+        private void DrawHitBoxFrames()
+        {
+            GUILayout.BeginVertical(Styles.BoxStyle);
 
-            GUILayout.BeginHorizontal();
+            CharacterAnimationTarget.AnimationFrameChecker.DealDamage =
+                GUILayout.Toggle(CharacterAnimationTarget.AnimationFrameChecker.DealDamage, "Deal Damage");
+
+            if (CharacterAnimationTarget.AnimationFrameChecker.DealDamage)
+            {
+                float hitFrameStart = CharacterAnimationTarget.AnimationFrameChecker.StartHitFrame;
+                float hitFrameEnd = CharacterAnimationTarget.AnimationFrameChecker.EndHitFrame;
+
+                //Texts
+                string totalFramesText =
+                    "Total Frames: <b>" + CharacterAnimationTarget.ClipHolder.GetTotalFrames() + "</b>";
+                string startUpText = "<color=green>Startup: <b>" + (hitFrameStart) + "</b></color>";
+                string activeText = "<color=red>Active: <b>" + (hitFrameEnd - hitFrameStart + 1) + "</b></color>";
+                string recoveryText = "<color=blue>Recovery: <b>" +
+                                      (CharacterAnimationTarget.ClipHolder.GetTotalFrames() - hitFrameEnd - 1) +
+                                      "</b></color>";
+                string hitFrameStartText =
+                    "Hit Start: <b>" + CharacterAnimationTarget.AnimationFrameChecker.StartHitFrame + "</b>";
+                string hitFrameEndText =
+                    "Hit End: <b>" + CharacterAnimationTarget.AnimationFrameChecker.EndHitFrame + "</b>";
+
+                //All Frames
+                GUILayout.BeginHorizontal();
+
+                GUILayout.Label(startUpText + " | " + activeText + " | " + recoveryText, Styles.NormalTextLeftStyle);
+                GUILayout.Label(totalFramesText, Styles.NormalTextRightStyle);
+
+                GUILayout.EndHorizontal();
+
+                //Hitbox Frames
+                GUILayout.BeginVertical(Styles.BoxStyle);
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Hitbox Frames", Styles.NormalTextLeftStyle);
+
+                GUILayout.EndHorizontal();
+                EditorGUILayout.MinMaxSlider(ref hitFrameStart, ref hitFrameEnd, 0,
+                    CharacterAnimationTarget.ClipHolder.GetTotalFrames() - 1);
+
+                CharacterAnimationTarget.AnimationFrameChecker.StartHitFrame = Mathf.RoundToInt(hitFrameStart);
+                CharacterAnimationTarget.AnimationFrameChecker.EndHitFrame = Mathf.RoundToInt(hitFrameEnd);
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(hitFrameStartText + " | " + hitFrameEndText, Styles.NormalTextCenterStyle);
+                GUILayout.EndHorizontal();
+                
+                GUILayout.EndVertical();
+                
+                GUILayout.BeginHorizontal();
             
-            DrawHitboxSize();
-            DrawAttackType();
-            DrawDamage();
+                DrawHitboxSize();
+                DrawAttackType();
+                DrawDamage();
 
-            GUILayout.EndHorizontal();
+                GUILayout.EndHorizontal();
+            }
+
+            GUILayout.EndVertical();
         }
 
         private void DrawHitboxSize()

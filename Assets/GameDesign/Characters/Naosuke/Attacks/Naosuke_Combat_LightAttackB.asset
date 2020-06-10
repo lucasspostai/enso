@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Naosuke_Combat_LightAttackB
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 921099598b5c23b4dbb66ac00809eecf, type: 2}
+    - {fileID: 7400000, guid: 085880ebbdd57fa4697edb6b94819f7a, type: 2}
+    - {fileID: 7400000, guid: aafc0a3fa820a1b4aa72fa269a3122a9, type: 2}
+    - {fileID: 7400000, guid: c78e32d7c18c5d241a840ac57f1d4882, type: 2}
+    - {fileID: 7400000, guid: 79fb0d737ee396b428572c5db7643a74, type: 2}
+    - {fileID: 7400000, guid: f23178bcd4ae84c40a231e848815a45c, type: 2}
+    - {fileID: 7400000, guid: d9e89586098e596479b08f669676eaf4, type: 2}
+    - {fileID: 7400000, guid: f3fad44f6e5a6a545aa536ec8c6ade2f, type: 2}
+    AnimatorStateName: Combat_LightAttackB
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 6
+    EndHitFrame: 7
+    CanCutFrame: 8
+    PlayAudioFrame: 0
+    StartMovementFrame: 5
+    EndMovementFrame: 7
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1
+  HitboxSize: {x: 1, y: 1.5, z: 0}
+  Damage: 1
+  Type: 0

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Naosuke_Combat_Death
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: c88958fd28190e943995613308be4e56, type: 2}
+    - {fileID: 7400000, guid: 6a62c88b5e154734faccdcc989cef3e0, type: 2}
+    - {fileID: 7400000, guid: 405ab1c0f8f9f4a47bb2b9f1b4cd177b, type: 2}
+    - {fileID: 7400000, guid: 791332631c0e3b64eae38eb964b01720, type: 2}
+    - {fileID: 7400000, guid: e6bf549eb4594af42a7fd4a6b75dd50d, type: 2}
+    - {fileID: 7400000, guid: 99164453edc380145b40416cb4d60e53, type: 2}
+    - {fileID: 7400000, guid: ed85e0f2a4221614b88daf20d4cc9056, type: 2}
+    - {fileID: 7400000, guid: 9ef3080f09478a8428a05184a851f4fa, type: 2}
+    AnimatorStateName: Combat_Death
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 11400000, guid: d5f90687c45734a4296bb283290d34cd,
+      type: 2}
+  CanBeCut: 1
