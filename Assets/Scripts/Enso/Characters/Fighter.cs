@@ -27,7 +27,7 @@ namespace Enso.Characters
             AnimationHandler = GetComponent<CharacterAnimationHandler>();
         }
 
-        protected void Start()
+        protected virtual void Start()
         {
             MovementController.SetFighter(this);
         }

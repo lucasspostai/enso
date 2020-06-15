@@ -18,7 +18,7 @@ namespace Enso.CombatSystem
             ghostEffectController = GetComponent<CharacterGhostEffectController>();
         }
 
-        protected void PlayRollAnimation()
+        public void PlayRollAnimation()
         {
             if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
                 !ThisFighter.AnimationHandler.CanCutAttackAnimation())

@@ -13,6 +13,7 @@ namespace Enso.CombatSystem
         [SerializeField] private LayerMask CollisionMask;
         [SerializeField] private Transform Anchor;
         [SerializeField] private Vector3 HitboxSize;
+        [SerializeField] private Hurtbox FighterHurtbox;
 
         public void SetHitboxResponder(IHitboxResponder responder)
         {
@@ -38,7 +39,8 @@ namespace Enso.CombatSystem
 
             foreach (var colliderOverlapped in collidersOverlapped)
             {
-                hitboxResponder?.CollidedWith(colliderOverlapped);
+                if(colliderOverlapped != FighterHurtbox.HurtboxCollider) //Ignore own hurtbox
+                    hitboxResponder?.CollidedWith(colliderOverlapped);
             }
 
             SetColliderState(collidersOverlapped.Length > 0 ? ColliderState.Colliding : ColliderState.Open);
@@ -52,7 +54,7 @@ namespace Enso.CombatSystem
             Gizmos.color = Color.red;
             Gizmos.matrix = transform.localToWorldMatrix;
             
-            Gizmos.DrawWireCube(Anchor.position, HitboxSize);
+            Gizmos.DrawWireCube(Anchor.localPosition, HitboxSize);
 
             Gizmos.color = previousColor;
             Gizmos.matrix = previousMatrix;

@@ -20,8 +20,8 @@ MonoBehaviour:
   DeadZone: 0.1
   Health: 5
   BalanceAmount: 10
-  DelayToRecoverAfterLosingBalance: 5
-  DelayToRecoverAfterDamage: 2
-  TimeToFullyRecoverBalance: 10
+  DelayToRecoverAfterLosingBalance: 10
+  DelayToRecoverAfterDamage: 4
+  TimeToFullyRecoverBalance: 20
   HealingCharges: 3
   DelayToHealAgain: 1

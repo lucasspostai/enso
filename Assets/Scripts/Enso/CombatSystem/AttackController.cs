@@ -39,7 +39,7 @@ namespace Enso.CombatSystem
             CanCutAnimation = false;
 
             CurrentCharacterAnimation = attackAnimation;
-            
+
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
             SetDamageProperties(attackAnimation.HitboxSize, attackAnimation.Damage);
@@ -53,7 +53,19 @@ namespace Enso.CombatSystem
             if (hurtbox != null && !damagedHurtboxes.Contains(hurtbox))
             {
                 damagedHurtboxes.Add(hurtbox);
-                hurtbox.TakeDamage(currentDamage);
+
+                var guardController = hurtbox.ThisFighter.GetComponent<GuardController>();
+
+                if (guardController && guardController.IsParrying)
+                {
+                    ThisFighter.GetBalanceSystem()
+                        .TakeDamage(Mathf.RoundToInt(ThisFighter.GetBalanceSystem().GetMaxBalance()));
+
+                    guardController.OnParryHit(guardController.transform.position -
+                                               ThisFighter.transform.position);
+                }
+                else
+                    hurtbox.TakeDamage(currentDamage, ThisFighter.AnimationHandler.CurrentDirection);
             }
         }
 

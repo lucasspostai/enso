@@ -15,7 +15,8 @@ namespace Framework.Animations
         private bool checkedEndMovementFrame;
         private bool checkedCanCutFrame;
         private bool checkedLastFrame;
-        
+
+        public bool DealDamage = true;
         public int StartHitFrame = 1;
         public int EndHitFrame = 2;
         public int CanCutFrame = 3;
@@ -57,7 +58,7 @@ namespace Framework.Animations
                 return;
 
             // Hit frame start
-            if (!checkedStartHitFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(StartHitFrame))
+            if (!checkedStartHitFrame && thisAnimationClipHolder.IsBiggerOrEqualThanFrame(StartHitFrame) && DealDamage)
             {
                 thisFrameCheckHandler.OnHitFrameStart();
                 checkedStartHitFrame = true;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClipHolder:
     AnimationClips:
-    - {fileID: 7400000, guid: 17f66afcc3942d345bc4af720e1f053b, type: 2}
+    - {fileID: 7400000, guid: fe1f60d93ba531a498149645d2a9d801, type: 2}
     - {fileID: 7400000, guid: da551fe16f1156b4abd090d92b95d245, type: 2}
     - {fileID: 7400000, guid: 47f76232cd388934cb602ca00dd537fb, type: 2}
     - {fileID: 7400000, guid: f0598e5c92ba6c94094d237e5adfe13a, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
     AnimatorStateName: OneSword_HeavyDamage
     LayerNumber: 0
   AnimationFrameChecker:
+    DealDamage: 1
     StartHitFrame: 1
     EndHitFrame: 2
     CanCutFrame: 3

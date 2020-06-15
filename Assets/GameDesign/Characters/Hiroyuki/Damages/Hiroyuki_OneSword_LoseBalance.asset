@@ -25,12 +25,13 @@ MonoBehaviour:
     AnimatorStateName: OneSword_LoseBalance
     LayerNumber: 0
   AnimationFrameChecker:
+    DealDamage: 1
     StartHitFrame: 1
     EndHitFrame: 2
     CanCutFrame: 3
     PlayAudioFrame: 0
     StartMovementFrame: 0
-    EndMovementFrame: 2
-    MovementOffset: 0
+    EndMovementFrame: 6
+    MovementOffset: -2
     AnimationSoundCue: {fileID: 0}
   CanBeCut: 1

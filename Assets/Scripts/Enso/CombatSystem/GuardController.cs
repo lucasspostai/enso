@@ -1,4 +1,6 @@
-﻿using Enso.Characters;
+﻿using System;
+using System.Collections;
+using Enso.Characters;
 using Framework.Animations;
 using UnityEngine;
 
@@ -6,18 +8,30 @@ namespace Enso.CombatSystem
 {
     public class GuardController : CustomAnimationController
     {
+        private Coroutine parryHitCoroutine;
+        private FrameChecker defaultFrameChecker;
+
         [HideInInspector] public bool StartingGuard;
         [HideInInspector] public bool EndingGuard;
         [HideInInspector] public bool IsGuarding;
         [HideInInspector] public bool IsBlocking;
+        [HideInInspector] public bool IsParrying;
+        [HideInInspector] public bool GuardReleased;
 
         [SerializeField] protected GuardAnimations Animations;
+        [SerializeField] protected ActionAnimation BlockAnimation;
+        [SerializeField] protected ActionAnimation ParryAnimation;
+        [SerializeField] protected float ParryDuration = 2f;
+
+        public event Action ParryHit;
+        public event Action DisableParryHit;
 
         protected override void Start()
         {
             base.Start();
-            
+
             CurrentFrameChecker = new FrameChecker();
+            defaultFrameChecker = CurrentFrameChecker;
         }
 
         protected override void Update()
@@ -25,16 +39,20 @@ namespace Enso.CombatSystem
             base.Update();
 
             if (IsGuarding && !EndingGuard && !IsBlocking)
+            {
                 PlayMovementAnimation();
+            }
         }
 
         public virtual void StartGuard()
         {
+            GuardReleased = false;
+
             if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;
 
             StartingGuard = true;
-            
+
             ThisFighter.MovementController.SetSpeed(ThisFighter.GetBaseProperties().GuardSpeed);
 
             SetAnimationPropertiesAndPlay(Animations.StartGuardAnimationClipHolder, CurrentFrameChecker);
@@ -42,13 +60,14 @@ namespace Enso.CombatSystem
 
         protected void EndGuard()
         {
-            if (!IsAnimationPlaying)
+            GuardReleased = true;
+
+            if (!IsAnimationPlaying || IsBlocking)
                 return;
 
             EndingGuard = true;
 
             SetAnimationPropertiesAndPlay(Animations.EndGuardAnimationClipHolder, CurrentFrameChecker);
-            ThisFighter.AnimationHandler.Play(this ,Animations.EndGuardAnimationClipHolder.AnimatorStateName);
         }
 
         protected void PlayGuardAnimation(AnimationClipHolder animationClipHolder, bool atNextFrame = false)
@@ -60,9 +79,10 @@ namespace Enso.CombatSystem
 
             if (nextFramePercentage > animationClipHolder.PercentageOnFrame(animationClipHolder.GetTotalFrames()))
                 atNextFrame = false;
-            
-            if (Animator.StringToHash(ThisFighter.AnimationHandler.CharacterAnimator.GetLayerName(animationClipHolder.LayerNumber) + "." +
-                                      animationClipHolder.AnimatorStateName) ==
+
+            if (Animator.StringToHash(
+                    ThisFighter.AnimationHandler.CharacterAnimator.GetLayerName(animationClipHolder.LayerNumber) + "." +
+                    animationClipHolder.AnimatorStateName) ==
                 CurrentAnimationClipHolder.GetAnimationFullNameHash())
                 return;
 
@@ -72,7 +92,8 @@ namespace Enso.CombatSystem
                 ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName);
             else
             {
-                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName, animationClipHolder.LayerNumber,
+                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName,
+                    animationClipHolder.LayerNumber,
                     nextFramePercentage);
             }
         }
@@ -84,10 +105,26 @@ namespace Enso.CombatSystem
 
             IsBlocking = true;
 
-            SetAnimationPropertiesAndPlay(Animations.BlockAnimationClipHolder, CurrentFrameChecker);
+            CurrentCharacterAnimation = BlockAnimation;
+
+            SetAnimationPropertiesAndPlay(BlockAnimation.ClipHolder, BlockAnimation.AnimationFrameChecker);
         }
 
-        protected virtual void PlayMovementAnimation() { }
+        public void Parry()
+        {
+            if (ThisFighter.AnimationHandler.IsDamageAnimationPlaying())
+                return;
+
+            IsParrying = true;
+
+            CurrentCharacterAnimation = ParryAnimation;
+
+            SetAnimationPropertiesAndPlay(ParryAnimation.ClipHolder, ParryAnimation.AnimationFrameChecker);
+        }
+
+        protected virtual void PlayMovementAnimation()
+        {
+        }
 
         public override void OnLastFrameEnd()
         {
@@ -98,7 +135,25 @@ namespace Enso.CombatSystem
             }
 
             if (IsBlocking)
+            {
+                CurrentCharacterAnimation = null;
+
                 IsBlocking = false;
+                CurrentFrameChecker = defaultFrameChecker;
+
+                if (GuardReleased)
+                    EndGuard();
+            }
+
+            if (IsParrying)
+            {
+                CurrentCharacterAnimation = null;
+
+                IsParrying = false;
+                CurrentFrameChecker = defaultFrameChecker;
+
+                base.OnLastFrameEnd();
+            }
 
             if (EndingGuard)
                 base.OnLastFrameEnd();
@@ -107,16 +162,42 @@ namespace Enso.CombatSystem
         protected override void ResetAllProperties()
         {
             base.ResetAllProperties();
-            
+
             IsGuarding = false;
             StartingGuard = false;
             EndingGuard = false;
             IsBlocking = false;
+            IsParrying = false;
+            GuardReleased = false;
         }
 
         public bool IsPlayingAnimationThatDoesNotAllowLocomotion()
         {
-            return StartingGuard || EndingGuard || IsBlocking; 
+            return StartingGuard || EndingGuard || IsBlocking;
+        }
+
+        private IEnumerator WaitThenDisableParry()
+        {
+            yield return new WaitForSeconds(ParryDuration);
+
+            OnDisableParryHit();
+        }
+
+        public virtual void OnParryHit(Vector3 direction)
+        {
+            if (parryHitCoroutine != null)
+                StopCoroutine(parryHitCoroutine);
+
+            ParryHit?.Invoke();
+
+            ThisFighter.AnimationHandler.SetFacingDirection((direction * -1).normalized);
+
+            parryHitCoroutine = StartCoroutine(WaitThenDisableParry());
+        }
+
+        protected virtual void OnDisableParryHit()
+        {
+            DisableParryHit?.Invoke();
         }
     }
 }

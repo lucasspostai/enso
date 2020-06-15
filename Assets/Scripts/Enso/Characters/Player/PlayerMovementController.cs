@@ -11,7 +11,6 @@ namespace Enso.Characters.Player
         private Player player;
 
         [SerializeField] private float SprintDeadZoneTime = 0.2f;
-        [SerializeField] private Transform HitboxAnchor;
 
         private void OnEnable()
         {
@@ -28,28 +27,20 @@ namespace Enso.Characters.Player
         protected override void Start()
         {
             base.Start();
-            
+
             player = GetComponent<Player>();
         }
 
         protected override void Update()
         {
             SetMovement(PlayerInput.Movement);
-            
+
             base.Update();
-
-            UpdateHitBoxAnchorRotation();
-        }
-
-        private void UpdateHitBoxAnchorRotation()
-        {
-            float angle = Mathf.Atan2(Velocity.y, Velocity.x) * Mathf.Rad2Deg;
-            HitboxAnchor.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         private void TryToSprint()
         {
-            if(sprintCoroutine != null)
+            if (sprintCoroutine != null)
                 StopCoroutine(sprintCoroutine);
 
             sprintCoroutine = StartCoroutine(Sprint());
@@ -58,13 +49,13 @@ namespace Enso.Characters.Player
         private IEnumerator Sprint()
         {
             yield return new WaitForSeconds(SprintDeadZoneTime);
-            
+
             SetSprintSpeed();
         }
 
         private void CancelSprint()
         {
-            if(sprintCoroutine != null)
+            if (sprintCoroutine != null)
                 StopCoroutine(sprintCoroutine);
 
             SetRegularRunSpeed();

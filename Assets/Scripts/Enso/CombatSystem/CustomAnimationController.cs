@@ -39,9 +39,11 @@ namespace Enso.CombatSystem
             CurrentFrameChecker.CheckFrames();
 
             if (mustMove && CurrentCharacterAnimation)
+            {
                 characterMovementController.Move(ThisFighter.AnimationHandler.CurrentDirection *
                                                  (CurrentCharacterAnimation.AnimationFrameChecker.MovementOffset *
                                                   Time.deltaTime));
+            }
         }
 
         protected void SetAnimationPropertiesAndPlay(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)

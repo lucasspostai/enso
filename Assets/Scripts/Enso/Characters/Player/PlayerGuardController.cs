@@ -16,12 +16,14 @@ namespace Enso.Characters.Player
         {
             PlayerInput.GuardInputDown += StartGuard;
             PlayerInput.GuardInputUp += EndGuard;
+            PlayerInput.Parry += Parry;
         }
 
         private void OnDisable()
         {
             PlayerInput.GuardInputDown -= StartGuard;
             PlayerInput.GuardInputUp -= EndGuard;
+            PlayerInput.Parry -= Parry;
         }
 
         #endregion

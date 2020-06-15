@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Naosuke_Combat_LoseBalance
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 6f5cebd2d794664429d88515dba37c45, type: 2}
+    - {fileID: 7400000, guid: 0288a5eac17b79c458c04c28b78a68a5, type: 2}
+    - {fileID: 7400000, guid: 63f0decf8d546224785f4aa5dbb8aba1, type: 2}
+    - {fileID: 7400000, guid: 6eb07b28a276c374fa3e9aec83462a5a, type: 2}
+    - {fileID: 7400000, guid: 06167bf8f173e3849902949aea0efaa4, type: 2}
+    - {fileID: 7400000, guid: 135127628c6a0bb478c72ea38f8f145b, type: 2}
+    - {fileID: 7400000, guid: 1ac48950903436e40bfc79d08ced9f24, type: 2}
+    - {fileID: 7400000, guid: ca890958e6ccf484f85841c8ff2761a7, type: 2}
+    AnimatorStateName: Combat_LoseBalance
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 6
+    MovementOffset: -2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1

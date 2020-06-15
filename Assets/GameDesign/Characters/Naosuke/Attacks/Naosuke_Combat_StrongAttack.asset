@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Naosuke_Combat_StrongAttack
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 9c83b06096c518247b462742cb70b5b4, type: 2}
+    - {fileID: 7400000, guid: ea40d89807ded98479f1bcecc81fe179, type: 2}
+    - {fileID: 7400000, guid: d2cfc17c1d80e7149bdfe7c476144444, type: 2}
+    - {fileID: 7400000, guid: 0224d63dbf53a1149a313198b7b6fdcc, type: 2}
+    - {fileID: 7400000, guid: 76e2551ffbe08604d93c90510b71e63a, type: 2}
+    - {fileID: 7400000, guid: b336b080dee595245bd698b5fae4fce2, type: 2}
+    - {fileID: 7400000, guid: f36da510f88c3504c87e07e50e87320c, type: 2}
+    - {fileID: 7400000, guid: 982c86f33216f4a408639e76e67952ab, type: 2}
+    AnimatorStateName: Combat_StrongAttack
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 6
+    EndHitFrame: 7
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 10
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1, y: 1.5, z: 0}
+  Damage: 3
+  Type: 0

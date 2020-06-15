@@ -17,6 +17,8 @@ namespace Framework
 
         [HideInInspector] public Vector3 Velocity;
 
+        [SerializeField] private Transform HitboxAnchor;
+
         public LocomotionAnimations Animations;
 
         protected override void Start()
@@ -26,7 +28,7 @@ namespace Framework
             ThisFighter.AnimationHandler.SetFacingDirection(Vector3.down);
 
             SetRegularRunSpeed();
-            
+
             currentVelocity = Vector3.zero;
         }
 
@@ -34,6 +36,8 @@ namespace Framework
         {
             base.Update();
 
+            UpdateHitBoxAnchorRotation();
+            
             if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
             {
                 Velocity = Vector3.zero;
@@ -60,6 +64,14 @@ namespace Framework
             Move(Velocity * Time.deltaTime);
         }
 
+        private void UpdateHitBoxAnchorRotation()
+        {
+            float angle = Mathf.Atan2(ThisFighter.AnimationHandler.CurrentDirection.y,
+                ThisFighter.AnimationHandler.CurrentDirection.x) * Mathf.Rad2Deg;
+
+            HitboxAnchor.rotation = Quaternion.AngleAxis(angle, transform.forward);
+        }
+
         protected void SetMovement(Vector2 movement)
         {
             movementAmount = movement;
@@ -74,15 +86,15 @@ namespace Framework
         {
             if (ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
-            
+
             currentSpeed = ThisFighter.GetBaseProperties().SprintSpeed;
         }
-        
+
         protected void SetRegularRunSpeed()
         {
             if (ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
-            
+
             currentSpeed = ThisFighter.GetBaseProperties().RunSpeed;
         }
 
@@ -104,7 +116,8 @@ namespace Framework
 
         private void PlayMovementAnimation()
         {
-            if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying() || ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+            if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying() ||
+                ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
 
             if (Velocity != Vector3.zero)
@@ -119,7 +132,7 @@ namespace Framework
             }
         }
 
-        private void SetDirection(Vector3 direction)
+        protected void SetDirection(Vector3 direction)
         {
             ThisFighter.AnimationHandler.SetFacingDirection(direction);
         }

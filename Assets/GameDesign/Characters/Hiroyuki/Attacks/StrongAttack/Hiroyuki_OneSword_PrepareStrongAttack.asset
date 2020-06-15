@@ -25,6 +25,7 @@ MonoBehaviour:
     AnimatorStateName: OneSword_PrepareStrongAttack
     LayerNumber: 0
   AnimationFrameChecker:
+    DealDamage: 0
     StartHitFrame: 0
     EndHitFrame: 0
     CanCutFrame: 3
@@ -35,5 +36,5 @@ MonoBehaviour:
     AnimationSoundCue: {fileID: 0}
   CanBeCut: 0
   HitboxSize: {x: 0, y: 0, z: 0}
-  Damage: 1
+  Damage: 0
   Type: 0

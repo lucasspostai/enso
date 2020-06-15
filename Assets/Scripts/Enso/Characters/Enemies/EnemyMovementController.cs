@@ -1,12 +1,26 @@
-﻿using Framework;
+﻿using System;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies
 {
     public class EnemyMovementController : CharacterMovementController
     {
+        private Vector3 movementDirection;
         private float distanceToTarget;
-        private Vector3 movementAmount;
+
+        public float DistanceToTarget
+        {
+            get => distanceToTarget;
+            private set
+            {
+                distanceToTarget = value;
+
+                OnUpdateDistanceToTargetValue();
+            }
+        }
+
+        public event Action UpdateDistanceToTargetValue;  
 
         [SerializeField] private float AcceptanceRadius = 2f;
         
@@ -22,19 +36,25 @@ namespace Enso.Characters.Enemies
         {
             SetMovementDirectionAndDistance();
 
-            SetMovement(distanceToTarget > AcceptanceRadius ? movementAmount : Vector3.zero);
+            SetMovement(distanceToTarget > AcceptanceRadius ? movementDirection : Vector3.zero);
+            
+            if(ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+                SetDirection(movementDirection);
 
             base.Update();
-
-            //UpdateHitBoxAnchorRotation();
         }
 
         private void SetMovementDirectionAndDistance()
         {
-            movementAmount = ThisFighter.Target.position - transform.position;
-            distanceToTarget = movementAmount.magnitude;
+            movementDirection = ThisFighter.Target.position - transform.position;
+            DistanceToTarget = movementDirection.magnitude;
             
-            movementAmount.Normalize();
+            movementDirection.Normalize();
+        }
+
+        private void OnUpdateDistanceToTargetValue()
+        {
+            UpdateDistanceToTargetValue?.Invoke();
         }
     }
 }

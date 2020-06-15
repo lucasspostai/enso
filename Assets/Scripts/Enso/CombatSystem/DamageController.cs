@@ -19,20 +19,22 @@ namespace Enso.CombatSystem
 
         private void OnEnable()
         {
-            ThisFighter.GetHealthSystem().Damage += SpawnDamageParticle;
+            ThisFighter.GetHealthSystem().Damage += SpawnDamageParticleAndPlayAnimation;
             ThisFighter.GetHealthSystem().Death += Death;
+            ThisFighter.GetBalanceSystem().BreakBalance += BreakBalance;
         }
 
         private void OnDisable()
         {
-            ThisFighter.GetHealthSystem().Damage -= SpawnDamageParticle;
+            ThisFighter.GetHealthSystem().Damage -= SpawnDamageParticleAndPlayAnimation;
             ThisFighter.GetHealthSystem().Death -= Death;
+            ThisFighter.GetBalanceSystem().BreakBalance -= BreakBalance;
         }
 
         protected override void Start()
         {
             base.Start();
-            
+
             PoolManager.Instance.CreatePool(RegularDamageParticle, 3);
             PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
         }
@@ -42,15 +44,16 @@ namespace Enso.CombatSystem
             CurrentCharacterAnimation = damageAnimation;
 
             SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
-            
+
             ThisFighter.GetComponent<AttackController>()?.OnInterrupted();
+            ThisFighter.GetComponent<GuardController>()?.OnInterrupted();
         }
 
-        private void SpawnDamageParticle()
+        private void SpawnDamageParticleAndPlayAnimation()
         {
             if (IsDying)
                 return;
-            
+
             switch (ThisFighter.GetHealthSystem().CurrentAttackType)
             {
                 case AttackType.Light:
@@ -72,7 +75,7 @@ namespace Enso.CombatSystem
         {
             PoolManager.Instance.ReuseObject(particle, transform.position, particle.transform.rotation);
         }
-        
+
         private void Death()
         {
             if (IsDying)
@@ -80,8 +83,15 @@ namespace Enso.CombatSystem
 
             IsDying = true;
             SpawnParticle(HeavyDamageParticle);
-            
+
             PlayDamageAnimation(DeathAnimation);
+        }
+
+        private void BreakBalance()
+        {
+            SpawnParticle(HeavyDamageParticle);
+
+            PlayDamageAnimation(LoseBalanceAnimation);
         }
 
         public override void OnLastFrameEnd()
@@ -95,7 +105,7 @@ namespace Enso.CombatSystem
         protected override void ResetAllProperties()
         {
             base.ResetAllProperties();
-            
+
             IsDying = false;
         }
     }

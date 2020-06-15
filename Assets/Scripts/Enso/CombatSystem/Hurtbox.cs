@@ -1,4 +1,5 @@
-﻿using Enso.Characters;
+﻿using System;
+using Enso.Characters;
 using Enso.Interfaces;
 using UnityEngine;
 
@@ -6,37 +7,52 @@ namespace Enso.CombatSystem
 {
     public class Hurtbox : MonoBehaviour, IDamageable
     {
-        [SerializeField] private Fighter ThisFighter;
-        [SerializeField] private Vector3 HurtboxSize;
         [SerializeField] private GuardController Guard;
-        
-        public void TakeDamage(int damageAmount)
-        {
-            if (Guard.IsGuarding)
-            {
-                ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
 
-                if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
+        [HideInInspector] public Collider2D HurtboxCollider;
+
+        public Fighter ThisFighter;
+
+        private void Start()
+        {
+            HurtboxCollider = GetComponent<Collider2D>();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Y))
+                Guard.Block();
+        }
+
+        public void TakeDamage(int damageAmount, Vector3 direction)
+        {
+            ThisFighter.AnimationHandler.SetFacingDirection((direction * -1)
+                .normalized); //Opposite direction to damage dealer
+
+            if (Guard && Guard.IsGuarding)
+            {
+                if (Guard.IsGuarding)
                 {
-                    Guard.Block();
+                    ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
+
+                    if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
+                    {
+                        Guard.Block();
+                    }
+                    else
+                    {
+                        //Damage
+                    }
                 }
-                else
+                else if (Guard.IsParrying)
                 {
-                    // Lose Balance Animation
+                    //Parry
                 }
             }
             else
             {
                 ThisFighter.GetHealthSystem().TakeDamage(damageAmount);
-                
-                // Play Damage Animation
             }
-        }
-        
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(transform.position, HurtboxSize);
         }
     }
 }

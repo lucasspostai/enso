@@ -41,7 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6068584419971872605}
   - component: {fileID: 7343323490171082706}
-  m_Layer: 10
+  - component: {fileID: 1733472452364742399}
+  m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,9 +75,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43828e6077e99445a676c0453f7c900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisFighter: {fileID: 0}
-  HurtboxSize: {x: 0.4, y: 0.87, z: 0}
-  Guard: {fileID: 0}
+  ThisFighter: {fileID: 6564408634135546682}
+  Guard: {fileID: 6659982890053224015}
+  HurtboxCollider: {fileID: 0}
+--- !u!61 &1733472452364742399
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410737939770930458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.87}
+  m_EdgeRadius: 0
 --- !u!1 &2784454056699770331
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +121,9 @@ GameObject:
   - component: {fileID: 2810581792769401165}
   - component: {fileID: 4006498454464038807}
   - component: {fileID: 7997557526909049030}
+  - component: {fileID: 8624410256441241444}
+  - component: {fileID: 6659982890053224015}
+  - component: {fileID: 1901442203032990081}
   - component: {fileID: 5588487042316084077}
   m_Layer: 10
   m_Name: NaosukeWachi
@@ -163,6 +193,9 @@ MonoBehaviour:
   MovementController: {fileID: 4006498454464038807}
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
+  AttackController: {fileID: 8624410256441241444}
+  GuardController: {fileID: 6659982890053224015}
+  RollController: {fileID: 1901442203032990081}
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,12 +208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6a345ece2f88d47adee79a4e83513b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: {fileID: 7997557526909049030}
+  DamageController: {fileID: 7997557526909049030}
   ActionAnimationControllers:
-  - {fileID: 0}
-  - {fileID: 0}
-  Attack: {fileID: 0}
-  Guard: {fileID: 0}
+  - {fileID: 1901442203032990081}
+  Attack: {fileID: 8624410256441241444}
+  Guard: {fileID: 6659982890053224015}
   MovementController: {fileID: 4006498454464038807}
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
@@ -246,6 +278,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   Velocity: {x: 0, y: 0, z: 0}
+  HitboxAnchor: {fileID: 4942956660897927905}
   Animations: {fileID: 11400000, guid: e803bbd0b8992b5479e080fa5b61f262, type: 2}
   AcceptanceRadius: 1.5
 --- !u!114 &7997557526909049030
@@ -263,17 +296,80 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   IsDying: 0
-  RegularDamageAnimation: {fileID: 11400000, guid: f35f4b04d83882f4381d0ce9daca74b7,
+  RegularDamageAnimation: {fileID: 11400000, guid: 55c60edf0e6802442bcf2fa7a363e44e,
     type: 2}
-  HeavyDamageAnimation: {fileID: 11400000, guid: c1461c6bf3de59f4097b50066abd9e34,
+  HeavyDamageAnimation: {fileID: 11400000, guid: 082c67550b73b5341ba76d5cc85cf3a5,
     type: 2}
-  LoseBalanceAnimation: {fileID: 11400000, guid: 66ddccb91bf1f7e44a0afa0ff2db0c80,
+  LoseBalanceAnimation: {fileID: 11400000, guid: 7cb11640134bb52429cf102534464254,
     type: 2}
-  DeathAnimation: {fileID: 11400000, guid: d4e32998ce2cc634c8259d1001df936b, type: 2}
+  DeathAnimation: {fileID: 11400000, guid: 6e4f97922906fe241a762dca970f7f5b, type: 2}
   RegularDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
+--- !u!114 &8624410256441241444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bc51dfe10836345980b06514e56b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  AttackHitbox: {fileID: 6495635343669140766}
+  LightAttackAnimations:
+  - {fileID: 11400000, guid: 25a0371e23269b04da2cb2818d29aa24, type: 2}
+  - {fileID: 11400000, guid: f16eb2d3777e7db4399a72c18dd8598c, type: 2}
+  - {fileID: 11400000, guid: 0f5c876ce399d704cb8dd52186214d2a, type: 2}
+  StrongAttackAnimation: {fileID: 11400000, guid: 06bb3f748fede6f4b9fc2953cf820f23,
+    type: 2}
+  SpecialAttackAnimation: {fileID: 11400000, guid: 9b8c4e0dcf61d8f4d90862a200b6a5a7,
+    type: 2}
+  StrongAttackCooldown: 8
+  SpecialAttackCost: 0.9
+  CanAttack: 1
+  CanUseStrongAttack: 0
+  CanUseSpecialAttack: 0
+--- !u!114 &6659982890053224015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e68ad79b680ab44a1393c3b913fc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  StartingGuard: 0
+  EndingGuard: 0
+  IsGuarding: 0
+  IsBlocking: 0
+  Animations: {fileID: 11400000, guid: 2119322102a677e46b68310703170e63, type: 2}
+  BlockAnimation: {fileID: 11400000, guid: 4405bfb9ad293a9448b644a78f18768d, type: 2}
+--- !u!114 &1901442203032990081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa1e292f357eab4592fddcb1999fae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  RollAnimation: {fileID: 11400000, guid: f958828f9a9ab7a4ca3801a96038e917, type: 2}
 --- !u!114 &5588487042316084077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,9 +534,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4096
   Anchor: {fileID: 4942956660897927905}
   HitboxSize: {x: 1, y: 1.5, z: 0}
+  FighterHurtbox: {fileID: 7343323490171082706}
 --- !u!1 &5572275493262647249
 GameObject:
   m_ObjectHideFlags: 0

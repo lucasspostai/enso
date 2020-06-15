@@ -20,12 +20,15 @@ namespace Enso.Characters.Player
         private bool sprintInputUpCalled;
         private bool attackInputDownCalled;
         private bool attackInputUpCalled;
+        private bool guardInputCalled;
         private bool guardInputDownCalled;
         private bool guardInputUpCalled;
         private bool rollInputDownCalled;
         private bool healInputDownCalled;
         private bool interactionInputDownCalled;
         private bool specialAttackInputDownCalled;
+
+        private float guardInputHoldingTime;
 
         [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button0;
@@ -36,6 +39,7 @@ namespace Enso.Characters.Player
         [SerializeField] private KeyCode InteractionButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode PageLeftButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
+        [SerializeField] private float ParryDeadZone = 0.1f;
 
         public static bool HoldingGuardInput;
         public static bool HoldingHealInput;
@@ -46,6 +50,7 @@ namespace Enso.Characters.Player
         public static event Action AttackInputUp;
         public static event Action GuardInputDown;
         public static event Action GuardInputUp;
+        public static event Action Parry;
         public static event Action RollInputDown;
         public static event Action HealInputDown;
         public static event Action SpecialAttackInputDown;
@@ -64,6 +69,7 @@ namespace Enso.Characters.Player
             attackInputDownCalled = Input.GetKeyDown(AttackButton) || Input.GetKeyDown(KeyCode.Mouse0);
             attackInputUpCalled = Input.GetKeyUp(AttackButton) || Input.GetKeyUp(KeyCode.Mouse0);
             guardInputDownCalled = Input.GetKeyDown(GuardButton) || Input.GetKeyDown(KeyCode.Mouse1);
+            guardInputCalled = Input.GetKey(GuardButton) || Input.GetKey(KeyCode.Mouse1);
             guardInputUpCalled = Input.GetKeyUp(GuardButton) || Input.GetKeyUp(KeyCode.Mouse1);
             rollInputDownCalled = Input.GetKeyDown(RollButton) || Input.GetKeyDown(KeyCode.Space);
             healInputDownCalled = Input.GetKeyDown(HealButton) || Input.GetKeyDown(KeyCode.Q);
@@ -109,13 +115,27 @@ namespace Enso.Characters.Player
                 OnAttackInputUp();
             }
 
+            if (guardInputCalled)
+            {
+                guardInputHoldingTime += Time.deltaTime;
+            }
+
             if (guardInputDownCalled)
             {
-                OnDefenseInputDown();
+                OnGuardInputDown();
             }
             else if (guardInputUpCalled)
             {
-                OnDefenseInputUp();
+                if (guardInputHoldingTime < ParryDeadZone)
+                {
+                    OnParry();
+                }
+                else
+                {
+                    OnGuardInputUp();
+                }
+
+                guardInputHoldingTime = 0;
             }
 
             if (rollInputDownCalled)
@@ -161,25 +181,30 @@ namespace Enso.Characters.Player
         {
             AttackInputDown?.Invoke();
         }
+        
+        private static void OnAttackInputUp()
+        {
+            AttackInputUp?.Invoke();
+        }
 
-        private static void OnDefenseInputDown()
+        private static void OnGuardInputDown()
         {
             GuardInputDown?.Invoke();
+        }
+        
+        private static void OnGuardInputUp()
+        {
+            GuardInputUp?.Invoke();
+        }
+        
+        private static void OnParry()
+        {
+            Parry?.Invoke();
         }
 
         private static void OnRollInputDown()
         {
             RollInputDown?.Invoke();
-        }
-
-        private static void OnDefenseInputUp()
-        {
-            GuardInputUp?.Invoke();
-        }
-
-        private static void OnAttackInputUp()
-        {
-            AttackInputUp?.Invoke();
         }
 
         private static void OnHealInputDown()
