@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: Naosuke_Combat_Roll
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: acadad0b84cf6a440aaff115ce8e6982, type: 2}
+    - {fileID: 7400000, guid: 76b738a7007b4d64b906ff007da11196, type: 2}
+    - {fileID: 7400000, guid: c9aa33d161a73d347b2b8d806ee600d1, type: 2}
+    - {fileID: 7400000, guid: 0044fa232abddd8449f4c82efad0fe8f, type: 2}
+    - {fileID: 7400000, guid: b975efd366c88674b863fb9e8193e8fd, type: 2}
+    - {fileID: 7400000, guid: 7d14d63a9f575504e8fbce3ea74b27f4, type: 2}
+    - {fileID: 7400000, guid: 9bac7ad536592ab4da7332133149f757, type: 2}
+    - {fileID: 7400000, guid: 9942489e8c498aa478dd6aad903af84c, type: 2}
+    AnimatorStateName: Combat_Roll
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 10
+    MovementOffset: 6
+    AnimationSoundCue: {fileID: 11400000, guid: 841ffef72b805b04b8940544b1e2e54e,
+      type: 2}
+  CanBeCut: 0

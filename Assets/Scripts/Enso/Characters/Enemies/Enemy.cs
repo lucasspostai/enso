@@ -8,10 +8,20 @@ namespace Enso.Characters.Enemies
     {
         protected EnemyMovementController ThisEnemyMovementController;
 
-        protected override void Start()
+        private void OnEnable()
         {
-            base.Start();
-            
+            ThisEnemyMovementController.UpdateDistanceToTargetValue += ChooseBehavior;
+        }
+        
+        private void OnDisable()
+        {
+            ThisEnemyMovementController.UpdateDistanceToTargetValue -= ChooseBehavior;
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
             ThisEnemyMovementController = MovementController as EnemyMovementController;
         }
 
@@ -19,6 +29,11 @@ namespace Enso.Characters.Enemies
         {
             if (!ThisEnemyMovementController)
                 return;
+        }
+        
+        protected virtual void ChooseBehavior()
+        {
+            
         }
     }
 }

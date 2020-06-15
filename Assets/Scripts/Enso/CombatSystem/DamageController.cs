@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Enso.CombatSystem
 {
-    public class CharacterDamageController : CustomAnimationController
+    public class DamageController : CustomAnimationController
     {
         [HideInInspector] public bool IsDying;
 
@@ -21,12 +21,14 @@ namespace Enso.CombatSystem
         {
             ThisFighter.GetHealthSystem().Damage += SpawnDamageParticleAndPlayAnimation;
             ThisFighter.GetHealthSystem().Death += Death;
+            ThisFighter.GetBalanceSystem().BreakBalance += BreakBalance;
         }
 
         private void OnDisable()
         {
             ThisFighter.GetHealthSystem().Damage -= SpawnDamageParticleAndPlayAnimation;
             ThisFighter.GetHealthSystem().Death -= Death;
+            ThisFighter.GetBalanceSystem().BreakBalance -= BreakBalance;
         }
 
         protected override void Start()
@@ -44,6 +46,7 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
 
             ThisFighter.GetComponent<AttackController>()?.OnInterrupted();
+            ThisFighter.GetComponent<GuardController>()?.OnInterrupted();
         }
 
         private void SpawnDamageParticleAndPlayAnimation()
@@ -82,6 +85,13 @@ namespace Enso.CombatSystem
             SpawnParticle(HeavyDamageParticle);
 
             PlayDamageAnimation(DeathAnimation);
+        }
+
+        private void BreakBalance()
+        {
+            SpawnParticle(HeavyDamageParticle);
+
+            PlayDamageAnimation(LoseBalanceAnimation);
         }
 
         public override void OnLastFrameEnd()

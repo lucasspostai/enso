@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Enso.CombatSystem;
 using UnityEngine;
 
@@ -6,7 +7,10 @@ namespace Enso.Characters.Enemies.Naosuke
 {
     public class NaosukeAttackController : AttackController
     {
-        private bool canUseSpecialAttack;
+        private bool mustWaitAfterCompletion;
+        private Coroutine waitAfterCompletionCoroutine;
+        private float waitTime = 1f;
+        private float currentStrongAttackCounter;
         private float maxComboAttacks;
         private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Naosuke naosuke;
@@ -14,8 +18,13 @@ namespace Enso.Characters.Enemies.Naosuke
         [SerializeField] private List<AttackAnimation> LightAttackAnimations = new List<AttackAnimation>();
         [SerializeField] private AttackAnimation StrongAttackAnimation;
         [SerializeField] private AttackAnimation SpecialAttackAnimation;
-        [SerializeField] [Range(0, 1)] private float SpecialAttackCost = 0.9f;
-        
+        [SerializeField] [Range(0, 10f)] private float StrongAttackCooldown = 8f;
+        [SerializeField] [Range(0, 0.99f)] private float SpecialAttackCost = 0.9f;
+
+        [HideInInspector] public bool CanAttack = true;
+        [HideInInspector] public bool CanUseStrongAttack;
+        [HideInInspector] public bool CanUseSpecialAttack;
+
         #region Delegates
 
         private void OnEnable()
@@ -31,7 +40,7 @@ namespace Enso.Characters.Enemies.Naosuke
         }
 
         #endregion
-        
+
         protected override void Start()
         {
             base.Start();
@@ -40,18 +49,43 @@ namespace Enso.Characters.Enemies.Naosuke
 
             ResetCombo();
         }
-        
+
+        protected override void Update()
+        {
+            base.Update();
+            
+            currentStrongAttackCounter += Time.deltaTime;
+
+            if (currentStrongAttackCounter >= StrongAttackCooldown)
+            {
+                CanUseStrongAttack = true;
+            }
+        }
+
         private void ResetCombo()
         {
             lightAttacksAvailable.Clear();
 
             for (int i = 0; i < maxComboAttacks; i++)
             {
-                if(LightAttackAnimations[i])
+                if (LightAttackAnimations[i])
                     lightAttacksAvailable.Add(LightAttackAnimations[i]);
             }
+
+            if(waitAfterCompletionCoroutine != null)
+                StopCoroutine(waitAfterCompletionCoroutine);
+
+            waitAfterCompletionCoroutine = StartCoroutine(WaitThenEnableAttack());
         }
-        
+
+        private IEnumerator WaitThenEnableAttack()
+        {
+            yield return mustWaitAfterCompletion ? new WaitForSeconds(waitTime) : null;
+
+            mustWaitAfterCompletion = false;
+            CanAttack = true;
+        }
+
         public void StartLightAttack()
         {
             if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() &&
@@ -65,10 +99,13 @@ namespace Enso.Characters.Enemies.Naosuke
             {
                 if (CurrentCharacterAnimation != attack)
                 {
-                    naosuke.AnimationHandler.SetFacingDirection((ThisFighter.Target.position - transform.position).normalized);
-                    
+                    RotateTowardsTarget();
+
                     StartAttack(attack);
                     lightAttacksAvailable.Remove(attack);
+
+                    CanAttack = false;
+
                     break;
                 }
             }
@@ -80,32 +117,37 @@ namespace Enso.Characters.Enemies.Naosuke
                 ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
 
-            //ROTATE TOWARDS PLAYER
+            RotateTowardsTarget();
 
             CanCutAnimation = true;
 
             StartAttack(StrongAttackAnimation);
+
+            currentStrongAttackCounter = 0;
+            CanUseStrongAttack = false;
         }
 
         private void EnableSpecialAttack()
         {
-            canUseSpecialAttack = true;
+            CanUseSpecialAttack = true;
         }
 
         private void DisableSpecialAttack()
         {
-            canUseSpecialAttack = false;
+            CanUseSpecialAttack = false;
         }
 
         public void StartSpecialAttack()
         {
-            if (!canUseSpecialAttack || !CanCutAnimation &&
+            if (!CanUseSpecialAttack || !CanCutAnimation &&
                 (LightAttackAnimations.Count - lightAttacksAvailable.Count > 1 ||
                  ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
                  !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying()))
                 return;
 
             ResetCombo();
+
+            RotateTowardsTarget();
 
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
@@ -116,16 +158,29 @@ namespace Enso.Characters.Enemies.Naosuke
                 .TakeDamage(Mathf.RoundToInt(naosuke.GetBalanceSystem().GetMaxBalance() * SpecialAttackCost));
         }
 
+        private void RotateTowardsTarget()
+        {
+            naosuke.AnimationHandler.SetFacingDirection((ThisFighter.Target.position - transform.position)
+                .normalized);
+        }
+
         public void SetMaxCombo(int numberOfAttacks)
         {
             maxComboAttacks = numberOfAttacks;
+        }
+
+        public void WaitAfterAttack(float time)
+        {
+            mustWaitAfterCompletion = true;
+            waitTime = time;
         }
 
         public override void OnCanCutAnimation()
         {
             base.OnCanCutAnimation();
 
-            StartLightAttack();
+            if (lightAttacksAvailable.Count > 0)
+                StartLightAttack();
         }
 
         public override void OnLastFrameEnd()
@@ -139,6 +194,8 @@ namespace Enso.Characters.Enemies.Naosuke
         {
             base.OnInterrupted();
 
+            CurrentCharacterAnimation = null;
+            
             ResetCombo();
         }
 
@@ -147,6 +204,7 @@ namespace Enso.Characters.Enemies.Naosuke
             base.ResetAllProperties();
 
             ResetCombo();
+
         }
     }
 }

@@ -14,46 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartGuardAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: aba0a1a3250ec6f49a2b2ee68b519a07, type: 2}
     AnimatorStateName: Combat_StartGuard
     LayerNumber: 0
   GuardIdleAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: 75bb4aae87a958f44ae8c4f32e5d395b, type: 2}
     AnimatorStateName: Combat_GuardIdle
     LayerNumber: 0
   EndGuardAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: 6859a41f9b62b8348a2198a4df37e5f5, type: 2}
     AnimatorStateName: Combat_EndGuard
     LayerNumber: 0
   ForwardGuardWalkAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: 4a5027f854e2171478f2eaf66c7296c0, type: 2}
     AnimatorStateName: Combat_GuardWalk_Forward
     LayerNumber: 0
   BackwardGuardWalkAnimationClipHolder:
     AnimationClips:
     - {fileID: 0}
-    AnimatorStateName: AnimatorStateName
+    AnimatorStateName: EMPTY
     LayerNumber: 0
   LeftGuardWalkAnimationClipHolder:
     AnimationClips:
     - {fileID: 0}
-    AnimatorStateName: AnimatorStateName
+    AnimatorStateName: EMPTY
     LayerNumber: 0
   RightGuardWalkAnimationClipHolder:
     AnimationClips:
     - {fileID: 0}
-    AnimatorStateName: AnimatorStateName
+    AnimatorStateName: EMPTY
     LayerNumber: 0
   BlockAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: 7a1fb9940b5a07f4188ee362551db3eb, type: 2}
     AnimatorStateName: Combat_Block
     LayerNumber: 0
   ParryAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
+    - {fileID: 7400000, guid: 972c51a95b73c4044a2978180e9cadc2, type: 2}
     AnimatorStateName: Combat_Parry
     LayerNumber: 0

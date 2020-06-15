@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Framework;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ namespace Enso.CombatSystem
         private int faceXHash;
         private int faceYHash;
 
-        [SerializeField] private CharacterDamageController DamageController;
+        [SerializeField] private DamageController DamageController;
         [SerializeField] private CustomAnimationController[] ActionAnimationControllers;
         [SerializeField] private AttackController Attack;
         [SerializeField] private GuardController Guard;
@@ -34,7 +33,7 @@ namespace Enso.CombatSystem
             faceYHash = Animator.StringToHash(MovementController.Animations.FaceY);
         }
 
-        private bool IsDamageAnimationPlaying()
+        public bool IsDamageAnimationPlaying()
         {
             return isDamageNotNull && DamageController.IsAnimationPlaying;
         }
@@ -84,7 +83,7 @@ namespace Enso.CombatSystem
 
         private void InterruptAnyAnimationPlaying(CustomAnimationController customAnimationController)
         {
-            if (isAttackNotNull && Attack != customAnimationController)
+            if (isAttackNotNull && Attack != customAnimationController && Attack.IsAnimationPlaying)
             {
                 Attack.OnInterrupted();
             }

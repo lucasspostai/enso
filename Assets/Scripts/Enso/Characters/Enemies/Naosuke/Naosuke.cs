@@ -7,52 +7,74 @@ namespace Enso.Characters.Enemies.Naosuke
 {
     public class Naosuke : Enemy
     {
-        private bool canAttack = true;
+        [SerializeField] private NaosukeAttackController AttackController;
+        [SerializeField] private NaosukeGuardController GuardController;
+        [SerializeField] private NaosukeRollController RollController;
         
-        [SerializeField] private NaosukeAttackController ThisAttackController;
-        [SerializeField] private RollController ThisRollController;
-
         protected override void Start()
         {
             base.Start();
             
-            ThisAttackController.SetMaxCombo(2);
+            AttackController.SetMaxCombo(2);
         }
 
-        protected override void Update()
+        protected override void ChooseBehavior()
         {
-            base.Update();
-
-            if (AnimationHandler.IsAnyCustomAnimationPlaying())
+            base.ChooseBehavior();
+            
+            if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
             
-            if (ThisEnemyMovementController.DistanceToTarget < 2f)
+            //if(!AttackController.CanAttack)
+            //    PerformRoll();
+            
+            if(!AttackController.CanAttack)
+                StartGuard();
+            
+            if (AttackController.CanAttack && ThisEnemyMovementController.DistanceToTarget < 1.5f)
             {
-                canAttack = false;
-                PerformSimpleAttack();
+                // if (AttackController.CanUseSpecialAttack)
+                // {
+                //     PerformSpecialAttack();
+                //     AttackController.WaitAfterAttack(1);
+                // }
+                // else if (AttackController.CanUseStrongAttack)
+                // {
+                //     PerformStrongAttack();
+                //     AttackController.WaitAfterAttack(1);
+                // }
+                // else
+                // {
+                    PerformSimpleAttack();
+                    AttackController.WaitAfterAttack(3);
+                // }
             }
         }
 
         private void PerformSimpleAttack()
         {
-            
-            
-            ThisAttackController.StartLightAttack();
+            AttackController.StartLightAttack();
         }
 
         private void PerformStrongAttack()
         {
-            
+            AttackController.StartStrongAttack();
         }
 
         private void PerformSpecialAttack()
         {
-            
+            AttackController.StartSpecialAttack();
+        }
+
+        private void StartGuard()
+        {
+            GuardController.StartGuard();
+            GuardController.WaitAfterStartGuard(3);
         }
 
         private void PerformRoll()
         {
-            
+            RollController.PlayRollAnimation();
         }
 
         public NaosukeProperties GetProperties()

@@ -37,7 +37,7 @@ namespace Framework
             base.Update();
 
             UpdateHitBoxAnchorRotation();
-
+            
             if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
             {
                 Velocity = Vector3.zero;
@@ -132,7 +132,7 @@ namespace Framework
             }
         }
 
-        private void SetDirection(Vector3 direction)
+        protected void SetDirection(Vector3 direction)
         {
             ThisFighter.AnimationHandler.SetFacingDirection(direction);
         }

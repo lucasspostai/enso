@@ -8,6 +8,7 @@ namespace Enso.Characters.Player
     [RequireComponent(typeof(Player))]
     public class PlayerAttackController : AttackController
     {
+        private bool riposteAvailable;
         private bool attackQueued;
         private bool isHoldingAttackButton;
         private bool preparingStrongAttack;
@@ -16,12 +17,14 @@ namespace Enso.Characters.Player
         private bool canUseSpecialAttack;
         private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Player player;
+        private PlayerGuardController playerGuardController;
 
         [SerializeField] private List<AttackAnimation> LightAttackAnimations = new List<AttackAnimation>();
         [SerializeField] private AttackAnimation PrepareStrongAttackAnimation;
         [SerializeField] private AttackAnimation HoldStrongAttackAnimation;
         [SerializeField] private AttackAnimation ReleaseStrongAttackAnimation;
-        [SerializeField] private AttackAnimation SpecialAttack;
+        [SerializeField] private AttackAnimation SpecialAttackAnimation;
+        [SerializeField] private AttackAnimation RiposteAnimation;
         [SerializeField] private float StrongAttackDeadZoneTime;
         [SerializeField] [Range(0, 1)] private float SpecialAttackCost = 0.9f;
 
@@ -52,6 +55,10 @@ namespace Enso.Characters.Player
             base.Start();
 
             player = GetComponent<Player>();
+            playerGuardController = GetComponent<PlayerGuardController>();
+
+            playerGuardController.ParryHit += EnableParry;
+            playerGuardController.DisableParryHit += DisableParry;
 
             ResetCombo();
         }
@@ -69,11 +76,24 @@ namespace Enso.Characters.Player
             }
         }
 
+        private void EnableParry()
+        {
+            riposteAvailable = true;
+        }
+
+        private void DisableParry()
+        {
+            riposteAvailable = false;
+        }
+
         private void PressAttackButton()
         {
             isHoldingAttackButton = true;
 
-            StartLightAttack();
+            if (riposteAvailable)
+                StartRiposte();
+            else
+                StartLightAttack();
         }
 
         private void ReleaseAttackButton()
@@ -192,11 +212,16 @@ namespace Enso.Characters.Player
 
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
-            StartAttack(SpecialAttack);
+            StartAttack(SpecialAttackAnimation);
 
             //Special Attack Cost
             player.GetBalanceSystem()
                 .TakeDamage(Mathf.RoundToInt(player.GetBalanceSystem().GetMaxBalance() * SpecialAttackCost));
+        }
+
+        private void StartRiposte()
+        {
+            StartAttack(RiposteAnimation);
         }
 
         private void ResetCombo()

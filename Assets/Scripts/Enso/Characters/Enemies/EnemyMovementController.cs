@@ -1,4 +1,5 @@
-﻿using Framework;
+﻿using System;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies
@@ -11,8 +12,15 @@ namespace Enso.Characters.Enemies
         public float DistanceToTarget
         {
             get => distanceToTarget;
-            private set => distanceToTarget = value;
+            private set
+            {
+                distanceToTarget = value;
+
+                OnUpdateDistanceToTargetValue();
+            }
         }
+
+        public event Action UpdateDistanceToTargetValue;  
 
         [SerializeField] private float AcceptanceRadius = 2f;
         
@@ -29,6 +37,9 @@ namespace Enso.Characters.Enemies
             SetMovementDirectionAndDistance();
 
             SetMovement(distanceToTarget > AcceptanceRadius ? movementDirection : Vector3.zero);
+            
+            if(ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
+                SetDirection(movementDirection);
 
             base.Update();
         }
@@ -39,6 +50,11 @@ namespace Enso.Characters.Enemies
             DistanceToTarget = movementDirection.magnitude;
             
             movementDirection.Normalize();
+        }
+
+        private void OnUpdateDistanceToTargetValue()
+        {
+            UpdateDistanceToTargetValue?.Invoke();
         }
     }
 }

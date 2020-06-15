@@ -7,31 +7,46 @@ namespace Enso.CombatSystem
 {
     public class Hurtbox : MonoBehaviour, IDamageable
     {
-        [SerializeField] private Fighter ThisFighter;
         [SerializeField] private GuardController Guard;
 
         [HideInInspector] public Collider2D HurtboxCollider;
+
+        public Fighter ThisFighter;
 
         private void Start()
         {
             HurtboxCollider = GetComponent<Collider2D>();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Y))
+                Guard.Block();
+        }
+
         public void TakeDamage(int damageAmount, Vector3 direction)
         {
-            ThisFighter.AnimationHandler.SetFacingDirection((direction * -1).normalized); //Opposite direction to damage dealer
+            ThisFighter.AnimationHandler.SetFacingDirection((direction * -1)
+                .normalized); //Opposite direction to damage dealer
 
             if (Guard && Guard.IsGuarding)
             {
-                ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
+                if (Guard.IsGuarding)
+                {
+                    ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
 
-                if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
-                {
-                    Guard.Block();
+                    if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
+                    {
+                        Guard.Block();
+                    }
+                    else
+                    {
+                        //Damage
+                    }
                 }
-                else
+                else if (Guard.IsParrying)
                 {
-                    // Lose Balance Animation
+                    //Parry
                 }
             }
             else

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Hiroyuki_OneSword_Riposte
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 0bb2175ee848bcb47b8412cf66b039ae, type: 2}
+    - {fileID: 7400000, guid: f3f5a999ded808247b1ccdb5895ad780, type: 2}
+    - {fileID: 7400000, guid: c8125f122bfcfdb4b94894318ae5cbb0, type: 2}
+    - {fileID: 7400000, guid: d235209ca8ef786428c7ace6b16590b3, type: 2}
+    - {fileID: 7400000, guid: eab41fbcc42f7db4eaaf80339bf785bc, type: 2}
+    - {fileID: 7400000, guid: 447d6592676bee147b3f0219395c1383, type: 2}
+    - {fileID: 7400000, guid: 07c600fe2f1c5b74981e17bb6ee7ad7e, type: 2}
+    - {fileID: 7400000, guid: 72aad6fe36879e648abd92b8b1d0b01d, type: 2}
+    AnimatorStateName: OneSword_Riposte
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 4
+    EndHitFrame: 9
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 4
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 5
+  Type: 2

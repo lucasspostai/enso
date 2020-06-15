@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisFighter: {fileID: 6564408634135546682}
-  Guard: {fileID: 0}
+  Guard: {fileID: 6659982890053224015}
   HurtboxCollider: {fileID: 0}
 --- !u!61 &1733472452364742399
 BoxCollider2D:
@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 4006498454464038807}
   - component: {fileID: 7997557526909049030}
   - component: {fileID: 8624410256441241444}
+  - component: {fileID: 6659982890053224015}
+  - component: {fileID: 1901442203032990081}
   - component: {fileID: 5588487042316084077}
   m_Layer: 10
   m_Name: NaosukeWachi
@@ -191,8 +193,9 @@ MonoBehaviour:
   MovementController: {fileID: 4006498454464038807}
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
-  ThisAttackController: {fileID: 8624410256441241444}
-  ThisRollController: {fileID: 0}
+  AttackController: {fileID: 8624410256441241444}
+  GuardController: {fileID: 6659982890053224015}
+  RollController: {fileID: 1901442203032990081}
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageController: {fileID: 7997557526909049030}
-  ActionAnimationControllers: []
+  ActionAnimationControllers:
+  - {fileID: 1901442203032990081}
   Attack: {fileID: 8624410256441241444}
-  Guard: {fileID: 0}
+  Guard: {fileID: 6659982890053224015}
   MovementController: {fileID: 4006498454464038807}
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
@@ -326,7 +330,46 @@ MonoBehaviour:
     type: 2}
   SpecialAttackAnimation: {fileID: 11400000, guid: 9b8c4e0dcf61d8f4d90862a200b6a5a7,
     type: 2}
+  StrongAttackCooldown: 8
   SpecialAttackCost: 0.9
+  CanAttack: 1
+  CanUseStrongAttack: 0
+  CanUseSpecialAttack: 0
+--- !u!114 &6659982890053224015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e68ad79b680ab44a1393c3b913fc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  StartingGuard: 0
+  EndingGuard: 0
+  IsGuarding: 0
+  IsBlocking: 0
+  Animations: {fileID: 11400000, guid: 2119322102a677e46b68310703170e63, type: 2}
+  BlockAnimation: {fileID: 11400000, guid: 4405bfb9ad293a9448b644a78f18768d, type: 2}
+--- !u!114 &1901442203032990081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa1e292f357eab4592fddcb1999fae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  RollAnimation: {fileID: 11400000, guid: f958828f9a9ab7a4ca3801a96038e917, type: 2}
 --- !u!114 &5588487042316084077
 MonoBehaviour:
   m_ObjectHideFlags: 0
