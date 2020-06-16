@@ -29,25 +29,25 @@ namespace Enso.Characters.Enemies.Naosuke
             //    PerformRoll();
             
             if(!AttackController.CanAttack)
-                StartGuard();
+                StartParry();
             
             if (AttackController.CanAttack && ThisEnemyMovementController.DistanceToTarget < 1.5f)
             {
-                // if (AttackController.CanUseSpecialAttack)
-                // {
-                //     PerformSpecialAttack();
-                //     AttackController.WaitAfterAttack(1);
-                // }
-                // else if (AttackController.CanUseStrongAttack)
-                // {
-                //     PerformStrongAttack();
-                //     AttackController.WaitAfterAttack(1);
-                // }
-                // else
-                // {
+                if (AttackController.CanUseSpecialAttack)
+                {
+                    PerformSpecialAttack();
+                    AttackController.WaitAfterAttack(1);
+                }
+                else if (AttackController.CanUseStrongAttack)
+                {
+                    PerformStrongAttack();
+                    AttackController.WaitAfterAttack(1);
+                }
+                else
+                {
                     PerformSimpleAttack();
                     AttackController.WaitAfterAttack(3);
-                // }
+                }
             }
         }
 
@@ -75,6 +75,11 @@ namespace Enso.Characters.Enemies.Naosuke
         private void PerformRoll()
         {
             RollController.PlayRollAnimation();
+        }
+
+        private void StartParry()
+        {
+            GuardController.Parry();
         }
 
         public NaosukeProperties GetProperties()

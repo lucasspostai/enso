@@ -1,27 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Enso.CombatSystem;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies.Naosuke
 {
-    public class NaosukeAttackController : AttackController
+    public class NaosukeAttackController : EnemyAttackController
     {
-        private bool mustWaitAfterCompletion;
-        private Coroutine waitAfterCompletionCoroutine;
-        private float waitTime = 1f;
         private float currentStrongAttackCounter;
         private float maxComboAttacks;
         private readonly List<AttackAnimation> lightAttacksAvailable = new List<AttackAnimation>();
         private Naosuke naosuke;
+        private NaosukeGuardController naosukeGuardController;
 
         [SerializeField] private List<AttackAnimation> LightAttackAnimations = new List<AttackAnimation>();
         [SerializeField] private AttackAnimation StrongAttackAnimation;
         [SerializeField] private AttackAnimation SpecialAttackAnimation;
+        [SerializeField] private AttackAnimation RiposteAnimation;
         [SerializeField] [Range(0, 10f)] private float StrongAttackCooldown = 8f;
         [SerializeField] [Range(0, 0.99f)] private float SpecialAttackCost = 0.9f;
-
-        [HideInInspector] public bool CanAttack = true;
+        
         [HideInInspector] public bool CanUseStrongAttack;
         [HideInInspector] public bool CanUseSpecialAttack;
 
@@ -46,6 +43,9 @@ namespace Enso.Characters.Enemies.Naosuke
             base.Start();
 
             naosuke = GetComponent<Naosuke>();
+            naosukeGuardController = GetComponent<NaosukeGuardController>();
+
+            naosukeGuardController.ParryHit += EnableParry;
 
             ResetCombo();
         }
@@ -62,6 +62,16 @@ namespace Enso.Characters.Enemies.Naosuke
             }
         }
 
+        private void EnableParry()
+        {
+            StartRiposte();
+        }
+        
+        private void StartRiposte()
+        {
+            StartAttack(RiposteAnimation);
+        }
+
         private void ResetCombo()
         {
             lightAttacksAvailable.Clear();
@@ -72,18 +82,7 @@ namespace Enso.Characters.Enemies.Naosuke
                     lightAttacksAvailable.Add(LightAttackAnimations[i]);
             }
 
-            if(waitAfterCompletionCoroutine != null)
-                StopCoroutine(waitAfterCompletionCoroutine);
-
-            waitAfterCompletionCoroutine = StartCoroutine(WaitThenEnableAttack());
-        }
-
-        private IEnumerator WaitThenEnableAttack()
-        {
-            yield return mustWaitAfterCompletion ? new WaitForSeconds(waitTime) : null;
-
-            mustWaitAfterCompletion = false;
-            CanAttack = true;
+            Wait();
         }
 
         public void StartLightAttack()
@@ -158,23 +157,11 @@ namespace Enso.Characters.Enemies.Naosuke
                 .TakeDamage(Mathf.RoundToInt(naosuke.GetBalanceSystem().GetMaxBalance() * SpecialAttackCost));
         }
 
-        private void RotateTowardsTarget()
-        {
-            naosuke.AnimationHandler.SetFacingDirection((ThisFighter.Target.position - transform.position)
-                .normalized);
-        }
-
         public void SetMaxCombo(int numberOfAttacks)
         {
             maxComboAttacks = numberOfAttacks;
         }
-
-        public void WaitAfterAttack(float time)
-        {
-            mustWaitAfterCompletion = true;
-            waitTime = time;
-        }
-
+        
         public override void OnCanCutAnimation()
         {
             base.OnCanCutAnimation();

@@ -110,7 +110,7 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(BlockAnimation.ClipHolder, BlockAnimation.AnimationFrameChecker);
         }
 
-        public void Parry()
+        public virtual void Parry()
         {
             if (ThisFighter.AnimationHandler.IsDamageAnimationPlaying())
                 return;

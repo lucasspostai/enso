@@ -46,6 +46,12 @@ namespace Enso.Characters.Player
             PlayerInput.SpecialAttackInputDown -= StartSpecialAttack;
             ThisFighter.GetBalanceSystem().EnableSpecialAttack -= EnableSpecialAttack;
             ThisFighter.GetBalanceSystem().LoseBalance -= DisableSpecialAttack;
+
+            if (playerGuardController)
+            {
+                playerGuardController.ParryHit -= EnableParry;
+                playerGuardController.DisableParryHit -= DisableParry;
+            }
         }
 
         #endregion

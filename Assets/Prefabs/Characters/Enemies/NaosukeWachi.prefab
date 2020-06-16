@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43828e6077e99445a676c0453f7c900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisFighter: {fileID: 6564408634135546682}
   Guard: {fileID: 6659982890053224015}
   HurtboxCollider: {fileID: 0}
+  ThisFighter: {fileID: 6564408634135546682}
 --- !u!61 &1733472452364742399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5588487042316084077}
   m_Layer: 10
   m_Name: NaosukeWachi
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 6495635343669140766}
+  CanAttack: 1
   LightAttackAnimations:
   - {fileID: 11400000, guid: 25a0371e23269b04da2cb2818d29aa24, type: 2}
   - {fileID: 11400000, guid: f16eb2d3777e7db4399a72c18dd8598c, type: 2}
@@ -330,9 +331,9 @@ MonoBehaviour:
     type: 2}
   SpecialAttackAnimation: {fileID: 11400000, guid: 9b8c4e0dcf61d8f4d90862a200b6a5a7,
     type: 2}
+  RiposteAnimation: {fileID: 11400000, guid: bd90d6171d52f3b4e9da63fc7ca55553, type: 2}
   StrongAttackCooldown: 8
   SpecialAttackCost: 0.9
-  CanAttack: 1
   CanUseStrongAttack: 0
   CanUseSpecialAttack: 0
 --- !u!114 &6659982890053224015
@@ -353,8 +354,13 @@ MonoBehaviour:
   EndingGuard: 0
   IsGuarding: 0
   IsBlocking: 0
+  IsParrying: 0
+  GuardReleased: 0
   Animations: {fileID: 11400000, guid: 2119322102a677e46b68310703170e63, type: 2}
   BlockAnimation: {fileID: 11400000, guid: 4405bfb9ad293a9448b644a78f18768d, type: 2}
+  ParryAnimation: {fileID: 11400000, guid: d3df504a4c3dbe8479f2ed38cb6f532c, type: 2}
+  ParryDuration: 2
+  MaxTimeOnParryStance: 5
 --- !u!114 &1901442203032990081
 MonoBehaviour:
   m_ObjectHideFlags: 0

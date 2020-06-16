@@ -6,6 +6,11 @@ namespace Framework.Animations
     [System.Serializable]
     public class AnimationClipHolder
     {
+        public AnimationClipHolder Clone()
+        {
+            return MemberwiseClone() as AnimationClipHolder;
+        }
+        
         private Animator thisAnimator;
         private int totalFrames;
         private int animationFullNameHash;

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: AshigaruWarrior_LightAttackA
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 8e20846401c2a0e49b3181b1679b10e7, type: 2}
+    - {fileID: 7400000, guid: 6ab74e07f0d948d4f879701581e59c79, type: 2}
+    - {fileID: 7400000, guid: aaf3e34d46c9e3740bad9a2a48655112, type: 2}
+    - {fileID: 7400000, guid: b4701853a94ba1e4d997cc7d8fea8510, type: 2}
+    - {fileID: 7400000, guid: 4bb8cae6642648949aa938a100c257fa, type: 2}
+    - {fileID: 7400000, guid: da609cd11f3595249b8fe97af7fb866a, type: 2}
+    - {fileID: 7400000, guid: a81084969b55fb34ea506c3c068f42fd, type: 2}
+    - {fileID: 7400000, guid: 572227a75bfdf65428c57f1560f963fc, type: 2}
+    AnimatorStateName: Combat_LightAttackA
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 4
+    EndHitFrame: 5
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 4
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 1
+  Type: 0

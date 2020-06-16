@@ -6,6 +6,11 @@ namespace Framework.Animations
     [System.Serializable]
     public class FrameChecker
     {
+        public FrameChecker Clone()
+        {
+            return MemberwiseClone() as FrameChecker;
+        }
+        
         private IFrameCheckHandler thisFrameCheckHandler;
         private AnimationClipHolder thisAnimationClipHolder;
         private bool checkedStartHitFrame;

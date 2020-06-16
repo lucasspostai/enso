@@ -73,12 +73,16 @@ namespace Enso.CombatSystem
         {
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Open);
+            
+            print("Hit Frame Start - " + gameObject.name);
         }
 
         public override void OnHitFrameEnd()
         {
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Closed);
+            
+            print("Hit Frame End - " + gameObject.name);
         }
     }
 }

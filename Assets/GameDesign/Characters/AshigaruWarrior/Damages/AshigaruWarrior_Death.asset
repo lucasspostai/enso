@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: AshigaruWarrior_Death
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 79a054f2b25892e41b7f29430c3a2dcc, type: 2}
+    - {fileID: 7400000, guid: b4464a95804f1c14fa465dd4ba7b943c, type: 2}
+    - {fileID: 7400000, guid: 5918d27b57017f7479383f1276108b1a, type: 2}
+    - {fileID: 7400000, guid: f00688707cdbed641a84849f8d165cf0, type: 2}
+    - {fileID: 7400000, guid: 758aee819802e504089e79f5cba7067f, type: 2}
+    - {fileID: 7400000, guid: c240e8a2d4b5a4e4f8b64cb4657d8b79, type: 2}
+    - {fileID: 7400000, guid: 7d48b786c9d7abe46b77fbe0c4575186, type: 2}
+    - {fileID: 7400000, guid: cdf1eb7a213f38045b2efe7e613f2298, type: 2}
+    AnimatorStateName: Combat_Death
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 6
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

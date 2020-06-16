@@ -35,4 +35,4 @@ MonoBehaviour:
     MovementOffset: -4
     AnimationSoundCue: {fileID: 11400000, guid: 81ab207b154a9bd4b83fbe72490bcacb,
       type: 2}
-  CanBeCut: 1
+  CanBeCut: 0

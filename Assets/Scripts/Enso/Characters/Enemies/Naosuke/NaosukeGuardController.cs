@@ -9,10 +9,11 @@ namespace Enso.Characters.Enemies.Naosuke
     {
         private bool mustWaitAfterStartGuard;
         private Coroutine waitAfterStartGuardCoroutine;
+        private Coroutine parryStanceCoroutine;
         private float waitTime = 1f;
         private Naosuke naosuke;
-
-        [SerializeField] private ActionAnimation ParryStanceAnimation;
+        
+        [SerializeField] private float MaxTimeOnParryStance = 5f;
 
         protected override void Start()
         {
@@ -35,6 +36,18 @@ namespace Enso.Characters.Enemies.Naosuke
             }
         }
 
+        public override void Parry()
+        {
+            base.Parry();
+            
+            ThisFighter.MovementController.SetSpeed(0);
+            
+            if(parryStanceCoroutine != null)
+                StopCoroutine(parryStanceCoroutine);
+
+            parryStanceCoroutine = StartCoroutine(StayOnParryStance());
+        }
+
         public void WaitAfterStartGuard(float time)
         {
             waitTime = time;
@@ -52,9 +65,27 @@ namespace Enso.Characters.Enemies.Naosuke
             EndGuard();
         }
 
+        private IEnumerator StayOnParryStance()
+        {
+            yield return new WaitForSeconds(MaxTimeOnParryStance);
+            
+            if(IsParrying)
+                base.OnLastFrameEnd();
+            
+            ThisFighter.MovementController.SetSpeed(ThisFighter.GetBaseProperties().RunSpeed);
+        }
+
+        public override void OnLastFrameEnd()
+        {
+            if (!IsParrying)
+                base.OnLastFrameEnd();
+        }
+        
         protected override void ResetAllProperties()
         {
             base.ResetAllProperties();
+
+            IsParrying = false;
 
             if (naosuke)
                 naosuke.MovementController.SetSpeed(naosuke.GetBaseProperties().RunSpeed);

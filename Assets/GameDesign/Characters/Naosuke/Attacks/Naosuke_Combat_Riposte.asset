@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Naosuke_Combat_Riposte
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 1ee852146ef766542a65f350df2bf0c6, type: 2}
+    - {fileID: 7400000, guid: 6802cd3deb871dd4481e0030c47a1773, type: 2}
+    - {fileID: 7400000, guid: 38b9252fe240ab042bc54031d19bdd1e, type: 2}
+    - {fileID: 7400000, guid: 2806083d2991e264a8587d279fdb97b0, type: 2}
+    - {fileID: 7400000, guid: d2e9f7f0afa13a644bbd342ac73acc57, type: 2}
+    - {fileID: 7400000, guid: 125a8055ee192ea499939dc4540ea176, type: 2}
+    - {fileID: 7400000, guid: d2e08440c62fab84198563ca9a3dfb7e, type: 2}
+    - {fileID: 7400000, guid: 1bc791812cce2f84e819804fcecb662b, type: 2}
+    AnimatorStateName: Combat_Riposte
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 2
+    EndHitFrame: 3
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 5
+  Type: 2

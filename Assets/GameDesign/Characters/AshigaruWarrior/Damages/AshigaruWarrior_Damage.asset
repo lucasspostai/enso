@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: AshigaruWarrior_Damage
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: f983487e44e4786419f611a50a963234, type: 2}
+    - {fileID: 7400000, guid: 2c89fcb87faaf9f4baaa79617998de96, type: 2}
+    - {fileID: 7400000, guid: f1a4bf9ffcae256408b71bce2fbcc452, type: 2}
+    - {fileID: 7400000, guid: 3206f8c3829301a4fa50f7993e9de26e, type: 2}
+    - {fileID: 7400000, guid: b007bb003df63fb4abbb025e747ab649, type: 2}
+    - {fileID: 7400000, guid: 4b77395fbcbcdfa4097c031fe8aeacfa, type: 2}
+    - {fileID: 7400000, guid: a287f46990788f144b83d8a7ca86c300, type: 2}
+    - {fileID: 7400000, guid: 959d2551d11952c46b3f40c7c1b481a9, type: 2}
+    AnimatorStateName: Combat_Damage
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

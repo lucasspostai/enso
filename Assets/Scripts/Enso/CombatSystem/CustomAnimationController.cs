@@ -48,8 +48,8 @@ namespace Enso.CombatSystem
 
         protected void SetAnimationPropertiesAndPlay(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
         {
-            CurrentAnimationClipHolder = animationClipHolder;
-            CurrentFrameChecker = frameChecker;
+            CurrentAnimationClipHolder = animationClipHolder.Clone();
+            CurrentFrameChecker = frameChecker.Clone();
 
             CurrentAnimationClipHolder.Initialize(ThisFighter.AnimationHandler.CharacterAnimator);
             CurrentFrameChecker.Initialize(this, CurrentAnimationClipHolder);
