@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: AshigaruArcher_Death
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: d32afd8ed14b84144a006a9a43f27fad, type: 2}
+    - {fileID: 7400000, guid: faaad27670150df4ca209ee2fb8ea36e, type: 2}
+    - {fileID: 7400000, guid: 0c43e0d78abb5ef4a939ac1c49d3b148, type: 2}
+    - {fileID: 7400000, guid: 8232af04bca10a843bb610e6437efd59, type: 2}
+    - {fileID: 7400000, guid: 0b01b6a35c9f28d42b402f34f0ecb0de, type: 2}
+    - {fileID: 7400000, guid: 1962aa1ba6c9c934388b0f07d824f06c, type: 2}
+    - {fileID: 7400000, guid: 6a8574d46d47ad041a351655285b3cc0, type: 2}
+    - {fileID: 7400000, guid: bd2f56836c4ead84ab76c09e74551f16, type: 2}
+    AnimatorStateName: Combat_Death
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 6
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
