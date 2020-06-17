@@ -189,6 +189,7 @@ MonoBehaviour:
   BaseProperties: {fileID: 11400000, guid: 90353def78a5b204b838d64660f88e52, type: 2}
   Collisions: {fileID: 2810581792769401165}
   MovementController: {fileID: 4006498454464038807}
+  FighterTeam: 1
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
   AttackController: {fileID: 6587487395945137368}
@@ -258,7 +259,7 @@ MonoBehaviour:
   ShowDebug: 0
   CollisionLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1792
 --- !u!114 &4006498454464038807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,7 @@ MonoBehaviour:
   Velocity: {x: 0, y: 0, z: 0}
   HitboxAnchor: {fileID: 4942956660897927905}
   Animations: {fileID: 11400000, guid: 38e2aafbb62ea2146aa67ffb457990a1, type: 2}
+  MustMove: 0
   AcceptanceRadius: 1.5
 --- !u!114 &7997557526909049030
 MonoBehaviour:
@@ -345,6 +347,7 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 2fe759ba5b162224393fb40da8499cc5, type: 2}
   ParryAnimation: {fileID: 0}
   ParryDuration: 2
+  CanGuard: 0
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,12 +614,47 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
       objectReference: {fileID: 3866089748899659546}
-    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 

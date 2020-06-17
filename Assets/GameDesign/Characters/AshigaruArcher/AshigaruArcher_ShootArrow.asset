@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
   m_Name: AshigaruArcher_ShootArrow
   m_EditorClassIdentifier: 
   ClipHolder:
@@ -25,7 +25,7 @@ MonoBehaviour:
     AnimatorStateName: Combat_ShootArrow
     LayerNumber: 0
   AnimationFrameChecker:
-    DealDamage: 1
+    DealDamage: 0
     StartHitFrame: 1
     EndHitFrame: 2
     CanCutFrame: 3
@@ -35,3 +35,6 @@ MonoBehaviour:
     MovementOffset: 0
     AnimationSoundCue: {fileID: 0}
   CanBeCut: 0
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 1
+  Type: 0

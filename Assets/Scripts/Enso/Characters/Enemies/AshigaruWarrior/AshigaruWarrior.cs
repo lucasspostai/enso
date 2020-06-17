@@ -11,21 +11,26 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
         {
             base.ChooseBehavior();
 
-            if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
+            if (AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;
 
-            if (ThisEnemyMovementController.DistanceToTarget < 10f)
+            if (GuardController.CanGuard &&
+                ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
             {
-                if (!AttackController.CanAttack)
-                {
-                    StartGuard();
-                }
-
-                if (ThisEnemyMovementController.DistanceToTarget < 1.5f)
-                {
-                    PerformSimpleAttack();
-                    AttackController.WaitAfterAttack(2);
-                }
+                MustMove(false);
+                StartGuard();
+                GuardController.WaitAfterStartGuard(3);
+                GuardController.WaitAfterEndGuard(3);
+            }
+            else if (AttackController.CanAttack &&
+                     ThisEnemyMovementController.DistanceToTarget < GetProperties().AttackDistance)
+            {
+                PerformSimpleAttack();
+                AttackController.WaitAfterAttack(1);
+            }
+            else
+            {
+                MustMove(true);
             }
         }
 
@@ -37,7 +42,6 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
         private void StartGuard()
         {
             GuardController.StartGuard();
-            GuardController.WaitAfterStartGuard(3);
         }
 
         public AshigaruWarriorProperties GetProperties()

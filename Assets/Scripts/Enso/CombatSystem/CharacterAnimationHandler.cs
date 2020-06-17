@@ -104,7 +104,7 @@ namespace Enso.CombatSystem
             float normalizedTime = 0f)
         {
             InterruptAnyAnimationPlaying(controller);
-
+            
             if (normalizedTime > 0f)
                 CharacterAnimator.Play(stateName, layer, normalizedTime);
             else

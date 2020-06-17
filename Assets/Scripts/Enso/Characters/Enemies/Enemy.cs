@@ -8,12 +8,12 @@ namespace Enso.Characters.Enemies
     {
         protected EnemyMovementController ThisEnemyMovementController;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             ThisEnemyMovementController.UpdateDistanceToTargetValue += ChooseBehavior;
         }
         
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             ThisEnemyMovementController.UpdateDistanceToTargetValue -= ChooseBehavior;
         }
@@ -29,6 +29,11 @@ namespace Enso.Characters.Enemies
         {
             if (!ThisEnemyMovementController)
                 return;
+        }
+
+        protected void MustMove(bool move)
+        {
+            ThisEnemyMovementController.MustMove = move;
         }
         
         protected virtual void ChooseBehavior()

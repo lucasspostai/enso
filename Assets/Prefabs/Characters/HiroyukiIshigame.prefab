@@ -266,7 +266,7 @@ MonoBehaviour:
   ShowDebug: 1
   CollisionLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 9728
   TriggerCollisionLayerMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -341,6 +341,7 @@ MonoBehaviour:
   Animations: {fileID: 11400000, guid: c992d6ed723d5534c9fc6f65f7af8edc, type: 2}
   BlockAnimation: {fileID: 11400000, guid: 9ca3a14f3243e1a44844731ed5a0ee0d, type: 2}
   ParryAnimation: {fileID: 11400000, guid: 1adcedf8be4a2c849ae1045f740244f2, type: 2}
+  ParryDuration: 2
 --- !u!114 &7997557526909049030
 MonoBehaviour:
   m_ObjectHideFlags: 0

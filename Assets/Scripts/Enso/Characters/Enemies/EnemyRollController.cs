@@ -1,19 +1,10 @@
 ﻿using Enso.CombatSystem;
 using UnityEngine;
 
-namespace Enso.Characters.Enemies.Naosuke
+namespace Enso.Characters.Enemies
 {
-    public class NaosukeRollController : RollController
+    public class EnemyRollController : RollController
     {
-        private Naosuke naosuke;
-
-        protected override void Start()
-        {
-            base.Start();
-
-            naosuke = GetComponent<Naosuke>();
-        }
-
         protected override void SetDirection()
         {
             base.SetDirection();
@@ -30,7 +21,7 @@ namespace Enso.Characters.Enemies.Naosuke
 
         private void RotateTowardsTarget(bool towardsTarget)
         {
-            var characterAnimationHandler = naosuke.Target.GetComponent<CharacterAnimationHandler>();
+            var characterAnimationHandler = ThisFighter.Target.GetComponent<CharacterAnimationHandler>();
 
             if (!characterAnimationHandler)
                 return;

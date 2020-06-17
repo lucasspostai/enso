@@ -75,15 +75,13 @@ namespace Enso.Characters.Enemies
             
             if (healthSystem != null)
             {
-                healthSystem.Death -= Disable;
+                healthSystem.Death -= Death;
             }
         }
 
-        public override void Disable()
+        private void Death()
         {
-            base.Disable();
-
-            OnDisable();
+            OnDisable();  
         }
 
         private void UpdateBalanceValue()

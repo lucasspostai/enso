@@ -26,8 +26,8 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
         {
             base.OnLastFrameEnd();
 
-            ThisFighter.AnimationHandler.Play(this,
-                ThisFighter.MovementController.Animations.IdleAnimationClipHolder.AnimatorStateName);
+            // ThisFighter.AnimationHandler.Play(this,
+            //     ThisFighter.MovementController.Animations.IdleAnimationClipHolder.AnimatorStateName);
             
             Wait();
         }

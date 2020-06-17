@@ -191,6 +191,7 @@ MonoBehaviour:
   BaseProperties: {fileID: 11400000, guid: deab98181c062254f9078bc82e69267b, type: 2}
   Collisions: {fileID: 2810581792769401165}
   MovementController: {fileID: 4006498454464038807}
+  FighterTeam: 1
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
   AttackController: {fileID: 8624410256441241444}
@@ -280,6 +281,7 @@ MonoBehaviour:
   Velocity: {x: 0, y: 0, z: 0}
   HitboxAnchor: {fileID: 4942956660897927905}
   Animations: {fileID: 11400000, guid: e803bbd0b8992b5479e080fa5b61f262, type: 2}
+  MustMove: 0
   AcceptanceRadius: 1.5
 --- !u!114 &7997557526909049030
 MonoBehaviour:
@@ -360,6 +362,7 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 4405bfb9ad293a9448b644a78f18768d, type: 2}
   ParryAnimation: {fileID: 11400000, guid: d3df504a4c3dbe8479f2ed38cb6f532c, type: 2}
   ParryDuration: 2
+  CanGuard: 0
   MaxTimeOnParryStance: 5
 --- !u!114 &1901442203032990081
 MonoBehaviour:

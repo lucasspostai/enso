@@ -11,6 +11,7 @@ namespace Enso.CombatSystem
 {
     public abstract class AttackController : CustomAnimationController, IHitboxResponder
     {
+        private bool isHitboxNull;
         private int currentDamage;
         private readonly List<Hurtbox> damagedHurtboxes = new List<Hurtbox>();
 
@@ -20,11 +21,17 @@ namespace Enso.CombatSystem
         {
             base.Start();
 
-            AttackHitbox.SetHitboxResponder(this);
+            isHitboxNull = AttackHitbox == null;
+
+            if (!isHitboxNull)
+                AttackHitbox.SetHitboxResponder(this);
         }
 
         private void SetDamageProperties(Vector3 hitboxSize, int damage)
         {
+            if (isHitboxNull)
+                return;
+
             AttackHitbox.SetHitBoxSize(hitboxSize);
             currentDamage = damage;
         }
@@ -50,7 +57,8 @@ namespace Enso.CombatSystem
         {
             var hurtbox = otherCollider.GetComponent<Hurtbox>();
 
-            if (hurtbox != null && !damagedHurtboxes.Contains(hurtbox))
+            if (hurtbox != null && !damagedHurtboxes.Contains(hurtbox) &&
+                hurtbox.ThisFighter.FighterTeam != ThisFighter.FighterTeam)
             {
                 damagedHurtboxes.Add(hurtbox);
 
@@ -71,12 +79,18 @@ namespace Enso.CombatSystem
 
         public override void OnHitFrameStart()
         {
+            if (isHitboxNull)
+                return;
+
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Open);
         }
 
         public override void OnHitFrameEnd()
         {
+            if (isHitboxNull)
+                return;
+
             damagedHurtboxes.Clear();
             AttackHitbox.SetColliderState(ColliderState.Closed);
         }

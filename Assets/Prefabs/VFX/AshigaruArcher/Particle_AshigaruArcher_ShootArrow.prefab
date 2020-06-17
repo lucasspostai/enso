@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5308595220859807987}
   - component: {fileID: 5308595220859807986}
   m_Layer: 0
-  m_Name: AshigaruBlinkShot
+  m_Name: Particle_AshigaruArcher_ShootArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 0.05
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -55,7 +55,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.9
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2

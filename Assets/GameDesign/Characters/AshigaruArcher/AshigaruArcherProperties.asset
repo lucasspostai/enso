@@ -9,21 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0dafa24b4b52f47885634d89255a33, type: 3}
-  m_Name: AshigaruWarriorProperties
+  m_Script: {fileID: 11500000, guid: 8b99298b2eab6134284b793c352af180, type: 3}
+  m_Name: AshigaruArcherProperties
   m_EditorClassIdentifier: 
-  WalkSpeed: 2.5
-  RunSpeed: 5
-  SprintSpeed: 7
+  WalkSpeed: 0
+  RunSpeed: 2
+  SprintSpeed: 10
   GuardSpeed: 0
   AccelerationTime: 0.02
   DeadZone: 0
-  Health: 3
-  BalanceAmount: 3
+  Health: 2
+  BalanceAmount: 1
   DelayToRecoverAfterLosingBalance: 5
   DelayToRecoverAfterDamage: 2
   TimeToFullyRecoverBalance: 10
   HealingCharges: 0
   DelayToHealAgain: 0
-  GuardDistance: 4
-  AttackDistance: 2

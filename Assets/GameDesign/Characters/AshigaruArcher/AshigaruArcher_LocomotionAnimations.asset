@@ -26,8 +26,8 @@ MonoBehaviour:
     LayerNumber: 0
   RunAnimationClipHolder:
     AnimationClips:
-    - {fileID: 0}
-    AnimatorStateName: EMPTY
+    - {fileID: 7400000, guid: bacf156a78180204aa988fd4d4f0ad5d, type: 2}
+    AnimatorStateName: Combat_Run
     LayerNumber: 0
   SprintAnimationClipHolder:
     AnimationClips:
