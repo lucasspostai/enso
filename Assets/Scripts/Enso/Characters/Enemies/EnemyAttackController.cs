@@ -24,11 +24,7 @@ namespace Enso.Characters.Enemies
         
         private IEnumerator WaitThenEnableAttack()
         {
-            print("BEFORE");
-            
             yield return mustWaitAfterCompletion ? new WaitForSeconds(waitTime) : null;
-            
-            print("AFTER");
 
             mustWaitAfterCompletion = false;
             CanAttack = true;

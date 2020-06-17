@@ -24,8 +24,6 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
 
         public override void OnLastFrameEnd()
         {
-            print("LAST FRAME");
-            
             base.OnLastFrameEnd();
 
             ThisFighter.AnimationHandler.Play(this,

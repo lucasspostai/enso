@@ -18,7 +18,6 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
             {
                 if (!AttackController.CanAttack)
                 {
-                    print("Can't Attack");
                     StartGuard();
                 }
 

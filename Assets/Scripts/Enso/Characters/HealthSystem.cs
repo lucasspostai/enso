@@ -25,8 +25,10 @@ namespace Enso.Characters
                 {
                     health = 0;
                     OnDeath();
+                    return;
                 }
-                else if (health < maxHealth)
+                
+                if (health < maxHealth)
                 {
                     OnDamage();
                 }
