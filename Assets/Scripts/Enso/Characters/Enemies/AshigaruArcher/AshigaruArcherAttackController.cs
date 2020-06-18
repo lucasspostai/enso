@@ -80,8 +80,6 @@ namespace Enso.Characters.Enemies.AshigaruArcher
                     hurtbox.TakeDamage(ShootArrowAnimation.Damage, ArrowSpawn.right);
                 }
 
-                print(hitInfo.transform.name);
-
                 ArrowLineRenderer.SetPosition(1, hitInfo.point);
             }
             else

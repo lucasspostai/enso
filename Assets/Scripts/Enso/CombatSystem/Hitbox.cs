@@ -1,5 +1,4 @@
-﻿using Enso.Characters.Player;
-using Enso.Enums;
+﻿using Enso.Enums;
 using Enso.Interfaces;
 using UnityEngine;
 

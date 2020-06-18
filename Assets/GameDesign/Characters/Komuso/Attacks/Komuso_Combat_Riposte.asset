@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Komuso_Combat_Riposte
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 76a52bfe8a8e6a149b1d915bf23eceee, type: 2}
+    - {fileID: 7400000, guid: d66731823dc64694db67bf8a2ff92563, type: 2}
+    - {fileID: 7400000, guid: 96cc2224779d5384cbe4c1e99218c7aa, type: 2}
+    - {fileID: 7400000, guid: d11d5fac65ced7c4aa9976cb1bb4a98b, type: 2}
+    - {fileID: 7400000, guid: 909ed3158da9e5943a5b586779328c7f, type: 2}
+    - {fileID: 7400000, guid: 96f7891a7853ed445b519fe90df410d7, type: 2}
+    - {fileID: 7400000, guid: a3249b35e633cc948a2e3e548fcea63e, type: 2}
+    - {fileID: 7400000, guid: d47822826b860e345a65c9f7d84378b1, type: 2}
+    AnimatorStateName: Combat_Riposte
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 7
+    EndHitFrame: 8
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 7
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1.7, y: 0.8, z: 0}
+  Damage: 5
+  Type: 2

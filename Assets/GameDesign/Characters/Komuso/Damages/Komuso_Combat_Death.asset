@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Komuso_Combat_Death
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 5fd9e3c2cba55de4dad390de6b6cfe2d, type: 2}
+    - {fileID: 7400000, guid: 4c6ab2463c6eed747bb8d5c8a6eaec6e, type: 2}
+    - {fileID: 7400000, guid: c400b68a65396ca48879bde2af5ba0d6, type: 2}
+    - {fileID: 7400000, guid: 37be1e5295a73df43927148e43be6174, type: 2}
+    - {fileID: 7400000, guid: b0a75bf68eff9ca4a98856e2ab0f10a6, type: 2}
+    - {fileID: 7400000, guid: 1c9f1346e6b691b429bd85223dadcd89, type: 2}
+    - {fileID: 7400000, guid: 9b40d90ef80655d4d980493a868e938b, type: 2}
+    - {fileID: 7400000, guid: 2efc20d362a8b014b8eb88bf5f649599, type: 2}
+    AnimatorStateName: Combat_Death
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 6
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 11400000, guid: d5f90687c45734a4296bb283290d34cd,
+      type: 2}
+  CanBeCut: 0

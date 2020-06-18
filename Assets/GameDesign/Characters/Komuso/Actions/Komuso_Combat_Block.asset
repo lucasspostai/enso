@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: Komuso_Combat_Block
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: d5cd043179b5de24b931ffa275c560d0, type: 2}
+    - {fileID: 7400000, guid: 6642726c79717084192f5a2b6c415df5, type: 2}
+    - {fileID: 7400000, guid: c9238af5430a7e84eab5247a001367e1, type: 2}
+    - {fileID: 7400000, guid: 2d48c1d3ead909e4dba198566d8a1587, type: 2}
+    - {fileID: 7400000, guid: d5ff7c972fee42049b0a47b01f01849d, type: 2}
+    - {fileID: 7400000, guid: cea19c70670fd564b9a0ad5c0dc65a35, type: 2}
+    - {fileID: 7400000, guid: dc578d6b2df170340957b8e3f87765a9, type: 2}
+    - {fileID: 7400000, guid: f51c3659fd42b5043bf94fd79c51cb27, type: 2}
+    AnimatorStateName: Combat_Block
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: -5
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

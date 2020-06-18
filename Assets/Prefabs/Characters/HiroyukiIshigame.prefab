@@ -193,6 +193,7 @@ MonoBehaviour:
   BaseProperties: {fileID: 11400000, guid: 2aecdba304513aa47a6bf30d5fe13358, type: 2}
   Collisions: {fileID: 4116229603299559527}
   MovementController: {fileID: 8491124380792908023}
+  FighterTeam: 0
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
   AttackController: {fileID: 7059184826251289228}
@@ -488,7 +489,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 24d8c53dfbdb139428a2158b271d1cbc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae79e766b5028244ba50217602525dc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -543,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4927003519585448994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4942956660897927905}
@@ -565,7 +566,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   Anchor: {fileID: 4942956660897927905}
-  HitboxSize: {x: 1, y: 1.5, z: 0}
+  HitboxSize: {x: 1.4, y: 2.5, z: 0}
   FighterHurtbox: {fileID: 7343323490171082706}
 --- !u!1 &5572275493262647249
 GameObject:

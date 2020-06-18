@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Komuso_Combat_StrongAttackB
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 4a9cda676144e214da49cf16245aa41b, type: 2}
+    - {fileID: 7400000, guid: f986c6d04f6c07e4baa9fdde0d2dd507, type: 2}
+    - {fileID: 7400000, guid: d92d37a02a65e694591583f514b26b85, type: 2}
+    - {fileID: 7400000, guid: 76613365fc0cf4a429a50160f77feef1, type: 2}
+    - {fileID: 7400000, guid: aec76a2263321af4291aa2348829728e, type: 2}
+    - {fileID: 7400000, guid: 759c5f123129c3c4d8d6e38acfe8ac66, type: 2}
+    - {fileID: 7400000, guid: 3d3829df9a8899d4a81bb4b21cfd8147, type: 2}
+    - {fileID: 7400000, guid: 8195152350139c44487fc0e597bfd4c3, type: 2}
+    AnimatorStateName: Combat_StrongAttackB
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 4
+    EndHitFrame: 5
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 4
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 2.4, y: 0.7, z: 0}
+  Damage: 3
+  Type: 1
