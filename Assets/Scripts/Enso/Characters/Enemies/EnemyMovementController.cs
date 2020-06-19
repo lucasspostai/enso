@@ -44,8 +44,10 @@ namespace Enso.Characters.Enemies
 
             SetMovementDirectionAndDistance();
 
-            if(MustMove)
-                SetMovement(distanceToTarget > AcceptanceRadius ? movementDirection : Vector3.zero);
+            if (distanceToTarget < AcceptanceRadius || !MustMove)
+                SetMovement(Vector3.zero);
+            else
+                SetMovement(movementDirection);
             
             if(ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 SetDirection(movementDirection);

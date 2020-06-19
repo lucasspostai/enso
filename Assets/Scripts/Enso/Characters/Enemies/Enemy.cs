@@ -25,12 +25,6 @@ namespace Enso.Characters.Enemies
             ThisEnemyMovementController = MovementController as EnemyMovementController;
         }
 
-        protected virtual void Update()
-        {
-            if (!ThisEnemyMovementController)
-                return;
-        }
-
         protected void MustMove(bool move)
         {
             ThisEnemyMovementController.MustMove = move;

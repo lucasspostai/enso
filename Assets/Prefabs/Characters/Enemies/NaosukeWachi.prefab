@@ -305,7 +305,7 @@ MonoBehaviour:
   LoseBalanceAnimation: {fileID: 11400000, guid: 7cb11640134bb52429cf102534464254,
     type: 2}
   DeathAnimation: {fileID: 11400000, guid: 6e4f97922906fe241a762dca970f7f5b, type: 2}
-  RegularDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  RegularDamageParticle: {fileID: 1143629758495906981, guid: 34d4a24870c42ac4c8986caca60baf97,
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}

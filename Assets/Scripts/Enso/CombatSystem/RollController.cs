@@ -32,7 +32,7 @@ namespace Enso.CombatSystem
             
             ghostEffectController.ActivateGhostEffects();
 
-            SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker);
+            SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker, false);
         }
 
         public override void OnInterrupted()

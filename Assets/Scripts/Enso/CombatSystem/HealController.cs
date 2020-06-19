@@ -69,7 +69,7 @@ namespace Enso.CombatSystem
 
             CurrentCharacterAnimation = HealAnimation;
 
-            SetAnimationPropertiesAndPlay(HealAnimation.ClipHolder, HealAnimation.AnimationFrameChecker);
+            SetAnimationPropertiesAndPlay(HealAnimation.ClipHolder, HealAnimation.AnimationFrameChecker, false);
         }
 
         public override void OnLastFrameEnd()

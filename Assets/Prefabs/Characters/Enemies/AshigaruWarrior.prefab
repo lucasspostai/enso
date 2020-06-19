@@ -211,6 +211,8 @@ MonoBehaviour:
   Attack: {fileID: 6587487395945137368}
   Guard: {fileID: 8070990983351258628}
   MovementController: {fileID: 4006498454464038807}
+  FlashDuration: 0.05
+  PauseDuration: 0.02
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
   CharacterSpriteRenderer: {fileID: 2784454057411166858}
@@ -301,9 +303,13 @@ MonoBehaviour:
   LoseBalanceAnimation: {fileID: 11400000, guid: fa77ca128d6c4624f8312c7b3de71a41,
     type: 2}
   DeathAnimation: {fileID: 11400000, guid: 13566b744d1a18d47a3a27b43a223d40, type: 2}
-  RegularDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  RegularDamageParticle: {fileID: 1143629758495906981, guid: 34d4a24870c42ac4c8986caca60baf97,
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+    type: 3}
+  LoseBalanceParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+    type: 3}
+  DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
 --- !u!114 &6587487395945137368
 MonoBehaviour:
@@ -347,6 +353,8 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 2fe759ba5b162224393fb40da8499cc5, type: 2}
   ParryAnimation: {fileID: 0}
   ParryDuration: 2
+  BlockParticle: {fileID: 0}
+  ParryParticle: {fileID: 0}
   CanGuard: 0
 --- !u!1 &2784454057411166856
 GameObject:
@@ -649,12 +657,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
       objectReference: {fileID: 3866089748899659546}
-    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 

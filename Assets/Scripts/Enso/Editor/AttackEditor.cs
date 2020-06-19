@@ -17,6 +17,8 @@ namespace Enso.Editor
         {
             base.OnInspectorGUI();
             
+            EditorGUI.BeginChangeCheck();
+            
             Undo.RecordObject(AttackAnimationTarget, "Attack Properties");
 
             EditorGUILayout.Separator();
@@ -26,6 +28,9 @@ namespace Enso.Editor
                 return;
             
             DrawHitBoxFrames();
+            
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(target);
         }
         
         private void DrawHitBoxFrames()

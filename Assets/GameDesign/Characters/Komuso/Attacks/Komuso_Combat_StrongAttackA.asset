@@ -28,13 +28,13 @@ MonoBehaviour:
     DealDamage: 1
     StartHitFrame: 8
     EndHitFrame: 9
-    CanCutFrame: 3
+    CanCutFrame: 10
     PlayAudioFrame: 0
     StartMovementFrame: 0
     EndMovementFrame: 8
-    MovementOffset: 0
+    MovementOffset: 1
     AnimationSoundCue: {fileID: 0}
-  CanBeCut: 0
+  CanBeCut: 1
   HitboxSize: {x: 1.3, y: 0.7, z: 0}
-  Damage: 3
+  Damage: 2
   Type: 1

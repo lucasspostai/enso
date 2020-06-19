@@ -135,11 +135,11 @@ namespace Framework
             {
                 ThisFighter.AnimationHandler.Play(this, currentSpeed >= ThisFighter.GetBaseProperties().SprintSpeed
                     ? Animations.SprintAnimationClipHolder.AnimatorStateName
-                    : Animations.RunAnimationClipHolder.AnimatorStateName);
+                    : Animations.RunAnimationClipHolder.AnimatorStateName, true);
             }
             else
             {
-                ThisFighter.AnimationHandler.Play(this, Animations.IdleAnimationClipHolder.AnimatorStateName);
+                ThisFighter.AnimationHandler.Play(this, Animations.IdleAnimationClipHolder.AnimatorStateName, true);
             }
         }
 

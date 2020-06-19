@@ -191,7 +191,6 @@ namespace Enso.Characters.Enemies.Naosuke
             base.ResetAllProperties();
 
             ResetCombo();
-
         }
     }
 }

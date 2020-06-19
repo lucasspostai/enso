@@ -11,7 +11,7 @@ namespace Framework.Utils
 
         public static bool InputIsLeft(Vector2 vectorA, Vector2 vectorB)
         {
-            return Vector2.Angle(vectorA, vectorB) < 180f;
+            return Vector2.Angle(vectorA, vectorB) < 90f;
         }
     }
 }

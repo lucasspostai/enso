@@ -25,8 +25,9 @@ MonoBehaviour:
     AnimatorStateName: OneSword_LightAttackC
     LayerNumber: 0
   AnimationFrameChecker:
-    StartHitFrame: 1
-    EndHitFrame: 2
+    DealDamage: 1
+    StartHitFrame: 5
+    EndHitFrame: 6
     CanCutFrame: 3
     PlayAudioFrame: 2
     StartMovementFrame: 0
@@ -35,6 +36,6 @@ MonoBehaviour:
     AnimationSoundCue: {fileID: 11400000, guid: fd5171a402555064e8cf9c053a0e59b3,
       type: 2}
   CanBeCut: 0
-  HitboxSize: {x: 1.15, y: 1.8, z: 0}
+  HitboxSize: {x: 1.4, y: 1.8, z: 0}
   Damage: 1
   Type: 0

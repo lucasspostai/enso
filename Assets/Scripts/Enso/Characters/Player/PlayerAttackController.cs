@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Enso.CombatSystem;
+using Framework;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,6 +26,8 @@ namespace Enso.Characters.Player
         [SerializeField] private AttackAnimation ReleaseStrongAttackAnimation;
         [SerializeField] private AttackAnimation SpecialAttackAnimation;
         [SerializeField] private AttackAnimation RiposteAnimation;
+        [SerializeField] private GameObject StrongAttackParticle;
+        [SerializeField] private GameObject SpecialAttackParticle;
         [SerializeField] private float StrongAttackDeadZoneTime;
         [SerializeField] [Range(0, 1)] private float SpecialAttackCost = 0.9f;
 
@@ -160,7 +163,7 @@ namespace Enso.Characters.Player
             preparingStrongAttack = true;
 
             CurrentCharacterAnimation = PrepareStrongAttackAnimation;
-
+            
             SetAnimationPropertiesAndPlay(PrepareStrongAttackAnimation.ClipHolder,
                 PrepareStrongAttackAnimation.AnimationFrameChecker);
         }
@@ -191,6 +194,8 @@ namespace Enso.Characters.Player
             CanCutAnimation = true;
 
             StartAttack(ReleaseStrongAttackAnimation);
+            
+            StrongAttackParticle.SetActive(true);
 
             isHoldingAttackButton = false;
         }
@@ -219,7 +224,7 @@ namespace Enso.Characters.Player
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
 
             StartAttack(SpecialAttackAnimation);
-
+            
             //Special Attack Cost
             player.GetBalanceSystem()
                 .TakeDamage(Mathf.RoundToInt(player.GetBalanceSystem().GetMaxBalance() * SpecialAttackCost));
@@ -228,6 +233,8 @@ namespace Enso.Characters.Player
         private void StartRiposte()
         {
             StartAttack(RiposteAnimation);
+
+            PlayRiposteParticle();
         }
 
         private void ResetCombo()
@@ -277,6 +284,16 @@ namespace Enso.Characters.Player
             else if (PlayerInput.HoldingHealInput)
             {
                 player.HealController.TryHeal();
+            }
+        }
+
+        public override void OnHitFrameEnd()
+        {
+            base.OnHitFrameEnd();
+
+            if (CurrentCharacterAnimation == SpecialAttackAnimation)
+            {
+                SpecialAttackParticle.SetActive(true);
             }
         }
 

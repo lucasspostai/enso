@@ -28,6 +28,20 @@ namespace Enso.Characters.Enemies
             CanGuard = false;
         }
 
+        public override void EndGuard()
+        {
+            StartingGuard = false;
+            IsGuarding = false;
+            
+            base.EndGuard();
+            
+            if(waitAfterStartGuardCoroutine != null)
+                StopCoroutine(waitAfterStartGuardCoroutine);
+            
+            if(waitAfterEndGuardCoroutine != null)
+                StopCoroutine(waitAfterEndGuardCoroutine);
+        }
+
         public void WaitAfterStartGuard(float time)
         {
             waitAfterStartGuardTime = time;
