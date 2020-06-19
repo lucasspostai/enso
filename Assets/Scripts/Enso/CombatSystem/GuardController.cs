@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
-using Enso.Characters;
+using Enso.Characters.Player;
+using Framework;
 using Framework.Animations;
+using Framework.Utils;
 using UnityEngine;
 
 namespace Enso.CombatSystem
@@ -10,6 +12,7 @@ namespace Enso.CombatSystem
     {
         private Coroutine parryHitCoroutine;
         private FrameChecker defaultFrameChecker;
+        private UniqueRandom uniqueRandom;
 
         [HideInInspector] public bool StartingGuard;
         [HideInInspector] public bool EndingGuard;
@@ -18,10 +21,17 @@ namespace Enso.CombatSystem
         [HideInInspector] public bool IsParrying;
         [HideInInspector] public bool GuardReleased;
 
+        [Header("Animations")]
         [SerializeField] protected GuardAnimations Animations;
         [SerializeField] protected ActionAnimation BlockAnimation;
         [SerializeField] protected ActionAnimation ParryAnimation;
         [SerializeField] protected float ParryDuration = 2f;
+        
+        [Header("Particles")]
+        [SerializeField] protected GameObject[] BlockParticles;
+        
+        [Header("Camera Shake")]
+        [SerializeField] protected CameraShakeProfile BlockShakeProfile;
 
         public event Action ParryHit;
         public event Action DisableParryHit;
@@ -29,9 +39,16 @@ namespace Enso.CombatSystem
         protected override void Start()
         {
             base.Start();
-
+            
             CurrentFrameChecker = new FrameChecker();
             defaultFrameChecker = CurrentFrameChecker;
+            
+            uniqueRandom = new UniqueRandom(0, BlockParticles.Length);
+
+            foreach (var blockParticle in BlockParticles)
+            {
+                PoolManager.Instance.CreatePool(blockParticle, 3);
+            }
         }
 
         protected override void Update()
@@ -58,7 +75,7 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(Animations.StartGuardAnimationClipHolder, CurrentFrameChecker);
         }
 
-        protected void EndGuard()
+        public virtual void EndGuard()
         {
             GuardReleased = true;
 
@@ -89,16 +106,16 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(animationClipHolder, CurrentFrameChecker);
 
             if (!atNextFrame)
-                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName);
+                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName, true);
             else
             {
-                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName,
+                ThisFighter.AnimationHandler.Play(this, animationClipHolder.AnimatorStateName, false,
                     animationClipHolder.LayerNumber,
                     nextFramePercentage);
             }
         }
 
-        public void Block()
+        public virtual void Block()
         {
             if (!IsAnimationPlaying)
                 return;
@@ -108,6 +125,11 @@ namespace Enso.CombatSystem
             CurrentCharacterAnimation = BlockAnimation;
 
             SetAnimationPropertiesAndPlay(BlockAnimation.ClipHolder, BlockAnimation.AnimationFrameChecker);
+            
+            ThisFighter.AnimationHandler.PauseAnimationForAWhile();
+            SpawnParticle(BlockParticles[uniqueRandom.GetRandomInt()]);
+            
+            PlayerCinemachineManager.Instance.ShakeController.Shake(BlockShakeProfile);
         }
 
         public virtual void Parry()
@@ -118,7 +140,7 @@ namespace Enso.CombatSystem
             IsParrying = true;
 
             CurrentCharacterAnimation = ParryAnimation;
-
+            
             SetAnimationPropertiesAndPlay(ParryAnimation.ClipHolder, ParryAnimation.AnimationFrameChecker);
         }
 

@@ -66,6 +66,13 @@ namespace Enso.Characters.Player
             }
         }
 
+        public override void Block()
+        {
+            base.Block();
+            
+            GameManager.Instance.ChangeTimeScale(0f, 0.02f);
+        }
+
         protected override void ResetAllProperties()
         {
             base.ResetAllProperties();

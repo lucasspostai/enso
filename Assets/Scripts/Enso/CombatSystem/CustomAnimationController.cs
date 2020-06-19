@@ -38,7 +38,7 @@ namespace Enso.CombatSystem
 
             CurrentFrameChecker.CheckFrames();
 
-            if (mustMove && CurrentCharacterAnimation)
+            if (mustMove && CurrentCharacterAnimation && ThisFighter.AnimationHandler.CharacterAnimator.speed > 0)
             {
                 characterMovementController.Move(ThisFighter.AnimationHandler.CurrentDirection *
                                                  (CurrentCharacterAnimation.AnimationFrameChecker.MovementOffset *
@@ -46,7 +46,8 @@ namespace Enso.CombatSystem
             }
         }
 
-        protected void SetAnimationPropertiesAndPlay(AnimationClipHolder animationClipHolder, FrameChecker frameChecker)
+        protected void SetAnimationPropertiesAndPlay(AnimationClipHolder animationClipHolder, FrameChecker frameChecker,
+            bool ignoreNormalizedTime = false)
         {
             CurrentAnimationClipHolder = animationClipHolder.Clone();
             CurrentFrameChecker = frameChecker.Clone();
@@ -56,7 +57,7 @@ namespace Enso.CombatSystem
 
             IsAnimationPlaying = true;
 
-            ThisFighter.AnimationHandler.Play(this, CurrentAnimationClipHolder.AnimatorStateName);
+            ThisFighter.AnimationHandler.Play(this, CurrentAnimationClipHolder.AnimatorStateName, ignoreNormalizedTime);
         }
 
         public virtual void OnPlayAudio()
@@ -110,6 +111,16 @@ namespace Enso.CombatSystem
             IsAnimationPlaying = false;
             CanCutAnimation = true;
             CurrentCharacterAnimation = null;
+        }
+
+        protected void SpawnParticle(GameObject particle, Transform characterTransform = null)
+        {
+            if (particle)
+            {
+                PoolManager.Instance.ReuseObject(particle,
+                    characterTransform ? characterTransform.position : transform.position,
+                    particle.transform.rotation);
+            }
         }
     }
 }

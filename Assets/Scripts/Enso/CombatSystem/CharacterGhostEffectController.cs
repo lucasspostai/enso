@@ -12,6 +12,7 @@ namespace Enso.CombatSystem
         private Coroutine ghostEffectsCoroutine;
         private CharacterAnimationHandler characterAnimationHandler;
         private CharacterGhostEffect characterGhostEffect;
+        private GameObject prefabClone;
 
         [SerializeField] private float GhostEffectInterval = 0.1f;
         [SerializeField] private float GhostEffectDuration = 0.5f;
@@ -24,12 +25,15 @@ namespace Enso.CombatSystem
         {
             characterAnimationHandler = GetComponent<CharacterAnimationHandler>();
 
-            PoolManager.Instance.CreatePool(GhostEffectPrefab, MaxSimultaneousGhosts);
+            prefabClone = Instantiate(GhostEffectPrefab);
+            prefabClone.SetActive(false);
+            
+            PoolManager.Instance.CreatePool(prefabClone, MaxSimultaneousGhosts);
 
             for (int i = 0; i < MaxSimultaneousGhosts; i++)
             {
                 characterGhostEffect = PoolManager.Instance
-                    .ReuseObject(GhostEffectPrefab, transform.position, transform.rotation).GameObject
+                    .ReuseObject(prefabClone, transform.position, transform.rotation).GameObject
                     .GetComponent<CharacterGhostEffect>();
 
                 characterGhostEffect.SetAnimationHandlerAndColor(
@@ -42,7 +46,7 @@ namespace Enso.CombatSystem
 
         private void InstantiateGhostEffect()
         {
-            PoolManager.Instance.ReuseObject(GhostEffectPrefab, transform.position, transform.rotation);
+            PoolManager.Instance.ReuseObject(prefabClone, transform.position, transform.rotation);
         }
 
         private IEnumerator InstantiateGhostEffects()

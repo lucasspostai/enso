@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: AshigaruArcher_ShootArrow
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 9aafc73ac9362a04192843b67890a5e8, type: 2}
+    - {fileID: 7400000, guid: 136d30567daaca64b8247c555234a988, type: 2}
+    - {fileID: 7400000, guid: 3cfa5104b14c4a848b0628085caa6765, type: 2}
+    - {fileID: 7400000, guid: bffda0072eed62049955a4f8e1e23cbe, type: 2}
+    - {fileID: 7400000, guid: 3adb19d2c6de2cf4188882855728c7f4, type: 2}
+    - {fileID: 7400000, guid: 266330ddaf39e6a4f8312ec82306f437, type: 2}
+    - {fileID: 7400000, guid: 8d50a3cdb74b810498fb0dde96f31c30, type: 2}
+    - {fileID: 7400000, guid: af0bdadd30467a24994db7b5d2fa1e00, type: 2}
+    AnimatorStateName: Combat_ShootArrow
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 0
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 1
+  Type: 0

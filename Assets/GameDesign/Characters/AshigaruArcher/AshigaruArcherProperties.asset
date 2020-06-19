@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b99298b2eab6134284b793c352af180, type: 3}
+  m_Name: AshigaruArcherProperties
+  m_EditorClassIdentifier: 
+  WalkSpeed: 0
+  RunSpeed: 2
+  SprintSpeed: 10
+  GuardSpeed: 0
+  AccelerationTime: 0.02
+  DeadZone: 0
+  Health: 2
+  BalanceAmount: 1
+  DelayToRecoverAfterLosingBalance: 5
+  DelayToRecoverAfterDamage: 2
+  TimeToFullyRecoverBalance: 10
+  HealingCharges: 0
+  DelayToHealAgain: 0

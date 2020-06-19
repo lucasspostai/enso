@@ -1,4 +1,5 @@
 ﻿using Enso.CombatSystem;
+using Enso.Enums;
 using Framework;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Enso.Characters
         
         public CharacterCollisions Collisions;
         public CharacterMovementController MovementController;
+        public Team FighterTeam;
 
         [HideInInspector] public CharacterAnimationHandler AnimationHandler;
         [HideInInspector] public Transform Target;
@@ -56,11 +58,13 @@ namespace Enso.Characters
         public void EnterCombatWith(Fighter fighter)
         {
             Target = fighter.transform;
+
+            fighter.GetHealthSystem().Death += ExitCombat;
         }
 
         public void ExitCombat()
         {
-            
+            Target = null;
         }
     }
 }

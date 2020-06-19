@@ -19,9 +19,11 @@ MonoBehaviour:
   AccelerationTime: 0.02
   DeadZone: 0
   Health: 3
-  BalanceAmount: 10
+  BalanceAmount: 3
   DelayToRecoverAfterLosingBalance: 5
   DelayToRecoverAfterDamage: 2
   TimeToFullyRecoverBalance: 10
   HealingCharges: 0
   DelayToHealAgain: 0
+  GuardDistance: 4
+  AttackDistance: 2

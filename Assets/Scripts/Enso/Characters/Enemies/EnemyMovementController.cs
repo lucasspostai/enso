@@ -20,6 +20,8 @@ namespace Enso.Characters.Enemies
             }
         }
 
+        [HideInInspector] public bool MustMove;
+
         public event Action UpdateDistanceToTargetValue;  
 
         [SerializeField] private float AcceptanceRadius = 2f;
@@ -34,9 +36,18 @@ namespace Enso.Characters.Enemies
         
         protected override void Update()
         {
+            if (!ThisFighter.Target)
+            {
+                SetMovement(Vector3.zero);
+                return;
+            }
+
             SetMovementDirectionAndDistance();
 
-            SetMovement(distanceToTarget > AcceptanceRadius ? movementDirection : Vector3.zero);
+            if (distanceToTarget < AcceptanceRadius || !MustMove)
+                SetMovement(Vector3.zero);
+            else
+                SetMovement(movementDirection);
             
             if(ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying())
                 SetDirection(movementDirection);

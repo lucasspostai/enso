@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Komuso_Combat_LoseBalance
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 711f106f3417f3344af080fb4be6aafb, type: 2}
+    - {fileID: 7400000, guid: 82a89eca34e00cf40805bd90eb90cda8, type: 2}
+    - {fileID: 7400000, guid: fb1df64b9b6e05f41aad9616d01bb803, type: 2}
+    - {fileID: 7400000, guid: 1459388f2c10c604f95bb5b0bab2fdfd, type: 2}
+    - {fileID: 7400000, guid: e77181b043a0a58448450dcd69b5d76c, type: 2}
+    - {fileID: 7400000, guid: 41e82d43819e32042a0624f832945912, type: 2}
+    - {fileID: 7400000, guid: 57a5507c5bb1b9b4891e5ec48ad45db9, type: 2}
+    - {fileID: 7400000, guid: ed8d7ee010ed43c4a9b863bcfb403334, type: 2}
+    AnimatorStateName: Combat_LoseBalance
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 6
+    MovementOffset: -2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

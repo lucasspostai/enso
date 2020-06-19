@@ -20,7 +20,7 @@ namespace Enso.UI
             isAnimatorNotNull = ThisAnimator != null;
         }
 
-        public void Disable()
+        public virtual void Disable()
         {
             SetTrigger(DisableHash);
         }

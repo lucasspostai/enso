@@ -7,6 +7,7 @@ namespace Framework
 {
     public abstract class CharacterMovementController : CustomAnimationController
     {
+        private bool isHitboxAnchorNull;
         private bool sprint;
         private float currentSpeed;
         private Vector2 movementAmount;
@@ -20,6 +21,13 @@ namespace Framework
         [SerializeField] private Transform HitboxAnchor;
 
         public LocomotionAnimations Animations;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            isHitboxAnchorNull = HitboxAnchor == null;
+        }
 
         protected override void Start()
         {
@@ -66,6 +74,9 @@ namespace Framework
 
         private void UpdateHitBoxAnchorRotation()
         {
+            if (isHitboxAnchorNull)
+                return;
+            
             float angle = Mathf.Atan2(ThisFighter.AnimationHandler.CurrentDirection.y,
                 ThisFighter.AnimationHandler.CurrentDirection.x) * Mathf.Rad2Deg;
 
@@ -124,11 +135,11 @@ namespace Framework
             {
                 ThisFighter.AnimationHandler.Play(this, currentSpeed >= ThisFighter.GetBaseProperties().SprintSpeed
                     ? Animations.SprintAnimationClipHolder.AnimatorStateName
-                    : Animations.RunAnimationClipHolder.AnimatorStateName);
+                    : Animations.RunAnimationClipHolder.AnimatorStateName, true);
             }
             else
             {
-                ThisFighter.AnimationHandler.Play(this, Animations.IdleAnimationClipHolder.AnimatorStateName);
+                ThisFighter.AnimationHandler.Play(this, Animations.IdleAnimationClipHolder.AnimatorStateName, true);
             }
         }
 

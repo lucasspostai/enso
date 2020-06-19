@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: Komuso_Combat_LightAttackA
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: aaa0fb0bdf67a4a4bbac2151b243776c, type: 2}
+    - {fileID: 7400000, guid: 7cb452926948aac40a930071d5ef1c78, type: 2}
+    - {fileID: 7400000, guid: 555c289d92ea7dd4daa3e79be54ceeca, type: 2}
+    - {fileID: 7400000, guid: ec01f50561f80224f888b50d0c87415c, type: 2}
+    - {fileID: 7400000, guid: dbaa22937a07f144eb57a90270683a76, type: 2}
+    - {fileID: 7400000, guid: 0232f75a8c8634b489452cb4a40962ed, type: 2}
+    - {fileID: 7400000, guid: 823933bfa06016b4aa7b9d9958888bed, type: 2}
+    - {fileID: 7400000, guid: ab9fff01f1a27aa41ace8ceb4ed2a2d0, type: 2}
+    AnimatorStateName: Combat_LightAttackA
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 5
+    EndHitFrame: 6
+    CanCutFrame: 7
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 5
+    MovementOffset: 2
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1
+  HitboxSize: {x: 1, y: 1.15, z: 0}
+  Damage: 1
+  Type: 0

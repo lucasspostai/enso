@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: Komuso_Combat_ParryStance
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 8fe9bcf5d4f706f42ae5f2106dfe8f5c, type: 2}
+    - {fileID: 7400000, guid: 9bfc0bac7facd694d95dc6b54e4b0c47, type: 2}
+    - {fileID: 7400000, guid: a344f476a1929e04c8166bbf9b88c9db, type: 2}
+    - {fileID: 7400000, guid: 6de5d3fea503f7746a306c2213a8f519, type: 2}
+    - {fileID: 7400000, guid: 201b6e6d826420c45a5d7c3f72596752, type: 2}
+    - {fileID: 7400000, guid: fb6d17ffb03d20f46b73d8f32dc2daa1, type: 2}
+    - {fileID: 7400000, guid: d56ba949927823b40aa93f9be5e9f663, type: 2}
+    - {fileID: 7400000, guid: 2ec8307e97771d6409763ad44830d8aa, type: 2}
+    AnimatorStateName: Combat_ParryStance
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 7
+    MovementOffset: 1
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

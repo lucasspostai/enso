@@ -1,16 +1,12 @@
 ﻿using System.Collections;
-using Enso.CombatSystem;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies.Naosuke
 {
     [RequireComponent(typeof(Naosuke))]
-    public class NaosukeGuardController : GuardController
+    public class NaosukeGuardController : EnemyGuardController
     {
-        private bool mustWaitAfterStartGuard;
-        private Coroutine waitAfterStartGuardCoroutine;
         private Coroutine parryStanceCoroutine;
-        private float waitTime = 1f;
         private Naosuke naosuke;
         
         [SerializeField] private float MaxTimeOnParryStance = 5f;
@@ -46,23 +42,6 @@ namespace Enso.Characters.Enemies.Naosuke
                 StopCoroutine(parryStanceCoroutine);
 
             parryStanceCoroutine = StartCoroutine(StayOnParryStance());
-        }
-
-        public void WaitAfterStartGuard(float time)
-        {
-            waitTime = time;
-            
-            if(waitAfterStartGuardCoroutine != null)
-                StopCoroutine(waitAfterStartGuardCoroutine);
-
-            waitAfterStartGuardCoroutine = StartCoroutine(WaitThenStopGuard());
-        }
-
-        private IEnumerator WaitThenStopGuard()
-        {
-            yield return new WaitForSeconds(waitTime);
-            
-            EndGuard();
         }
 
         private IEnumerator StayOnParryStance()

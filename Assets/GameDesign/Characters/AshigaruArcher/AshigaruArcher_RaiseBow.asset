@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d5c1108e934b449bf82c440d2a3a97, type: 3}
+  m_Name: AshigaruArcher_RaiseBow
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: ae254a11ef91cac4697334fee9b99437, type: 2}
+    - {fileID: 7400000, guid: d400865e1150a4a40b1a82c68b2d9705, type: 2}
+    - {fileID: 7400000, guid: d78fcf529b1c0484999d00195b86d70f, type: 2}
+    - {fileID: 7400000, guid: 447e9adc661c9f34da057338acb3cdc4, type: 2}
+    - {fileID: 7400000, guid: 930d53f4e1059844bbd2761ef2645670, type: 2}
+    - {fileID: 7400000, guid: 631a186bde13c324c9dfb278567d9406, type: 2}
+    - {fileID: 7400000, guid: abc572a68647c634c9355ef74a4f48df, type: 2}
+    - {fileID: 7400000, guid: 95bc0fc0184a98f4ab1a0d22185b1ffc, type: 2}
+    AnimatorStateName: Combat_RaiseBow
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 0
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 16
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 1
+  HitboxSize: {x: 1, y: 1, z: 0}
+  Damage: 1
+  Type: 0

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: AshigaruArcher_Roll
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 39cd2e90cc368624fac75ff87357c384, type: 2}
+    - {fileID: 7400000, guid: 83c66d9948307d74db9ed7039a40afd3, type: 2}
+    - {fileID: 7400000, guid: ae11ad7692d851b4081c21726a045f25, type: 2}
+    - {fileID: 7400000, guid: 4893ca9be4cac3a479b0b994fce93229, type: 2}
+    - {fileID: 7400000, guid: 85489be51a8ab68438b9c8a6b5396bed, type: 2}
+    - {fileID: 7400000, guid: 36e20fee854ede24e98dd808cee7846c, type: 2}
+    - {fileID: 7400000, guid: abfcf39cbdeedf94e8f1e03fb8879a12, type: 2}
+    - {fileID: 7400000, guid: 2596e996260034b45ba64c27ad0a8f51, type: 2}
+    AnimatorStateName: Combat_Roll
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 11
+    MovementOffset: 6
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

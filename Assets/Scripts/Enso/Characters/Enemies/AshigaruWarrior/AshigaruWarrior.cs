@@ -7,26 +7,53 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
         [SerializeField] private AshigaruWarriorAttackController AttackController;
         [SerializeField] private AshigaruWarriorGuardController GuardController;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            GetHealthSystem().Damage += EnableGuardImmediately;
+            GetBalanceSystem().LoseBalance += StayOnGuard;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            
+            GetHealthSystem().Damage -= EnableGuardImmediately;
+            GetBalanceSystem().LoseBalance -= StayOnGuard;
+        }
+
         protected override void ChooseBehavior()
         {
             base.ChooseBehavior();
 
-            if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
+            if (AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;
 
-            if (ThisEnemyMovementController.DistanceToTarget < 10f)
+            if (ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
             {
-                if (!AttackController.CanAttack)
+                if (GuardController.CanGuard)
                 {
-                    print("Can't Attack");
+                    MustMove(false);
                     StartGuard();
+                    GuardController.WaitAfterStartGuard(3);
+                    GuardController.WaitAfterEndGuard(3);
                 }
-
-                if (ThisEnemyMovementController.DistanceToTarget < 1.5f)
+                else
                 {
-                    PerformSimpleAttack();
-                    AttackController.WaitAfterAttack(2);
+                    MustMove(true);
+                    
+                    if (AttackController.CanAttack &&
+                        ThisEnemyMovementController.DistanceToTarget < GetProperties().AttackDistance)
+                    {
+                        PerformSimpleAttack();
+                        AttackController.WaitAfterAttack(1);
+                    }
                 }
+            }
+            else
+            {
+                MustMove(true);
             }
         }
 
@@ -38,7 +65,16 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
         private void StartGuard()
         {
             GuardController.StartGuard();
-            GuardController.WaitAfterStartGuard(3);
+        }
+
+        private void EnableGuardImmediately()
+        {
+            GuardController.CanGuard = true;
+        }
+
+        private void StayOnGuard()
+        {
+            GuardController.WaitAfterStartGuard(2);
         }
 
         public AshigaruWarriorProperties GetProperties()

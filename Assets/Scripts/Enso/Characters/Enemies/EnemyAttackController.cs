@@ -9,9 +9,9 @@ namespace Enso.Characters.Enemies
         private bool mustWaitAfterCompletion;
         private Coroutine waitAfterCompletionCoroutine;
         private float waitTime = 1f;
-        
+
         [HideInInspector] public bool CanAttack = true;
-        
+
         protected virtual void Wait()
         {
             if (waitAfterCompletionCoroutine != null)
@@ -21,19 +21,15 @@ namespace Enso.Characters.Enemies
 
             waitAfterCompletionCoroutine = StartCoroutine(WaitThenEnableAttack());
         }
-        
+
         private IEnumerator WaitThenEnableAttack()
         {
-            print("BEFORE");
-            
             yield return mustWaitAfterCompletion ? new WaitForSeconds(waitTime) : null;
-            
-            print("AFTER");
 
             mustWaitAfterCompletion = false;
             CanAttack = true;
         }
-        
+
         public void WaitAfterAttack(float time)
         {
             mustWaitAfterCompletion = true;
@@ -43,15 +39,16 @@ namespace Enso.Characters.Enemies
         public override void OnInterrupted()
         {
             base.OnInterrupted();
-            
+
             mustWaitAfterCompletion = false;
             CanAttack = true;
         }
 
         protected void RotateTowardsTarget()
         {
-            ThisFighter.AnimationHandler.SetFacingDirection((ThisFighter.Target.position - transform.position)
-                .normalized);
+            if (ThisFighter.Target)
+                ThisFighter.AnimationHandler.SetFacingDirection((ThisFighter.Target.position - transform.position)
+                    .normalized);
         }
     }
 }

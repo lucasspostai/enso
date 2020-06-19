@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: AshigaruArcher_Damage
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: fdea4edcd4cab0148b7b9d47c737a3fb, type: 2}
+    - {fileID: 7400000, guid: afee1abeb89eb7b4fa2cf622ec0b8186, type: 2}
+    - {fileID: 7400000, guid: 167b956589d937448a9a559c70003f74, type: 2}
+    - {fileID: 7400000, guid: 3bfbdadd1c0043341ba8235517654cd3, type: 2}
+    - {fileID: 7400000, guid: d6cfd734993efee4c9ab9d29778111c8, type: 2}
+    - {fileID: 7400000, guid: 1df2f51aecb171942be73fc18c38a960, type: 2}
+    - {fileID: 7400000, guid: ff723e2af0be40146b7a4917c20b8129, type: 2}
+    - {fileID: 7400000, guid: a936e9eb0c7cff3418e77494ea135664, type: 2}
+    AnimatorStateName: Combat_Damage
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

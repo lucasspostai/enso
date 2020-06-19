@@ -9,7 +9,7 @@ namespace Enso.Characters.Enemies.Naosuke
     {
         [SerializeField] private NaosukeAttackController AttackController;
         [SerializeField] private NaosukeGuardController GuardController;
-        [SerializeField] private NaosukeRollController RollController;
+        [SerializeField] private EnemyRollController RollController;
         
         protected override void Start()
         {

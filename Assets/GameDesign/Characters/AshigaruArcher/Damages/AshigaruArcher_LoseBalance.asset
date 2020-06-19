@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: AshigaruArcher_LoseBalance
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 14c2e35b568d20c46a64851590008514, type: 2}
+    - {fileID: 7400000, guid: 2ad3c393d86876a4eaa9d8894e115556, type: 2}
+    - {fileID: 7400000, guid: 54e4fdc02c8f25a428b4860cd1e7b94b, type: 2}
+    - {fileID: 7400000, guid: ec2efe60cbd1be240a56f28468e2eab3, type: 2}
+    - {fileID: 7400000, guid: 5dfec778ec6e18f48ab36163c030d6a8, type: 2}
+    - {fileID: 7400000, guid: 73850a09b5f0c0f47b218ce4c5f521bf, type: 2}
+    - {fileID: 7400000, guid: 4a65329589c62f04ebdae33a8d478104, type: 2}
+    - {fileID: 7400000, guid: b61c273f34543b14b88e03d814da8c6e, type: 2}
+    AnimatorStateName: Combat_LoseBalance
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 2
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

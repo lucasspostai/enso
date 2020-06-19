@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e400b5ab9601348ab1976c2befc20c, type: 3}
+  m_Name: Komuso_Combat_HeavyDamage
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 3dbaf6ed9583e504d898f75f24af3bdc, type: 2}
+    - {fileID: 7400000, guid: 32eca46519fc8bb4e8cf7bed16e10969, type: 2}
+    - {fileID: 7400000, guid: 5f0a5e553d5f6e94bb40f5fab2ea2773, type: 2}
+    - {fileID: 7400000, guid: fca903fb8f7e28944bcbc61c6a41864a, type: 2}
+    - {fileID: 7400000, guid: 9417914c95f18a144bffab8d5f254af1, type: 2}
+    - {fileID: 7400000, guid: 673daec6f2b07a84a917014fbf63c38f, type: 2}
+    - {fileID: 7400000, guid: fd714432da27ddf41a87cb46fadefaad, type: 2}
+    - {fileID: 7400000, guid: 050e14c94a2512f4d83a46a508c3c068, type: 2}
+    AnimatorStateName: Combat_HeavyDamage
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 14
+    MovementOffset: -6
+    AnimationSoundCue: {fileID: 11400000, guid: 81ab207b154a9bd4b83fbe72490bcacb,
+      type: 2}
+  CanBeCut: 0

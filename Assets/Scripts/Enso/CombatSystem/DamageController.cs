@@ -1,4 +1,5 @@
 ﻿using Enso.Characters;
+using Enso.Characters.Player;
 using Enso.Enums;
 using Framework;
 using Framework.Animations;
@@ -10,12 +11,28 @@ namespace Enso.CombatSystem
     {
         [HideInInspector] public bool IsDying;
 
+        [Header("Animations")]
         [SerializeField] protected DamageAnimation RegularDamageAnimation;
         [SerializeField] protected DamageAnimation HeavyDamageAnimation;
         [SerializeField] protected DamageAnimation LoseBalanceAnimation;
         [SerializeField] protected DamageAnimation DeathAnimation;
+        
+        [Header("Particles")]
         [SerializeField] protected GameObject RegularDamageParticle;
         [SerializeField] protected GameObject HeavyDamageParticle;
+        [SerializeField] protected GameObject LoseBalanceParticle;
+        [SerializeField] protected GameObject DeathParticle;
+        
+        [Header("Camera Shake")]
+        [SerializeField] protected CameraShakeProfile RegularDamageShakeProfile;
+        [SerializeField] protected CameraShakeProfile HeavyDamageShakeProfile;
+        [SerializeField] protected CameraShakeProfile LoseBalanceShakeProfile;
+        [SerializeField] protected CameraShakeProfile DeathShakeProfile;
+        
+        [Header("Properties")]
+        [SerializeField] protected float DeathTimeScale = 0.5f;
+        [SerializeField] protected float DeathTimeScaleDuration = 0.2f;
+        
 
         private void OnEnable()
         {
@@ -37,10 +54,15 @@ namespace Enso.CombatSystem
 
             PoolManager.Instance.CreatePool(RegularDamageParticle, 3);
             PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
+            PoolManager.Instance.CreatePool(LoseBalanceParticle, 3);
+            PoolManager.Instance.CreatePool(DeathParticle, 3);
         }
 
         private void PlayDamageAnimation(DamageAnimation damageAnimation)
         {
+            ThisFighter.AnimationHandler.MakeCharacterFlash();
+            ThisFighter.AnimationHandler.PauseAnimationForAWhile();
+            
             CurrentCharacterAnimation = damageAnimation;
 
             SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
@@ -58,10 +80,12 @@ namespace Enso.CombatSystem
             {
                 case AttackType.Light:
                     PlayDamageAnimation(RegularDamageAnimation);
+                    PlayerCinemachineManager.Instance.ShakeController.Shake(RegularDamageShakeProfile);
                     SpawnParticle(RegularDamageParticle);
                     break;
                 case AttackType.Strong:
                     PlayDamageAnimation(HeavyDamageAnimation);
+                    PlayerCinemachineManager.Instance.ShakeController.Shake(HeavyDamageShakeProfile);
                     SpawnParticle(HeavyDamageParticle);
                     break;
                 default:
@@ -71,11 +95,6 @@ namespace Enso.CombatSystem
             }
         }
 
-        private void SpawnParticle(GameObject particle)
-        {
-            PoolManager.Instance.ReuseObject(particle, transform.position, particle.transform.rotation);
-        }
-
         private void Death()
         {
             if (IsDying)
@@ -83,15 +102,23 @@ namespace Enso.CombatSystem
 
             IsDying = true;
             SpawnParticle(HeavyDamageParticle);
+            
+            PlayerCinemachineManager.Instance.ShakeController.Shake(DeathShakeProfile);
 
             PlayDamageAnimation(DeathAnimation);
+            
+            SpawnParticle(DeathParticle);
+            
+            GameManager.Instance.ChangeTimeScale(DeathTimeScale, DeathTimeScaleDuration);
         }
 
         private void BreakBalance()
         {
-            SpawnParticle(HeavyDamageParticle);
-
             PlayDamageAnimation(LoseBalanceAnimation);
+            
+            SpawnParticle(LoseBalanceParticle);
+            
+            PlayerCinemachineManager.Instance.ShakeController.Shake(LoseBalanceShakeProfile);
         }
 
         public override void OnLastFrameEnd()
