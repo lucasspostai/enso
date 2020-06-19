@@ -12,6 +12,7 @@ namespace Enso.CombatSystem
 {
     public abstract class AttackController : CustomAnimationController, IHitboxResponder
     {
+        private Transform riposteCharacterTransform;
         private bool isHitboxNull;
         private int currentDamage;
         private readonly List<Hurtbox> damagedHurtboxes = new List<Hurtbox>();
@@ -36,7 +37,8 @@ namespace Enso.CombatSystem
             if (!isHitboxNull)
                 AttackHitbox.SetHitboxResponder(this);
             
-            PoolManager.Instance.CreatePool(ParryParticle, 3);
+            PoolManager.Instance.CreatePool(ParryParticle, 1);
+            PoolManager.Instance.CreatePool(RiposteParticle, 1);
         }
 
         private void SetDamageProperties(Vector3 hitboxSize, int damage)
@@ -80,6 +82,11 @@ namespace Enso.CombatSystem
                 
                 if (guardController && guardController.IsParrying)
                 {
+                    var attackController = hurtbox.ThisFighter.GetComponent<AttackController>();
+                    
+                    if(attackController)
+                        attackController.SetRipostePosition(transform);
+                    
                     ThisFighter.GetBalanceSystem()
                         .TakeDamage(Mathf.RoundToInt(ThisFighter.GetBalanceSystem().GetMaxBalance()));
 
@@ -87,7 +94,7 @@ namespace Enso.CombatSystem
                                                ThisFighter.transform.position);
                     
                     SpawnParticle(ParryParticle);
-                    
+
                     PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
                     
                     GameManager.Instance.ChangeTimeScale(0.5f, 1f);
@@ -97,7 +104,6 @@ namespace Enso.CombatSystem
                     hurtbox.TakeDamage(currentDamage, ThisFighter.AnimationHandler.CurrentDirection);
                     OnCollision();
                 }
-
             }
         }
 
@@ -126,9 +132,14 @@ namespace Enso.CombatSystem
             ThisFighter.AnimationHandler.PauseAnimationForAWhile();
         }
 
+        public void SetRipostePosition(Transform characterTransform)
+        {
+            riposteCharacterTransform = characterTransform;
+        }
+        
         protected void PlayRiposteParticle()
         {
-            RiposteParticle.SetActive(true);
+            SpawnParticle(RiposteParticle, riposteCharacterTransform);
             
             PlayerCinemachineManager.Instance.ShakeController.Shake(RiposteShakeProfile);
         }

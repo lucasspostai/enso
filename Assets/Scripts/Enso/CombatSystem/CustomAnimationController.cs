@@ -113,10 +113,14 @@ namespace Enso.CombatSystem
             CurrentCharacterAnimation = null;
         }
 
-        protected void SpawnParticle(GameObject particle)
+        protected void SpawnParticle(GameObject particle, Transform characterTransform = null)
         {
             if (particle)
-                PoolManager.Instance.ReuseObject(particle, transform.position, particle.transform.rotation);
+            {
+                PoolManager.Instance.ReuseObject(particle,
+                    characterTransform ? characterTransform.position : transform.position,
+                    particle.transform.rotation);
+            }
         }
     }
 }
