@@ -8,7 +8,7 @@ namespace Enso.Characters.Player
     [RequireComponent(typeof(Player))]
     public class PlayerHealController : HealController
     {
-        [SerializeField] private ParticleSystem Particle;
+        [SerializeField] private GameObject Particle;
         
         private void OnEnable()
         {
@@ -24,7 +24,7 @@ namespace Enso.Characters.Player
         {
             base.OnPlayAudio();
             
-            Particle.Play();
+            Particle.SetActive(true);
         }
     }
 }
