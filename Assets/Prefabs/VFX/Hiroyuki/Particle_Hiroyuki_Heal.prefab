@@ -4729,7 +4729,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4748,7 +4748,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -462981019419857548, guid: 95b171167348da149ad3e4373e7347b6, type: 3}
+  m_Mesh: {fileID: -462981019419857548, guid: 9cd21143569386748b6ff8f9cf49fe0b, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -9540,7 +9540,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -9589,7 +9589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729976094265092582}
-  m_LocalRotation: {x: -0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0.388, y: 0.5639996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9599,7 +9599,7 @@ Transform:
   - {fileID: 729976093478410659}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -45.000004, y: 0, z: 0}
 --- !u!198 &729976094265092571
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9683,7 +9683,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14355,7 +14355,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -19108,7 +19108,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_RenderMode: 5
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -23861,7 +23861,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -23880,7 +23880,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -462981019419857548, guid: 95b171167348da149ad3e4373e7347b6, type: 3}
+  m_Mesh: {fileID: -462981019419857548, guid: 9cd21143569386748b6ff8f9cf49fe0b, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
