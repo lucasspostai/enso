@@ -161,7 +161,7 @@ namespace Enso.Characters.Player
             Movement.x = Input.GetAxisRaw("Horizontal");
             Movement.y = Input.GetAxisRaw("Vertical");
 
-            Movement.Normalize();
+            //Movement.Normalize();
         }
 
         private static void OnSprintInputDown()

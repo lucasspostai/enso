@@ -199,6 +199,18 @@ MonoBehaviour:
   FighterTeam: 0
   AnimationHandler: {fileID: 0}
   Target: {fileID: 0}
+  MainGameManager: {fileID: 4322553978260663931, guid: 920556f4be8c0814d985510740effdde,
+    type: 3}
+  MainAudioManager: {fileID: 1385206525916056938, guid: d5b5031155487704080329f577163ee0,
+    type: 3}
+  MainPoolManager: {fileID: 153049683903338856, guid: e15d2199379fd30418135c2e938be21b,
+    type: 3}
+  MainInputManager: {fileID: 870063184725421390, guid: f04ded56af726db44b5273cf1cbf3c59,
+    type: 3}
+  MainCanvas: {fileID: 34399640119241256, guid: 77c1f991222de3c41bddc452918948df,
+    type: 3}
+  MainCinemachineManager: {fileID: 6214427503087331584, guid: 0665379a89f707542ad74a2b9831e848,
+    type: 3}
   AttackController: {fileID: 7059184826251289228}
   GuardController: {fileID: 813916947705230572}
   RollController: {fileID: 8218683346449343016}
@@ -735,11 +747,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6330016213634359868}
     m_Modifications:
-    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Name
-      value: Trail
-      objectReference: {fileID: 0}
     - target: {fileID: 499452959800626569, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -814,6 +821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Trail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32189b8d7bea1e48bfed6a7e093e5c2, type: 3}
@@ -967,16 +979,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4942956660897927905}
     m_Modifications:
-    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle_SpecialAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8507507856205289332, guid: d051b8b40860b1240a30c55f2241399c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1031,6 +1033,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle_SpecialAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d051b8b40860b1240a30c55f2241399c, type: 3}
