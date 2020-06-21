@@ -86,6 +86,20 @@ namespace Framework
         protected void SetMovement(Vector2 movement)
         {
             movementAmount = movement;
+            
+            movementAmount = Quaternion.Euler(45, 0, 0) * movementAmount; //Rotate only the X axis
+            movementAmount.Normalize();
+        }
+        
+        protected Vector2 Rotate(Vector2 v, float degrees) {
+            float radians = degrees * Mathf.Deg2Rad;
+            float sin = Mathf.Sin(radians);
+            float cos = Mathf.Cos(radians);
+         
+            float tx = v.x;
+            float ty = v.y;
+ 
+            return new Vector2(cos * tx - sin * ty, sin * tx + cos * ty);
         }
 
         public void SetFighter(Fighter fighter)

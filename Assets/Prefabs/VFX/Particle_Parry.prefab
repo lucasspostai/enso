@@ -19139,6 +19139,7 @@ GameObject:
   - component: {fileID: 4227354508987722650}
   - component: {fileID: 4227354508987722651}
   - component: {fileID: 4227354508987722628}
+  - component: {fileID: 590385915880000115}
   m_Layer: 0
   m_Name: Particle_Parry
   m_TagString: Untagged
@@ -23943,3 +23944,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &590385915880000115
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227354508987722629}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 10

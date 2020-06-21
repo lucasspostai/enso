@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8819955161382153320}
   - component: {fileID: 1503594585738059137}
   - component: {fileID: 5588487042316084077}
+  - component: {fileID: 3385941943726539048}
   m_Layer: 10
   m_Name: Komuso
   m_TagString: Enemy
@@ -213,7 +214,7 @@ MonoBehaviour:
   Attack: {fileID: 8819955161382153320}
   Guard: {fileID: 1503594585738059137}
   MovementController: {fileID: 4006498454464038807}
-  FlashDuration: 0.02
+  FlashDuration: 0.05
   PauseDuration: 0.02
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
@@ -405,6 +406,17 @@ MonoBehaviour:
   MaxSimultaneousGhosts: 6
   GhostInitialColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Trail: {fileID: 5785260338164365929}
+--- !u!210 &3385941943726539048
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,9 +484,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 11acfdd46a2699f4fa9d4f7de198b486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -762,16 +774,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6330016213634359868}
     m_Modifications:
-    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Name
-      value: Trail
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 499452959800626569, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,6 +848,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32189b8d7bea1e48bfed6a7e093e5c2, type: 3}
