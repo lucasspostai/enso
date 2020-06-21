@@ -27,6 +27,8 @@ namespace Enso.Characters.Player
         private bool healInputDownCalled;
         private bool interactionInputDownCalled;
         private bool specialAttackInputDownCalled;
+        private bool statusInputDownCalled;
+        private bool pauseInputDownCalled;
 
         private float guardInputHoldingTime;
 
@@ -39,6 +41,8 @@ namespace Enso.Characters.Player
         [SerializeField] private KeyCode InteractionButton = KeyCode.Joystick1Button1;
         [SerializeField] private KeyCode PageLeftButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
+        [SerializeField] private KeyCode StatusButton = KeyCode.Joystick1Button6;
+        [SerializeField] private KeyCode PauseButton = KeyCode.Joystick1Button7;
         [SerializeField] private float ParryDeadZone = 0.1f;
 
         public static bool HoldingGuardInput;
@@ -57,11 +61,42 @@ namespace Enso.Characters.Player
         public static event Action InteractionInputDown;
         public static event Action PageLeftInputDown;
         public static event Action PageRightInputDown;
+        public static event Action StatusInputDown;
+        public static event Action PauseInputDown;
 
         public static Vector2 Movement;
 
         private void Update()
         {
+            statusInputDownCalled = Input.GetKeyDown(StatusButton) || Input.GetKeyDown(KeyCode.Tab);
+            pauseInputDownCalled = Input.GetKeyDown(PauseButton) || Input.GetKeyDown(KeyCode.Escape);
+            
+            pageLeftInputDownCalled = Input.GetKeyDown(PageLeftButton) || Input.GetKeyDown(KeyCode.Q);
+            pageRightInputDownCalled = Input.GetKeyDown(PageRightButton) || Input.GetKeyDown(KeyCode.E);
+
+            if (statusInputDownCalled)
+            {
+                OnStatusInputDown();
+            }
+            
+            if (pauseInputDownCalled)
+            {
+                OnPauseInputDown();
+            }
+            
+            if (pageLeftInputDownCalled)
+            {
+                OnPageLeftInputDown();
+            }
+
+            if (pageRightInputDownCalled)
+            {
+                OnPageRightInputDown();
+            }
+            
+            if (GameManager.Instance && GameManager.Instance.GamePaused)
+                return;
+            
             UpdateMovement();
 
             sprintInputDownCalled = Input.GetKeyDown(SprintButton) || Input.GetKeyDown(KeyCode.LeftShift);
@@ -73,24 +108,13 @@ namespace Enso.Characters.Player
             guardInputUpCalled = Input.GetKeyUp(GuardButton) || Input.GetKeyUp(KeyCode.Mouse1);
             rollInputDownCalled = Input.GetKeyDown(RollButton) || Input.GetKeyDown(KeyCode.Space);
             healInputDownCalled = Input.GetKeyDown(HealButton) || Input.GetKeyDown(KeyCode.Q);
-            specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKey(KeyCode.R);
-            interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKey(KeyCode.E);
-
-            pageLeftInputDownCalled = Input.GetKeyDown(PageLeftButton) || Input.GetKeyDown(KeyCode.Q);
-            pageRightInputDownCalled = Input.GetKeyDown(PageRightButton) || Input.GetKeyDown(KeyCode.E);
-
+            specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKeyDown(KeyCode.R);
+            interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKeyDown(KeyCode.E);
+            
             HoldingGuardInput = Input.GetKey(GuardButton);
             HoldingHealInput = Input.GetKey(HealButton);
 
-            if (pageLeftInputDownCalled)
-            {
-                OnPageLeftInputDown();
-            }
-
-            if (pageRightInputDownCalled)
-            {
-                OnPageRightInputDown();
-            }
+            
 
             if (sprintInputDownCalled)
             {
@@ -218,6 +242,10 @@ namespace Enso.Characters.Player
             SpecialAttackInputDown?.Invoke();
         }
 
+        #endregion
+
+        #region Menus
+
         private static void OnInteractionInputDown()
         {
             InteractionInputDown?.Invoke();
@@ -233,6 +261,16 @@ namespace Enso.Characters.Player
             PageRightInputDown?.Invoke();
         }
 
+        private static void OnStatusInputDown()
+        {
+            StatusInputDown?.Invoke();
+        }
+
+        private static void OnPauseInputDown()
+        {
+            PauseInputDown?.Invoke();
+        }
+        
         #endregion
     }
 }
