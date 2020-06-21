@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8aae3a143a5b442937290dd3036749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DelayAfterExecution: 0
+  VirtualCamera: {fileID: 0}
 --- !u!1 &3982938354727313912
 GameObject:
   m_ObjectHideFlags: 0
