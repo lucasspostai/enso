@@ -7,10 +7,19 @@ namespace Enso
     public class GameManager : Singleton<GameManager>
     {
         private Coroutine changeTimeScaleCoroutine;
+
+        [HideInInspector] public bool GamePaused;
         
         public void FreezeGame()
         {
             Time.timeScale = 0;
+            GamePaused = true;
+        }
+
+        public void NormalizeTime()
+        {
+            Time.timeScale = 1;
+            GamePaused = false;
         }
 
         public void ChangeTimeScale(float timeScale, float time)

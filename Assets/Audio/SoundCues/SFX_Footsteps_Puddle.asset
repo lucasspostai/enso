@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8979dcbad84b80b44977beca191dae41, type: 3}
   - {fileID: 8300000, guid: d06454978a5d1e9469390e49100b40e1, type: 3}
   Volume: 1
-  MinPitch: 0.95
-  MaxPitch: 1.05
+  MinPitch: 0.9
+  MaxPitch: 1.1
   Loop: 0
   SpatialBlend: 0
   MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,

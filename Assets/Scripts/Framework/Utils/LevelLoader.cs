@@ -6,6 +6,8 @@ namespace Framework.Utils
 {
     public class LevelLoader : Singleton<LevelLoader>
     {
+        public const string MainMenuScene = "MainMenu";
+        
         public Animator TransitionAnimator;
         
         public void LoadLevel(string sceneName)
