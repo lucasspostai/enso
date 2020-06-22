@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 499452959800626569}
   - component: {fileID: 499452959800626568}
+  - component: {fileID: 8038689854868357342}
   m_Layer: 0
-  m_Name: Trail
+  m_Name: Particle_Hiroyuki_RollTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,3 +128,14 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!210 &8038689854868357342
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499452959800626571}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 1

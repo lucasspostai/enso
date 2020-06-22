@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5758378259288500324}
   - component: {fileID: 7114996025573023714}
   - component: {fileID: 1823717832259771834}
+  - component: {fileID: -3299139281782917473}
   m_Layer: 0
-  m_Name: HealKomuso - Atras do player
+  m_Name: Particle_Enemy_Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4767,6 +4768,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 1
+--- !u!210 &-3299139281782917473
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139633540409390358}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &2880731412995399740
 GameObject:
   m_ObjectHideFlags: 0
