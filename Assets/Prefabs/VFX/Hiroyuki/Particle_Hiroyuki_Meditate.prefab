@@ -9517,8 +9517,9 @@ GameObject:
   - component: {fileID: 1313266968805036953}
   - component: {fileID: 4570587292145640479}
   - component: {fileID: 4944761529413822023}
+  - component: {fileID: -3245518759346025825}
   m_Layer: 0
-  m_Name: Meditate
+  m_Name: Particle_Hiroyuki_Meditate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14261,3 +14262,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-3245518759346025825
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638415983219117803}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 1

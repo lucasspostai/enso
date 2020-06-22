@@ -4822,6 +4822,7 @@ GameObject:
   - component: {fileID: 3744400240487677110}
   - component: {fileID: 3744400240487677096}
   - component: {fileID: 3744400240487677097}
+  - component: {fileID: -8677824709191037620}
   m_Layer: 0
   m_Name: Particle_AshigaruArcher_Aim
   m_TagString: Untagged
@@ -9722,3 +9723,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-8677824709191037620
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3744400240487677111}
+  m_Enabled: 1
+  m_SortingLayerID: -1074851055
+  m_SortingLayer: 3
+  m_SortingOrder: 1

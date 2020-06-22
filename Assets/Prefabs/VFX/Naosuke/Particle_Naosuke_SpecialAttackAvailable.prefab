@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4369969159437007480}
   - component: {fileID: 7298912230305918309}
   - component: {fileID: 2012396764740941133}
+  - component: {fileID: -296423208191253483}
   m_Layer: 0
   m_Name: Particle_Naosuke_SpecialAttackAvailable
   m_TagString: Untagged
@@ -4813,6 +4814,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-296423208191253483
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157556726190635485}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &8251045647413538799
 GameObject:
   m_ObjectHideFlags: 0

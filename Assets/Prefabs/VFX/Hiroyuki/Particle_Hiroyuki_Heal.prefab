@@ -9575,6 +9575,7 @@ GameObject:
   - component: {fileID: 729976094265092569}
   - component: {fileID: 729976094265092571}
   - component: {fileID: 729976094265092568}
+  - component: {fileID: -7497314960854051756}
   m_Layer: 0
   m_Name: Particle_Hiroyuki_Heal
   m_TagString: Untagged
@@ -14379,6 +14380,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-7497314960854051756
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729976094265092582}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 1
 --- !u!1 &729976094453722249
 GameObject:
   m_ObjectHideFlags: 0
