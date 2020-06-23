@@ -7,6 +7,7 @@ namespace Enso.UI
     public class Element : MonoBehaviour
     {
         protected Animator ThisAnimator;
+        protected bool IsEnabled;
 
         [SerializeField] private string DisableHash = "Disable";
         [SerializeField] private string EnableHash = "Enable";
@@ -23,11 +24,13 @@ namespace Enso.UI
         public virtual void Disable()
         {
             SetTrigger(DisableHash);
+            IsEnabled = false;
         }
         
         public virtual void Enable()
         {
             SetTrigger(EnableHash);
+            IsEnabled = true;
         }
 
         public void UpdateInfo()

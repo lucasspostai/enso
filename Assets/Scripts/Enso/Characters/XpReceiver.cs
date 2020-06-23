@@ -6,8 +6,6 @@ namespace Enso.Characters
     {
         public void GainXp(int xpAmount)
         {
-            print(xpAmount);
-            
             ExperienceManager.Instance.GainXp(xpAmount);
         }
     }

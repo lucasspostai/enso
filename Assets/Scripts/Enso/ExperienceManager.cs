@@ -25,7 +25,6 @@ namespace Enso
         public int MaxXp = 10;
 
         private int xpAmount;
-
         public int XpAmount
         {
             get => xpAmount;
@@ -41,7 +40,6 @@ namespace Enso
         }
 
         private int perksAvailable;
-
         public int PerksAvailable
         {
             get => perksAvailable;
@@ -68,36 +66,12 @@ namespace Enso
 
         public void GainXp(int xpValue)
         {
-            XpReceived += xpValue;
+            XpAmount += xpValue;
 
-            if (increaseXpCoroutine != null)
-                StopCoroutine(increaseXpCoroutine);
-
-            increaseXpCoroutine = StartCoroutine(IncreaseXp(xpValue));
-        }
-
-        private IEnumerator IncreaseXp(int xpValue)
-        {
-            yield return new WaitForSeconds(2f);
-            
-            var xpGained = 0;
-
-            while (xpGained < xpValue)
+            if (XpAmount >= MaxXp)
             {
-                yield return new WaitForSeconds(0.02f);
-
-                xpGained++;
-                XpAmount += 1;
-                XpReceived--;
-
-                if (xpAmount >= MaxXp)
-                {
-                    GainPerk();
-
-                    yield return new WaitForSeconds(3f);
-
-                    XpAmount = 0;
-                }
+                GainPerk();
+                XpAmount = 0;
             }
         }
 
