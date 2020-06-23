@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8819955161382153320}
   - component: {fileID: 1503594585738059137}
   - component: {fileID: 5588487042316084077}
+  - component: {fileID: 8745758624768930379}
   - component: {fileID: 3385941943726539048}
   m_Layer: 10
   m_Name: Komuso
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
+  IsDead: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +408,19 @@ MonoBehaviour:
   MaxSimultaneousGhosts: 6
   GhostInitialColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Trail: {fileID: 5785260338164365929}
+--- !u!114 &8745758624768930379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59868d31b4343e641831908bd277d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XpAmount: 5
 --- !u!210 &3385941943726539048
 SortingGroup:
   m_ObjectHideFlags: 0

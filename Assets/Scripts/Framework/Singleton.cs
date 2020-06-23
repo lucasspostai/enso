@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Framework
 {
@@ -10,19 +11,24 @@ namespace Framework
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = FindObjectOfType<T>();
-                    if (instance == null)
-                    {
-                        var obj = new GameObject {name = typeof(T).Name};
-                        instance = obj.AddComponent<T>();
-                    }
-                }
+                if (applicationIsQuitting)
+                    return null;
+
+                if (instance != null) 
+                    return instance;
+                
+                instance = FindObjectOfType<T>();
+                if (instance != null) 
+                    return instance;
+                    
+                var obj = new GameObject {name = typeof(T).Name};
+                instance = obj.AddComponent<T>();
 
                 return instance;
             }
         }
+
+        private static bool applicationIsQuitting;
 
         public virtual void Awake()
         {
@@ -35,6 +41,11 @@ namespace Framework
             {
                 Destroy(gameObject);
             }
+        }
+
+        public virtual void OnDestroy()
+        {
+            applicationIsQuitting = true;
         }
     }
 }

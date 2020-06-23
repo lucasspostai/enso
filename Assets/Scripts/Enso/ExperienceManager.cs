@@ -8,25 +8,40 @@ namespace Enso
     public class ExperienceManager : Singleton<ExperienceManager>
     {
         private Coroutine increaseXpCoroutine;
-        
-        [SerializeField] private int MaxXp;
-        
+
+        private int xpReceived;
+        private int XpReceived
+        {
+            get => xpReceived;
+            set
+            {
+                xpReceived = value;
+                
+                if (xpReceived < 0)
+                    xpReceived = 0;
+            }
+        }
+
+        public int MaxXp = 10;
+
         private int xpAmount;
+
         public int XpAmount
         {
             get => xpAmount;
-            set
+            private set
             {
                 xpAmount = value;
 
                 if (xpAmount < 0)
                     xpAmount = 0;
-                
+
                 OnXpValueChanged();
             }
         }
 
         private int perksAvailable;
+
         public int PerksAvailable
         {
             get => perksAvailable;
@@ -36,14 +51,14 @@ namespace Enso
 
                 if (perksAvailable < 0)
                     perksAvailable = 0;
-            } 
+            }
         }
 
         public event Action XpValueChanged;
         public event Action PerkReceived;
         public event Action PerkUsed;
         public event Action NoPerksAvailable;
-        
+
         private void GainPerk()
         {
             PerksAvailable++;
@@ -53,7 +68,9 @@ namespace Enso
 
         public void GainXp(int xpValue)
         {
-            if(increaseXpCoroutine != null)
+            XpReceived += xpValue;
+
+            if (increaseXpCoroutine != null)
                 StopCoroutine(increaseXpCoroutine);
 
             increaseXpCoroutine = StartCoroutine(IncreaseXp(xpValue));
@@ -61,21 +78,24 @@ namespace Enso
 
         private IEnumerator IncreaseXp(int xpValue)
         {
+            yield return new WaitForSeconds(2f);
+            
             var xpGained = 0;
 
             while (xpGained < xpValue)
             {
-                yield return  new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(0.02f);
 
                 xpGained++;
-                XpAmount += xpGained;
+                XpAmount += 1;
+                XpReceived--;
 
                 if (xpAmount >= MaxXp)
                 {
                     GainPerk();
-                    
-                    yield return  new WaitForSeconds(3f);
-                    
+
+                    yield return new WaitForSeconds(3f);
+
                     XpAmount = 0;
                 }
             }

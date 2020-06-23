@@ -16,6 +16,9 @@ namespace Enso.Characters
             get => health;
             set
             {
+                if (IsDead)
+                    return;
+                
                 health = value;
 
                 if (health > maxHealth)
@@ -24,6 +27,7 @@ namespace Enso.Characters
                 if (health <= 0)
                 {
                     health = 0;
+                    IsDead = true;
                     OnDeath();
                     return;
                 }
@@ -44,6 +48,7 @@ namespace Enso.Characters
         public event Action Death;
         
         [HideInInspector] public AttackType CurrentAttackType;
+        [HideInInspector] public bool IsDead;
 
         private void Awake()
         {

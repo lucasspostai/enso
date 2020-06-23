@@ -13,7 +13,7 @@ namespace Enso.UI
         [SerializeField] private string UpdateHash = "Update";
         private bool isAnimatorNotNull;
 
-        private void Start()
+        protected virtual void Start()
         {
             ThisAnimator = GetComponent<Animator>();
             

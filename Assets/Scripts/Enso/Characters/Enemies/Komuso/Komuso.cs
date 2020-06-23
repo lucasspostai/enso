@@ -27,6 +27,9 @@ namespace Enso.Characters.Enemies.Komuso
         protected override void ChooseBehavior()
         {
             base.ChooseBehavior();
+            
+            return;
+
 
             if (ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
             {
