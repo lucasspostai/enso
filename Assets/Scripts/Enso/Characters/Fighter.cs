@@ -55,7 +55,7 @@ namespace Enso.Characters
             return BaseProperties;
         }
 
-        public void EnterCombatWith(Fighter fighter)
+        public virtual void EnterCombatWith(Fighter fighter)
         {
             Target = fighter.transform;
 
