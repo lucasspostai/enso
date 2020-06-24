@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6f6bc1296df7f34fabaa280eefed98f, type: 2}
+  - {fileID: 2100000, guid: 1a89a952663b919498107137f37c0c15, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4765,6 +4765,7 @@ GameObject:
   - component: {fileID: 8240240217439296904}
   - component: {fileID: 8240240217439296903}
   - component: {fileID: 8240240217439296902}
+  - component: {fileID: 8232947336070505440}
   m_Layer: 0
   m_Name: RiposteDamage
   m_TagString: Untagged
@@ -9463,7 +9464,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6f6bc1296df7f34fabaa280eefed98f, type: 2}
+  - {fileID: 2100000, guid: 1a89a952663b919498107137f37c0c15, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9508,6 +9509,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &8232947336070505440
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240240217439296901}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &8240240218292030090
 GameObject:
   m_ObjectHideFlags: 0
@@ -9525,7 +9537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8240240218292030101
 Transform:
   m_ObjectHideFlags: 0
