@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 7268913376509519925}
   - component: {fileID: 3260619430653738697}
   - component: {fileID: 627609160021045995}
+  - component: {fileID: 8652824207438548843}
   m_Layer: 5
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -874,6 +875,17 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!210 &8652824207438548843
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120277342410544042}
+  m_Enabled: 1
+  m_SortingLayerID: -1811148431
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &8570694559781933073
 GameObject:
   m_ObjectHideFlags: 0

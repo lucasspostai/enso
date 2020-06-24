@@ -18,7 +18,7 @@ MonoBehaviour:
   GuardSpeed: 1
   AccelerationTime: 0
   DeadZone: 0.1
-  Health: 5
+  Health: 3
   BalanceAmount: 10
   DelayToRecoverAfterLosingBalance: 10
   DelayToRecoverAfterDamage: 4

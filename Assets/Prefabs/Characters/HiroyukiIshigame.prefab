@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 7997557526909049030}
   - component: {fileID: 8218683346449343016}
   - component: {fileID: 7622270846077408965}
+  - component: {fileID: 4350567238863108949}
   - component: {fileID: 5588487042316084077}
   - component: {fileID: 5997655998194319213}
   - component: {fileID: 2197122906745619878}
@@ -216,6 +217,7 @@ MonoBehaviour:
   GuardController: {fileID: 813916947705230572}
   RollController: {fileID: 8218683346449343016}
   HealController: {fileID: 7622270846077408965}
+  MeditationController: {fileID: 4350567238863108949}
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +234,7 @@ MonoBehaviour:
   ActionAnimationControllers:
   - {fileID: 8218683346449343016}
   - {fileID: 7622270846077408965}
+  - {fileID: 4350567238863108949}
   Attack: {fileID: 7059184826251289228}
   Guard: {fileID: 813916947705230572}
   MovementController: {fileID: 8491124380792908023}
@@ -253,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
+  IsDead: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +351,8 @@ MonoBehaviour:
   SpecialAttackParticle: {fileID: 997696477241642813}
   StrongAttackDeadZoneTime: 0.1
   SpecialAttackCost: 0.9
+  StrongAttackUnlocked: 0
+  SpecialAttackUnlocked: 0
 --- !u!114 &813916947705230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +451,23 @@ MonoBehaviour:
   CanCutAnimation: 0
   HealAnimation: {fileID: 11400000, guid: 71078de54e00c6d46b8c545aefafb3bf, type: 2}
   Particle: {fileID: 8046843854768437360}
+--- !u!114 &4350567238863108949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a62099881eb13c42a1d81fdc00b5003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAnimationPlaying: 0
+  CanCutAnimation: 0
+  MeditateAnimation: {fileID: 11400000, guid: 67bb0b9d5608ab64b9c1e6e1fc3676ae, type: 2}
+  EndMeditationAnimation: {fileID: 11400000, guid: 3051db9bcf5b2494ea4e1bc7b8c17d52,
+    type: 2}
 --- !u!114 &5588487042316084077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +580,7 @@ SpriteRenderer:
   m_SortingLayerID: -2128475455
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a4afcb1c0993294bb706318b6bd79b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89ff9b8ccd93a4640ae72cacdb04a57f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -760,6 +783,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6330016213634359868}
     m_Modifications:
+    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Trail
+      objectReference: {fileID: 0}
     - target: {fileID: 499452959800626569, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -834,11 +862,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626571, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Name
-      value: Trail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32189b8d7bea1e48bfed6a7e093e5c2, type: 3}
@@ -992,6 +1015,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4942956660897927905}
     m_Modifications:
+    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle_SpecialAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8507507856205289332, guid: d051b8b40860b1240a30c55f2241399c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1046,16 +1079,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle_SpecialAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507507856205289339, guid: d051b8b40860b1240a30c55f2241399c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d051b8b40860b1240a30c55f2241399c, type: 3}

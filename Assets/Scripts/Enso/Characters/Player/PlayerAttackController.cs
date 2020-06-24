@@ -30,6 +30,9 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject SpecialAttackParticle;
         [SerializeField] private float StrongAttackDeadZoneTime;
         [SerializeField] [Range(0, 1)] private float SpecialAttackCost = 0.9f;
+        
+        public bool StrongAttackUnlocked;
+        public bool SpecialAttackUnlocked;
 
         #region Delegates
 
@@ -97,7 +100,8 @@ namespace Enso.Characters.Player
 
         private void PressAttackButton()
         {
-            isHoldingAttackButton = true;
+            if(StrongAttackUnlocked)
+                isHoldingAttackButton = true;
 
             if (riposteAvailable)
                 StartRiposte();
@@ -212,7 +216,7 @@ namespace Enso.Characters.Player
 
         private void StartSpecialAttack()
         {
-            if (!canUseSpecialAttack || !CanCutAnimation &&
+            if (!SpecialAttackUnlocked || !canUseSpecialAttack || !CanCutAnimation &&
                 (LightAttackAnimations.Count - lightAttacksAvailable.Count > 1 ||
                  ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
                  !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying()))

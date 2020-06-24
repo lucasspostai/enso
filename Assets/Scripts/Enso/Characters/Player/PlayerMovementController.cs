@@ -8,8 +8,7 @@ namespace Enso.Characters.Player
     public class PlayerMovementController : CharacterMovementController
     {
         private Coroutine sprintCoroutine;
-        private Player player;
-
+        
         [SerializeField] private float SprintDeadZoneTime = 0.2f;
 
         private void OnEnable()
@@ -22,13 +21,6 @@ namespace Enso.Characters.Player
         {
             PlayerInput.SprintInputDown -= TryToSprint;
             PlayerInput.SprintInputUp -= CancelSprint;
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-
-            player = GetComponent<Player>();
         }
 
         protected override void Update()
