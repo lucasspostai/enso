@@ -67,6 +67,11 @@ namespace Enso.Characters
             return maxHealth;
         }
 
+        public void IncreaseMaxHealth()
+        {
+            maxHealth += 1;
+        }
+
         public float GetHealthPercentage()
         {
             return (float) Health / maxHealth;
@@ -101,19 +106,6 @@ namespace Enso.Characters
         private void OnDeath()
         {
             Death?.Invoke();
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                TakeDamage(1);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                TakeDamage(2, AttackType.Strong);
-            }
         }
     }
 }

@@ -59,11 +59,6 @@ namespace Enso.Characters
                 
                 GainBalance(valueOverTime);
             }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                TakeDamage(1);
-            }
         }
         
         #endregion
@@ -83,6 +78,11 @@ namespace Enso.Characters
         public float GetBalancePercentage()
         {
             return Balance / maxBalance;
+        }
+
+        public void IncreaseMaxBalance()
+        {
+            maxBalance += 2;
         }
 
         public void TakeDamage(int damageAmount)

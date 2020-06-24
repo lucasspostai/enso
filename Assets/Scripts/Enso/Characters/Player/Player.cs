@@ -20,6 +20,7 @@ namespace Enso.Characters.Player
         public PlayerGuardController GuardController;
         public PlayerRollController RollController;
         public PlayerHealController HealController;
+        public PlayerMeditationController MeditationController;
 
         protected override void Awake()
         {

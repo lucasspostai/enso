@@ -5,8 +5,8 @@ namespace Framework.LevelDesignEvents
 {
     public abstract class LevelDesignEventExecuter : MonoBehaviour
     {
-        [SerializeField] private LevelDesignEvent[] LevelDesignEvents;
-        [SerializeField] private bool DestroyAfterExecution;
+        [SerializeField] protected LevelDesignEvent[] LevelDesignEvents;
+        [SerializeField] protected bool DestroyAfterExecution;
 
         public void ExecuteEvents()
         {

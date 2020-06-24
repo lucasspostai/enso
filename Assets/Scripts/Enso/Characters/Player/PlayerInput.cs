@@ -26,6 +26,7 @@ namespace Enso.Characters.Player
         private bool rollInputDownCalled;
         private bool healInputDownCalled;
         private bool interactionInputDownCalled;
+        private bool returnInputDownCalled;
         private bool specialAttackInputDownCalled;
         private bool statusInputDownCalled;
         private bool pauseInputDownCalled;
@@ -39,6 +40,7 @@ namespace Enso.Characters.Player
         [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode SpecialAttackButton = KeyCode.Joystick1Button5;
         [SerializeField] private KeyCode InteractionButton = KeyCode.Joystick1Button1;
+        [SerializeField] private KeyCode ReturnButton = KeyCode.Joystick1Button2;
         [SerializeField] private KeyCode PageLeftButton = KeyCode.Joystick1Button4;
         [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
         [SerializeField] private KeyCode StatusButton = KeyCode.Joystick1Button6;
@@ -59,6 +61,7 @@ namespace Enso.Characters.Player
         public static event Action HealInputDown;
         public static event Action SpecialAttackInputDown;
         public static event Action InteractionInputDown;
+        public static event Action ReturnInputDown;
         public static event Action PageLeftInputDown;
         public static event Action PageRightInputDown;
         public static event Action StatusInputDown;
@@ -110,11 +113,10 @@ namespace Enso.Characters.Player
             healInputDownCalled = Input.GetKeyDown(HealButton) || Input.GetKeyDown(KeyCode.Q);
             specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKeyDown(KeyCode.R);
             interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKeyDown(KeyCode.E);
-            
+            returnInputDownCalled = Input.GetKeyDown(ReturnButton) || Input.GetKeyDown(KeyCode.Escape);
+
             HoldingGuardInput = Input.GetKey(GuardButton);
             HoldingHealInput = Input.GetKey(HealButton);
-
-            
 
             if (sprintInputDownCalled)
             {
@@ -175,6 +177,10 @@ namespace Enso.Characters.Player
             if (interactionInputDownCalled)
             {
                 OnInteractionInputDown();
+            }
+            else if (returnInputDownCalled)
+            {
+                OnReturnInputDown();
             }
         }
 
@@ -250,6 +256,11 @@ namespace Enso.Characters.Player
         {
             InteractionInputDown?.Invoke();
         }
+        
+        private static void OnReturnInputDown()
+        {
+            ReturnInputDown?.Invoke();
+        }
 
         private static void OnPageLeftInputDown()
         {
@@ -272,5 +283,7 @@ namespace Enso.Characters.Player
         }
         
         #endregion
+
+        
     }
 }

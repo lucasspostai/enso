@@ -10,5 +10,10 @@ namespace Framework.LevelDesignEvents
         {
             
         }
+
+        public virtual void Exit()
+        {
+            
+        }
     }
 }
