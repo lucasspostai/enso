@@ -72,6 +72,12 @@ namespace Enso.Characters
             maxHealth += 1;
         }
 
+        public void SetHealth(int healthValue)
+        {
+            maxHealth = healthValue;
+            Health = maxHealth;
+        }
+
         public float GetHealthPercentage()
         {
             return (float) Health / maxHealth;
