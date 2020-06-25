@@ -1,6 +1,7 @@
 ﻿using Enso.UI;
 using Framework;
 using Framework.Audio;
+using Framework.Utils;
 using UnityEngine;
 
 namespace Enso.Characters.Player
@@ -43,13 +44,21 @@ namespace Enso.Characters.Player
         {
             var playerData = SaveSystem.Load();
 
-            //Load Stage;
-
             GetHealthSystem().SetHealth(playerData.Health);
             HealController.SetMaxHealingCharges(playerData.HealingCharges);
             GetBalanceSystem().SetMaxBalance(playerData.Balance);
             AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
             AttackController.SpecialAttackUnlocked = playerData.SpecialAttackUnlocked;
+            ExperienceManager.Instance.XpAmount = playerData.XpAmount;
+            ExperienceManager.Instance.PerksAvailable = playerData.Perks;
+            
+            var levelInfo = FindObjectOfType<LevelInfo>();
+
+            if (levelInfo)
+            {
+                transform.position = levelInfo.SaveLocation.position;
+                MeditationController.StartMeditation(levelInfo.LevelShrine);
+            }
         }
 
         private void InstantiateManagers()

@@ -1,6 +1,7 @@
 ﻿using Enso.Characters.Player;
 using Enso.UI;
 using Framework.LevelDesignEvents;
+using Framework.Utils;
 using UnityEngine;
 
 namespace Enso
@@ -13,6 +14,7 @@ namespace Enso
 
         [SerializeField] private Element InteractionElement;
         [SerializeField] private Element ShopCanvasElement;
+        [SerializeField] private Level ThisLevel;
 
         private void OnEnable()
         {
@@ -72,7 +74,8 @@ namespace Enso
             player.MeditationController.EndMeditation();
 
             isInteracting = false;
-            
+
+            LevelLoader.Instance.CurrentLevelIndex = ThisLevel.LevelIndex;
             player.SaveGame();
             
             ShopCanvasElement.Disable();

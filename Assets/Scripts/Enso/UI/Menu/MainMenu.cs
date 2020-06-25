@@ -10,7 +10,7 @@ namespace Enso.UI.Menu
 
         public void StartGame()
         {
-            LevelLoader.Instance.LoadLevel(GameSceneName);
+            LevelLoader.Instance.LoadSavedLevel();
         }
     }
 }
