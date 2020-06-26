@@ -112,6 +112,12 @@ namespace Enso.CombatSystem
             maxHealingCharges += 1;
         }
 
+        public void SetMaxHealingCharges(int healingChargesValue)
+        {
+            maxHealingCharges = healingChargesValue;
+            HealingCharges = maxHealingCharges;
+        }
+
         public int GetMaxHealingCharges()
         {
             return maxHealingCharges;

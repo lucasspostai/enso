@@ -75,6 +75,12 @@ namespace Enso.Characters
             return maxBalance;
         }
 
+        public void SetMaxBalance(float maxBalanceValue)
+        {
+            maxBalance = maxBalanceValue;
+            Balance = maxBalance;
+        }
+
         public float GetBalancePercentage()
         {
             return Balance / maxBalance;

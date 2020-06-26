@@ -1,6 +1,7 @@
 ﻿using Enso.Characters.Player;
 using Framework.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Enso.UI
 {
@@ -43,13 +44,15 @@ namespace Enso.UI
         {
             PausePanel.Disable();
             OptionsPanel.Disable();
+            
             GameManager.Instance.NormalizeTime();
         }
 
         public void ReturnToMenu()
         {
             GameManager.Instance.NormalizeTime();
-            LevelLoader.Instance.LoadLevel(LevelLoader.MainMenuScene);
+            
+            LevelLoader.Instance.LoadMainMenu();
         }
     }
 }

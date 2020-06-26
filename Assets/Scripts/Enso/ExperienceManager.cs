@@ -28,7 +28,7 @@ namespace Enso
         public int XpAmount
         {
             get => xpAmount;
-            private set
+            set
             {
                 xpAmount = value;
 

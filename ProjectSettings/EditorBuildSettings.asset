@@ -9,6 +9,33 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d8cc18a1bfe809a45a54f3a8da250c04
   - enabled: 1
-    path: Assets/Scenes/TestLevels/CombatTestLevel.unity
-    guid: 0bb6350d191000b4f9ae947d5bb90e5a
+    path: Assets/Scenes/NorataFields/NorataFields_Mountain_Environment.unity
+    guid: cd954e0369100f34e960a08c2ff6509d
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_Mountain_Gameplay.unity
+    guid: 378d6bf1a7fc915488b1fc028ab30047
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_MountainFoot_Environment.unity
+    guid: 4184f4f25dbe3bf46a21fb6872dde3ef
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_MountainFoot_Gameplay.unity
+    guid: 9b5367dff9dfde848a00aab961f5b049
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_RiceFields_Environment.unity
+    guid: 16137d82501d912498848b92e524d48b
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_RiceFields_Gameplay.unity
+    guid: 2e73d223338d90848a499ff1bdc7e8cf
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_NorataVillage_Environment.unity
+    guid: be97e57ac3497474782ddf4a4bf26166
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_NorataVillage_Gameplay.unity
+    guid: a118dcc26393e3e459a716650d7845a8
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_Beach_Environment.unity
+    guid: 22967dc6e5f2211478a1b8bf023f5eb2
+  - enabled: 1
+    path: Assets/Scenes/NorataFields/NorataFields_Beach_Gameplay.unity
+    guid: cf7a55940f24ced4b8ab317db28c03cb
   m_configObjects: {}

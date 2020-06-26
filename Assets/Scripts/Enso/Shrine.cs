@@ -1,6 +1,7 @@
 ﻿using Enso.Characters.Player;
 using Enso.UI;
 using Framework.LevelDesignEvents;
+using Framework.Utils;
 using UnityEngine;
 
 namespace Enso
@@ -8,10 +9,12 @@ namespace Enso
     public class Shrine : LevelDesignEvent
     {
         private bool isActive;
+        private bool isInteracting;
         private Player player;
 
         [SerializeField] private Element InteractionElement;
         [SerializeField] private Element ShopCanvasElement;
+        [SerializeField] private Level ThisLevel;
 
         private void OnEnable()
         {
@@ -50,10 +53,14 @@ namespace Enso
 
         private void Interact()
         {
-            if (!isActive)
+            if (!isActive || isInteracting)
                 return;
 
             player.MeditationController.StartMeditation(this);
+
+            isInteracting = true;
+            
+            player.SaveGame();
             
             ShopCanvasElement.gameObject.SetActive(true);
             ShopCanvasElement.Enable();
@@ -61,10 +68,15 @@ namespace Enso
         
         private void Return()
         {
-            if (!isActive)
+            if (!isActive || !isInteracting)
                 return;
 
             player.MeditationController.EndMeditation();
+
+            isInteracting = false;
+
+            LevelLoader.Instance.CurrentLevelIndex = ThisLevel.LevelIndex;
+            player.SaveGame();
             
             ShopCanvasElement.Disable();
         }
