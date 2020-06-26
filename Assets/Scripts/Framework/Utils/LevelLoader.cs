@@ -7,8 +7,8 @@ namespace Framework.Utils
 {
     public class LevelLoader : Singleton<LevelLoader>
     {
-        private const string MainMenuScene = "MainMenu";
-        private const string CreditsScene = "Credits";
+        public const string MainMenuScene = "MainMenu";
+        public const string CreditsScene = "Credits";
         
         public Animator TransitionAnimator;
 
@@ -20,6 +20,7 @@ namespace Framework.Utils
         {
             LoadSavedLevel();
             StartCoroutine(LoadSceneAsynchronously(MainMenuScene, LoadSceneMode.Additive));
+            GameManager.Instance.GamePaused = true;
         }
         
         public void LoadCredits()
@@ -39,7 +40,7 @@ namespace Framework.Utils
 
             foreach (var level in Levels)
             {
-                if (level.LevelIndex == playerData.LevelIndex)
+                if (playerData != null && level.LevelIndex == playerData.LevelIndex)
                 {
                     Instance.CurrentLevelIndex = playerData.LevelIndex;
                     
@@ -48,6 +49,8 @@ namespace Framework.Utils
                     return;
                 }
             }
+            
+            LoadLevel(Levels[0]);
         }
 
         private IEnumerator LoadSceneAsynchronously(string sceneName, LoadSceneMode mode)

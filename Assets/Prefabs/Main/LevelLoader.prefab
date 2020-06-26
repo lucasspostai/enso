@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2642892362929677765}
   - component: {fileID: 2642892362929677762}
   - component: {fileID: 2642892362929677763}
+  - component: {fileID: 253696840093285644}
   m_Layer: 5
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -239,7 +240,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 150
   m_TargetDisplay: 0
 --- !u!114 &2642892362929677765
 MonoBehaviour:
@@ -300,3 +301,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e397e5347e28c4448ce8e87e325b5d1, type: 2}
   - {fileID: 11400000, guid: 5d6a67236753f8249865f2884cbe00c1, type: 2}
   CurrentLevelIndex: 0
+--- !u!210 &253696840093285644
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642892362929677760}
+  m_Enabled: 1
+  m_SortingLayerID: -1811148431
+  m_SortingLayer: 4
+  m_SortingOrder: 150
