@@ -30,6 +30,7 @@ namespace Enso.Characters.Player
         private bool specialAttackInputDownCalled;
         private bool statusInputDownCalled;
         private bool pauseInputDownCalled;
+        private bool anyKeyDownCalled;
 
         private float guardInputHoldingTime;
 
@@ -66,6 +67,7 @@ namespace Enso.Characters.Player
         public static event Action PageRightInputDown;
         public static event Action StatusInputDown;
         public static event Action PauseInputDown;
+        public static event Action AnyInputDown;
 
         public static Vector2 Movement;
 
@@ -114,6 +116,7 @@ namespace Enso.Characters.Player
             specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKeyDown(KeyCode.R);
             interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKeyDown(KeyCode.E);
             returnInputDownCalled = Input.GetKeyDown(ReturnButton) || Input.GetKeyDown(KeyCode.Escape);
+            anyKeyDownCalled = Input.anyKeyDown;
 
             HoldingGuardInput = Input.GetKey(GuardButton);
             HoldingHealInput = Input.GetKey(HealButton);
@@ -181,6 +184,11 @@ namespace Enso.Characters.Player
             else if (returnInputDownCalled)
             {
                 OnReturnInputDown();
+            }
+
+            if (anyKeyDownCalled)
+            {
+                OnAnyInputDown();
             }
         }
 
@@ -284,6 +292,10 @@ namespace Enso.Characters.Player
         
         #endregion
 
-        
+
+        private static void OnAnyInputDown()
+        {
+            AnyInputDown?.Invoke();
+        }
     }
 }

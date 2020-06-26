@@ -27,22 +27,16 @@ namespace Enso
         {
             var path = GetPath();
 
-            if (File.Exists(path))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                var fileStream = new FileStream(path, FileMode.Open);
-                var playerData = binaryFormatter.Deserialize(fileStream) as PlayerData;
-                
-                fileStream.Close();
-                
-                return playerData;
-            }
-            else
-            {
-                Debug.LogError("Save file not found in " + path);
-                
+            if (!File.Exists(path)) 
                 return null;
-            }
+            
+            var binaryFormatter = new BinaryFormatter();
+            var fileStream = new FileStream(path, FileMode.Open);
+            var playerData = binaryFormatter.Deserialize(fileStream) as PlayerData;
+                
+            fileStream.Close();
+                
+            return playerData;
         }
     }
 }
