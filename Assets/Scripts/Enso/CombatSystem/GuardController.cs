@@ -127,9 +127,11 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(BlockAnimation.ClipHolder, BlockAnimation.AnimationFrameChecker);
             
             ThisFighter.AnimationHandler.PauseAnimationForAWhile();
-            SpawnParticle(BlockParticles[uniqueRandom.GetRandomInt()]);
+            if(BlockParticles.Length > 0)
+                SpawnParticle(BlockParticles[uniqueRandom.GetRandomInt()]);
             
-            PlayerCinemachineManager.Instance.ShakeController.Shake(BlockShakeProfile);
+            if(BlockShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(BlockShakeProfile);
         }
 
         public virtual void Parry()

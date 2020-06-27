@@ -19,12 +19,12 @@ namespace Enso.CombatSystem
 
         [SerializeField] private Hitbox AttackHitbox;
 
-        [Header("Particles")] [SerializeField] protected GameObject ParryParticle;
+        [Header("Particles")] 
+        [SerializeField] protected GameObject ParryParticle;
         [SerializeField] protected GameObject RiposteParticle;
 
-        [Header("Camera Shake")] [SerializeField]
-        protected CameraShakeProfile ParryShakeProfile;
-
+        [Header("Camera Shake")] 
+        [SerializeField] protected CameraShakeProfile ParryShakeProfile;
         [SerializeField] protected CameraShakeProfile RiposteShakeProfile;
         [SerializeField] protected CameraShakeProfile AttackShakeProfile;
 
@@ -98,7 +98,8 @@ namespace Enso.CombatSystem
 
                     SpawnParticle(ParryParticle);
 
-                    PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
+                    if(ParryShakeProfile)
+                        PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
 
                     GameManager.Instance.ChangeTimeScale(0.5f, 1f);
                 }
@@ -112,7 +113,8 @@ namespace Enso.CombatSystem
 
         public override void OnHitFrameStart()
         {
-            PlayerCinemachineManager.Instance.ShakeController.Shake(AttackShakeProfile);
+            if(AttackShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(AttackShakeProfile);
 
             if (isHitboxNull)
                 return;
@@ -144,7 +146,8 @@ namespace Enso.CombatSystem
         {
             SpawnParticle(RiposteParticle, riposteCharacterTransform);
 
-            PlayerCinemachineManager.Instance.ShakeController.Shake(RiposteShakeProfile);
+            if(AttackShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(RiposteShakeProfile);
         }
     }
 }
