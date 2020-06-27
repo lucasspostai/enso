@@ -55,8 +55,6 @@ namespace Framework.Utils
 
         private IEnumerator LoadSceneAsynchronously(string sceneName, LoadSceneMode mode)
         {
-            print(TransitionAnimator.name);
-            
             if(mode == LoadSceneMode.Single)
                 TransitionAnimator.Play("LoadScreen_StartTransition");
             

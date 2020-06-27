@@ -14,7 +14,7 @@ namespace WaterReflex
         private SpriteRenderer spriteRenderer;
 
         [Header("Reflection Properties")] 
-        [SerializeField] private Vector3 LocalPosition = new Vector3(0, -0.25f, 0);
+        [SerializeField] private Vector3 LocalPosition = new Vector3(0, -2f, 0);
         [SerializeField] private Vector3 LocalRotation = new Vector3(0, 0, -180);
         [SerializeField] private Vector3 LocalScale = Vector3.one;
 
@@ -23,7 +23,7 @@ namespace WaterReflex
         [SerializeField] private string SpriteLayer = "Default";
         [SerializeField] private int SpriteLayerOrder = -5;
         private bool isSpriteNull;
-        private bool isSpriteSourceNotNull;
+        private bool isSpriteSourceNull;
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace WaterReflex
 
         private void Awake()
         {
-            isSpriteSourceNotNull = spriteSource != null;
+            isSpriteSourceNull = spriteSource == null;
             isSpriteNull = Sprite == null;
             
             var reflectGameObject = new GameObject("Water Reflect");
@@ -45,6 +45,8 @@ namespace WaterReflex
             spriteRenderer.sortingOrder = SpriteLayerOrder;
 
             spriteSource = GetComponent<SpriteRenderer>();
+            
+            isSpriteSourceNull = spriteSource == null;
         }
 
         private void OnDestroy()
@@ -57,7 +59,9 @@ namespace WaterReflex
 
         private void LateUpdate()
         {
-            if (!isSpriteSourceNotNull) return;
+            if (isSpriteSourceNull) 
+                return;
+            
             spriteRenderer.sprite = isSpriteNull ? spriteSource.sprite : Sprite;
 
             spriteRenderer.flipX = spriteSource.flipX;

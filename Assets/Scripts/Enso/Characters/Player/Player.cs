@@ -44,22 +44,23 @@ namespace Enso.Characters.Player
         {
             var playerData = SaveSystem.Load();
 
-            if (playerData == null)
-                return;
-            
-            GetHealthSystem().SetHealth(playerData.Health);
-            HealController.SetMaxHealingCharges(playerData.HealingCharges);
-            GetBalanceSystem().SetMaxBalance(playerData.Balance);
-            AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
-            AttackController.SpecialAttackUnlocked = playerData.SpecialAttackUnlocked;
-            ExperienceManager.Instance.XpAmount = playerData.XpAmount;
-            ExperienceManager.Instance.PerksAvailable = playerData.Perks;
+            if (playerData != null)
+            {
+                GetHealthSystem().SetHealth(playerData.Health);
+                HealController.SetMaxHealingCharges(playerData.HealingCharges);
+                GetBalanceSystem().SetMaxBalance(playerData.Balance);
+                AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
+                AttackController.SpecialAttackUnlocked = playerData.SpecialAttackUnlocked;
+                ExperienceManager.Instance.XpAmount = playerData.XpAmount;
+                ExperienceManager.Instance.PerksAvailable = playerData.Perks;
+            }
             
             var levelInfo = FindObjectOfType<LevelInfo>();
 
             if (levelInfo)
             {
                 transform.position = levelInfo.SaveLocation.position;
+                
                 MeditationController.StartMeditation(levelInfo.LevelShrine);
             }
         }
@@ -96,7 +97,6 @@ namespace Enso.Characters.Player
             if (!cinemachineManager)
             {
                 cinemachineManager = Instantiate(MainCinemachineManager).GetComponent<PlayerCinemachineManager>();
-                cinemachineManager.Setup(this);
             }
 
             //Canvas

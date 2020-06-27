@@ -1,7 +1,6 @@
 ﻿using Enso.Characters.Player;
 using Framework.Utils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Enso.UI
 {

@@ -28,6 +28,7 @@ namespace Framework
             }
         }
 
+        private bool ignoreQuitting;
         private static bool applicationIsQuitting;
 
         public virtual void Awake()
@@ -35,17 +36,19 @@ namespace Framework
             if (instance == null)
             {
                 instance = this as T;
-                DontDestroyOnLoad(this.gameObject);
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
+                ignoreQuitting = true;
                 Destroy(gameObject);
             }
         }
 
         public virtual void OnDestroy()
         {
-            applicationIsQuitting = true;
+            if(!ignoreQuitting)
+                applicationIsQuitting = true;
         }
     }
 }
