@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
+  IsDead: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +312,12 @@ MonoBehaviour:
     type: 3}
   DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
+  RegularDamageShakeProfile: {fileID: 0}
+  HeavyDamageShakeProfile: {fileID: 0}
+  LoseBalanceShakeProfile: {fileID: 0}
+  DeathShakeProfile: {fileID: 0}
+  DeathTimeScale: 0.5
+  DeathTimeScaleDuration: 0.2
 --- !u!114 &6587487395945137368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +333,11 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 6495635343669140766}
+  ParryParticle: {fileID: 0}
+  RiposteParticle: {fileID: 0}
+  ParryShakeProfile: {fileID: 0}
+  RiposteShakeProfile: {fileID: 0}
+  AttackShakeProfile: {fileID: 0}
   CanAttack: 1
   LightAttackAnimation: {fileID: 11400000, guid: b7b97d250d373d04cb005bd3b4cc6445,
     type: 2}
@@ -353,8 +365,8 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 2fe759ba5b162224393fb40da8499cc5, type: 2}
   ParryAnimation: {fileID: 0}
   ParryDuration: 2
-  BlockParticle: {fileID: 0}
-  ParryParticle: {fileID: 0}
+  BlockParticles: []
+  BlockShakeProfile: {fileID: 0}
   CanGuard: 0
 --- !u!1 &2784454057411166856
 GameObject:
@@ -423,9 +435,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b79079c438811d94785a36eb6f61024d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -657,12 +669,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
       objectReference: {fileID: 3866089748899659546}
-    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
