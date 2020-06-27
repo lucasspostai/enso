@@ -44,6 +44,9 @@ namespace Enso.Characters.Player
         {
             var playerData = SaveSystem.Load();
 
+            if (playerData == null)
+                return;
+            
             GetHealthSystem().SetHealth(playerData.Health);
             HealController.SetMaxHealingCharges(playerData.HealingCharges);
             GetBalanceSystem().SetMaxBalance(playerData.Balance);
