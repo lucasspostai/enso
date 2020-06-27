@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3937531088197222112}
   - component: {fileID: 733827063234895989}
+  - component: {fileID: 101274726}
   m_Layer: 0
   m_Name: RockB_Down
   m_TagString: Untagged
@@ -128,3 +129,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &101274726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918708707651335869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPosition: {x: 0, y: -1.05, z: 0}
+  localRotation: {x: 0, y: -180, z: -180}
+  sprite: {fileID: 21300000, guid: 0fc46d931a1740642be852911a5545b6, type: 3}
+  spriteLayer: Default
+  spriteLayerOrder: -5

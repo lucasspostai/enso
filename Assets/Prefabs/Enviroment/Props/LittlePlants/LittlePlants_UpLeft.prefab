@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107459976000402389}
   - component: {fileID: 5871524904334400623}
+  - component: {fileID: 913920221}
   m_Layer: 0
   m_Name: LittlePlants_UpLeft
   m_TagString: Untagged
@@ -80,3 +81,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913920221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567737069382113020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPosition: {x: 0, y: -0.24, z: 0}
+  localRotation: {x: 0, y: -180, z: -180}
+  sprite: {fileID: 21300000, guid: c3c7c18df36208b47903c7d782ba9000, type: 3}
+  spriteLayer: Default
+  spriteLayerOrder: -2
