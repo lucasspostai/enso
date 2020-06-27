@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 4803499371316143667}
   - component: {fileID: 3971246522536205429}
   - component: {fileID: 6091423202599489240}
+  - component: {fileID: 3918886638015716893}
   m_Layer: 10
   m_Name: AshigaruArcher
   m_TagString: Enemy
@@ -400,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
+  IsDead: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,6 +484,12 @@ MonoBehaviour:
     type: 3}
   DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
+  RegularDamageShakeProfile: {fileID: 0}
+  HeavyDamageShakeProfile: {fileID: 0}
+  LoseBalanceShakeProfile: {fileID: 0}
+  DeathShakeProfile: {fileID: 0}
+  DeathTimeScale: 0.5
+  DeathTimeScaleDuration: 0.2
 --- !u!114 &4803499371316143667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +505,11 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 0}
+  ParryParticle: {fileID: 0}
+  RiposteParticle: {fileID: 0}
+  ParryShakeProfile: {fileID: 0}
+  RiposteShakeProfile: {fileID: 0}
+  AttackShakeProfile: {fileID: 0}
   CanAttack: 1
   RaiseBowAnimation: {fileID: 11400000, guid: 13abec06b07a7a54ea65036398b384e7, type: 2}
   ShootArrowAnimation: {fileID: 11400000, guid: 76cab24e533726f428d12fec62fe34f2,
@@ -543,6 +556,17 @@ MonoBehaviour:
   MaxSimultaneousGhosts: 6
   GhostInitialColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Trail: {fileID: 3974933171137370563}
+--- !u!210 &3918886638015716893
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,12 +987,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
       objectReference: {fileID: 2985308314891267948}
-    - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
+    - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
@@ -997,6 +1021,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.040670395
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 499452959800626569, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
         type: 3}
@@ -1052,26 +1096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.040670395
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Time
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32189b8d7bea1e48bfed6a7e093e5c2, type: 3}
