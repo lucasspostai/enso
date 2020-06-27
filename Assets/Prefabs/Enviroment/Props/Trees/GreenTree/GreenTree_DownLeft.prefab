@@ -136,7 +136,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5882158393262601789}
-  - component: {fileID: 6609428703113742140}
+  - component: {fileID: 4218645986799234513}
+  - component: {fileID: 2974700134803117833}
+  - component: {fileID: 13171686}
   m_Layer: 0
   m_Name: GreenTree_DownLeft
   m_TagString: Untagged
@@ -272,3 +274,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &13171686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150245229876731948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPosition: {x: 0, y: -3.24, z: 0}
+  localRotation: {x: 0, y: -180, z: -180}
+  sprite: {fileID: 21300000, guid: 9cb9e8a34a645d44a891b3506d4270b8, type: 3}
+  spriteLayer: Default
+  spriteLayerOrder: -2

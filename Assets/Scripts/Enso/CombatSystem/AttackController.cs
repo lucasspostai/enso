@@ -37,8 +37,11 @@ namespace Enso.CombatSystem
             if (!isHitboxNull)
                 AttackHitbox.SetHitboxResponder(this);
             
-            PoolManager.Instance.CreatePool(ParryParticle, 1);
-            PoolManager.Instance.CreatePool(RiposteParticle, 1);
+            if(ParryParticle)
+                PoolManager.Instance.CreatePool(ParryParticle, 1);
+            
+            if(RiposteParticle)
+                PoolManager.Instance.CreatePool(RiposteParticle, 1);
         }
 
         private void SetDamageProperties(Vector3 hitboxSize, int damage)
