@@ -12,12 +12,9 @@ namespace Framework
         private float shakeAmplitude;
         private float shakeFrequency;
 
-        [SerializeField] private CinemachineVirtualCamera VirtualCamera;
-
-        private void Start()
+        public void SetNoise(CinemachineVirtualCamera virtualCamera)
         {
-            if (VirtualCamera)
-                virtualCameraNoise = VirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
 
         public void Shake(CameraShakeProfile cameraShakeProfile)

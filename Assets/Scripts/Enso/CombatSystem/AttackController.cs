@@ -18,12 +18,12 @@ namespace Enso.CombatSystem
         private readonly List<Hurtbox> damagedHurtboxes = new List<Hurtbox>();
 
         [SerializeField] private Hitbox AttackHitbox;
-        
-        [Header("Particles")]
+
+        [Header("Particles")] 
         [SerializeField] protected GameObject ParryParticle;
         [SerializeField] protected GameObject RiposteParticle;
-        
-        [Header("Camera Shake")]
+
+        [Header("Camera Shake")] 
         [SerializeField] protected CameraShakeProfile ParryShakeProfile;
         [SerializeField] protected CameraShakeProfile RiposteShakeProfile;
         [SerializeField] protected CameraShakeProfile AttackShakeProfile;
@@ -36,11 +36,11 @@ namespace Enso.CombatSystem
 
             if (!isHitboxNull)
                 AttackHitbox.SetHitboxResponder(this);
-            
-            if(ParryParticle)
+
+            if (ParryParticle)
                 PoolManager.Instance.CreatePool(ParryParticle, 1);
-            
-            if(RiposteParticle)
+
+            if (RiposteParticle)
                 PoolManager.Instance.CreatePool(RiposteParticle, 1);
         }
 
@@ -82,24 +82,25 @@ namespace Enso.CombatSystem
                 var guardController = hurtbox.ThisFighter.GetComponent<GuardController>();
 
                 ThisFighter.AnimationHandler.PauseAnimationForAWhile();
-                
+
                 if (guardController && guardController.IsParrying)
                 {
                     var attackController = hurtbox.ThisFighter.GetComponent<AttackController>();
-                    
-                    if(attackController)
+
+                    if (attackController)
                         attackController.SetRipostePosition(transform);
-                    
+
                     ThisFighter.GetBalanceSystem()
                         .TakeDamage(Mathf.RoundToInt(ThisFighter.GetBalanceSystem().GetMaxBalance()));
 
                     guardController.OnParryHit(guardController.transform.position -
                                                ThisFighter.transform.position);
-                    
+
                     SpawnParticle(ParryParticle);
 
-                    PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
-                    
+                    if(ParryShakeProfile)
+                        PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
+
                     GameManager.Instance.ChangeTimeScale(0.5f, 1f);
                 }
                 else
@@ -112,8 +113,9 @@ namespace Enso.CombatSystem
 
         public override void OnHitFrameStart()
         {
-            PlayerCinemachineManager.Instance.ShakeController.Shake(AttackShakeProfile);
-            
+            if(AttackShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(AttackShakeProfile);
+
             if (isHitboxNull)
                 return;
 
@@ -139,12 +141,13 @@ namespace Enso.CombatSystem
         {
             riposteCharacterTransform = characterTransform;
         }
-        
+
         protected void PlayRiposteParticle()
         {
             SpawnParticle(RiposteParticle, riposteCharacterTransform);
-            
-            PlayerCinemachineManager.Instance.ShakeController.Shake(RiposteShakeProfile);
+
+            if(AttackShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(RiposteShakeProfile);
         }
     }
 }

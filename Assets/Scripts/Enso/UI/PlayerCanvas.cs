@@ -8,8 +8,12 @@ namespace Enso.UI
     {
         private Player player;
 
+        [SerializeField] private Animator HudAnimator;
         [SerializeField] private GameObject DeathScreen;
         
+        private static readonly int DisableHash = Animator.StringToHash("Disable");
+        private static readonly int EnableHash = Animator.StringToHash("Enable");
+
         private void OnEnable()
         {
             player = FindObjectOfType<Player>();
@@ -26,6 +30,16 @@ namespace Enso.UI
                 return;
 
             player.GetHealthSystem().Death -= EnableDeathScreen;
+        }
+        
+        public void Hide()
+        {
+            HudAnimator.SetTrigger(DisableHash);
+        }
+        
+        public void Show()
+        {
+            HudAnimator.SetTrigger(EnableHash);
         }
 
         private void EnableDeathScreen()

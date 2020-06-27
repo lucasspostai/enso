@@ -26,14 +26,6 @@ namespace Enso.Characters.Enemies
 
         [SerializeField] private float AcceptanceRadius = 2f;
         
-        protected override void Start()
-        {
-            base.Start();
-            
-            //TEMP
-            ThisFighter.EnterCombatWith(FindObjectOfType<Player.Player>());
-        }
-        
         protected override void Update()
         {
             if (!ThisFighter.Target)
