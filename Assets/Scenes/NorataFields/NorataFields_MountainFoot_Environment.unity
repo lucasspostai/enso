@@ -2073,11 +2073,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -0.84, z: 0}
-  localRotation: {x: 0, y: 180, z: -180}
-  sprite: {fileID: 21300000, guid: ad47fb8cafe2b044299a21f262e210e2, type: 3}
-  spriteLayer: Default
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -0.25, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
 --- !u!1001 &184267351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8591,75 +8592,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 817204162}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &711981964
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2784454056699770331, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_Name
-      value: HiroyukiIshigame
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 43.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784454056699770309, guid: 771a89481b3ce9842b6fa10043ad1a94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 771a89481b3ce9842b6fa10043ad1a94, type: 3}
 --- !u!1001 &722530689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10970,7 +10902,7 @@ Transform:
   m_Children:
   - {fileID: 1252889458}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1019411323
 PrefabInstance:
@@ -13025,11 +12957,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -0.84, z: 0}
-  localRotation: {x: 0, y: 180, z: -180}
-  sprite: {fileID: 21300000, guid: ad47fb8cafe2b044299a21f262e210e2, type: 3}
-  spriteLayer: Default
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -0.25, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
+--- !u!4 &1206637389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5882158393262601789, guid: eedd6df785cfd8442a88f3b39e39bee9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442899896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1209116778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19349,7 +19288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1001 &1515968732
 PrefabInstance:
@@ -19626,11 +19565,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -0.75, z: 0}
-  localRotation: {x: 0, y: 180, z: -180}
-  sprite: {fileID: 21300000, guid: 7a8bc5781483b3d43bdb9ef40862258f, type: 3}
-  spriteLayer: Default
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -0.25, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
 --- !u!1001 &1541589324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23804,11 +23744,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -0.85, z: 0}
-  localRotation: {x: 0, y: -180, z: -180}
-  sprite: {fileID: 21300000, guid: 89dd185864594b641a896074cf7741e9, type: 3}
-  spriteLayer: Default
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -0.25, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
 --- !u!4 &1975013763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5053634279667782878, guid: 5c8dc1c3abbe80f4fbf4527ba4ffa518,
@@ -24130,11 +24071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -0.69, z: 0}
-  localRotation: {x: 180, y: -180, z: -180}
-  sprite: {fileID: 21300000, guid: 866af7e2fea9210468e69d740d34c9ea, type: 3}
-  spriteLayer: Default
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -0.25, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
 --- !u!1001 &2010724240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25065,7 +25007,7 @@ PrefabInstance:
     - target: {fileID: 751180331000985120, guid: 722b75ebb48919b4e876762816efa89b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 751180331000985120, guid: 722b75ebb48919b4e876762816efa89b,
         type: 3}
@@ -25110,12 +25052,12 @@ PrefabInstance:
     - target: {fileID: 751180331000985123, guid: 722b75ebb48919b4e876762816efa89b,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -1984402159
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 751180331000985123, guid: 722b75ebb48919b4e876762816efa89b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 722b75ebb48919b4e876762816efa89b, type: 3}
