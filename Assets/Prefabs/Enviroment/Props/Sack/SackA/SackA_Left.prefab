@@ -91,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5250261794395148711}
   - component: {fileID: 749641864339836858}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5250261794395148711
 Transform:
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018126547, y: 0.025622249}
+  m_Offset: {x: 0.023533344, y: 0.021801353}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -136,5 +136,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7255124, y: 0.8169844}
+  m_Size: {x: 0.8660886, y: 0.99273753}
   m_EdgeRadius: 0
