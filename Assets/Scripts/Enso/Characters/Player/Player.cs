@@ -144,6 +144,20 @@ namespace Enso.Characters.Player
                 : Vector2.zero;
         }
 
+        public void SetActionDirection()
+        {
+            if (PlayerInput.Movement != Vector2.zero &&
+                !AnimationHandler.IsAnyGuardAnimationPlaying() && CurrentEnemies.Count == 0)
+            {
+                AnimationHandler.SetFacingDirection(PlayerInput.Movement);
+            }
+            else if (CurrentEnemies.Count > 0)
+            {
+                AnimationHandler.SetFacingDirection(
+                    GetDirectionToClosestEnemy());
+            }
+        }
+
         public PlayerProperties GetProperties()
         {
             return BaseProperties as PlayerProperties;

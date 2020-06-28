@@ -35,6 +35,14 @@ namespace Enso.Characters.Player
             player = GetComponent<Player>();
         }
 
+        protected override void Update()
+        {
+            base.Update();
+            
+            if(IsGuarding)
+                player.SetActionDirection();
+        }
+
         protected override void PlayMovementAnimation()
         {
             base.PlayMovementAnimation();
