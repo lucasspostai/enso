@@ -238,7 +238,6 @@ MonoBehaviour:
   Attack: {fileID: 7059184826251289228}
   Guard: {fileID: 813916947705230572}
   MovementController: {fileID: 8491124380792908023}
-  FlashColor: {r: 1, g: 1, b: 1, a: 1}
   FlashDuration: 0.05
   PauseDuration: 0.02
   CurrentDirection: {x: 0, y: 0, z: 0}
@@ -623,12 +622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalPosition: {x: 0, y: -2, z: 0}
-  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalPosition: {x: 0, y: -1.7, z: 0}
+  LocalRotation: {x: 0, y: 180, z: -180}
   LocalScale: {x: 1, y: 1, z: 1}
   Sprite: {fileID: 0}
   SpriteLayer: Default
-  SpriteLayerOrder: -5
+  SpriteLayerOrder: -6
 --- !u!1 &4927003519585448994
 GameObject:
   m_ObjectHideFlags: 0
