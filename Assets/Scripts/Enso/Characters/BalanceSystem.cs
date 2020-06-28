@@ -36,6 +36,7 @@ namespace Enso.Characters
         public event Action BalanceValueChanged;
         public event Action BreakBalance;
         public event Action LoseBalance;
+        public event Action NoBalance;
         public event Action RecoverBalance;
         public event Action EnableSpecialAttack;
 
@@ -96,7 +97,7 @@ namespace Enso.Characters
             Balance -= damageAmount;
             
             specialAvailable = false;
-
+            
             if (Balance <= 0) //Break Balance
             {
                 if (waitThenRecoverCoroutine != null)
@@ -161,6 +162,11 @@ namespace Enso.Characters
         {
             RecoverBalance?.Invoke();
         }
+        
+        private void OnNoBalance()
+        {
+            NoBalance?.Invoke();
+        }
 
         private void OnEnableSpecialAttack()
         {
@@ -168,5 +174,7 @@ namespace Enso.Characters
         }
 
         #endregion
+
+        
     }
 }

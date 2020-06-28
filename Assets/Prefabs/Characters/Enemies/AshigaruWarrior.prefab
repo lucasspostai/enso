@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 7997557526909049030}
   - component: {fileID: 6587487395945137368}
   - component: {fileID: 8070990983351258628}
+  - component: {fileID: 1056334174257072651}
   m_Layer: 10
   m_Name: AshigaruWarrior
   m_TagString: Enemy
@@ -211,8 +212,8 @@ MonoBehaviour:
   Attack: {fileID: 6587487395945137368}
   Guard: {fileID: 8070990983351258628}
   MovementController: {fileID: 4006498454464038807}
-  FlashDuration: 0.05
-  PauseDuration: 0.02
+  FlashDuration: 0.2
+  PauseDuration: 0.05
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
   CharacterSpriteRenderer: {fileID: 2784454057411166858}
@@ -304,18 +305,27 @@ MonoBehaviour:
   LoseBalanceAnimation: {fileID: 11400000, guid: fa77ca128d6c4624f8312c7b3de71a41,
     type: 2}
   DeathAnimation: {fileID: 11400000, guid: 13566b744d1a18d47a3a27b43a223d40, type: 2}
-  RegularDamageParticle: {fileID: 1143629758495906981, guid: 34d4a24870c42ac4c8986caca60baf97,
+  RegularDamageParticle: {fileID: 1143629758495906981, guid: e2d7f7561514eff4ca1d82cd8d655a1b,
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
-  LoseBalanceParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  LoseBalanceParticle: {fileID: 1864202874870629147, guid: 2e6370a497202494781f69b2c42e087b,
     type: 3}
-  DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  DeathParticle: {fileID: 175294051355674008, guid: 374e6602b929fcc40983a63a861d453e,
     type: 3}
-  RegularDamageShakeProfile: {fileID: 0}
-  HeavyDamageShakeProfile: {fileID: 0}
-  LoseBalanceShakeProfile: {fileID: 0}
-  DeathShakeProfile: {fileID: 0}
+  RegularDamageShakeProfile: {fileID: 11400000, guid: 80ff33937f5da0849bffb6cf869763a5,
+    type: 2}
+  HeavyDamageShakeProfile: {fileID: 11400000, guid: bf4129ade6e859d4594d3d4f22bb4462,
+    type: 2}
+  LoseBalanceShakeProfile: {fileID: 11400000, guid: 33208c331b9846845a5bc5072c825cef,
+    type: 2}
+  DeathShakeProfile: {fileID: 11400000, guid: 994b72d215f865441ac03f89a18be148, type: 2}
+  RegularDamageSoundCue: {fileID: 11400000, guid: 1480cb3bd9ea99e45a3973bc9e480b88,
+    type: 2}
+  StrongDamageSoundCue: {fileID: 11400000, guid: 81ab207b154a9bd4b83fbe72490bcacb,
+    type: 2}
+  LoseBalanceSoundCue: {fileID: 11400000, guid: 1509e26ff7c844741bd0e4a64ad0568c,
+    type: 2}
   DeathTimeScale: 0.5
   DeathTimeScaleDuration: 0.2
 --- !u!114 &6587487395945137368
@@ -337,7 +347,7 @@ MonoBehaviour:
   RiposteParticle: {fileID: 0}
   ParryShakeProfile: {fileID: 0}
   RiposteShakeProfile: {fileID: 0}
-  AttackShakeProfile: {fileID: 0}
+  AttackShakeProfile: {fileID: 11400000, guid: bd4eebce1fe88ef44a1e8e85b89af5fd, type: 2}
   CanAttack: 1
   LightAttackAnimation: {fileID: 11400000, guid: b7b97d250d373d04cb005bd3b4cc6445,
     type: 2}
@@ -365,9 +375,25 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 2fe759ba5b162224393fb40da8499cc5, type: 2}
   ParryAnimation: {fileID: 0}
   ParryDuration: 2
-  BlockParticles: []
-  BlockShakeProfile: {fileID: 0}
+  BlockParticles:
+  - {fileID: 1603537107140715294, guid: e27c5e4be2eaccd4fa934b8bfe8d70a3, type: 3}
+  - {fileID: 7436855666271918632, guid: cc1ac79332a69c44eac2b4f3c373b51e, type: 3}
+  BlockSoundCue: {fileID: 11400000, guid: 983aec450d4b1d442ab3f96fefc78064, type: 2}
+  BlockShakeProfile: {fileID: 11400000, guid: 49f6ef91b389aa64b97731a655e6468c, type: 2}
   CanGuard: 0
+--- !u!114 &1056334174257072651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59868d31b4343e641831908bd277d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XpAmount: 4
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +443,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7bd079f73aa40d8498bebd0056ff00a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -668,6 +694,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1811148431
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}

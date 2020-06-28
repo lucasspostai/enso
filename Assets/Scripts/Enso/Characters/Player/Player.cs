@@ -1,4 +1,6 @@
-﻿using Enso.UI;
+﻿using System.Collections.Generic;
+using Enso.Characters.Enemies;
+using Enso.UI;
 using Framework;
 using Framework.Audio;
 using Framework.Utils;
@@ -20,6 +22,8 @@ namespace Enso.Characters.Player
         public PlayerRollController RollController;
         public PlayerHealController HealController;
         public PlayerMeditationController MeditationController;
+        
+        [HideInInspector] public List<Enemy> CurrentEnemies = new List<Enemy>();
 
         protected override void Awake()
         {
@@ -104,6 +108,40 @@ namespace Enso.Characters.Player
 
             if (!playerCanvas)
                 Instantiate(MainCanvas);
+        }
+
+        public override void EnterCombatWith(Fighter fighter)
+        {
+            var enemy = fighter as Enemy;
+            
+            CurrentEnemies.Add(enemy);
+        }
+
+        public void RemoveEnemyFromList(Enemy enemy)
+        {
+            if (CurrentEnemies.Contains(enemy))
+                CurrentEnemies.Remove(enemy);
+        }
+
+        public Vector2 GetDirectionToClosestEnemy()
+        {
+            Enemy closestEnemy = null;
+            var closestDistance = float.MaxValue;
+
+            foreach (var enemy in CurrentEnemies)
+            {
+                var distanceBetweenFighters = Vector2.Distance(enemy.transform.position, transform.position);
+                
+                if (distanceBetweenFighters < closestDistance)
+                {
+                    closestDistance = distanceBetweenFighters;
+                    closestEnemy = enemy;
+                }
+            }
+
+            return closestEnemy != null
+                ? (Vector2) (closestEnemy.transform.position - transform.position).normalized
+                : Vector2.zero;
         }
 
         public PlayerProperties GetProperties()

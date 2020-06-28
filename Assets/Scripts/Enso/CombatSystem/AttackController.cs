@@ -106,7 +106,7 @@ namespace Enso.CombatSystem
                 else
                 {
                     hurtbox.TakeDamage(currentDamage, ThisFighter.AnimationHandler.CurrentDirection);
-                    OnCollision();
+                    OnCollision(hurtbox.ThisFighter);
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace Enso.CombatSystem
             AttackHitbox.SetColliderState(ColliderState.Closed);
         }
 
-        protected virtual void OnCollision()
+        protected virtual void OnCollision(Fighter fighter)
         {
             ThisFighter.AnimationHandler.PauseAnimationForAWhile();
         }
