@@ -215,6 +215,8 @@ MonoBehaviour:
   Attack: {fileID: 8624410256441241444}
   Guard: {fileID: 6659982890053224015}
   MovementController: {fileID: 4006498454464038807}
+  FlashDuration: 0.05
+  PauseDuration: 0.02
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
   CharacterSpriteRenderer: {fileID: 2784454057411166858}
@@ -231,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
+  IsDead: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +312,17 @@ MonoBehaviour:
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
+  LoseBalanceParticle: {fileID: 0}
+  DeathParticle: {fileID: 0}
+  RegularDamageShakeProfile: {fileID: 0}
+  HeavyDamageShakeProfile: {fileID: 0}
+  LoseBalanceShakeProfile: {fileID: 0}
+  DeathShakeProfile: {fileID: 0}
+  RegularDamageSoundCue: {fileID: 0}
+  StrongDamageSoundCue: {fileID: 0}
+  LoseBalanceSoundCue: {fileID: 0}
+  DeathTimeScale: 0.5
+  DeathTimeScaleDuration: 0.2
 --- !u!114 &8624410256441241444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +338,11 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 6495635343669140766}
+  ParryParticle: {fileID: 0}
+  RiposteParticle: {fileID: 0}
+  ParryShakeProfile: {fileID: 0}
+  RiposteShakeProfile: {fileID: 0}
+  AttackShakeProfile: {fileID: 0}
   CanAttack: 1
   LightAttackAnimations:
   - {fileID: 11400000, guid: 25a0371e23269b04da2cb2818d29aa24, type: 2}
@@ -362,6 +381,9 @@ MonoBehaviour:
   BlockAnimation: {fileID: 11400000, guid: 4405bfb9ad293a9448b644a78f18768d, type: 2}
   ParryAnimation: {fileID: 11400000, guid: d3df504a4c3dbe8479f2ed38cb6f532c, type: 2}
   ParryDuration: 2
+  BlockParticles: []
+  BlockSoundCue: {fileID: 0}
+  BlockShakeProfile: {fileID: 0}
   CanGuard: 0
   MaxTimeOnParryStance: 5
 --- !u!114 &1901442203032990081
@@ -447,7 +469,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7bd079f73aa40d8498bebd0056ff00a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

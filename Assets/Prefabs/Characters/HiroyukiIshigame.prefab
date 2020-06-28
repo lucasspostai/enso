@@ -238,6 +238,7 @@ MonoBehaviour:
   Attack: {fileID: 7059184826251289228}
   Guard: {fileID: 813916947705230572}
   MovementController: {fileID: 8491124380792908023}
+  FlashColor: {r: 1, g: 1, b: 1, a: 1}
   FlashDuration: 0.05
   PauseDuration: 0.02
   CurrentDirection: {x: 0, y: 0, z: 0}

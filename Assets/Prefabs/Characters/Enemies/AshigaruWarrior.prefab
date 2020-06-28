@@ -212,8 +212,8 @@ MonoBehaviour:
   Attack: {fileID: 6587487395945137368}
   Guard: {fileID: 8070990983351258628}
   MovementController: {fileID: 4006498454464038807}
-  FlashDuration: 0.05
-  PauseDuration: 0.02
+  FlashDuration: 0.2
+  PauseDuration: 0.05
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
   CharacterSpriteRenderer: {fileID: 2784454057411166858}
@@ -443,7 +443,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7bd079f73aa40d8498bebd0056ff00a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -694,6 +694,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1811148431
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6258843464603727610, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
