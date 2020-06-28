@@ -7,6 +7,7 @@ namespace Enso.Characters.Enemies.AshigaruArcher
     {
         [SerializeField] private AshigaruArcherAttackController AttackController;
         [SerializeField] private EnemyRollController RollController;
+        [SerializeField] private float DelayAfterRoll;
 
         protected override void OnEnable()
         {
@@ -30,6 +31,9 @@ namespace Enso.Characters.Enemies.AshigaruArcher
 
         protected override void ChooseBehavior()
         {
+            if (GetHealthSystem().IsDead)
+                return;
+            
             base.ChooseBehavior();
 
             if (AnimationHandler.IsAnyCustomAnimationPlaying())
@@ -39,9 +43,10 @@ namespace Enso.Characters.Enemies.AshigaruArcher
             {
                 MustMove(false);
                 
-                if (ThisEnemyMovementController.DistanceToTarget < GetProperties().RollDistance)
+                if (RollController.CanRoll && ThisEnemyMovementController.DistanceToTarget < GetProperties().RollDistance)
                 {
                     PerformRoll();
+                    RollController.WaitAfterRoll(DelayAfterRoll);
                 }
                 else if (AttackController.CanAttack)
                 {

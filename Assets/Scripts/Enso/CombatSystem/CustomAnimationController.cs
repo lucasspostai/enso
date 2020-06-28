@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Enso.Characters;
 using Framework;
 using Framework.Animations;
@@ -113,8 +114,17 @@ namespace Enso.CombatSystem
             CurrentCharacterAnimation = null;
         }
 
-        protected void SpawnParticle(GameObject particle, Transform characterTransform = null)
+        protected void SpawnParticle(GameObject particle, Transform characterTransform = null, float delay = 0f)
         {
+            StartCoroutine(WaitAndSpawnParticle(particle, characterTransform, delay));
+        }
+
+        private IEnumerator WaitAndSpawnParticle(GameObject particle, Transform characterTransform = null, float delay = 0f)
+        {
+            print(delay);
+            
+            yield return new WaitForSeconds(delay);
+            
             if (particle)
             {
                 PoolManager.Instance.ReuseObject(particle,

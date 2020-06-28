@@ -32,6 +32,7 @@ namespace Framework.LevelDesignEvents
             VirtualCamera.Priority = 10;
             
             PlayerCinemachineManager.Instance.ShakeController.SetNoise(VirtualCamera);
+            PlayerCinemachineManager.Instance.ShakeController.StopShake();
         }
     }
 }

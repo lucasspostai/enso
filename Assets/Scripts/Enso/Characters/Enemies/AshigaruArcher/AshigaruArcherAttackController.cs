@@ -71,15 +71,23 @@ namespace Enso.Characters.Enemies.AshigaruArcher
 
             ArrowLineRenderer.SetPosition(0, ArrowSpawn.position);
 
+            var hitTarget = false;
+            
             if (hitInfo)
             {
                 var hurtbox = hitInfo.transform.GetComponent<Hurtbox>();
 
-                if (hurtbox && hurtbox.ThisFighter.FighterTeam != ThisFighter.FighterTeam)
+                if (hurtbox && hurtbox.ThisFighter.FighterTeam != ThisFighter.FighterTeam &&
+                    !hurtbox.ThisFighter.GetHealthSystem().IsInvincible)
                 {
                     hurtbox.TakeDamage(ShootArrowAnimation.Damage, ArrowSpawn.right);
+                    
+                    hitTarget = true;
                 }
+            }
 
+            if (hitTarget)
+            {
                 ArrowLineRenderer.SetPosition(1, hitInfo.point);
             }
             else
@@ -114,6 +122,14 @@ namespace Enso.Characters.Enemies.AshigaruArcher
             mustRotate = false;
         }
 
+        public override void OnInterrupted()
+        {
+            base.OnInterrupted();
+
+            mustRotate = false;
+            raisingBow = false;
+        }
+
         public override void OnLastFrameEnd()
         {
             base.OnLastFrameEnd();
@@ -126,7 +142,7 @@ namespace Enso.Characters.Enemies.AshigaruArcher
             else
             {
                 Wait();
-                
+
                 ThisFighter.AnimationHandler.Play(this,
                     ThisFighter.MovementController.Animations.IdleAnimationClipHolder.AnimatorStateName);
             }

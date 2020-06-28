@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Enso.Characters;
 using Enso.Characters.Player;
 using Enso.CombatSystem;
@@ -38,8 +39,6 @@ namespace Enso.UI
             if (healthSystem != null)
             {
                 healthSystem.HealthValueChanged += UpdateHealthValue;
-
-                UpdateHealthValue();
             }
             
             if (healController != null)
@@ -107,7 +106,6 @@ namespace Enso.UI
                     StopCoroutine(healthCoroutine);
                 
                 healthCoroutine = StartCoroutine(RemoveFilledHealth());
-                
             }
 
             currentHealth = healthSystem.GetHealth();

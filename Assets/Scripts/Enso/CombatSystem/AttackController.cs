@@ -105,6 +105,9 @@ namespace Enso.CombatSystem
                 }
                 else
                 {
+                    if (hurtbox.ThisFighter.GetHealthSystem().IsInvincible)
+                        return;
+                    
                     hurtbox.TakeDamage(currentDamage, ThisFighter.AnimationHandler.CurrentDirection);
                     OnCollision(hurtbox.ThisFighter);
                 }

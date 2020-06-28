@@ -1,11 +1,19 @@
-﻿using UnityEngine;
+﻿using Framework.Utils;
+using UnityEngine;
 
 namespace Enso.Characters.Enemies.AshigaruWarrior
 {
     public class AshigaruWarrior : Enemy
     {
+        private int chosenBehaviorIndex;
+        private UniqueRandom randomBehavior;
+        
         [SerializeField] private AshigaruWarriorAttackController AttackController;
         [SerializeField] private AshigaruWarriorGuardController GuardController;
+        [SerializeField] private float MinimumGuardTime = 0.5f;
+        [SerializeField] private float MaximumGuardTime = 3f;
+        [SerializeField] private float GuardCooldown = 3f;
+        [SerializeField] private float AttackCooldown = 0f;
 
         protected override void OnEnable()
         {
@@ -23,21 +31,35 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
             GetBalanceSystem().LoseBalance -= StayOnGuard;
         }
 
+        protected override void Start()
+        {
+            base.Start();
+
+            randomBehavior = new UniqueRandom(0, 2);
+            
+            chosenBehaviorIndex = randomBehavior.GetRandomInt();
+        }
+
         protected override void ChooseBehavior()
         {
+            if (GetHealthSystem().IsDead)
+                return;
+            
             base.ChooseBehavior();
 
-            if (AnimationHandler.IsAnyCustomAnimationPlaying())
+            if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
                 return;
 
             if (ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
             {
-                if (GuardController.CanGuard)
+                if (GuardController.CanGuard && chosenBehaviorIndex == 0)
                 {
                     MustMove(false);
                     StartGuard();
-                    GuardController.WaitAfterStartGuard(3);
-                    GuardController.WaitAfterEndGuard(3);
+                    GuardController.WaitAfterStartGuard(Random.Range(MinimumGuardTime, MaximumGuardTime));
+                    GuardController.WaitAfterEndGuard(GuardCooldown);
+                    
+                    chosenBehaviorIndex = randomBehavior.GetRandomInt();
                 }
                 else
                 {
@@ -47,7 +69,9 @@ namespace Enso.Characters.Enemies.AshigaruWarrior
                         ThisEnemyMovementController.DistanceToTarget < GetProperties().AttackDistance)
                     {
                         PerformSimpleAttack();
-                        AttackController.WaitAfterAttack(1);
+                        AttackController.WaitAfterAttack(AttackCooldown);
+                        
+                        chosenBehaviorIndex = randomBehavior.GetRandomInt();
                     }
                 }
             }

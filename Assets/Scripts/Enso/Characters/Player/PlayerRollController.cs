@@ -1,5 +1,6 @@
 ﻿using Enso.CombatSystem;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace Enso.Characters.Player
 {
@@ -36,6 +37,8 @@ namespace Enso.Characters.Player
                 return;
             
             base.PlayRollAnimation();
+            
+            player.GetHealthSystem().IsInvincible = true;
 
             //Roll Cost
             player.GetBalanceSystem()
@@ -50,6 +53,13 @@ namespace Enso.Characters.Player
                 ThisFighter.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
         }
 
+        public override void OnInterrupted()
+        {
+            base.OnInterrupted();
+            
+            player.GetHealthSystem().IsInvincible = false;
+        }
+
         public override void OnLastFrameEnd()
         {
             base.OnLastFrameEnd();
@@ -62,6 +72,8 @@ namespace Enso.Characters.Player
             {
                 player.HealController.TryHeal();
             }
+
+            player.GetHealthSystem().IsInvincible = false;
         }
     }
 }

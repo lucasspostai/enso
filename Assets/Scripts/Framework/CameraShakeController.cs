@@ -29,6 +29,11 @@ namespace Framework
             shakeCoroutine = StartCoroutine(ShakeThenStop());
         }
 
+        public void StopShake()
+        {
+            virtualCameraNoise.m_AmplitudeGain = 0f;
+        }
+
         private IEnumerator ShakeThenStop()
         {
             if (virtualCameraNoise)
@@ -37,8 +42,8 @@ namespace Framework
                 virtualCameraNoise.m_FrequencyGain = shakeFrequency;
             
                 yield return new WaitForSeconds(shakeDuration);
-            
-                virtualCameraNoise.m_AmplitudeGain = 0f;
+
+                StopShake();
             }
             else
             {

@@ -63,6 +63,8 @@ namespace Enso.Characters.Enemies
 
             if (xpReceiver)
                 xpReceiver.GainXp(xpDropper.XpAmount);
+
+            target = null;
         }
     }
 }
