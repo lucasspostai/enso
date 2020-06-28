@@ -149,16 +149,7 @@ namespace Enso.Characters.Player
             {
                 if (CurrentCharacterAnimation != attack)
                 {
-                    if (PlayerInput.Movement != Vector2.zero &&
-                        !ThisFighter.AnimationHandler.IsAnyGuardAnimationPlaying() && player.CurrentEnemies.Count == 0)
-                    {
-                        player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
-                    }
-                    else if (player.CurrentEnemies.Count > 0)
-                    {
-                        player.AnimationHandler.SetFacingDirection(
-                            player.GetDirectionToClosestEnemy());
-                    }
+                    player.SetActionDirection();
 
                     StartAttack(attack);
                     lightAttacksAvailable.Remove(attack);
@@ -208,8 +199,7 @@ namespace Enso.Characters.Player
             if (!IsAnimationPlaying)
                 return;
 
-            if (PlayerInput.Movement != Vector2.zero)
-                player.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
+            player.SetActionDirection();
 
             CanCutAnimation = true;
 
@@ -247,6 +237,8 @@ namespace Enso.Characters.Player
             ResetStrongAttackProperties();
 
             ThisFighter.AnimationHandler.InterruptAllGuardAnimations();
+            
+            player.SetActionDirection();
 
             StartAttack(SpecialAttackAnimation);
 
@@ -259,6 +251,8 @@ namespace Enso.Characters.Player
         {
             if (ThisFighter.GetBalanceSystem().GetBalance() <= 0)
                 return;
+            
+            player.SetActionDirection();
             
             StartAttack(RiposteAnimation);
 
