@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1315741526168781765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4943343337580865725}
+  m_Layer: 0
+  m_Name: DeathBloodPoolLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4943343337580865725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315741526168781765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1346476367283827311}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521573320624997805
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +321,7 @@ GameObject:
   - component: {fileID: 3971246522536205429}
   - component: {fileID: 6091423202599489240}
   - component: {fileID: 3918886638015716893}
+  - component: {fileID: 5944633067879369105}
   m_Layer: 10
   m_Name: AshigaruArcher
   m_TagString: Enemy
@@ -316,6 +347,7 @@ Transform:
   - {fileID: 623278824341257545}
   - {fileID: 1724896046407861097}
   - {fileID: 9020569958320186038}
+  - {fileID: 5368297312420376539}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -365,6 +397,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   AttackController: {fileID: 4803499371316143667}
   RollController: {fileID: 3971246522536205429}
+  DelayAfterRoll: 2
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,8 +416,8 @@ MonoBehaviour:
   Attack: {fileID: 4803499371316143667}
   Guard: {fileID: 0}
   MovementController: {fileID: 4006498454464038807}
-  FlashDuration: 0.05
-  PauseDuration: 0.02
+  FlashDuration: 0.1
+  PauseDuration: 0.05
   CurrentDirection: {x: 0, y: 0, z: 0}
   CharacterAnimator: {fileID: 5783155035047645049}
   CharacterSpriteRenderer: {fileID: 2784454057411166858}
@@ -402,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
   IsDead: 0
+  IsInvincible: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,13 +518,24 @@ MonoBehaviour:
     type: 3}
   DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
-  RegularDamageShakeProfile: {fileID: 0}
-  HeavyDamageShakeProfile: {fileID: 0}
-  LoseBalanceShakeProfile: {fileID: 0}
-  DeathShakeProfile: {fileID: 0}
-  RegularDamageSoundCue: {fileID: 0}
-  StrongDamageSoundCue: {fileID: 0}
-  LoseBalanceSoundCue: {fileID: 0}
+  BloodPoolParticle: {fileID: 9127684719544345674, guid: e17da0369a792a5468ec53e2cda07999,
+    type: 3}
+  DeathBloodPoolLocation: {fileID: 9014278828945779968}
+  BloodPoolLocation: {fileID: 4943343337580865725}
+  DeathParticleDelay: 1
+  RegularDamageShakeProfile: {fileID: 11400000, guid: 80ff33937f5da0849bffb6cf869763a5,
+    type: 2}
+  HeavyDamageShakeProfile: {fileID: 11400000, guid: bf4129ade6e859d4594d3d4f22bb4462,
+    type: 2}
+  LoseBalanceShakeProfile: {fileID: 11400000, guid: 33208c331b9846845a5bc5072c825cef,
+    type: 2}
+  DeathShakeProfile: {fileID: 11400000, guid: 994b72d215f865441ac03f89a18be148, type: 2}
+  RegularDamageSoundCue: {fileID: 11400000, guid: 1480cb3bd9ea99e45a3973bc9e480b88,
+    type: 2}
+  StrongDamageSoundCue: {fileID: 11400000, guid: 81ab207b154a9bd4b83fbe72490bcacb,
+    type: 2}
+  LoseBalanceSoundCue: {fileID: 11400000, guid: 1509e26ff7c844741bd0e4a64ad0568c,
+    type: 2}
   DeathTimeScale: 0.5
   DeathTimeScaleDuration: 0.2
 --- !u!114 &4803499371316143667
@@ -512,7 +557,7 @@ MonoBehaviour:
   RiposteParticle: {fileID: 0}
   ParryShakeProfile: {fileID: 0}
   RiposteShakeProfile: {fileID: 0}
-  AttackShakeProfile: {fileID: 0}
+  AttackShakeProfile: {fileID: 11400000, guid: bd4eebce1fe88ef44a1e8e85b89af5fd, type: 2}
   CanAttack: 1
   RaiseBowAnimation: {fileID: 11400000, guid: 13abec06b07a7a54ea65036398b384e7, type: 2}
   ShootArrowAnimation: {fileID: 11400000, guid: 76cab24e533726f428d12fec62fe34f2,
@@ -520,7 +565,7 @@ MonoBehaviour:
   ArrowSpawn: {fileID: 5650201902665180505}
   HitLayerMask:
     serializedVersion: 2
-    m_Bits: 4608
+    m_Bits: 4096
   ArrowLineRenderer: {fileID: 7458060163812144774}
   AimParticle: {fileID: 3903460712709842560}
   ShootArrowParticlePrefab: {fileID: 5308595220859807984, guid: 196091eb3156e8d4e95daeadf8bd41a6,
@@ -540,6 +585,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   RollAnimation: {fileID: 11400000, guid: 53386c69cd6ad1648901a7c15eb5c711, type: 2}
+  CanRoll: 1
 --- !u!114 &6091423202599489240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +616,19 @@ SortingGroup:
   m_SortingLayerID: -2128475455
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!114 &5944633067879369105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784454056699770331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59868d31b4343e641831908bd277d5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XpAmount: 2
 --- !u!1 &2784454057411166856
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,8 +757,40 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5650201902665180505}
+  - {fileID: 9014278828945779968}
+  - {fileID: 4943343337580865725}
   m_Father: {fileID: 2784454056699770309}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4793056794227428152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9014278828945779968}
+  m_Layer: 0
+  m_Name: BloodPoolLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9014278828945779968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793056794227428152}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1346476367283827311}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7467891948595008211
 GameObject:
@@ -1123,4 +1214,79 @@ TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
     type: 3}
   m_PrefabInstance: {fileID: 3587017574537253963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5430189790993793585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2784454056699770309}
+    m_Modifications:
+    - target: {fileID: 4458474668910551361, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle_Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c99f232bf32f5074eac908597310735f, type: 3}
+--- !u!4 &5368297312420376539 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5430189790993793585}
   m_PrefabAsset: {fileID: 0}

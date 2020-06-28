@@ -33,5 +33,6 @@ MonoBehaviour:
     StartMovementFrame: 0
     EndMovementFrame: 6
     MovementOffset: -6
-    AnimationSoundCue: {fileID: 0}
+    AnimationSoundCue: {fileID: 11400000, guid: f6695b59b9717424fa2d05c0f591ab25,
+      type: 2}
   CanBeCut: 0

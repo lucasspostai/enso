@@ -48,6 +48,7 @@ namespace Enso.Characters
         
         [HideInInspector] public AttackType CurrentAttackType;
         [HideInInspector] public bool IsDead;
+        [HideInInspector] public bool IsInvincible;
 
         private void Awake()
         {
@@ -84,6 +85,9 @@ namespace Enso.Characters
 
         public void TakeDamage(int damageAmount, AttackType attackType = AttackType.Light)
         {
+            if (IsInvincible)
+                return;
+            
             CurrentAttackType = attackType;
             Health -= damageAmount;
         }

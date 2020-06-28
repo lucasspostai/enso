@@ -23,7 +23,11 @@ namespace Enso.CombatSystem
         [SerializeField] protected GameObject HeavyDamageParticle;
         [SerializeField] protected GameObject LoseBalanceParticle;
         [SerializeField] protected GameObject DeathParticle;
-        
+        [SerializeField] protected GameObject BloodPoolParticle;
+        [SerializeField] protected Transform DeathBloodPoolLocation;
+        [SerializeField] protected Transform BloodPoolLocation;
+        [SerializeField] protected float DeathParticleDelay;
+
         [Header("Camera Shake")]
         [SerializeField] protected CameraShakeProfile RegularDamageShakeProfile;
         [SerializeField] protected CameraShakeProfile HeavyDamageShakeProfile;
@@ -62,6 +66,7 @@ namespace Enso.CombatSystem
             PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
             PoolManager.Instance.CreatePool(LoseBalanceParticle, 3);
             PoolManager.Instance.CreatePool(DeathParticle, 3);
+            PoolManager.Instance.CreatePool(BloodPoolParticle, 3);
         }
 
         private void PlayDamageAnimation(DamageAnimation damageAnimation)
@@ -94,6 +99,7 @@ namespace Enso.CombatSystem
                         AudioManager.Instance.Play(RegularDamageSoundCue, transform.position, Quaternion.identity);
 
                     SpawnParticle(RegularDamageParticle);
+                    SpawnParticle(BloodPoolParticle, BloodPoolLocation);
                     break;
                 
                 case AttackType.Strong:
@@ -109,11 +115,13 @@ namespace Enso.CombatSystem
                         AudioManager.Instance.Play(StrongDamageSoundCue, transform.position, Quaternion.identity);
 
                     SpawnParticle(HeavyDamageParticle);
+                    SpawnParticle(BloodPoolParticle, BloodPoolLocation);
                     break;
                 
                 default:
                     PlayDamageAnimation(RegularDamageAnimation);
                     SpawnParticle(RegularDamageParticle);
+                    SpawnParticle(BloodPoolParticle);
                     break;
             }
         }
@@ -130,7 +138,7 @@ namespace Enso.CombatSystem
 
             PlayDamageAnimation(DeathAnimation);
             
-            SpawnParticle(DeathParticle);
+            SpawnParticle(DeathParticle, DeathBloodPoolLocation, DeathParticleDelay);
             
             GameManager.Instance.ChangeTimeScale(DeathTimeScale, DeathTimeScaleDuration);
         }
