@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d5ea72828f91d43ba647ca24ab889d, type: 3}
-  m_Name: SFX_AshigaruWarrior_Damage
+  m_Name: SFX_Enemy_LoseBalance
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 825da1a91ac6e5d4a94d3c0b9f62ba9d, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 495b6da2d9c52d544866e0ce005978c3, type: 3}
   Volume: 1
   MinPitch: 0.95
   MaxPitch: 1.05

@@ -22,6 +22,7 @@ namespace Framework.LevelDesignEvents
             foreach (var enemy in Enemies)
             {
                 enemy.EnterCombatWith(player);
+                player.EnterCombatWith(enemy);
             }
         }
     }

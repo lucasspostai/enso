@@ -217,6 +217,7 @@ MonoBehaviour:
   RollController: {fileID: 8218683346449343016}
   HealController: {fileID: 7622270846077408965}
   MeditationController: {fileID: 4350567238863108949}
+  CurrentEnemies: []
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +350,8 @@ MonoBehaviour:
   StrongAttackParticle: {fileID: 9068510954360317105}
   SpecialAttackParticle: {fileID: 997696477241642813}
   StrongAttackDeadZoneTime: 0.1
+  RegularAttackCost: 0.2
+  StrongAttackCost: 0.45
   SpecialAttackCost: 0.9
   StrongAttackUnlocked: 0
   SpecialAttackUnlocked: 0
@@ -379,6 +382,7 @@ MonoBehaviour:
   BlockParticles:
   - {fileID: 1603537107140715294, guid: e27c5e4be2eaccd4fa934b8bfe8d70a3, type: 3}
   - {fileID: 7436855666271918632, guid: cc1ac79332a69c44eac2b4f3c373b51e, type: 3}
+  BlockSoundCue: {fileID: 11400000, guid: 983aec450d4b1d442ab3f96fefc78064, type: 2}
   BlockShakeProfile: {fileID: 11400000, guid: 9e7c1b5dfaec4e549a4cfcb44f19c2d6, type: 2}
 --- !u!114 &7997557526909049030
 MonoBehaviour:
@@ -408,7 +412,7 @@ MonoBehaviour:
     type: 3}
   LoseBalanceParticle: {fileID: 1864202874870629147, guid: 2e6370a497202494781f69b2c42e087b,
     type: 3}
-  DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  DeathParticle: {fileID: 175294051355674008, guid: 374e6602b929fcc40983a63a861d453e,
     type: 3}
   RegularDamageShakeProfile: {fileID: 11400000, guid: abb2f88d5db3e234798a213c7013bf64,
     type: 2}
@@ -417,6 +421,12 @@ MonoBehaviour:
   LoseBalanceShakeProfile: {fileID: 11400000, guid: baa602d139fbf644889bff0f79db76ad,
     type: 2}
   DeathShakeProfile: {fileID: 11400000, guid: 92d85d2304d467c4b899888900fd7ec7, type: 2}
+  RegularDamageSoundCue: {fileID: 11400000, guid: 1480cb3bd9ea99e45a3973bc9e480b88,
+    type: 2}
+  StrongDamageSoundCue: {fileID: 11400000, guid: 81ab207b154a9bd4b83fbe72490bcacb,
+    type: 2}
+  LoseBalanceSoundCue: {fileID: 11400000, guid: 1509e26ff7c844741bd0e4a64ad0568c,
+    type: 2}
   DeathTimeScale: 0.5
   DeathTimeScaleDuration: 1
 --- !u!114 &8218683346449343016
@@ -434,6 +444,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   RollAnimation: {fileID: 11400000, guid: c4b51583584fed94d8e11e61c315c8e0, type: 2}
+  RollCost: 0.1
 --- !u!114 &7622270846077408965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,12 +622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ed7027cea3954ea502bf5fa2820fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPosition: {x: 0, y: -2, z: 0}
-  localRotation: {x: 0, y: -180, z: -180}
-  localScale: {x: 1, y: 1, z: 1}
-  sprite: {fileID: 0}
-  spriteLayer: Background
-  spriteLayerOrder: -5
+  LocalPosition: {x: 0, y: -2, z: 0}
+  LocalRotation: {x: 0, y: 0, z: -180}
+  LocalScale: {x: 1, y: 1, z: 1}
+  Sprite: {fileID: 0}
+  SpriteLayer: Default
+  SpriteLayerOrder: -5
 --- !u!1 &4927003519585448994
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,21 +801,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Time
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.040670395
-      objectReference: {fileID: 0}
     - target: {fileID: 499452959800626569, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -859,6 +855,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 499452959800626568, guid: a32189b8d7bea1e48bfed6a7e093e5c2,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.040670395
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32189b8d7bea1e48bfed6a7e093e5c2, type: 3}
