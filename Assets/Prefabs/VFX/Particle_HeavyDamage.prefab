@@ -19139,8 +19139,9 @@ GameObject:
   - component: {fileID: 2338088073597907015}
   - component: {fileID: 2338088073597907012}
   - component: {fileID: 2338088073597907013}
+  - component: {fileID: 3235463538712800861}
   m_Layer: 0
-  m_Name: Blood
+  m_Name: Particle_HeavyDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19174,7 +19175,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 0.53
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -23926,8 +23927,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
@@ -23952,3 +23953,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &3235463538712800861
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338088073597907010}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 1

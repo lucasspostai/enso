@@ -6,6 +6,7 @@ namespace Enso.Characters.Enemies.Komuso
     public class KomusoProperties : EnemyProperties
     {
         [Header("AI Distances")] 
+        public float WaitDistance = 6f;
         public float GuardDistance = 6f;
         public float LightAttackDistance = 2f;
         public float StrongAttackDistance = 2.5f;

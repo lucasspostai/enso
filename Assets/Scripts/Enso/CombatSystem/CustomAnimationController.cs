@@ -121,8 +121,6 @@ namespace Enso.CombatSystem
 
         private IEnumerator WaitAndSpawnParticle(GameObject particle, Transform characterTransform = null, float delay = 0f)
         {
-            print(delay);
-            
             yield return new WaitForSeconds(delay);
             
             if (particle)

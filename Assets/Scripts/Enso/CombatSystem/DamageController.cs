@@ -11,6 +11,7 @@ namespace Enso.CombatSystem
     public class DamageController : CustomAnimationController
     {
         [HideInInspector] public bool IsDying;
+        [HideInInspector] public bool IsReceivingParry;
 
         [Header("Animations")]
         [SerializeField] protected DamageAnimation RegularDamageAnimation;
@@ -38,11 +39,11 @@ namespace Enso.CombatSystem
         [SerializeField] protected SoundCue RegularDamageSoundCue;
         [SerializeField] protected SoundCue StrongDamageSoundCue;
         [SerializeField] protected SoundCue LoseBalanceSoundCue;
+        [SerializeField] protected SoundCue ParrySoundCue;
         
         [Header("Properties")]
         [SerializeField] protected float DeathTimeScale = 0.5f;
         [SerializeField] protected float DeathTimeScaleDuration = 0.2f;
-        
 
         private void OnEnable()
         {
@@ -149,11 +150,15 @@ namespace Enso.CombatSystem
             
             SpawnParticle(LoseBalanceParticle);
             
-            if(LoseBalanceSoundCue)
+            if(LoseBalanceSoundCue && !IsReceivingParry)
                 AudioManager.Instance.Play(LoseBalanceSoundCue, transform.position, Quaternion.identity);
+            else if(ParrySoundCue)
+                AudioManager.Instance.Play(ParrySoundCue, transform.position, Quaternion.identity);
             
             if(LoseBalanceShakeProfile)
                 PlayerCinemachineManager.Instance.ShakeController.Shake(LoseBalanceShakeProfile);
+
+            IsReceivingParry = false;
         }
 
         public override void OnLastFrameEnd()

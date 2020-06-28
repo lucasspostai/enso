@@ -50,5 +50,9 @@ MonoBehaviour:
   HealButton: 354
   SpecialAttackButton: 355
   InteractionButton: 351
+  ReturnButton: 352
   PageLeftButton: 354
   PageRightButton: 355
+  StatusButton: 356
+  PauseButton: 357
+  ParryDeadZone: 0.2

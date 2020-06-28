@@ -31,7 +31,10 @@ namespace Enso.Characters.Enemies.Komuso
         {
             base.Parry();
             
-            ThisFighter.MovementController.SetSpeed(0);
+            if(ParryStanceParticle)
+                SpawnParticle(ParryStanceParticle, ParryStanceParticleLocation, ParryStanceParticleDelay);
+            
+            //ThisFighter.MovementController.SetSpeed(0);
             
             if(parryStanceCoroutine != null)
                 StopCoroutine(parryStanceCoroutine);

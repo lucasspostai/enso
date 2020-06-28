@@ -18,14 +18,15 @@ MonoBehaviour:
   GuardSpeed: 1
   AccelerationTime: 0.02
   DeadZone: 0
-  Health: 2
-  BalanceAmount: 5
+  Health: 5
+  BalanceAmount: 4
   DelayToRecoverAfterLosingBalance: 5
   DelayToRecoverAfterDamage: 2
   TimeToFullyRecoverBalance: 10
   HealingCharges: 1
   DelayToHealAgain: 0
-  XpAmount: 0
+  XpAmount: 5
+  WaitDistance: 10
   GuardDistance: 4
-  LightAttackDistance: 1.5
+  LightAttackDistance: 2
   StrongAttackDistance: 2

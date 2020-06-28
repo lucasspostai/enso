@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4083816589647587165}
   - component: {fileID: 298905775990424035}
   - component: {fileID: 7693747128841083914}
+  - component: {fileID: -4953698593198366051}
   m_Layer: 0
   m_Name: DirtFootSteps
   m_TagString: Untagged
@@ -42,7 +43,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 0.3
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4727,9 +4728,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1984402159
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4753,3 +4754,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-4953698593198366051
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182592969265179229}
+  m_Enabled: 1
+  m_SortingLayerID: -1984402159
+  m_SortingLayer: 1
+  m_SortingOrder: 10

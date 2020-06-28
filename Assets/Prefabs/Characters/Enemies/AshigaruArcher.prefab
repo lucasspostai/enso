@@ -503,6 +503,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   IsDying: 0
+  IsReceivingParry: 0
   RegularDamageAnimation: {fileID: 11400000, guid: 79071d34c7526cf438d4a886df52842c,
     type: 2}
   HeavyDamageAnimation: {fileID: 11400000, guid: 79071d34c7526cf438d4a886df52842c,
@@ -514,9 +515,9 @@ MonoBehaviour:
     type: 3}
   HeavyDamageParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
     type: 3}
-  LoseBalanceParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  LoseBalanceParticle: {fileID: 1864202874870629147, guid: 2e6370a497202494781f69b2c42e087b,
     type: 3}
-  DeathParticle: {fileID: 2338088073597907010, guid: 311c385192595f74da266f4f008d1e1d,
+  DeathParticle: {fileID: 175294051355674008, guid: 374e6602b929fcc40983a63a861d453e,
     type: 3}
   BloodPoolParticle: {fileID: 9127684719544345674, guid: e17da0369a792a5468ec53e2cda07999,
     type: 3}
@@ -536,6 +537,7 @@ MonoBehaviour:
     type: 2}
   LoseBalanceSoundCue: {fileID: 11400000, guid: 1509e26ff7c844741bd0e4a64ad0568c,
     type: 2}
+  ParrySoundCue: {fileID: 11400000, guid: 51df88e9bbaa71840a4663807331d99c, type: 2}
   DeathTimeScale: 0.5
   DeathTimeScaleDuration: 0.2
 --- !u!114 &4803499371316143667
@@ -553,6 +555,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 0}
+  ThisDamageController: {fileID: 7997557526909049030}
   ParryParticle: {fileID: 0}
   RiposteParticle: {fileID: 0}
   ParryShakeProfile: {fileID: 0}

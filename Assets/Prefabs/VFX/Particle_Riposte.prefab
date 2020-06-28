@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1588251049756082064}
   - component: {fileID: 1588251049756082079}
   - component: {fileID: 1588251049756082078}
+  - component: {fileID: 9193487704667421228}
   m_Layer: 0
   m_Name: Particle_Riposte
   m_TagString: Untagged
@@ -4786,8 +4787,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
@@ -4812,6 +4813,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &9193487704667421228
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588251049756082077}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 10
 --- !u!1 &8371589617960922844
 GameObject:
   m_ObjectHideFlags: 0

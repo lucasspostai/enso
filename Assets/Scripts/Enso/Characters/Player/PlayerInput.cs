@@ -32,6 +32,8 @@ namespace Enso.Characters.Player
         private bool pauseInputDownCalled;
         private bool anyKeyDownCalled;
 
+        private bool startingGuard;
+
         private float guardInputHoldingTime;
 
         [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
@@ -46,7 +48,7 @@ namespace Enso.Characters.Player
         [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
         [SerializeField] private KeyCode StatusButton = KeyCode.Joystick1Button6;
         [SerializeField] private KeyCode PauseButton = KeyCode.Joystick1Button7;
-        [SerializeField] private float ParryDeadZone = 0.1f;
+        [SerializeField] private float ParryDeadZone = 0.2f;
 
         public static bool HoldingGuardInput;
         public static bool HoldingHealInput;
@@ -147,11 +149,17 @@ namespace Enso.Characters.Player
             if (guardInputCalled)
             {
                 guardInputHoldingTime += Time.deltaTime;
+
+                if (startingGuard && guardInputHoldingTime >= ParryDeadZone)
+                {
+                    startingGuard = false;
+                    OnGuardInputDown();
+                }
             }
 
             if (guardInputDownCalled)
             {
-                OnGuardInputDown();
+                startingGuard = true;
             }
             else if (guardInputUpCalled)
             {

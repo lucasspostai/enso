@@ -18,6 +18,7 @@ namespace Enso.CombatSystem
         private readonly List<Hurtbox> damagedHurtboxes = new List<Hurtbox>();
 
         [SerializeField] private Hitbox AttackHitbox;
+        [SerializeField] private DamageController ThisDamageController;
 
         [Header("Particles")] 
         [SerializeField] protected GameObject ParryParticle;
@@ -89,6 +90,9 @@ namespace Enso.CombatSystem
 
                     if (attackController)
                         attackController.SetRipostePosition(transform);
+                    
+                    if (ThisDamageController)
+                        ThisDamageController.IsReceivingParry = true;
 
                     ThisFighter.GetBalanceSystem()
                         .TakeDamage(Mathf.RoundToInt(ThisFighter.GetBalanceSystem().GetMaxBalance()));

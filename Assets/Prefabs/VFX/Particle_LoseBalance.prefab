@@ -14420,8 +14420,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_RenderMode: 1
   m_SortMode: 0
@@ -14454,9 +14454,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864202874870629147}
   m_Enabled: 1
-  m_SortingLayerID: -2128475455
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -1074851055
+  m_SortingLayer: 3
+  m_SortingOrder: -1
 --- !u!1 &3434754973011625715
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,29 @@
-﻿using Enso.Characters.Enemies.AshigaruWarrior;
+﻿using System.Collections;
+using Enso.Characters.Enemies.AshigaruWarrior;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies.Komuso
 {
     public class Komuso : Enemy
     {
+        private bool chasePlayerAndAttack;
+        private Coroutine waitForPlayerCoroutine;
+
         [SerializeField] private KomusoAttackController AttackController;
         [SerializeField] private KomusoGuardController GuardController;
+        [SerializeField] private float TimeToWaitForThePlayer = 3f;
+        [SerializeField] private float MinimumGuardTime = 0.5f;
+        [SerializeField] private float MaximumGuardTime = 3f;
+        [SerializeField] private float GuardCooldown = 3f;
+        [SerializeField] private float LightAttackCooldown = 1f;
+        [SerializeField] private float StrongAttackCooldown = 2f;
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
             GetHealthSystem().Damage += EnableGuardImmediately;
+            GetHealthSystem().Damage += EnableParry;
             GetBalanceSystem().LoseBalance += StayOnGuard;
         }
 
@@ -21,31 +32,29 @@ namespace Enso.Characters.Enemies.Komuso
             base.OnDisable();
 
             GetHealthSystem().Damage -= EnableGuardImmediately;
+            GetHealthSystem().Damage -= EnableParry;
             GetBalanceSystem().LoseBalance -= StayOnGuard;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            
+            MustMove(true);
+            
+            Wait();
         }
 
         protected override void ChooseBehavior()
         {
             base.ChooseBehavior();
             
-            return;
+            if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
+                return;
 
-
-            if (ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
+            if (ThisEnemyMovementController.DistanceToTarget < GetProperties().WaitDistance)
             {
-                if (AnimationHandler.IsAnyCustomAnimationPlaying() || AnimationHandler.IsAnyGuardAnimationPlaying())
-                    return;
-                
-                if(GuardController.CanParry)
-                    StartParry();
-                else if (GuardController.CanGuard) //Guard
-                {
-                    MustMove(true);
-                    StartGuard();
-                    GuardController.WaitAfterStartGuard(2);
-                    GuardController.WaitAfterEndGuard(5);
-                }
-                else //Attack
+                if (chasePlayerAndAttack)
                 {
                     MustMove(false);
 
@@ -53,13 +62,41 @@ namespace Enso.Characters.Enemies.Komuso
                         ThisEnemyMovementController.DistanceToTarget < GetProperties().StrongAttackDistance)
                     {
                         PerformStrongAttack();
-                        AttackController.WaitAfterAttack(0.5f);
+                        AttackController.WaitAfterAttack(StrongAttackCooldown);
+                        
+                        Wait();
                     }
                     else if (AttackController.CanAttack &&
                              ThisEnemyMovementController.DistanceToTarget < GetProperties().LightAttackDistance)
                     {
                         PerformLightAttack();
-                        AttackController.WaitAfterAttack(0.5f);
+                        AttackController.WaitAfterAttack(LightAttackCooldown);
+                        
+                        Wait();
+                    }
+                }
+                else
+                {
+                    if (ThisEnemyMovementController.DistanceToTarget < GetProperties().GuardDistance)
+                    {
+                        if (GuardController.CanParry &&
+                            GetHealthSystem().GetHealth() < GetHealthSystem().GetMaxHealth() / 2)
+                        {
+                            MustMove(false);
+                            
+                            StartParry();
+                            
+                            Wait();
+                        }
+                        else if (GuardController.CanGuard)
+                        {
+                            MustMove(true);
+                            StartGuard();
+                            GuardController.WaitAfterStartGuard(Random.Range(MinimumGuardTime, MaximumGuardTime));
+                            GuardController.WaitAfterEndGuard(GuardCooldown);
+
+                            Wait();
+                        }
                     }
                 }
             }
@@ -70,6 +107,23 @@ namespace Enso.Characters.Enemies.Komuso
                 if (GuardController.IsGuarding)
                     GuardController.EndGuard();
             }
+        }
+
+        private void Wait()
+        {
+            if(waitForPlayerCoroutine != null)
+                StopCoroutine(waitForPlayerCoroutine);
+
+            waitForPlayerCoroutine = StartCoroutine(WaitForPlayer());
+        }
+
+        private IEnumerator WaitForPlayer()
+        {
+            chasePlayerAndAttack = false;
+
+            yield return new WaitForSeconds(TimeToWaitForThePlayer);
+
+            chasePlayerAndAttack = true;
         }
 
         private void PerformLightAttack()
@@ -95,6 +149,12 @@ namespace Enso.Characters.Enemies.Komuso
         private void EnableGuardImmediately()
         {
             GuardController.CanGuard = true;
+        }
+
+        private void EnableParry()
+        {
+            if(GetHealthSystem().GetHealth() < GetHealthSystem().GetMaxHealth() / 2)
+                GuardController.CanParry = true;
         }
 
         private void StayOnGuard()

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Enso.CombatSystem;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies
@@ -14,11 +15,18 @@ namespace Enso.Characters.Enemies
 
         [HideInInspector] public bool CanGuard;
 
+        [SerializeField] protected GameObject ParryStanceParticle;
+        [SerializeField] protected Transform ParryStanceParticleLocation;
+        [SerializeField] protected float ParryStanceParticleDelay = 1f;
+
         protected override void Start()
         {
             base.Start();
 
             CanGuard = true;
+            
+            if(ParryStanceParticle)
+                PoolManager.Instance.CreatePool(ParryStanceParticle, 1);
         }
 
         public override void StartGuard()

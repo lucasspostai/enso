@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4153355543147800833}
+  - {fileID: 3098458723844129612}
   m_Father: {fileID: 2784454056699770309}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,11 +129,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2424147294249186323}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalPosition: {x: 0.45, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2784454056699770309}
-  m_RootOrder: 4
+  m_Father: {fileID: 4942956660897927905}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2784454056699770331
 GameObject:
@@ -176,7 +177,6 @@ Transform:
   - {fileID: 6068584419971872605}
   - {fileID: 4942956660897927905}
   - {fileID: 9020569958320186038}
-  - {fileID: 3098458723844129612}
   - {fileID: 858229582130137388}
   - {fileID: 2844504840889603550}
   m_Father: {fileID: 0}
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAttackType: 0
   IsDead: 0
+  IsInvincible: 0
 --- !u!114 &5589958904590343412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +336,7 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   IsDying: 0
+  IsReceivingParry: 0
   RegularDamageAnimation: {fileID: 11400000, guid: ea1cf9b394b8d434fa615232d82802dd,
     type: 2}
   HeavyDamageAnimation: {fileID: 11400000, guid: ea1cf9b394b8d434fa615232d82802dd,
@@ -368,6 +370,7 @@ MonoBehaviour:
     type: 2}
   LoseBalanceSoundCue: {fileID: 11400000, guid: 1509e26ff7c844741bd0e4a64ad0568c,
     type: 2}
+  ParrySoundCue: {fileID: 11400000, guid: 51df88e9bbaa71840a4663807331d99c, type: 2}
   DeathTimeScale: 0.5
   DeathTimeScaleDuration: 0.2
 --- !u!114 &6587487395945137368
@@ -385,9 +388,11 @@ MonoBehaviour:
   IsAnimationPlaying: 0
   CanCutAnimation: 0
   AttackHitbox: {fileID: 6495635343669140766}
-  ParryParticle: {fileID: 0}
+  ThisDamageController: {fileID: 7997557526909049030}
+  ParryParticle: {fileID: 4227354508987722629, guid: e22ac6fc9eb86b6409ecc583ccc940a3,
+    type: 3}
   RiposteParticle: {fileID: 0}
-  ParryShakeProfile: {fileID: 0}
+  ParryShakeProfile: {fileID: 11400000, guid: 25b5c03fd73d4bf4a83b17ff2ead4529, type: 2}
   RiposteShakeProfile: {fileID: 0}
   AttackShakeProfile: {fileID: 11400000, guid: bd4eebce1fe88ef44a1e8e85b89af5fd, type: 2}
   CanAttack: 1
@@ -423,6 +428,9 @@ MonoBehaviour:
   BlockSoundCue: {fileID: 11400000, guid: 983aec450d4b1d442ab3f96fefc78064, type: 2}
   BlockShakeProfile: {fileID: 11400000, guid: 49f6ef91b389aa64b97731a655e6468c, type: 2}
   CanGuard: 0
+  ParryStanceParticle: {fileID: 0}
+  ParryStanceParticleLocation: {fileID: 0}
+  ParryStanceParticleDelay: 1
 --- !u!114 &1056334174257072651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +514,7 @@ SpriteRenderer:
   m_SortingLayerID: -2128475455
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b79079c438811d94785a36eb6f61024d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87f927ce07e65b642ba87670d36fcc37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -564,7 +572,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2784454056699770309}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4927003519585448994
 GameObject:
@@ -845,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 133961398456905194, guid: c99f232bf32f5074eac908597310735f,
         type: 3}

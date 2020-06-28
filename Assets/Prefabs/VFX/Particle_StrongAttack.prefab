@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6408738698429497730}
   - component: {fileID: 6408738698429497731}
   - component: {fileID: 6408738698429497732}
+  - component: {fileID: 6146859688100014546}
   m_Layer: 0
   m_Name: Particle_StrongAttack
   m_TagString: Untagged
@@ -4736,8 +4737,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 5
   m_SortMode: 0
@@ -4762,3 +4763,14 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &6146859688100014546
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408738698429497733}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
