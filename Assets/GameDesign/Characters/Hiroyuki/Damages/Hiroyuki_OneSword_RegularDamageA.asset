@@ -25,6 +25,7 @@ MonoBehaviour:
     AnimatorStateName: OneSword_Damage
     LayerNumber: 0
   AnimationFrameChecker:
+    DealDamage: 1
     StartHitFrame: 1
     EndHitFrame: 2
     CanCutFrame: 3
@@ -32,6 +33,5 @@ MonoBehaviour:
     StartMovementFrame: 0
     EndMovementFrame: 2
     MovementOffset: -2
-    AnimationSoundCue: {fileID: 11400000, guid: 1480cb3bd9ea99e45a3973bc9e480b88,
-      type: 2}
+    AnimationSoundCue: {fileID: 0}
   CanBeCut: 1

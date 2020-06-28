@@ -9642,6 +9642,7 @@ GameObject:
   - component: {fileID: 1864202874870629144}
   - component: {fileID: 1864202874870629145}
   - component: {fileID: 1864202874870629146}
+  - component: {fileID: 7558145776017864373}
   m_Layer: 0
   m_Name: Particle_LoseBalance
   m_TagString: Untagged
@@ -9674,7 +9675,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864202874870629147}
   serializedVersion: 6
-  lengthInSec: 0.3
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 0
@@ -9749,7 +9750,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14445,6 +14446,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &7558145776017864373
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864202874870629147}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &3434754973011625715
 GameObject:
   m_ObjectHideFlags: 0

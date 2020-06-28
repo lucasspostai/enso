@@ -3,6 +3,7 @@ using System.Collections;
 using Enso.Characters.Player;
 using Framework;
 using Framework.Animations;
+using Framework.Audio;
 using Framework.Utils;
 using UnityEngine;
 
@@ -27,8 +28,9 @@ namespace Enso.CombatSystem
         [SerializeField] protected ActionAnimation ParryAnimation;
         [SerializeField] protected float ParryDuration = 2f;
         
-        [Header("Particles")]
+        [Header("Feedback")]
         [SerializeField] protected GameObject[] BlockParticles;
+        [SerializeField] protected SoundCue BlockSoundCue;
         
         [Header("Camera Shake")]
         [SerializeField] protected CameraShakeProfile BlockShakeProfile;
@@ -127,8 +129,12 @@ namespace Enso.CombatSystem
             SetAnimationPropertiesAndPlay(BlockAnimation.ClipHolder, BlockAnimation.AnimationFrameChecker);
             
             ThisFighter.AnimationHandler.PauseAnimationForAWhile();
+            
             if(BlockParticles.Length > 0)
                 SpawnParticle(BlockParticles[uniqueRandom.GetRandomInt()]);
+            
+            if(BlockSoundCue)
+                AudioManager.Instance.Play(BlockSoundCue, transform.position, Quaternion.identity);
             
             if(BlockShakeProfile)
                 PlayerCinemachineManager.Instance.ShakeController.Shake(BlockShakeProfile);

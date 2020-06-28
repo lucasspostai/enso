@@ -9,7 +9,6 @@ namespace Enso.UI
         public void LoadSavedGame()
         {
             LevelLoader.Instance.LoadSavedLevel();
-            gameObject.SetActive(false);
         }
 
         public void Disable()

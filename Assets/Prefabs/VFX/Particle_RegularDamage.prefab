@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1143629758495906980}
   - component: {fileID: 1143629758495906982}
   - component: {fileID: 1143629758495906983}
+  - component: {fileID: 2209701238151586126}
   m_Layer: 0
   m_Name: Particle_RegularDamage
   m_TagString: Untagged
@@ -4812,6 +4813,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &2209701238151586126
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143629758495906981}
+  m_Enabled: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &1143629758901541444
 GameObject:
   m_ObjectHideFlags: 0

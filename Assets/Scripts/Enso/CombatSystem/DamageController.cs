@@ -3,6 +3,7 @@ using Enso.Characters.Player;
 using Enso.Enums;
 using Framework;
 using Framework.Animations;
+using Framework.Audio;
 using UnityEngine;
 
 namespace Enso.CombatSystem
@@ -28,6 +29,11 @@ namespace Enso.CombatSystem
         [SerializeField] protected CameraShakeProfile HeavyDamageShakeProfile;
         [SerializeField] protected CameraShakeProfile LoseBalanceShakeProfile;
         [SerializeField] protected CameraShakeProfile DeathShakeProfile;
+
+        [Header("Audio")] 
+        [SerializeField] protected SoundCue RegularDamageSoundCue;
+        [SerializeField] protected SoundCue StrongDamageSoundCue;
+        [SerializeField] protected SoundCue LoseBalanceSoundCue;
         
         [Header("Properties")]
         [SerializeField] protected float DeathTimeScale = 0.5f;
@@ -73,21 +79,38 @@ namespace Enso.CombatSystem
 
         private void SpawnDamageParticleAndPlayAnimation()
         {
-            if (IsDying)
-                return;
-
             switch (ThisFighter.GetHealthSystem().CurrentAttackType)
             {
                 case AttackType.Light:
-                    PlayDamageAnimation(RegularDamageAnimation);
-                    PlayerCinemachineManager.Instance.ShakeController.Shake(RegularDamageShakeProfile);
+                    if (!IsDying)
+                    {
+                        PlayDamageAnimation(RegularDamageAnimation);
+                    
+                        if(RegularDamageShakeProfile)
+                            PlayerCinemachineManager.Instance.ShakeController.Shake(RegularDamageShakeProfile);
+                    }
+                    
+                    if(RegularDamageSoundCue)
+                        AudioManager.Instance.Play(RegularDamageSoundCue, transform.position, Quaternion.identity);
+
                     SpawnParticle(RegularDamageParticle);
                     break;
+                
                 case AttackType.Strong:
-                    PlayDamageAnimation(HeavyDamageAnimation);
-                    PlayerCinemachineManager.Instance.ShakeController.Shake(HeavyDamageShakeProfile);
+                    if (!IsDying)
+                    {
+                        PlayDamageAnimation(HeavyDamageAnimation);
+                    
+                        if(HeavyDamageShakeProfile)
+                            PlayerCinemachineManager.Instance.ShakeController.Shake(HeavyDamageShakeProfile);
+                    }
+                    
+                    if(StrongDamageSoundCue)
+                        AudioManager.Instance.Play(StrongDamageSoundCue, transform.position, Quaternion.identity);
+
                     SpawnParticle(HeavyDamageParticle);
                     break;
+                
                 default:
                     PlayDamageAnimation(RegularDamageAnimation);
                     SpawnParticle(RegularDamageParticle);
@@ -99,11 +122,11 @@ namespace Enso.CombatSystem
         {
             if (IsDying)
                 return;
-
-            IsDying = true;
-            SpawnParticle(HeavyDamageParticle);
             
-            PlayerCinemachineManager.Instance.ShakeController.Shake(DeathShakeProfile);
+            IsDying = true;
+            
+            if(DeathShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(DeathShakeProfile);
 
             PlayDamageAnimation(DeathAnimation);
             
@@ -118,7 +141,11 @@ namespace Enso.CombatSystem
             
             SpawnParticle(LoseBalanceParticle);
             
-            PlayerCinemachineManager.Instance.ShakeController.Shake(LoseBalanceShakeProfile);
+            if(LoseBalanceSoundCue)
+                AudioManager.Instance.Play(LoseBalanceSoundCue, transform.position, Quaternion.identity);
+            
+            if(LoseBalanceShakeProfile)
+                PlayerCinemachineManager.Instance.ShakeController.Shake(LoseBalanceShakeProfile);
         }
 
         public override void OnLastFrameEnd()

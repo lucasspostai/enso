@@ -29,8 +29,7 @@ namespace Enso.Characters
                     health = 0;
                     IsDead = true;
                     OnDeath();
-                    return;
-                }
+                } 
                 
                 if (health < maxHealth)
                 {
