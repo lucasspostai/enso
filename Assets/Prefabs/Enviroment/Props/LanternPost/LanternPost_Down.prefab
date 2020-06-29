@@ -1116,7 +1116,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 1
+      cycleCount: 0
       repeatInterval: 0.01
       probability: 1
   SizeModule:
@@ -5084,6 +5084,16 @@ PrefabInstance:
     - target: {fileID: 2759013474943452306, guid: d4c6782df59d0a9439d9eb567dec6f0f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014296808141855304, guid: d4c6782df59d0a9439d9eb567dec6f0f,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014296808141855304, guid: d4c6782df59d0a9439d9eb567dec6f0f,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
