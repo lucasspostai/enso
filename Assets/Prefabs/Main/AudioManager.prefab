@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioPrefab: {fileID: 3438197781890655633, guid: b154eb32841aa254ab820284b7378339,
     type: 3}
-  MaxSimultaneousSounds: 5
+  MaxSimultaneousSounds: 15
