@@ -74,6 +74,13 @@ namespace Enso.Characters.Player
             }
         }
 
+        public override void Parry()
+        {
+            base.Parry();
+            
+            player.MovementController.SetSpeed(0);
+        }
+
         public override void Block()
         {
             base.Block();

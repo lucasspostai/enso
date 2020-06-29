@@ -59,13 +59,13 @@ namespace Enso.Characters.Player
                 ExperienceManager.Instance.PerksAvailable = playerData.Perks;
             }
             
-            var levelInfo = FindObjectOfType<LevelInfo>();
+            var shrine = FindObjectOfType<Shrine>();
 
-            if (levelInfo)
+            if (shrine)
             {
-                transform.position = levelInfo.SaveLocation.position;
+                transform.position = shrine.SaveLocation.position;
                 
-                MeditationController.StartMeditation(levelInfo.LevelShrine);
+                MeditationController.StartMeditation(shrine, true);
             }
         }
 

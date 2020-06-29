@@ -7,13 +7,18 @@ namespace Enso.UI.Menu
 {
     public class MainMenu : Element
     {
+        private PlayerCanvas playerCanvas;
+        
         [SerializeField] private Canvas ThisCanvas;
 
         protected override void Start()
         {
             base.Start();
+
+            playerCanvas = FindObjectOfType<PlayerCanvas>();
             
-            PlayerCanvas.Instance.gameObject.SetActive(false);
+            if(playerCanvas != null)
+                playerCanvas.gameObject.SetActive(false);
         }
 
         public void StartGame()
@@ -31,7 +36,8 @@ namespace Enso.UI.Menu
             
             SceneManager.UnloadSceneAsync(LevelLoader.MainMenuScene);
             
-            PlayerCanvas.Instance.gameObject.SetActive(true);
+            if(playerCanvas != null)
+                playerCanvas.gameObject.SetActive(true);
         }
     }
 }

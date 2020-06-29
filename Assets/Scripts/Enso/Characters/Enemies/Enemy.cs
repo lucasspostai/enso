@@ -1,5 +1,6 @@
 ﻿using System;
 using Enso.CombatSystem;
+using Framework;
 using UnityEngine;
 
 namespace Enso.Characters.Enemies
@@ -65,6 +66,11 @@ namespace Enso.Characters.Enemies
                 xpReceiver.GainXp(xpDropper.XpAmount);
 
             target = null;
+
+            Collisions.DisableCollisions();
+            Collisions.enabled = false;
+            
+            AnimationHandler.ChangeSortingOrderOnDeath();
         }
     }
 }

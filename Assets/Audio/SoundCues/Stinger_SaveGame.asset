@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d5ea72828f91d43ba647ca24ab889d, type: 3}
-  m_Name: SFX_AshigaruWarrior_Death
+  m_Name: Stinger_SaveGame
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 54042d9fa66b5f64499cf09d47b3ec7b, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 636ef707a87cd6c409c9c94692b52116, type: 3}
   Volume: 1
-  MinPitch: 0.95
-  MaxPitch: 1.05
+  MinPitch: 1
+  MaxPitch: 1
   Loop: 0
   SpatialBlend: 0
   MixerGroup: {fileID: 243973621269884548, guid: ee009ffbbf622f84e84e0a31052e2368,

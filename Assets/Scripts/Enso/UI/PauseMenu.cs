@@ -21,6 +21,9 @@ namespace Enso.UI
 
         private void ChooseOption()
         {
+            if (GameManager.Instance.ShrineActive)
+                return;
+            
             if (GameManager.Instance.GamePaused)
             {
                 ResumeGame();

@@ -58,5 +58,10 @@ namespace Framework
             public Vector2 TopLeft;
             public Vector2 TopRight;
         }
+
+        public void DisableCollisions()
+        {
+            Collider.enabled = false;
+        }
     }
 }

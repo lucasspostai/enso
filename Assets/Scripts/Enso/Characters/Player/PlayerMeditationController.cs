@@ -17,7 +17,7 @@ namespace Enso.Characters.Player
             PlayerInput.AnyInputDown -= EndMeditation;
         }
 
-        public void StartMeditation(Shrine shrine)
+        public void StartMeditation(Shrine shrine, bool getUpOnAnyButton)
         {
             if (shrine != null)
             {
@@ -26,10 +26,9 @@ namespace Enso.Characters.Player
 
                 currentShrine = shrine;
             }
-            else
-            {
+            
+            if(getUpOnAnyButton)
                 PlayerInput.AnyInputDown += EndMeditation;
-            }
 
             isMeditating = true;
 

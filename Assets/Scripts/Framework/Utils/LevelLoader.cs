@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Enso;
+using Enso.Characters.Player;
 using Framework.LevelDesignEvents;
 using UnityEngine;
 using UnityEngine.SceneManagement;

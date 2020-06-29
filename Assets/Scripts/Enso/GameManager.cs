@@ -9,6 +9,7 @@ namespace Enso
         private Coroutine changeTimeScaleCoroutine;
 
         [HideInInspector] public bool GamePaused;
+        [HideInInspector] public bool ShrineActive;
 
         public void FreezeGame()
         {

@@ -160,5 +160,10 @@ namespace Enso.CombatSystem
 
             CharacterAnimator.speed = 1;
         }
+
+        public void ChangeSortingOrderOnDeath()
+        {
+            CharacterSpriteRenderer.sortingOrder = -1;
+        }
     }
 }
