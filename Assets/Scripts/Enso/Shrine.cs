@@ -24,6 +24,7 @@ namespace Enso
         [SerializeField] private Level ThisLevel;
 
         public Transform SaveLocation;
+        public Transform PlayerArrivalLocation;
 
         private void OnEnable()
         {

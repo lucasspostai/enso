@@ -15,7 +15,7 @@ namespace Framework.Utils
         public Animator TransitionAnimator;
 
         [SerializeField] private Level[] Levels;
-        
+
         [HideInInspector] public int CurrentLevelIndex;
 
         public void LoadMainMenu()

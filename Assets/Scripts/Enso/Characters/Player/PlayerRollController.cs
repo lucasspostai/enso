@@ -35,9 +35,9 @@ namespace Enso.Characters.Player
         {
             if (ThisFighter.GetBalanceSystem().GetBalance() <= 0)
                 return;
-            
+
             base.PlayRollAnimation();
-            
+
             player.GetHealthSystem().IsInvincible = true;
 
             //Roll Cost
@@ -56,8 +56,9 @@ namespace Enso.Characters.Player
         public override void OnInterrupted()
         {
             base.OnInterrupted();
-            
-            player.GetHealthSystem().IsInvincible = false;
+
+            if (player)
+                player.GetHealthSystem().IsInvincible = false;
         }
 
         public override void OnLastFrameEnd()

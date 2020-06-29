@@ -7,20 +7,14 @@ namespace Framework.LevelDesignEvents
     public class ChangeLevelTrigger : LevelDesignEvent
     {
         [SerializeField] private Level NextLevel;
-        [SerializeField] private StageArrivalLocation ArrivalLocation;
 
         public override void Execute()
         {
             base.Execute();
 
+            GameManager.Instance.LeavingLocation = true;
+            
             LevelLoader.Instance.LoadLevel(NextLevel);
         }
-    }
-
-    public enum StageArrivalLocation
-    {
-        Entrance,
-        Exit,
-        Shrine
     }
 }

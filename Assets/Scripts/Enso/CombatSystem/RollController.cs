@@ -30,7 +30,8 @@ namespace Enso.CombatSystem
 
             SetDirection();
             
-            ghostEffectController.ActivateGhostEffects();
+            if(ghostEffectController) 
+                ghostEffectController.ActivateGhostEffects();
 
             SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker, false);
         }
@@ -39,7 +40,8 @@ namespace Enso.CombatSystem
         {
             base.OnInterrupted();
             
-            ghostEffectController.DisableGhostEffects();
+            if(ghostEffectController) 
+                ghostEffectController.DisableGhostEffects();
         }
 
         public override void OnEndMovement()

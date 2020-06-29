@@ -24,11 +24,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315741526168781765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1346476367283827311}
-  m_RootOrder: 2
+  m_Father: {fileID: 2784454056699770309}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521573320624997805
 GameObject:
@@ -230,9 +230,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
@@ -347,6 +347,7 @@ Transform:
   - {fileID: 1724896046407861097}
   - {fileID: 9020569958320186038}
   - {fileID: 5368297312420376539}
+  - {fileID: 4943343337580865725}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -520,8 +521,8 @@ MonoBehaviour:
     type: 3}
   BloodPoolParticle: {fileID: 9127684719544345674, guid: e17da0369a792a5468ec53e2cda07999,
     type: 3}
-  DeathBloodPoolLocation: {fileID: 9014278828945779968}
-  BloodPoolLocation: {fileID: 4943343337580865725}
+  DeathBloodPoolLocation: {fileID: 4943343337580865725}
+  BloodPoolLocation: {fileID: 9014278828945779968}
   DeathParticleDelay: 1
   RegularDamageShakeProfile: {fileID: 11400000, guid: 80ff33937f5da0849bffb6cf869763a5,
     type: 2}
@@ -749,7 +750,6 @@ Transform:
   m_Children:
   - {fileID: 5650201902665180505}
   - {fileID: 9014278828945779968}
-  - {fileID: 4943343337580865725}
   m_Father: {fileID: 2784454056699770309}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -888,15 +888,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c42c57df806aa8644a100bd53cd0c897, type: 3}
---- !u!1 &3903460712709842560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744400240487677111, guid: c42c57df806aa8644a100bd53cd0c897,
-    type: 3}
-  m_PrefabInstance: {fileID: 422538986211564087}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3903460712709842561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3744400240487677110, guid: c42c57df806aa8644a100bd53cd0c897,
+    type: 3}
+  m_PrefabInstance: {fileID: 422538986211564087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3903460712709842560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3744400240487677111, guid: c42c57df806aa8644a100bd53cd0c897,
     type: 3}
   m_PrefabInstance: {fileID: 422538986211564087}
   m_PrefabAsset: {fileID: 0}

@@ -60,6 +60,8 @@ namespace Enso.Characters.Enemies
             if (!target && !GetHealthSystem().IsDead)
                 return;
 
+            print(target);
+            
             var xpReceiver = target.GetComponent<XpReceiver>();
 
             if (xpReceiver)

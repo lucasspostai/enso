@@ -23,8 +23,6 @@ namespace Framework.LevelDesignEvents
             {
                 if (!enemy.GetHealthSystem().IsDead)
                 {
-                    print("ALIVE");
-                    
                     enemy.EnterCombatWith(player);
                     player.EnterCombatWith(enemy);
                 }

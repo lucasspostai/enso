@@ -10,7 +10,8 @@ namespace Enso.Characters.Player
 {
     public class Player : Fighter
     {
-        [Header("Managers")] [SerializeField] private GameObject MainGameManager;
+        [Header("Managers")] 
+        [SerializeField] private GameObject MainGameManager;
         [SerializeField] private GameObject MainAudioManager;
         [SerializeField] private GameObject MainPoolManager;
         [SerializeField] private GameObject MainInputManager;
@@ -18,12 +19,13 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject PauseCanvas;
         [SerializeField] private GameObject MainCinemachineManager;
 
-        [Header("References")] public PlayerAttackController AttackController;
+        [Header("References")] 
+        public PlayerAttackController AttackController;
         public PlayerGuardController GuardController;
         public PlayerRollController RollController;
         public PlayerHealController HealController;
         public PlayerMeditationController MeditationController;
-        
+
         [HideInInspector] public List<Enemy> CurrentEnemies = new List<Enemy>();
 
         protected override void Awake()
@@ -36,7 +38,7 @@ namespace Enso.Characters.Player
         protected override void Start()
         {
             base.Start();
-            
+
             LoadGame();
         }
 
@@ -59,14 +61,23 @@ namespace Enso.Characters.Player
                 ExperienceManager.Instance.XpAmount = playerData.XpAmount;
                 ExperienceManager.Instance.PerksAvailable = playerData.Perks;
             }
-            
-            var shrine = FindObjectOfType<Shrine>();
 
+            var shrine = FindObjectOfType<Shrine>();
+            
             if (shrine)
             {
-                transform.position = shrine.SaveLocation.position;
-                
-                MeditationController.StartMeditation(shrine, true);
+                if (GameManager.Instance.LeavingLocation)
+                {
+                    transform.position = shrine.PlayerArrivalLocation.position;
+
+                    GameManager.Instance.LeavingLocation = false;
+                }
+                else
+                {
+                    transform.position = shrine.SaveLocation.position;
+
+                    MeditationController.StartMeditation(shrine, true);
+                }
             }
         }
 
@@ -100,16 +111,14 @@ namespace Enso.Characters.Player
             var cinemachineManager = FindObjectOfType<PlayerCinemachineManager>();
 
             if (!cinemachineManager)
-            {
-                cinemachineManager = Instantiate(MainCinemachineManager).GetComponent<PlayerCinemachineManager>();
-            }
+                Instantiate(MainCinemachineManager).GetComponent<PlayerCinemachineManager>();
 
             //Canvas
             var playerCanvas = FindObjectOfType<PlayerCanvas>();
 
             if (!playerCanvas)
                 Instantiate(MainCanvas);
-            
+
             //Pause Canvas
             var pauseCanvas = FindObjectOfType<PauseMenu>();
 
@@ -120,7 +129,7 @@ namespace Enso.Characters.Player
         public override void EnterCombatWith(Fighter fighter)
         {
             var enemy = fighter as Enemy;
-            
+
             CurrentEnemies.Add(enemy);
         }
 
@@ -138,8 +147,8 @@ namespace Enso.Characters.Player
             foreach (var enemy in CurrentEnemies)
             {
                 var distanceBetweenFighters = Vector2.Distance(enemy.transform.position, transform.position);
-                
-                if (distanceBetweenFighters < closestDistance)
+
+                if (distanceBetweenFighters < closestDistance && !enemy.GetHealthSystem().IsDead)
                 {
                     closestDistance = distanceBetweenFighters;
                     closestEnemy = enemy;
@@ -148,7 +157,7 @@ namespace Enso.Characters.Player
 
             return closestEnemy != null
                 ? (Vector2) (closestEnemy.transform.position - transform.position).normalized
-                : Vector2.zero;
+                : PlayerInput.Movement;
         }
 
         public void SetActionDirection()
