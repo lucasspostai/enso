@@ -88,3 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DelayAfterExecution: 0
   InteractionElement: {fileID: 0}
+  ShopCanvasElement: {fileID: 0}
+  SaveGameCanvas: {fileID: 0}
+  SaveParticle: {fileID: 4117682610013364890, guid: 65a809a899ac23143826bd3e4160710a,
+    type: 3}
+  SaveSoundCue: {fileID: 11400000, guid: bc031072b0e518b45ba7a4ebacdc6c78, type: 2}
+  ThisLevel: {fileID: 0}
+  SaveLocation: {fileID: 0}

@@ -262,7 +262,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   AttackController: {fileID: 8819955161382153320}
   GuardController: {fileID: 1503594585738059137}
-  TimeToWaitForThePlayer: 3
+  TimeToWaitForThePlayer: 5
   MinimumGuardTime: 2
   MaximumGuardTime: 5
   GuardCooldown: 2

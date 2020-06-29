@@ -21,8 +21,13 @@ namespace Framework.LevelDesignEvents
 
             foreach (var enemy in Enemies)
             {
-                enemy.EnterCombatWith(player);
-                player.EnterCombatWith(enemy);
+                if (!enemy.GetHealthSystem().IsDead)
+                {
+                    print("ALIVE");
+                    
+                    enemy.EnterCombatWith(player);
+                    player.EnterCombatWith(enemy);
+                }
             }
         }
     }

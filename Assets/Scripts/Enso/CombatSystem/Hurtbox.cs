@@ -13,6 +13,16 @@ namespace Enso.CombatSystem
 
         public Fighter ThisFighter;
 
+        private void OnEnable()
+        {
+            ThisFighter.GetHealthSystem().Death += DisableHurtbox;
+        }
+        
+        private void OnDisable()
+        {
+            ThisFighter.GetHealthSystem().Death -= DisableHurtbox;
+        }
+
         private void Start()
         {
             HurtboxCollider = GetComponent<Collider2D>();
@@ -53,6 +63,11 @@ namespace Enso.CombatSystem
             {
                 ThisFighter.GetHealthSystem().TakeDamage(damageAmount);
             }
+        }
+
+        private void DisableHurtbox()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

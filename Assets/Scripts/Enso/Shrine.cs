@@ -1,5 +1,8 @@
-﻿using Enso.Characters.Player;
+﻿using System.Collections;
+using Enso.Characters.Player;
 using Enso.UI;
+using Framework;
+using Framework.Audio;
 using Framework.LevelDesignEvents;
 using Framework.Utils;
 using UnityEngine;
@@ -11,10 +14,16 @@ namespace Enso
         private bool isActive;
         private bool isInteracting;
         private Player player;
+        private PlayerCanvas playerCanvas;
 
         [SerializeField] private Element InteractionElement;
         [SerializeField] private Element ShopCanvasElement;
+        [SerializeField] private GameObject SaveGameCanvas;
+        [SerializeField] private GameObject SaveParticle;
+        [SerializeField] private SoundCue SaveSoundCue;
         [SerializeField] private Level ThisLevel;
+
+        public Transform SaveLocation;
 
         private void OnEnable()
         {
@@ -31,8 +40,11 @@ namespace Enso
         private void Start()
         {
             player = FindObjectOfType<Player>();
+            playerCanvas = FindObjectOfType<PlayerCanvas>();
             
             InteractionElement.Disable();
+            
+            PoolManager.Instance.CreatePool(SaveParticle, 1);
         }
 
         public override void Execute()
@@ -41,6 +53,8 @@ namespace Enso
 
             isActive = true;
             InteractionElement.Enable();
+
+            GameManager.Instance.ShrineActive = true;
         }
 
         public override void Exit()
@@ -49,6 +63,8 @@ namespace Enso
 
             isActive = false;
             InteractionElement.Disable();
+            
+            GameManager.Instance.ShrineActive = false;
         }
 
         private void Interact()
@@ -56,14 +72,17 @@ namespace Enso
             if (!isActive || isInteracting)
                 return;
 
-            player.MeditationController.StartMeditation(this);
+            player.MeditationController.StartMeditation(this, false);
 
             isInteracting = true;
             
             player.SaveGame();
-            
+
             ShopCanvasElement.gameObject.SetActive(true);
             ShopCanvasElement.Enable();
+            
+            InteractionElement.Disable();
+            SetCanvasActive(false);
         }
         
         private void Return()
@@ -77,8 +96,45 @@ namespace Enso
 
             LevelLoader.Instance.CurrentLevelIndex = ThisLevel.LevelIndex;
             player.SaveGame();
+
+            PlaySaveFeedback();
             
             ShopCanvasElement.Disable();
+            
+            InteractionElement.Enable();
+            SetCanvasActive(true);
+        }
+
+        private void PlaySaveFeedback()
+        {
+            if(SaveParticle)
+                PoolManager.Instance.ReuseObject(SaveParticle, player.transform.position, SaveParticle.transform.rotation);
+            
+            if(SaveSoundCue)
+                AudioManager.Instance.Play(SaveSoundCue, player.transform.position, Quaternion.identity);
+
+            StartCoroutine(WaitAndDisableSaveText());
+        }
+
+        private IEnumerator WaitAndDisableSaveText()
+        {
+            SaveGameCanvas.SetActive(true);
+            
+            yield return new WaitForSeconds(3f);
+            
+            SaveGameCanvas.SetActive(false);
+        }
+
+        private void SetCanvasActive(bool active)
+        {
+            if (playerCanvas == null)
+                return;
+            
+            if(active)
+                playerCanvas.Show();
+            else
+                playerCanvas.Hide();
+            
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enso.UI
 {
-    public class PlayerCanvas : Singleton<PlayerCanvas>
+    public class PlayerCanvas : MonoBehaviour
     {
         private Player player;
 

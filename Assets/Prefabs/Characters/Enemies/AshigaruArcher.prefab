@@ -320,7 +320,6 @@ GameObject:
   - component: {fileID: 4803499371316143667}
   - component: {fileID: 3971246522536205429}
   - component: {fileID: 6091423202599489240}
-  - component: {fileID: 3918886638015716893}
   - component: {fileID: 5944633067879369105}
   m_Layer: 10
   m_Name: AshigaruArcher
@@ -608,17 +607,6 @@ MonoBehaviour:
   MaxSimultaneousGhosts: 6
   GhostInitialColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Trail: {fileID: 3974933171137370563}
---- !u!210 &3918886638015716893
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784454056699770331}
-  m_Enabled: 1
-  m_SortingLayerID: -2128475455
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!114 &5944633067879369105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,9 +687,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -2128475455
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: db41cd5afcbb36147b21e5c0eb112d09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
