@@ -29,11 +29,12 @@ MonoBehaviour:
     StartHitFrame: 6
     EndHitFrame: 7
     CanCutFrame: 3
-    PlayAudioFrame: 0
+    PlayAudioFrame: 6
     StartMovementFrame: 0
     EndMovementFrame: 10
     MovementOffset: 0
-    AnimationSoundCue: {fileID: 0}
+    AnimationSoundCue: {fileID: 11400000, guid: e84555184fc55bb4695b7f7adc6fc5d3,
+      type: 2}
   CanBeCut: 0
   HitboxSize: {x: 1, y: 1.5, z: 0}
   Damage: 3

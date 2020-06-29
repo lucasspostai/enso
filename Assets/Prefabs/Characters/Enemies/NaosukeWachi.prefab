@@ -261,6 +261,16 @@ MonoBehaviour:
   AttackController: {fileID: 8624410256441241444}
   GuardController: {fileID: 6659982890053224015}
   RollController: {fileID: 1901442203032990081}
+  TimeToWaitForThePlayer: 3
+  MinimumGuardTime: 0.5
+  MaximumGuardTime: 3
+  GuardCooldown: 3
+  LightAttackCooldown: 1
+  StrongAttackCooldown: 3
+  SpecialAttackCooldown: 5
+  RollCooldown: 6
+  Stage2Percentage: 0.66
+  Stage3Percentage: 0.33
 --- !u!114 &9174633466840254987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +484,7 @@ MonoBehaviour:
   ParryStanceParticle: {fileID: 7157556726190635485, guid: f875fdcde746f1846b84d212de96b71e,
     type: 3}
   ParryStanceParticleLocation: {fileID: 8859629614898419752}
-  ParryStanceParticleDelay: 1
+  ParryStanceParticleDelay: 0.75
   MaxTimeOnParryStance: 5
 --- !u!114 &1901442203032990081
 MonoBehaviour:
@@ -581,7 +591,7 @@ SpriteRenderer:
   m_SortingLayerID: -2128475455
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c227726e31675b4087d4da0b48b6210, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 118cf55df0383d14c8036cdb930f2fa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1020,6 +1030,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1040,21 +1065,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1069,12 +1079,12 @@ PrefabInstance:
         type: 3}
       propertyPath: ThisFighter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6564408634135546682}
     - target: {fileID: 4786209040024836074, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: ThisFighter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6564408634135546682}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa744eae90955214492af8f15865dea0, type: 3}
 --- !u!224 &2300731066642212871 stripped

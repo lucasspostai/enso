@@ -477,7 +477,7 @@ MonoBehaviour:
   ParryStanceParticleLocation: {fileID: 5021396734993091834}
   ParryStanceParticleDelay: 0.75
   MaxTimeOnParryStance: 5
-  ParryCooldown: 20
+  ParryCooldown: 10
   CanParry: 1
 --- !u!114 &5588487042316084077
 MonoBehaviour:
@@ -849,6 +849,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -867,21 +882,6 @@ PrefabInstance:
     - target: {fileID: 2705924567961616835, guid: fa744eae90955214492af8f15865dea0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176718738711924852, guid: fa744eae90955214492af8f15865dea0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6393350121824239769, guid: fa744eae90955214492af8f15865dea0,

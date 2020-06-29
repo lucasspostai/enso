@@ -64,7 +64,7 @@ namespace Enso.Characters.Enemies
             
             var xpReceiver = target.GetComponent<XpReceiver>();
 
-            if (xpReceiver)
+            if (xpReceiver && xpDropper)
                 xpReceiver.GainXp(xpDropper.XpAmount);
 
             target = null;

@@ -385,7 +385,7 @@ MonoBehaviour:
   Animations: {fileID: 11400000, guid: c992d6ed723d5534c9fc6f65f7af8edc, type: 2}
   BlockAnimation: {fileID: 11400000, guid: 9ca3a14f3243e1a44844731ed5a0ee0d, type: 2}
   ParryAnimation: {fileID: 11400000, guid: 1adcedf8be4a2c849ae1045f740244f2, type: 2}
-  ParryDuration: 2
+  ParryDuration: 1
   BlockParticles:
   - {fileID: 1603537107140715294, guid: e27c5e4be2eaccd4fa934b8bfe8d70a3, type: 3}
   - {fileID: 7436855666271918632, guid: cc1ac79332a69c44eac2b4f3c373b51e, type: 3}
