@@ -15,6 +15,7 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject MainPoolManager;
         [SerializeField] private GameObject MainInputManager;
         [SerializeField] private GameObject MainCanvas;
+        [SerializeField] private GameObject PauseCanvas;
         [SerializeField] private GameObject MainCinemachineManager;
 
         [Header("References")] public PlayerAttackController AttackController;
@@ -108,6 +109,12 @@ namespace Enso.Characters.Player
 
             if (!playerCanvas)
                 Instantiate(MainCanvas);
+            
+            //Pause Canvas
+            var pauseCanvas = FindObjectOfType<PauseMenu>();
+
+            if (!pauseCanvas)
+                Instantiate(PauseCanvas);
         }
 
         public override void EnterCombatWith(Fighter fighter)
