@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using Enso.Characters.Player;
 using UnityEngine;
@@ -37,6 +38,14 @@ namespace Enso
             fileStream.Close();
                 
             return playerData;
+        }
+
+        public static void DeleteSave()
+        {
+            var path = GetPath();
+
+            if (File.Exists(path)) 
+                File.Delete(path);
         }
     }
 }

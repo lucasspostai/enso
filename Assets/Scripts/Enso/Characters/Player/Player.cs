@@ -62,6 +62,16 @@ namespace Enso.Characters.Player
                 ExperienceManager.Instance.XpAmount = playerData.XpAmount;
                 ExperienceManager.Instance.PerksAvailable = playerData.Perks;
             }
+            else
+            {
+                GetHealthSystem().SetHealth(GetProperties().Health);
+                HealController.SetMaxHealingCharges(GetProperties().HealingCharges);
+                GetBalanceSystem().SetMaxBalance(GetProperties().BalanceAmount);
+                AttackController.StrongAttackUnlocked = false;
+                AttackController.SpecialAttackUnlocked = false;
+                ExperienceManager.Instance.XpAmount = 0;
+                ExperienceManager.Instance.PerksAvailable = 0;
+            }
 
             var shrine = FindObjectOfType<Shrine>();
             

@@ -1,6 +1,7 @@
 ﻿using System;
 using Framework;
 using UnityEngine;
+using Rewired;
 
 namespace Enso.Characters.Player
 {
@@ -33,22 +34,27 @@ namespace Enso.Characters.Player
         private bool anyKeyDownCalled;
 
         private bool startingGuard;
+        
+        private Rewired.Player rewiredPlayer;
 
         private float guardInputHoldingTime;
 
-        [SerializeField] private KeyCode SprintButton = KeyCode.Joystick1Button1;
-        [SerializeField] private KeyCode AttackButton = KeyCode.Joystick1Button0;
-        [SerializeField] private KeyCode GuardButton = KeyCode.Joystick1Button3;
-        [SerializeField] private KeyCode RollButton = KeyCode.Joystick1Button2;
-        [SerializeField] private KeyCode HealButton = KeyCode.Joystick1Button4;
-        [SerializeField] private KeyCode SpecialAttackButton = KeyCode.Joystick1Button5;
-        [SerializeField] private KeyCode InteractionButton = KeyCode.Joystick1Button1;
-        [SerializeField] private KeyCode ReturnButton = KeyCode.Joystick1Button2;
-        [SerializeField] private KeyCode PageLeftButton = KeyCode.Joystick1Button4;
-        [SerializeField] private KeyCode PageRightButton = KeyCode.Joystick1Button5;
-        [SerializeField] private KeyCode StatusButton = KeyCode.Joystick1Button6;
-        [SerializeField] private KeyCode PauseButton = KeyCode.Joystick1Button7;
+        [SerializeField] private string MoveHorizontalAction = "Move Horizontal";
+        [SerializeField] private string MoveVerticalAction = "Move Vertical";
+        [SerializeField] private string SprintAction = "Sprint";
+        [SerializeField] private string AttackAction = "Attack";
+        [SerializeField] private string GuardAction = "Guard";
+        [SerializeField] private string RollAction = "Roll";
+        [SerializeField] private string HealAction = "Heal";
+        [SerializeField] private string SpecialAttackAction = "Special Attack";
+        [SerializeField] private string InteractionAction = "Interaction";
+        [SerializeField] private string CancelAction = "Cancel";
+        [SerializeField] private string PageLeftAction = "Page Left";
+        [SerializeField] private string PageRightAction = "Page Right";
+        [SerializeField] private string PauseAction = "Pause";
+        
         [SerializeField] private float ParryDeadZone = 0.2f;
+        [SerializeField] private int PlayerId = 0;
 
         public static bool HoldingGuardInput;
         public static bool HoldingHealInput;
@@ -64,28 +70,26 @@ namespace Enso.Characters.Player
         public static event Action HealInputDown;
         public static event Action SpecialAttackInputDown;
         public static event Action InteractionInputDown;
-        public static event Action ReturnInputDown;
+        public static event Action CancelInputDown;
         public static event Action PageLeftInputDown;
         public static event Action PageRightInputDown;
-        public static event Action StatusInputDown;
         public static event Action PauseInputDown;
         public static event Action AnyInputDown;
 
         public static Vector2 Movement;
 
+        private void Start()
+        {
+            rewiredPlayer = ReInput.players.GetPlayer(PlayerId);
+        }
+
         private void Update()
         {
-            statusInputDownCalled = Input.GetKeyDown(StatusButton) || Input.GetKeyDown(KeyCode.Tab);
-            pauseInputDownCalled = Input.GetKeyDown(PauseButton) || Input.GetKeyDown(KeyCode.Escape);
+            pauseInputDownCalled = rewiredPlayer.GetButtonDown(PauseAction);
             
-            pageLeftInputDownCalled = Input.GetKeyDown(PageLeftButton) || Input.GetKeyDown(KeyCode.Q);
-            pageRightInputDownCalled = Input.GetKeyDown(PageRightButton) || Input.GetKeyDown(KeyCode.E);
+            pageLeftInputDownCalled = rewiredPlayer.GetButtonDown(PageLeftAction);
+            pageRightInputDownCalled = rewiredPlayer.GetButtonDown(PageRightAction);
 
-            if (statusInputDownCalled)
-            {
-                OnStatusInputDown();
-            }
-            
             if (pauseInputDownCalled)
             {
                 OnPauseInputDown();
@@ -106,22 +110,22 @@ namespace Enso.Characters.Player
             
             UpdateMovement();
 
-            sprintInputDownCalled = Input.GetKeyDown(SprintButton) || Input.GetKeyDown(KeyCode.LeftShift);
-            sprintInputUpCalled = Input.GetKeyUp(SprintButton) || Input.GetKeyUp(KeyCode.LeftShift);
-            attackInputDownCalled = Input.GetKeyDown(AttackButton) || Input.GetKeyDown(KeyCode.Mouse0);
-            attackInputUpCalled = Input.GetKeyUp(AttackButton) || Input.GetKeyUp(KeyCode.Mouse0);
-            guardInputDownCalled = Input.GetKeyDown(GuardButton) || Input.GetKeyDown(KeyCode.Mouse1);
-            guardInputCalled = Input.GetKey(GuardButton) || Input.GetKey(KeyCode.Mouse1);
-            guardInputUpCalled = Input.GetKeyUp(GuardButton) || Input.GetKeyUp(KeyCode.Mouse1);
-            rollInputDownCalled = Input.GetKeyDown(RollButton) || Input.GetKeyDown(KeyCode.Space);
-            healInputDownCalled = Input.GetKeyDown(HealButton) || Input.GetKeyDown(KeyCode.Q);
-            specialAttackInputDownCalled = Input.GetKeyDown(SpecialAttackButton) || Input.GetKeyDown(KeyCode.R);
-            interactionInputDownCalled = Input.GetKeyDown(InteractionButton) || Input.GetKeyDown(KeyCode.E);
-            returnInputDownCalled = Input.GetKeyDown(ReturnButton) || Input.GetKeyDown(KeyCode.Escape);
-            anyKeyDownCalled = Input.anyKeyDown;
+            sprintInputDownCalled = rewiredPlayer.GetButtonDown(SprintAction);
+            sprintInputUpCalled = rewiredPlayer.GetButtonUp(SprintAction);
+            attackInputDownCalled = rewiredPlayer.GetButtonDown(AttackAction);
+            attackInputUpCalled = rewiredPlayer.GetButtonUp(AttackAction);
+            guardInputDownCalled = rewiredPlayer.GetButtonDown(GuardAction);
+            guardInputCalled = rewiredPlayer.GetButton(GuardAction);
+            guardInputUpCalled = rewiredPlayer.GetButtonUp(GuardAction);
+            rollInputDownCalled = rewiredPlayer.GetButtonDown(RollAction);
+            healInputDownCalled = rewiredPlayer.GetButtonDown(HealAction);
+            specialAttackInputDownCalled = rewiredPlayer.GetButtonDown(SpecialAttackAction);
+            interactionInputDownCalled = rewiredPlayer.GetButtonDown(InteractionAction);
+            returnInputDownCalled = rewiredPlayer.GetButtonDown(CancelAction);
+            anyKeyDownCalled = rewiredPlayer.GetAnyButton();
 
-            HoldingGuardInput = Input.GetKey(GuardButton);
-            HoldingHealInput = Input.GetKey(HealButton);
+            HoldingGuardInput = rewiredPlayer.GetButton(GuardAction);
+            HoldingHealInput = rewiredPlayer.GetButton(HealAction);
 
             if (sprintInputDownCalled)
             {
@@ -204,10 +208,8 @@ namespace Enso.Characters.Player
 
         private void UpdateMovement()
         {
-            Movement.x = Input.GetAxisRaw("Horizontal");
-            Movement.y = Input.GetAxisRaw("Vertical");
-
-            //Movement.Normalize();
+            Movement.x = rewiredPlayer.GetAxisRaw(MoveHorizontalAction);
+            Movement.y = rewiredPlayer.GetAxisRaw(MoveVerticalAction);
         }
 
         private static void OnSprintInputDown()
@@ -275,7 +277,7 @@ namespace Enso.Characters.Player
         
         private static void OnReturnInputDown()
         {
-            ReturnInputDown?.Invoke();
+            CancelInputDown?.Invoke();
         }
 
         private static void OnPageLeftInputDown()
@@ -288,18 +290,12 @@ namespace Enso.Characters.Player
             PageRightInputDown?.Invoke();
         }
 
-        private static void OnStatusInputDown()
-        {
-            StatusInputDown?.Invoke();
-        }
-
         private static void OnPauseInputDown()
         {
             PauseInputDown?.Invoke();
         }
         
         #endregion
-
 
         private static void OnAnyInputDown()
         {

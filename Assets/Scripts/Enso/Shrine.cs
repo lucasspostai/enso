@@ -29,13 +29,13 @@ namespace Enso
         private void OnEnable()
         {
             PlayerInput.InteractionInputDown += Interact;
-            PlayerInput.ReturnInputDown += Return;
+            PlayerInput.CancelInputDown += Return;
         }
         
         private void OnDisable()
         {
             PlayerInput.InteractionInputDown -= Interact;
-            PlayerInput.ReturnInputDown -= Return;
+            PlayerInput.CancelInputDown -= Return;
         }
 
         private void Start()
