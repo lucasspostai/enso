@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6025909329127958756}
   - component: {fileID: 1670454378043372030}
   - component: {fileID: 6417903185013608063}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NewLocationDiscoveredTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -53,8 +53,6 @@ namespace Enso
 
             isActive = true;
             InteractionElement.Enable();
-
-            GameManager.Instance.ShrineActive = true;
         }
 
         public override void Exit()
@@ -63,8 +61,6 @@ namespace Enso
 
             isActive = false;
             InteractionElement.Disable();
-            
-            GameManager.Instance.ShrineActive = false;
         }
 
         private void Interact()
@@ -83,6 +79,8 @@ namespace Enso
             
             InteractionElement.Disable();
             SetCanvasActive(false);
+            
+            GameManager.Instance.ShrineActive = true;
         }
         
         private void Return()
@@ -103,6 +101,8 @@ namespace Enso
             
             InteractionElement.Enable();
             SetCanvasActive(true);
+            
+            GameManager.Instance.ShrineActive = false;
         }
 
         private void PlaySaveFeedback()

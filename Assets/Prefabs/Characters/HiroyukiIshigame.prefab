@@ -213,6 +213,8 @@ MonoBehaviour:
     type: 3}
   MainCanvas: {fileID: 34399640119241256, guid: 77c1f991222de3c41bddc452918948df,
     type: 3}
+  PauseCanvas: {fileID: 5370378860003211873, guid: afe7123f99b05da46841efca7c6c4da9,
+    type: 3}
   MainCinemachineManager: {fileID: 6214427503087331584, guid: 0665379a89f707542ad74a2b9831e848,
     type: 3}
   AttackController: {fileID: 7059184826251289228}
