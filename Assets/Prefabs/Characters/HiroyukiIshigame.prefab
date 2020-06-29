@@ -219,6 +219,8 @@ MonoBehaviour:
     type: 3}
   MainLevelLoader: {fileID: 2642892362929677760, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02,
     type: 3}
+  MainMusicManager: {fileID: 1173777284813728959, guid: 8e0f25c175b07224e94e9bf8618da2c0,
+    type: 3}
   AttackController: {fileID: 7059184826251289228}
   GuardController: {fileID: 813916947705230572}
   RollController: {fileID: 8218683346449343016}
@@ -1108,32 +1110,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 729976094453722248, guid: 8e51a1e59e425b1468c566ad566b1697,
+    - target: {fileID: 729976094584941009, guid: 8e51a1e59e425b1468c566ad566b1697,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0

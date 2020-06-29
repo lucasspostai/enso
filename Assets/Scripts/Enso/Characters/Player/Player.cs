@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Enso.Characters.Enemies;
+using Enso.Characters.Enemies.Naosuke;
+using Enso.Enums;
 using Enso.UI;
 using Framework;
 using Framework.Audio;
@@ -19,6 +22,7 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject PauseCanvas;
         [SerializeField] private GameObject MainCinemachineManager;
         [SerializeField] private GameObject MainLevelLoader;
+        [SerializeField] private GameObject MainMusicManager;
 
         [Header("References")] 
         public PlayerAttackController AttackController;
@@ -28,6 +32,11 @@ namespace Enso.Characters.Player
         public PlayerMeditationController MeditationController;
 
         [HideInInspector] public List<Enemy> CurrentEnemies = new List<Enemy>();
+
+        private void OnDisable()
+        {
+            GetHealthSystem().Death -= OnDeath;
+        }
 
         protected override void Awake()
         {
@@ -141,11 +150,38 @@ namespace Enso.Characters.Player
 
             if (!levelLoader)
                 Instantiate(MainLevelLoader);
+            
+            //Music Manager
+            var musicManager = FindObjectOfType<MusicManager>();
+
+            if (!musicManager)
+            {
+                Instantiate(MainMusicManager);
+            }
+                
+            MusicManager.Instance.SetState(GameState.Adventure, 2f);
+
+            GetHealthSystem().Death += OnDeath;
+        }
+
+        private void OnDeath()
+        {
+            if (MusicManager.Instance.BossMusicIsPlaying)
+            {
+                MusicManager.Instance.StopAllMusics();
+            }
         }
 
         public override void EnterCombatWith(Fighter fighter)
         {
             var enemy = fighter as Enemy;
+
+            if (enemy as Naosuke != null)
+            {
+                MusicManager.Instance.SetState(GameState.Boss, 0);
+            }
+            else if(CurrentEnemies.Count == 0)
+                MusicManager.Instance.SetState(GameState.Combat, 0f);
 
             CurrentEnemies.Add(enemy);
         }
@@ -154,6 +190,13 @@ namespace Enso.Characters.Player
         {
             if (CurrentEnemies.Contains(enemy))
                 CurrentEnemies.Remove(enemy);
+
+            if (MusicManager.Instance.BossMusicIsPlaying)
+            {
+                MusicManager.Instance.StopAllMusics();
+            }
+            else if(CurrentEnemies.Count == 0)
+                MusicManager.Instance.SetState(GameState.Adventure, 20f);
         }
 
         public Vector2 GetDirectionToClosestEnemy()
