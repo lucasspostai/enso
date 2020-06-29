@@ -12,6 +12,8 @@ namespace Enso.Characters.Enemies
         private XpDropper xpDropper;
 
         protected EnemyMovementController ThisEnemyMovementController;
+        
+        [HideInInspector] public bool IsInCombat;
 
         protected virtual void OnEnable()
         {

@@ -21,9 +21,10 @@ namespace Framework.LevelDesignEvents
 
             foreach (var enemy in Enemies)
             {
-                if (!enemy.GetHealthSystem().IsDead)
+                if (!enemy.GetHealthSystem().IsDead && !enemy.IsInCombat)
                 {
                     enemy.EnterCombatWith(player);
+                    enemy.IsInCombat = true;
                     player.EnterCombatWith(enemy);
                 }
             }

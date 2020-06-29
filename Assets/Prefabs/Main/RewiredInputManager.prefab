@@ -280,9 +280,9 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 0
     - _id: 7
-      _name: SpecialAttack
+      _name: Special Attack
       _type: 1
-      _descriptiveName: SpecialAttack
+      _descriptiveName: Special Attack
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -844,7 +844,6 @@ MonoBehaviour:
   CancelAction: Cancel
   PageLeftAction: Page Left
   PageRightAction: Page Right
-  StatusAction: Status
   PauseAction: Pause
   ParryDeadZone: 0.2
   PlayerId: 0
