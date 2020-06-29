@@ -14,6 +14,7 @@ namespace Enso
         private bool isActive;
         private bool isInteracting;
         private Player player;
+        private PlayerCanvas playerCanvas;
 
         [SerializeField] private Element InteractionElement;
         [SerializeField] private Element ShopCanvasElement;
@@ -21,7 +22,7 @@ namespace Enso
         [SerializeField] private GameObject SaveParticle;
         [SerializeField] private SoundCue SaveSoundCue;
         [SerializeField] private Level ThisLevel;
-        
+
         public Transform SaveLocation;
 
         private void OnEnable()
@@ -39,6 +40,7 @@ namespace Enso
         private void Start()
         {
             player = FindObjectOfType<Player>();
+            playerCanvas = FindObjectOfType<PlayerCanvas>();
             
             InteractionElement.Disable();
             
@@ -80,6 +82,7 @@ namespace Enso
             ShopCanvasElement.Enable();
             
             InteractionElement.Disable();
+            SetCanvasActive(false);
         }
         
         private void Return()
@@ -99,6 +102,7 @@ namespace Enso
             ShopCanvasElement.Disable();
             
             InteractionElement.Enable();
+            SetCanvasActive(true);
         }
 
         private void PlaySaveFeedback()
@@ -119,6 +123,18 @@ namespace Enso
             yield return new WaitForSeconds(3f);
             
             SaveGameCanvas.SetActive(false);
+        }
+
+        private void SetCanvasActive(bool active)
+        {
+            if (playerCanvas == null)
+                return;
+            
+            if(active)
+                playerCanvas.Show();
+            else
+                playerCanvas.Hide();
+            
         }
     }
 }
