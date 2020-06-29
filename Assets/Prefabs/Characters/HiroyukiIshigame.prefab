@@ -209,7 +209,7 @@ MonoBehaviour:
     type: 3}
   MainPoolManager: {fileID: 153049683903338856, guid: e15d2199379fd30418135c2e938be21b,
     type: 3}
-  MainInputManager: {fileID: 870063184725421390, guid: f04ded56af726db44b5273cf1cbf3c59,
+  MainInputManager: {fileID: 897994389101508714, guid: 73b797cc0af975142a9dfcfb92b61bac,
     type: 3}
   MainCanvas: {fileID: 34399640119241256, guid: 77c1f991222de3c41bddc452918948df,
     type: 3}

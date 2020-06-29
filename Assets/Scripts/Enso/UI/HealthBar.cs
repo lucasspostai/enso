@@ -15,24 +15,24 @@ namespace Enso.UI
         private Player player;
         private HealthSystem healthSystem;
         private HealController healController;
-        
+
         [SerializeField] private RectTransform FilledSpotsParent;
         [SerializeField] private GameObject FilledHealthPrefab;
         [SerializeField] private RectTransform EmptySpotsParent;
         [SerializeField] private GameObject EmptyHealthPrefab;
         [SerializeField] private float DelayToInstantiate = 0.1f;
-        
-        [Header("Healing Charges")]
+
+        [Header("Healing Charges")] 
         [SerializeField] private Element Amulet;
         [SerializeField] private TextMeshProUGUI HealingChargesText;
-        
+
         private void OnEnable()
         {
             player = FindObjectOfType<Player>();
 
             if (player == null)
                 return;
-            
+
             healthSystem = player.GetComponent<HealthSystem>();
             healController = player.GetComponent<HealController>();
 
@@ -40,7 +40,7 @@ namespace Enso.UI
             {
                 healthSystem.HealthValueChanged += UpdateHealthValue;
             }
-            
+
             if (healController != null)
             {
                 healController.HealingValueChanged += UpdateHealingValue;
@@ -75,8 +75,8 @@ namespace Enso.UI
             HealingChargesText.text = healController.GetHealingValue().ToString();
 
             var element = HealingChargesText.GetComponent<Element>();
-            
-            if(element)
+
+            if (element)
                 element.UpdateInfo();
         }
 
@@ -89,22 +89,22 @@ namespace Enso.UI
         {
             if (healthSystem == null)
                 return;
-            
-            if(EmptySpotsParent.childCount == 0)
+
+            if (EmptySpotsParent.childCount == 0)
                 CreateEmptySpots();
 
             if (healthSystem.GetHealth() > currentHealth)
             {
-                if(healthCoroutine != null)
+                if (healthCoroutine != null)
                     StopCoroutine(healthCoroutine);
-                
+
                 healthCoroutine = StartCoroutine(AddFilledHealth());
             }
             else
             {
-                if(healthCoroutine != null)
+                if (healthCoroutine != null)
                     StopCoroutine(healthCoroutine);
-                
+
                 healthCoroutine = StartCoroutine(RemoveFilledHealth());
             }
 
@@ -116,7 +116,7 @@ namespace Enso.UI
             for (int i = currentHealth; i < healthSystem.GetHealth(); i++)
             {
                 Instantiate(FilledHealthPrefab, FilledSpotsParent);
-                
+
                 yield return new WaitForSeconds(DelayToInstantiate);
             }
 
@@ -132,15 +132,15 @@ namespace Enso.UI
                     if (FilledSpotsParent.GetChild(i))
                     {
                         var uiElement = FilledSpotsParent.GetChild(i).GetComponent<Element>();
-                
-                        if(uiElement)
+
+                        if (uiElement)
                             uiElement.Disable();
-                
+
                         yield return new WaitForSeconds(DelayToInstantiate);
                     }
                 }
             }
- 
+
             yield return null;
         }
     }
