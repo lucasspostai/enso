@@ -6,6 +6,7 @@ namespace Enso.Characters.Enemies.Naosuke
     [RequireComponent(typeof(Naosuke))]
     public class NaosukeGuardController : EnemyGuardController
     {
+        private bool canParry;
         private Coroutine parryStanceCoroutine;
         private Naosuke naosuke;
         
@@ -21,6 +22,9 @@ namespace Enso.Characters.Enemies.Naosuke
         protected override void PlayMovementAnimation()
         {
             base.PlayMovementAnimation();
+
+            if (IsParrying || canParry)
+                return;
             
             if (naosuke.MovementController.Velocity == Vector3.zero)
             {
@@ -35,6 +39,10 @@ namespace Enso.Characters.Enemies.Naosuke
         public override void Parry()
         {
             base.Parry();
+
+            IsParrying = false;
+
+            canParry = true;
             
             ThisFighter.MovementController.SetSpeed(0);
             
@@ -54,6 +62,17 @@ namespace Enso.Characters.Enemies.Naosuke
             ThisFighter.MovementController.SetSpeed(ThisFighter.GetBaseProperties().RunSpeed);
         }
 
+        public override void OnCanCutAnimation()
+        {
+            base.OnCanCutAnimation();
+
+            if (canParry)
+            {
+                IsParrying = true;
+                canParry = false;
+            }
+        }
+
         public override void OnLastFrameEnd()
         {
             if (!IsParrying)
@@ -65,6 +84,7 @@ namespace Enso.Characters.Enemies.Naosuke
             base.ResetAllProperties();
 
             IsParrying = false;
+            canParry = false;
 
             if (naosuke)
                 naosuke.MovementController.SetSpeed(naosuke.GetBaseProperties().RunSpeed);

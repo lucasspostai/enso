@@ -217,6 +217,8 @@ MonoBehaviour:
     type: 3}
   MainCinemachineManager: {fileID: 6214427503087331584, guid: 0665379a89f707542ad74a2b9831e848,
     type: 3}
+  MainLevelLoader: {fileID: 2642892362929677760, guid: ef0c6c1db7d4b9440b8a5b99d98c6d02,
+    type: 3}
   AttackController: {fileID: 7059184826251289228}
   GuardController: {fileID: 813916947705230572}
   RollController: {fileID: 8218683346449343016}

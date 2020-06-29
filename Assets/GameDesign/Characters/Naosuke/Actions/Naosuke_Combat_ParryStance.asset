@@ -28,11 +28,11 @@ MonoBehaviour:
     DealDamage: 1
     StartHitFrame: 1
     EndHitFrame: 2
-    CanCutFrame: 3
-    PlayAudioFrame: 17
+    CanCutFrame: 11
+    PlayAudioFrame: 11
     StartMovementFrame: 0
     EndMovementFrame: 2
     MovementOffset: 0
     AnimationSoundCue: {fileID: 11400000, guid: b223f44baeb56814caa54b32e8d56a07,
       type: 2}
-  CanBeCut: 0
+  CanBeCut: 1

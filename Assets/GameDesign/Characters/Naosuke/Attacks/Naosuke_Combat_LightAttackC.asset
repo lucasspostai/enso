@@ -32,7 +32,7 @@ MonoBehaviour:
     PlayAudioFrame: 10
     StartMovementFrame: 0
     EndMovementFrame: 10
-    MovementOffset: 2
+    MovementOffset: 1
     AnimationSoundCue: {fileID: 11400000, guid: fd5171a402555064e8cf9c053a0e59b3,
       type: 2}
   CanBeCut: 0

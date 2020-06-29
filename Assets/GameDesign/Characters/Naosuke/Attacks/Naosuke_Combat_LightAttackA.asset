@@ -26,10 +26,10 @@ MonoBehaviour:
     LayerNumber: 0
   AnimationFrameChecker:
     DealDamage: 1
-    StartHitFrame: 4
-    EndHitFrame: 6
-    CanCutFrame: 7
-    PlayAudioFrame: 4
+    StartHitFrame: 5
+    EndHitFrame: 7
+    CanCutFrame: 8
+    PlayAudioFrame: 5
     StartMovementFrame: 0
     EndMovementFrame: 4
     MovementOffset: 2

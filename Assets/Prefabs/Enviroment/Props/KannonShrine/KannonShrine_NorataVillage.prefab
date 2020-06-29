@@ -67,6 +67,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2600590865882360479, guid: fb2c57352ea1e6d429e75b013f062ba4,
+        type: 3}
+      propertyPath: ThisLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e397e5347e28c4448ce8e87e325b5d1,
+        type: 2}
     - target: {fileID: 2013430569838459013, guid: fb2c57352ea1e6d429e75b013f062ba4,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -92,11 +98,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 2600590865882360479, guid: fb2c57352ea1e6d429e75b013f062ba4,
+    - target: {fileID: 8661155156054313535, guid: fb2c57352ea1e6d429e75b013f062ba4,
         type: 3}
-      propertyPath: ThisLevel
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 7e397e5347e28c4448ce8e87e325b5d1,
-        type: 2}
+      objectReference: {fileID: 6245012530229890019}
+    - target: {fileID: 8661155156054313535, guid: fb2c57352ea1e6d429e75b013f062ba4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Return
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661155156054313535, guid: fb2c57352ea1e6d429e75b013f062ba4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb2c57352ea1e6d429e75b013f062ba4, type: 3}
+--- !u!114 &6245012530229890019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2600590865882360479, guid: fb2c57352ea1e6d429e75b013f062ba4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8267934168524808572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c53cf8be14c3564a825216544266d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

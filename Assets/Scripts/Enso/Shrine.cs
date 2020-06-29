@@ -84,7 +84,7 @@ namespace Enso
             GameManager.Instance.ShrineActive = true;
         }
         
-        private void Return()
+        public void Return()
         {
             if (!isActive || !isInteracting)
                 return;

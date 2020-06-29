@@ -13,14 +13,14 @@ namespace Enso.CombatSystem
         [HideInInspector] public bool IsDying;
         [HideInInspector] public bool IsReceivingParry;
 
-        [Header("Animations")]
-        [SerializeField] protected DamageAnimation RegularDamageAnimation;
+        [Header("Animations")] [SerializeField]
+        protected DamageAnimation RegularDamageAnimation;
+
         [SerializeField] protected DamageAnimation HeavyDamageAnimation;
         [SerializeField] protected DamageAnimation LoseBalanceAnimation;
         [SerializeField] protected DamageAnimation DeathAnimation;
-        
-        [Header("Particles")]
-        [SerializeField] protected GameObject RegularDamageParticle;
+
+        [Header("Particles")] [SerializeField] protected GameObject RegularDamageParticle;
         [SerializeField] protected GameObject HeavyDamageParticle;
         [SerializeField] protected GameObject LoseBalanceParticle;
         [SerializeField] protected GameObject DeathParticle;
@@ -29,20 +29,21 @@ namespace Enso.CombatSystem
         [SerializeField] protected Transform BloodPoolLocation;
         [SerializeField] protected float DeathParticleDelay;
 
-        [Header("Camera Shake")]
-        [SerializeField] protected CameraShakeProfile RegularDamageShakeProfile;
+        [Header("Camera Shake")] [SerializeField]
+        protected CameraShakeProfile RegularDamageShakeProfile;
+
         [SerializeField] protected CameraShakeProfile HeavyDamageShakeProfile;
         [SerializeField] protected CameraShakeProfile LoseBalanceShakeProfile;
         [SerializeField] protected CameraShakeProfile DeathShakeProfile;
 
-        [Header("Audio")] 
-        [SerializeField] protected SoundCue RegularDamageSoundCue;
+        [Header("Audio")] [SerializeField] protected SoundCue RegularDamageSoundCue;
         [SerializeField] protected SoundCue StrongDamageSoundCue;
         [SerializeField] protected SoundCue LoseBalanceSoundCue;
         [SerializeField] protected SoundCue ParrySoundCue;
-        
-        [Header("Properties")]
-        [SerializeField] protected float DeathTimeScale = 0.5f;
+
+        [Header("Properties")] [SerializeField]
+        protected float DeathTimeScale = 0.5f;
+
         [SerializeField] protected float DeathTimeScaleDuration = 0.2f;
 
         private void OnEnable()
@@ -63,18 +64,27 @@ namespace Enso.CombatSystem
         {
             base.Start();
 
-            PoolManager.Instance.CreatePool(RegularDamageParticle, 3);
-            PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
-            PoolManager.Instance.CreatePool(LoseBalanceParticle, 3);
-            PoolManager.Instance.CreatePool(DeathParticle, 3);
-            PoolManager.Instance.CreatePool(BloodPoolParticle, 3);
+            if (RegularDamageParticle)
+                PoolManager.Instance.CreatePool(RegularDamageParticle, 3);
+
+            if (HeavyDamageParticle)
+                PoolManager.Instance.CreatePool(HeavyDamageParticle, 3);
+
+            if (LoseBalanceParticle)
+                PoolManager.Instance.CreatePool(LoseBalanceParticle, 3);
+
+            if (DeathParticle)
+                PoolManager.Instance.CreatePool(DeathParticle, 3);
+
+            if (BloodPoolParticle)
+                PoolManager.Instance.CreatePool(BloodPoolParticle, 3);
         }
 
         private void PlayDamageAnimation(DamageAnimation damageAnimation)
         {
             ThisFighter.AnimationHandler.MakeCharacterFlash();
             ThisFighter.AnimationHandler.PauseAnimationForAWhile();
-            
+
             CurrentCharacterAnimation = damageAnimation;
 
             SetAnimationPropertiesAndPlay(damageAnimation.ClipHolder, damageAnimation.AnimationFrameChecker);
@@ -91,34 +101,34 @@ namespace Enso.CombatSystem
                     if (!IsDying)
                     {
                         PlayDamageAnimation(RegularDamageAnimation);
-                    
-                        if(RegularDamageShakeProfile)
+
+                        if (RegularDamageShakeProfile)
                             PlayerCinemachineManager.Instance.ShakeController.Shake(RegularDamageShakeProfile);
                     }
-                    
-                    if(RegularDamageSoundCue)
+
+                    if (RegularDamageSoundCue)
                         AudioManager.Instance.Play(RegularDamageSoundCue, transform.position, Quaternion.identity);
 
                     SpawnParticle(RegularDamageParticle);
                     SpawnParticle(BloodPoolParticle, BloodPoolLocation);
                     break;
-                
+
                 case AttackType.Strong:
                     if (!IsDying)
                     {
                         PlayDamageAnimation(HeavyDamageAnimation);
-                    
-                        if(HeavyDamageShakeProfile)
+
+                        if (HeavyDamageShakeProfile)
                             PlayerCinemachineManager.Instance.ShakeController.Shake(HeavyDamageShakeProfile);
                     }
-                    
-                    if(StrongDamageSoundCue)
+
+                    if (StrongDamageSoundCue)
                         AudioManager.Instance.Play(StrongDamageSoundCue, transform.position, Quaternion.identity);
 
                     SpawnParticle(HeavyDamageParticle);
                     SpawnParticle(BloodPoolParticle, BloodPoolLocation);
                     break;
-                
+
                 default:
                     PlayDamageAnimation(RegularDamageAnimation);
                     SpawnParticle(RegularDamageParticle);
@@ -131,31 +141,31 @@ namespace Enso.CombatSystem
         {
             if (IsDying)
                 return;
-            
+
             IsDying = true;
-            
-            if(DeathShakeProfile)
+
+            if (DeathShakeProfile)
                 PlayerCinemachineManager.Instance.ShakeController.Shake(DeathShakeProfile);
 
             PlayDamageAnimation(DeathAnimation);
-            
+
             SpawnParticle(DeathParticle, DeathBloodPoolLocation, DeathParticleDelay);
-            
+
             GameManager.Instance.ChangeTimeScale(DeathTimeScale, DeathTimeScaleDuration);
         }
 
         private void BreakBalance()
         {
             PlayDamageAnimation(LoseBalanceAnimation);
-            
+
             SpawnParticle(LoseBalanceParticle);
-            
-            if(LoseBalanceSoundCue && !IsReceivingParry)
+
+            if (LoseBalanceSoundCue && !IsReceivingParry)
                 AudioManager.Instance.Play(LoseBalanceSoundCue, transform.position, Quaternion.identity);
-            else if(ParrySoundCue)
+            else if (ParrySoundCue)
                 AudioManager.Instance.Play(ParrySoundCue, transform.position, Quaternion.identity);
-            
-            if(LoseBalanceShakeProfile)
+
+            if (LoseBalanceShakeProfile)
                 PlayerCinemachineManager.Instance.ShakeController.Shake(LoseBalanceShakeProfile);
 
             IsReceivingParry = false;

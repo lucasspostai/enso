@@ -18,6 +18,7 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject MainCanvas;
         [SerializeField] private GameObject PauseCanvas;
         [SerializeField] private GameObject MainCinemachineManager;
+        [SerializeField] private GameObject MainLevelLoader;
 
         [Header("References")] 
         public PlayerAttackController AttackController;
@@ -124,6 +125,12 @@ namespace Enso.Characters.Player
 
             if (!pauseCanvas)
                 Instantiate(PauseCanvas);
+            
+            //Level Loader
+            var levelLoader = FindObjectOfType<LevelLoader>();
+
+            if (!levelLoader)
+                Instantiate(MainLevelLoader);
         }
 
         public override void EnterCombatWith(Fighter fighter)

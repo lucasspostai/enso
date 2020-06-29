@@ -28,7 +28,7 @@ MonoBehaviour:
   XpAmount: 0
   WaitDistance: 6
   GuardDistance: 6
-  LightAttackDistance: 1.5
+  LightAttackDistance: 2
   StrongAttackDistance: 2.5
   SpecialAttackDistance: 2.5
-  RollDistance: 2.5
+  RollDistance: 2

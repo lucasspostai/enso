@@ -115,6 +115,9 @@ namespace Enso.Characters.Enemies.Naosuke
                         if (chosenBehaviorIndex >= 5)
                         {
                             MustMove(false);
+                            
+                            if (GuardController.IsGuarding)
+                                GuardController.EndGuard();
 
                             StartParry();
 
@@ -135,7 +138,7 @@ namespace Enso.Characters.Enemies.Naosuke
                             
                             chosenBehaviorIndex = randomBehavior.GetRandomInt();
                         }
-                        else if (GuardController.CanGuard)
+                        else if (GuardController.CanGuard && !GuardController.IsParrying)
                         {
                             MustMove(true);
                             StartGuard();
@@ -148,6 +151,13 @@ namespace Enso.Characters.Enemies.Naosuke
                         }
                     }
                 }
+            }
+            else //Follow Target
+            {
+                MustMove(true);
+
+                if (GuardController.IsGuarding)
+                    GuardController.EndGuard();
             }
         }
 

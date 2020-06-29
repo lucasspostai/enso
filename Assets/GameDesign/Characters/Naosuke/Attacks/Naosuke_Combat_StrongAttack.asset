@@ -38,4 +38,4 @@ MonoBehaviour:
   CanBeCut: 0
   HitboxSize: {x: 1, y: 1.5, z: 0}
   Damage: 3
-  Type: 0
+  Type: 1
