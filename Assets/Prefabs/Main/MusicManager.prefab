@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   AdventureMusicFade: 2
   CombatMusicFade: 2
   BossMusicFade: 2
+  BossMusicIsPlaying: 0
 --- !u!1 &5558637847216583275
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -354,7 +355,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

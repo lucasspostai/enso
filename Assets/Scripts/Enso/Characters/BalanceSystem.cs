@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Enso.CombatSystem;
 using UnityEngine;
 
 namespace Enso.Characters
@@ -32,6 +33,7 @@ namespace Enso.Characters
         }
 
         private float maxBalance;
+        private GuardController guardController;
 
         public event Action BalanceValueChanged;
         public event Action BreakBalance;
@@ -47,17 +49,29 @@ namespace Enso.Characters
             fighter = GetComponent<Fighter>();
             maxBalance = fighter.GetBaseProperties().BalanceAmount;
             GainBalance(maxBalance);
+
+            guardController = fighter.GetComponent<GuardController>();
         }
 
         private void Update()
         {
             if (canRecover && Balance <= maxBalance)
             {
-                valueOverTime = Mathf.Lerp(
-                    0, 
-                    maxBalance,
-                    Time.deltaTime / fighter.GetBaseProperties().TimeToFullyRecoverBalance);
-                
+                if (guardController && guardController.IsGuarding)
+                {
+                    valueOverTime = Mathf.Lerp(
+                        0, 
+                        maxBalance,
+                        Time.deltaTime / fighter.GetBaseProperties().TimeToFullyRecoverBalance);
+                }
+                else
+                {
+                    valueOverTime = Mathf.Lerp(
+                        0, 
+                        maxBalance,
+                        Time.deltaTime / fighter.GetBaseProperties().TimeToFullyRecoverBalanceWithoutGuard);
+                }
+
                 GainBalance(valueOverTime);
             }
         }
@@ -174,7 +188,5 @@ namespace Enso.Characters
         }
 
         #endregion
-
-        
     }
 }

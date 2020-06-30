@@ -8,8 +8,9 @@ namespace Enso.CombatSystem
     public class RollController : CustomAnimationController
     {
         private CharacterGhostEffectController ghostEffectController;
-        
+
         [SerializeField] protected ActionAnimation RollAnimation;
+        [SerializeField] [Range(0, 1)] private float RollCost = 0.1f;
 
         protected override void Start()
         {
@@ -20,7 +21,8 @@ namespace Enso.CombatSystem
 
         public virtual void PlayRollAnimation()
         {
-            if (ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
+            if (ThisFighter.GetBalanceSystem().GetBalance() <= 0 ||
+                ThisFighter.AnimationHandler.IsAnyAnimationDifferentThanAttackPlaying() ||
                 !ThisFighter.AnimationHandler.CanCutAttackAnimation())
                 return;
 
@@ -29,30 +31,47 @@ namespace Enso.CombatSystem
             CurrentCharacterAnimation = RollAnimation;
 
             SetDirection();
-            
-            if(ghostEffectController) 
+
+            if (ghostEffectController)
                 ghostEffectController.ActivateGhostEffects();
 
             SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker, false);
+
+            ThisFighter.GetHealthSystem().IsInvincible = true;
+
+            //Roll Cost
+            ThisFighter.GetBalanceSystem()
+                .TakeDamage(Mathf.RoundToInt(ThisFighter.GetBalanceSystem().GetMaxBalance() * RollCost));
         }
 
         public override void OnInterrupted()
         {
             base.OnInterrupted();
-            
-            if(ghostEffectController) 
+
+            if (ghostEffectController)
                 ghostEffectController.DisableGhostEffects();
+            
+            if (ThisFighter)
+                ThisFighter.GetHealthSystem().IsInvincible = false;
         }
 
         public override void OnEndMovement()
         {
             base.OnEndMovement();
-            
+
             ghostEffectController.DisableGhostEffects();
         }
 
         protected virtual void SetDirection()
         {
+        }
+
+        public override void OnLastFrameEnd()
+        {
+            base.OnLastFrameEnd();
+            
+            if (ThisFighter)
+                ThisFighter.GetHealthSystem().IsInvincible = false;
         }
     }
 }

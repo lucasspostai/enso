@@ -361,7 +361,7 @@ MonoBehaviour:
   StrongAttackParticle: {fileID: 9068510954360317105}
   SpecialAttackParticle: {fileID: 997696477241642813}
   StrongAttackDeadZoneTime: 0.1
-  RegularAttackCost: 0.2
+  RegularAttackCost: 0.15
   StrongAttackCost: 0.45
   SpecialAttackCost: 0.9
   StrongAttackUnlocked: 0

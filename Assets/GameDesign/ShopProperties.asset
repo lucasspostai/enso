@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928904f79bbe9154b9d0e774db77b6a0, type: 3}
   m_Name: ShopProperties
   m_EditorClassIdentifier: 
-  ExtraHealthCost: 1
+  ExtraHealthCost: 3
   MaxHealth: 5
-  ExtraBalanceCost: 1
-  MaxBalance: 16
-  ExtraHealingChargeCost: 2
+  ExtraBalanceCost: 5
+  MaxBalance: 15
+  ExtraHealingChargeCost: 8
   MaxHealingCharges: 5
-  StrongAttackCost: 3
-  SpecialAttackCost: 5
+  StrongAttackCost: 11
+  SpecialAttackCost: 20

@@ -7,9 +7,7 @@ namespace Enso.Characters.Player
     public class PlayerRollController : RollController
     {
         private Player player;
-
-        [SerializeField] [Range(0, 1)] private float RollCost = 0.1f;
-
+        
         #region Delegates
 
         private void OnEnable()
@@ -31,34 +29,12 @@ namespace Enso.Characters.Player
             player = GetComponent<Player>();
         }
 
-        public override void PlayRollAnimation()
-        {
-            if (ThisFighter.GetBalanceSystem().GetBalance() <= 0)
-                return;
-
-            base.PlayRollAnimation();
-
-            player.GetHealthSystem().IsInvincible = true;
-
-            //Roll Cost
-            player.GetBalanceSystem()
-                .TakeDamage(Mathf.RoundToInt(player.GetBalanceSystem().GetMaxBalance() * RollCost));
-        }
-
         protected override void SetDirection()
         {
             base.SetDirection();
 
             if (PlayerInput.Movement != Vector2.zero)
                 ThisFighter.AnimationHandler.SetFacingDirection(PlayerInput.Movement);
-        }
-
-        public override void OnInterrupted()
-        {
-            base.OnInterrupted();
-
-            if (player)
-                player.GetHealthSystem().IsInvincible = false;
         }
 
         public override void OnLastFrameEnd()
@@ -73,8 +49,6 @@ namespace Enso.Characters.Player
             {
                 player.HealController.TryHeal();
             }
-
-            player.GetHealthSystem().IsInvincible = false;
         }
     }
 }
