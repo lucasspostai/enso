@@ -108,6 +108,8 @@ namespace Enso.CombatSystem
 
                     if (RegularDamageSoundCue)
                         AudioManager.Instance.Play(RegularDamageSoundCue, transform.position, Quaternion.identity);
+                    
+                    PlayerInput.Instance.Rumble(1f, 0.3f);
 
                     SpawnParticle(RegularDamageParticle);
                     SpawnParticle(BloodPoolParticle, BloodPoolLocation);
@@ -124,6 +126,8 @@ namespace Enso.CombatSystem
 
                     if (StrongDamageSoundCue)
                         AudioManager.Instance.Play(StrongDamageSoundCue, transform.position, Quaternion.identity);
+                    
+                    PlayerInput.Instance.Rumble(1f, 0.5f);
 
                     SpawnParticle(HeavyDamageParticle);
                     SpawnParticle(BloodPoolParticle, BloodPoolLocation);
@@ -143,6 +147,8 @@ namespace Enso.CombatSystem
                 return;
 
             IsDying = true;
+            
+            PlayerInput.Instance.Rumble(1f, 1f);
 
             if (DeathShakeProfile)
                 PlayerCinemachineManager.Instance.ShakeController.Shake(DeathShakeProfile);

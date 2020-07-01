@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NorataFields/NorataFields_Beach_Gameplay.unity
     guid: cf7a55940f24ced4b8ab317db28c03cb
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: eddd89973714f6641831660478816d0f
   m_configObjects: {}

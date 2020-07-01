@@ -86,6 +86,8 @@ namespace Enso.Characters.Player
             base.Block();
             
             GameManager.Instance.ChangeTimeScale(0f, 0.02f);
+            
+            PlayerInput.Instance.Rumble(0.5f, 0.2f);
         }
 
         protected override void ResetAllProperties()

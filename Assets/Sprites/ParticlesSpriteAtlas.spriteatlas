@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ParticlesSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c44fa1da12a361442a233ca906c99736, type: 3}
+    totalSpriteSurfaceArea: 11599872
+    bindAsDefault: 1
+    storedHash:
+      serializedVersion: 2
+      Hash: 47522e490f2433d58c9dbf137c96ebee
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b28bea60f121c1642b7cbdd820aed333, type: 3}
+  - {fileID: 21300000, guid: 8192f571bc3a51f41b3e87d704fc4f55, type: 3}
+  - {fileID: 21300000, guid: 705a0c719669b48479eb9f5569f7a518, type: 3}
+  - {fileID: 21300000, guid: 219701a16756eca4bbc41ccb6a8cec27, type: 3}
+  - {fileID: 21300000, guid: 1c3f44c1d89ad2247bb2e4cca9cae62f, type: 3}
+  - {fileID: 21300000, guid: b093a3125d9968b4991666fb53a53ec2, type: 3}
+  - {fileID: 21300000, guid: efc1d8526fd78d44394508db72c69275, type: 3}
+  - {fileID: 21300000, guid: 0e322a13218abd54a9cf60a686d13525, type: 3}
+  - {fileID: 21300000, guid: 0cb02516fb5ba5f41a62cf34aaba5f67, type: 3}
+  - {fileID: 21300000, guid: 48b361560fb1c9349a9e399bfb8df30f, type: 3}
+  - {fileID: 21300000, guid: 105f7b88be6c89242a2b55727752578f, type: 3}
+  - {fileID: 21300000, guid: 3beffad8ec54c654787e46772616f279, type: 3}
+  - {fileID: 21300000, guid: 5cb0950c95bec094981ef72c2062daac, type: 3}
+  - {fileID: 21300000, guid: b1b79cec772a588468eaacb25d56d058, type: 3}
+  - {fileID: 21300000, guid: 39b9399eff1d63d4f844c468d9cb48ae, type: 3}
+  - {fileID: 21300000, guid: f21be43f7e0929e4e99c9369fb008e28, type: 3}
+  - {fileID: 21300000, guid: e5ef1c9f69c98434eafccc877de7bcdc, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Star
+  - Dirt
+  - mountainFoot_AmbientLight_Fog
+  - Bonfire
+  - sea sprite
+  - Leaves
+  - Blood_Splash
+  - Meditate_Circle
+  - RiposteKanji
+  - Sphere
+  - Circle
+  - LanternLight
+  - Shadow
+  - Blood_Split
+  - Amber
+  - Sprays
+  - mountainFoot_AmbientLight
+  m_Tag: ParticlesSpriteAtlas
+  m_IsVariant: 0

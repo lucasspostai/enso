@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enso.Characters.Enemies;
 using Enso.Characters.Enemies.Naosuke;
@@ -191,12 +192,24 @@ namespace Enso.Characters.Player
             if (CurrentEnemies.Contains(enemy))
                 CurrentEnemies.Remove(enemy);
 
-            if (MusicManager.Instance.BossMusicIsPlaying)
-            {
-                MusicManager.Instance.StopAllMusics();
-            }
+            if (enemy as Naosuke != null)
+                StartCoroutine(WaitThenLoadCredits());
             else if(CurrentEnemies.Count == 0)
                 MusicManager.Instance.SetState(GameState.Adventure, 20f);
+        }
+
+        private IEnumerator WaitThenLoadCredits()
+        {
+            GameManager.Instance.GamePaused = true;
+            
+            var playerCanvas = FindObjectOfType<PlayerCanvas>();
+
+            if (playerCanvas)
+                playerCanvas.Hide();
+            
+            yield return new WaitForSeconds(6f);
+
+            LevelLoader.Instance.LoadCredits();
         }
 
         public Vector2 GetDirectionToClosestEnemy()

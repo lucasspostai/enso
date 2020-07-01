@@ -106,6 +106,8 @@ namespace Enso.CombatSystem
                         PlayerCinemachineManager.Instance.ShakeController.Shake(ParryShakeProfile);
 
                     GameManager.Instance.ChangeTimeScale(0.5f, 1f);
+                    
+                    PlayerInput.Instance.Rumble(1f, 1f);
                 }
                 else
                 {

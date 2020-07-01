@@ -301,5 +301,10 @@ namespace Enso.Characters.Player
         {
             AnyInputDown?.Invoke();
         }
+
+        public void Rumble(float intensity, float duration)
+        {
+            rewiredPlayer?.SetVibration(0, intensity, duration);
+        }
     }
 }
