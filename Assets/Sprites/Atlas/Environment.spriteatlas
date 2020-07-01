@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnvironmentSpriteAtlas
+  m_Name: Environment
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -1663,5 +1663,5 @@ SpriteAtlas:
   - SakuraTree5_UpRight
   - Nature_Right
   - SakuraTree6_Down
-  m_Tag: EnvironmentSpriteAtlas
+  m_Tag: Environment
   m_IsVariant: 0

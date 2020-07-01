@@ -4196,7 +4196,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dc16f30ecc482d64498a8b568c906547, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -7859,6 +7859,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8536871261816106644, guid: 9af9a343fffacfd479a59f7b51083916,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5512620553121057633, guid: 9af9a343fffacfd479a59f7b51083916,
         type: 3}
       propertyPath: m_text
@@ -7868,11 +7873,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536871261816106644, guid: 9af9a343fffacfd479a59f7b51083916,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2787457964491312412, guid: 9af9a343fffacfd479a59f7b51083916,
         type: 3}
@@ -8870,6 +8870,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleText
       objectReference: {fileID: 0}
+    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
+        type: 3}
+      propertyPath: m_text
+      value: RESOLUTION
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 4100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3701097099467917246, guid: 401234280de3a9a4fb116cfc012a4937,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8974,21 +8989,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
-        type: 3}
-      propertyPath: m_text
-      value: RESOLUTION
-      objectReference: {fileID: 0}
-    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 4100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3701097099467917233, guid: 401234280de3a9a4fb116cfc012a4937,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401234280de3a9a4fb116cfc012a4937, type: 3}

@@ -8,6 +8,7 @@ namespace Enso
     {
         private Coroutine changeTimeScaleCoroutine;
 
+        [HideInInspector] public bool SceneHasStarted;
         [HideInInspector] public bool GamePaused;
         [HideInInspector] public bool ShrineActive;
         [HideInInspector] public bool LeavingLocation;

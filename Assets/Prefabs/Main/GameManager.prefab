@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4719ffce8241f49aa001c9f44962c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneHasStarted: 0
   GamePaused: 0
+  ShrineActive: 0
+  LeavingLocation: 0
 --- !u!114 &2419136209566849897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +60,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5570adeaace5464e814fba75cca23af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxXp: 10
+  MaxXp: 1

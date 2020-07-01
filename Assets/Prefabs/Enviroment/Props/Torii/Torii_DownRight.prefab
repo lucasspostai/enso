@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1055773047911175181}
   - component: {fileID: 1754838978661471764}
   m_Layer: 0
-  m_Name: ToriiTop_DownRight
+  m_Name: Torii_DownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

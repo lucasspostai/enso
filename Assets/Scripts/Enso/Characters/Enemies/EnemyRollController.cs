@@ -35,6 +35,9 @@ namespace Enso.Characters.Enemies
 
         private void RotateTowardsTarget(bool towardsTarget)
         {
+            if (ThisFighter.Target == null)
+                return;
+            
             var characterAnimationHandler = ThisFighter.Target.GetComponent<CharacterAnimationHandler>();
 
             if (!characterAnimationHandler)

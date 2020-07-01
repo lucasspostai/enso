@@ -15,6 +15,7 @@ namespace Framework
         [HideInInspector] public RaycastOrigins Origins;
 
         [SerializeField] protected BoxCollider2D Collider;
+        [SerializeField] protected Collider2D Pushbox;
         [SerializeField] protected bool ShowDebug;
 
         [Header("Raycast Properties")]
@@ -62,6 +63,7 @@ namespace Framework
         public void DisableCollisions()
         {
             Collider.enabled = false;
+            Pushbox.enabled = false;
         }
     }
 }

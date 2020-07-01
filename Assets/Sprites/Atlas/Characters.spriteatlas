@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharactersSpriteAtlas
+  m_Name: Characters
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -22099,5 +22099,5 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Riposte_D_04
   - Komuso_Combat_StrongAttackA_DL_10
   - Komuso_Combat_Idle_DR_10
-  m_Tag: CharactersSpriteAtlas
+  m_Tag: Characters
   m_IsVariant: 0

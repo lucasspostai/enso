@@ -28,7 +28,7 @@ namespace Enso.Characters.Enemies
         
         protected override void Update()
         {
-            if (!ThisFighter.Target)
+            if (!ThisFighter.Target || ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
             {
                 SetMovement(Vector3.zero);
                 return;

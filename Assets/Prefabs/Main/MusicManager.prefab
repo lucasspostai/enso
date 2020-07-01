@@ -177,9 +177,9 @@ MonoBehaviour:
   AdventureMusic: {fileID: 4575885278686635039}
   CombatMusic: {fileID: 5868641393544125358}
   BossMusic: {fileID: 538634148186689206}
-  AdventureMusicFade: 2
-  CombatMusicFade: 2
-  BossMusicFade: 2
+  AdventureMusicFade: 5
+  CombatMusicFade: 5
+  BossMusicFade: 5
   BossMusicIsPlaying: 0
 --- !u!1 &5558637847216583275
 GameObject:

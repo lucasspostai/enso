@@ -818,6 +818,11 @@ PrefabInstance:
       propertyPath: NewLocationDiscoveredElement
       value: 
       objectReference: {fileID: 1764437472}
+    - target: {fileID: 6417903185013608063, guid: fa68bf09bb43fca49b0011f4092c78d7,
+        type: 3}
+      propertyPath: ThisShrine
+      value: 
+      objectReference: {fileID: 2088258100}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa68bf09bb43fca49b0011f4092c78d7, type: 3}
 --- !u!1001 &259766275
@@ -10875,8 +10880,30 @@ PrefabInstance:
       propertyPath: PlayerArrivalLocation
       value: 
       objectReference: {fileID: 4564651}
+    - target: {fileID: 6245012530229890019, guid: 3c4f31f9c5d2ec448b288d7006f668e5,
+        type: 3}
+      propertyPath: VirtualCamera
+      value: 
+      objectReference: {fileID: 417869723}
+    - target: {fileID: 6245012530229890019, guid: 3c4f31f9c5d2ec448b288d7006f668e5,
+        type: 3}
+      propertyPath: CameraManager
+      value: 
+      objectReference: {fileID: 1374761737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f31f9c5d2ec448b288d7006f668e5, type: 3}
+--- !u!114 &2088258100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6245012530229890019, guid: 3c4f31f9c5d2ec448b288d7006f668e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088258099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c53cf8be14c3564a825216544266d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2128669018
 PrefabInstance:
   m_ObjectHideFlags: 0

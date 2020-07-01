@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cinemachine;
 using Enso.Characters.Player;
 using Enso.UI;
 using Framework;
@@ -12,7 +13,7 @@ namespace Enso
     public class Shrine : LevelDesignEvent
     {
         private bool isActive;
-        private bool isInteracting;
+        private bool interactionAvailable = true;
         private Player player;
         private PlayerCanvas playerCanvas;
 
@@ -23,8 +24,13 @@ namespace Enso
         [SerializeField] private SoundCue SaveSoundCue;
         [SerializeField] private Level ThisLevel;
 
+        public CinemachineCameraManager CameraManager;
+        public CinemachineVirtualCamera VirtualCamera;
         public Transform SaveLocation;
         public Transform PlayerArrivalLocation;
+        
+        [HideInInspector] public bool IsInteracting;
+        [HideInInspector] public bool PlayerStartedHere;
 
         private void OnEnable()
         {
@@ -43,8 +49,6 @@ namespace Enso
             player = FindObjectOfType<Player>();
             playerCanvas = FindObjectOfType<PlayerCanvas>();
             
-            InteractionElement.Disable();
-            
             PoolManager.Instance.CreatePool(SaveParticle, 1);
         }
 
@@ -54,6 +58,8 @@ namespace Enso
 
             isActive = true;
             InteractionElement.Enable();
+            
+            interactionAvailable = true;
         }
 
         public override void Exit()
@@ -62,17 +68,20 @@ namespace Enso
 
             isActive = false;
             InteractionElement.Disable();
+            
+            interactionAvailable = false;
         }
 
         private void Interact()
         {
-            if (!isActive || isInteracting)
+            if (!isActive || IsInteracting || !interactionAvailable)
                 return;
 
-            player.MeditationController.StartMeditation(this, false);
+            IsInteracting = true;
 
-            isInteracting = true;
-            
+            if(!player.MeditationController.IsMeditating)
+                player.MeditationController.StartMeditation(this);
+
             player.SaveGame();
 
             ShopCanvasElement.gameObject.SetActive(true);
@@ -86,12 +95,12 @@ namespace Enso
         
         public void Return()
         {
-            if (!isActive || !isInteracting)
+            if (!isActive || !IsInteracting)
                 return;
 
-            player.MeditationController.EndMeditation();
+            IsInteracting = false;
 
-            isInteracting = false;
+            player.MeditationController.EndMeditation();
 
             LevelLoader.Instance.CurrentLevelIndex = ThisLevel.LevelIndex;
             player.SaveGame();
@@ -104,6 +113,17 @@ namespace Enso
             SetCanvasActive(true);
             
             GameManager.Instance.ShrineActive = false;
+
+            StartCoroutine(WaitThenEnableInteraction());
+        }
+
+        private IEnumerator WaitThenEnableInteraction()
+        {
+            interactionAvailable = false;
+            
+            yield return new WaitForSeconds(1.5f);
+            
+            interactionAvailable = true;
         }
 
         private void PlaySaveFeedback()

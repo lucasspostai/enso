@@ -23,5 +23,9 @@ MonoBehaviour:
   DelayToRecoverAfterLosingBalance: 5
   DelayToRecoverAfterDamage: 2
   TimeToFullyRecoverBalance: 10
+  TimeToFullyRecoverBalanceWithoutGuard: 2
   HealingCharges: 0
   DelayToHealAgain: 0
+  XpAmount: 2
+  ShootArrowDistance: 7
+  RollDistance: 2

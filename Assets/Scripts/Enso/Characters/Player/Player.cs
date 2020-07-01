@@ -97,7 +97,12 @@ namespace Enso.Characters.Player
                 {
                     transform.position = shrine.SaveLocation.position;
 
-                    MeditationController.StartMeditation(shrine, true);
+                    MeditationController.StartMeditationLoop(shrine, true);
+                    
+                    shrine.CameraManager.SetPriority();
+                    shrine.VirtualCamera.Priority = 10;
+                    shrine.Execute();
+                    shrine.PlayerStartedHere = true;
                 }
             }
         }
@@ -109,7 +114,7 @@ namespace Enso.Characters.Player
 
             if (!gameManager)
                 Instantiate(MainGameManager);
-
+            
             //Audio Manager
             var audioManager = FindObjectOfType<AudioManager>();
 
@@ -159,18 +164,17 @@ namespace Enso.Characters.Player
             {
                 Instantiate(MainMusicManager);
             }
-                
+
             MusicManager.Instance.SetState(GameState.Adventure, 2f);
 
             GetHealthSystem().Death += OnDeath;
+            
+            GameManager.Instance.SceneHasStarted = true;
         }
 
         private void OnDeath()
         {
-            if (MusicManager.Instance.BossMusicIsPlaying)
-            {
-                MusicManager.Instance.StopAllMusics();
-            }
+            MusicManager.Instance.StopAllMusics();
         }
 
         public override void EnterCombatWith(Fighter fighter)

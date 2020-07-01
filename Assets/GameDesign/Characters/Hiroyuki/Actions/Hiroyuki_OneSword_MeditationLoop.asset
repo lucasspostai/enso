@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb3a54e57d16ac44827c8438c132053, type: 3}
+  m_Name: Hiroyuki_OneSword_MeditationLoop
+  m_EditorClassIdentifier: 
+  ClipHolder:
+    AnimationClips:
+    - {fileID: 7400000, guid: 6f1902772590644429c337d9c94b0423, type: 2}
+    - {fileID: 7400000, guid: c7a568ba2a8c7bb4883de319e05191fd, type: 2}
+    - {fileID: 7400000, guid: 5eeebc827b002d8479fbd4b65099720c, type: 2}
+    - {fileID: 7400000, guid: 3ef353679284b7b40bf8c5b82fd8e873, type: 2}
+    - {fileID: 7400000, guid: 346e5d922b9958245a99ba9869c6f026, type: 2}
+    - {fileID: 7400000, guid: 0f8043debc26ef84d8c92400f303154f, type: 2}
+    - {fileID: 7400000, guid: e6448f040b136174f9020016d35718ca, type: 2}
+    - {fileID: 7400000, guid: ae818e20d686c5642aaf80d8eedb4628, type: 2}
+    AnimatorStateName: OneSword_MeditationLoop
+    LayerNumber: 0
+  AnimationFrameChecker:
+    DealDamage: 1
+    StartHitFrame: 1
+    EndHitFrame: 2
+    CanCutFrame: 3
+    PlayAudioFrame: 0
+    StartMovementFrame: 0
+    EndMovementFrame: 0
+    MovementOffset: 0
+    AnimationSoundCue: {fileID: 0}
+  CanBeCut: 0

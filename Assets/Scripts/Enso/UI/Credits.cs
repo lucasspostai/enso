@@ -6,6 +6,11 @@ namespace Enso.UI
 {
     public class Credits : MonoBehaviour
     {
+        public void SetSceneHasStarted()
+        {
+            GameManager.Instance.SceneHasStarted = true;
+        }
+        
         public void StopAllMusics()
         {
             MusicManager.Instance.StopAllMusics();
@@ -13,7 +18,7 @@ namespace Enso.UI
         
         public void PlayMusic()
         {
-            MusicManager.Instance.SetState(GameState.Adventure, 0);
+            MusicManager.Instance.SetState(GameState.Adventure, 0, true);
         }
 
         public void LoadMenu()

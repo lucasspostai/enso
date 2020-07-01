@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Enso;
 using Enso.UI;
 using UnityEngine;
 
@@ -7,10 +8,14 @@ namespace Framework.LevelDesignEvents
     public class NewLocationDiscoveredTrigger : LevelDesignEvent
     {
         [SerializeField] private Element NewLocationDiscoveredElement;
+        [SerializeField] private Shrine ThisShrine;
         
         public override void Execute()
         {
             base.Execute();
+
+            if (ThisShrine && ThisShrine.PlayerStartedHere)
+                return;
             
             NewLocationDiscoveredElement.gameObject.SetActive(true);
             NewLocationDiscoveredElement.Enable();

@@ -11,7 +11,6 @@ namespace Enso
         private Coroutine adventureCoroutine;
         private Coroutine combatCoroutine;
         private Coroutine bossCoroutine;
-        private float delayToStartMusic;
 
         [SerializeField] private AudioSource AdventureMusic;
         [SerializeField] private AudioSource CombatMusic;
@@ -20,6 +19,7 @@ namespace Enso
         [SerializeField] private float AdventureMusicFade = 2f;
         [SerializeField] private float CombatMusicFade = 2f;
         [SerializeField] private float BossMusicFade = 2f;
+        [SerializeField] private float StopMusicFade = 2f;
 
         [HideInInspector] public bool BossMusicIsPlaying;
 
@@ -28,77 +28,89 @@ namespace Enso
             SetState(GameState.Adventure, 0);
         }
 
-        public void SetState(GameState gameState, float delayToStart)
+        public void SetState(GameState gameState, float delayToStart, bool startFromBeginning = false)
         {
-            delayToStartMusic = delayToStart;
-            
             switch (gameState)
             {
                 case GameState.Adventure:
-                    
-                    if(!AdventureMusic.isPlaying)
+
+                    if (!AdventureMusic.isPlaying)
                         AdventureMusic.Play();
-                    
-                    SetAdventureMusicVolume(1);
-                    SetCombatMusicVolume(0);
-                    SetBossMusicVolume(0);
+
+                    if (startFromBeginning)
+                        AdventureMusic.time = 0;
+
+                    SetAdventureMusicVolume(1, delayToStart, false);
+                    SetCombatMusicVolume(0, 0, false);
+                    SetBossMusicVolume(0, 0, false);
                     break;
-                
+
                 case GameState.Combat:
-                    
-                    if(!CombatMusic.isPlaying)
+
+                    if (!CombatMusic.isPlaying)
                         CombatMusic.Play();
-                    
-                    SetAdventureMusicVolume(0);
-                    SetCombatMusicVolume(1);
-                    SetBossMusicVolume(0);
+
+                    if (startFromBeginning)
+                        CombatMusic.time = 0;
+
+                    SetAdventureMusicVolume(0, 0, false);
+                    SetCombatMusicVolume(1, delayToStart, false);
+                    SetBossMusicVolume(0, 0, false);
                     break;
-                
+
                 case GameState.Boss:
-                    
-                    if(!BossMusic.isPlaying)
+
+                    if (!BossMusic.isPlaying)
                         BossMusic.Play();
-                    
+
+                    if (startFromBeginning)
+                        BossMusic.time = 0;
+
                     BossMusicIsPlaying = true;
-                    
-                    SetAdventureMusicVolume(0);
-                    SetCombatMusicVolume(0);
-                    SetBossMusicVolume(1);
+
+                    SetAdventureMusicVolume(0, 0, false);
+                    SetCombatMusicVolume(0, 0, false);
+                    SetBossMusicVolume(1, delayToStart, false);
                     break;
-                
+
                 default:
-                    
-                    SetAdventureMusicVolume(1);
-                    SetCombatMusicVolume(0);
-                    SetBossMusicVolume(0);
+
+                    SetAdventureMusicVolume(1, delayToStart, false);
+                    SetCombatMusicVolume(0, 0, false);
+                    SetBossMusicVolume(0, 0, false);
                     break;
             }
         }
 
-        private void SetAdventureMusicVolume(float targetVolume)
+        private void SetAdventureMusicVolume(float targetVolume, float delayToStart, bool stopAfter)
         {
-            if(adventureCoroutine != null)
+            if (adventureCoroutine != null)
                 StopCoroutine(adventureCoroutine);
 
-            adventureCoroutine = StartCoroutine(StartFade(AdventureMusic, AdventureMusicFade, targetVolume));
+            adventureCoroutine = StartCoroutine(StartFade(AdventureMusic,
+                stopAfter ? StopMusicFade : AdventureMusicFade, targetVolume, delayToStart));
         }
-        
-        private void SetCombatMusicVolume(float targetVolume)
+
+        private void SetCombatMusicVolume(float targetVolume, float delayToStart, bool stopAfter)
         {
-            if(combatCoroutine != null)
+            if (combatCoroutine != null)
                 StopCoroutine(combatCoroutine);
 
-            combatCoroutine = StartCoroutine(StartFade(CombatMusic, CombatMusicFade, targetVolume));
+            combatCoroutine =
+                StartCoroutine(StartFade(CombatMusic, stopAfter ? StopMusicFade : CombatMusicFade, targetVolume,
+                    delayToStart));
         }
-        
-        private void SetBossMusicVolume(float targetVolume)
+
+        private void SetBossMusicVolume(float targetVolume, float delayToStart, bool stopAfter)
         {
-            if(bossCoroutine != null)
+            if (bossCoroutine != null)
                 StopCoroutine(bossCoroutine);
 
-            bossCoroutine = StartCoroutine(StartFade(BossMusic, BossMusicFade, targetVolume));
+            bossCoroutine =
+                StartCoroutine(StartFade(BossMusic, stopAfter ? StopMusicFade : BossMusicFade, targetVolume,
+                    delayToStart));
         }
-        
+
         public void StopAllMusics()
         {
             StartCoroutine(WaitThenStopAllMusics());
@@ -106,26 +118,23 @@ namespace Enso
 
         private IEnumerator WaitThenStopAllMusics()
         {
-            SetAdventureMusicVolume(0);
-            SetCombatMusicVolume(0);
-            SetBossMusicVolume(0);
-            
+            SetAdventureMusicVolume(0, 0,true);
+            SetCombatMusicVolume(0, 0,true);
+            SetBossMusicVolume(0, 0,true);
+
             yield return new WaitForSeconds(AdventureMusicFade);
-            
+
             AdventureMusic.Stop();
             CombatMusic.Stop();
             BossMusic.Stop();
-            
+
             BossMusicIsPlaying = false;
         }
 
-        private IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        private IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume, float delayToStart)
         {
-            if (audioSource.volume > 0.9f)
-                yield return null;
-            else
-                yield return new WaitForSeconds(delayToStartMusic);
-            
+            yield return new WaitForSeconds(delayToStart);
+
             float currentTime = 0;
             float startVolume = audioSource.volume;
 

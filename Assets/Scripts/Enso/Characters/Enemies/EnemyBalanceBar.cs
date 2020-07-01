@@ -55,6 +55,9 @@ namespace Enso.Characters.Enemies
 
         private void Update()
         {
+            if (healthSystem.IsDead)
+                return;
+            
             if (updateDamageSlider)
                 SetDamageSlidersValue(Mathf.Lerp(
                     DamageImages[0].fillAmount, 
@@ -86,6 +89,9 @@ namespace Enso.Characters.Enemies
 
         private void UpdateBalanceValue()
         {
+            if (healthSystem.IsDead)
+                return;
+            
             foreach (var image in BalanceImages)
             {
                 image.fillAmount = balanceSystem.GetBalancePercentage();
@@ -94,6 +100,9 @@ namespace Enso.Characters.Enemies
 
         private void LoseBalance()
         {
+            if (healthSystem.IsDead)
+                return;
+            
             if(isEnabled)
                 SetTrigger(LoseBalanceHash);
 
@@ -105,11 +114,17 @@ namespace Enso.Characters.Enemies
 
         private void EnableSpecialAttack()
         {
+            if (healthSystem.IsDead)
+                return;
+            
             SetTrigger(EnableSpecialAttackHash);
         }
 
         private void SetDamageSlidersValue(float value)
         {
+            if (healthSystem.IsDead)
+                return;
+            
             foreach (var image in DamageImages)
             {
                 image.fillAmount = value;

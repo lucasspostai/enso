@@ -1,5 +1,6 @@
 ﻿using System;
 using Enso.CombatSystem;
+using Enso.UI;
 using Framework;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace Enso.Characters.Enemies
         private XpDropper xpDropper;
 
         protected EnemyMovementController ThisEnemyMovementController;
+
+        [SerializeField] private Element EnemyCanvas;
         
         [HideInInspector] public bool IsInCombat;
 
@@ -55,12 +58,21 @@ namespace Enso.Characters.Enemies
             base.EnterCombatWith(fighter);
 
             target = Target;
+
+            if (EnemyCanvas)
+            {
+                EnemyCanvas.gameObject.SetActive(true);
+                EnemyCanvas.Enable();
+            }
         }
 
         private void OnDeath()
         {
             if (!target && !GetHealthSystem().IsDead)
                 return;
+            
+            if(EnemyCanvas)
+                EnemyCanvas.Disable();
             
             var xpReceiver = target.GetComponent<XpReceiver>();
 

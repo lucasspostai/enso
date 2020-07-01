@@ -6,18 +6,20 @@ namespace Enso.Characters.Player
 {
     public class PlayerMeditationController : CustomAnimationController
     {
-        private bool isMeditating;
         private Shrine currentShrine;
 
         [SerializeField] private ActionAnimation MeditateAnimation;
+        [SerializeField] private ActionAnimation MeditationLoopAnimation;
         [SerializeField] private ActionAnimation EndMeditationAnimation;
+
+        public bool IsMeditating;
 
         private void OnDisable()
         {
             PlayerInput.AnyInputDown -= EndMeditation;
         }
 
-        public void StartMeditation(Shrine shrine, bool getUpOnAnyButton)
+        public void StartMeditation(Shrine shrine)
         {
             if (shrine != null)
             {
@@ -26,22 +28,41 @@ namespace Enso.Characters.Player
 
                 currentShrine = shrine;
             }
-            
-            if(getUpOnAnyButton)
-                PlayerInput.AnyInputDown += EndMeditation;
 
-            isMeditating = true;
+            IsMeditating = true;
 
             SetAnimationPropertiesAndPlay(MeditateAnimation.ClipHolder, MeditateAnimation.AnimationFrameChecker);
         }
 
+        public void StartMeditationLoop(Shrine shrine, bool getUpOnAnyButton)
+        {
+            if (shrine != null)
+            {
+                ThisFighter.AnimationHandler.SetFacingDirection((shrine.transform.position - transform.position)
+                    .normalized);
+
+                currentShrine = shrine;
+            }
+
+            if (getUpOnAnyButton)
+                PlayerInput.AnyInputDown += EndMeditation;
+
+            IsMeditating = true;
+
+            SetAnimationPropertiesAndPlay(MeditationLoopAnimation.ClipHolder,
+                MeditationLoopAnimation.AnimationFrameChecker);
+        }
+
         public void EndMeditation()
         {
+            if (currentShrine.IsInteracting)
+                return;
+            
             currentShrine = null;
 
             PlayerInput.AnyInputDown -= EndMeditation;
 
-            isMeditating = false;
+            IsMeditating = false;
 
             ResetAllProperties();
 
@@ -51,13 +72,13 @@ namespace Enso.Characters.Player
 
         public override void OnLastFrameEnd()
         {
-            if (!isMeditating)
+            if (!IsMeditating)
                 base.OnLastFrameEnd();
         }
 
         public override void OnInterrupted()
         {
-            if (!isMeditating)
+            if (!IsMeditating)
                 base.OnInterrupted();
         }
     }

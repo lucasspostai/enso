@@ -210,6 +210,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 45}
+--- !u!4 &270973994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6557864827301926684, guid: 2b2925420ee4b4947b15b4ed76f52518,
+    type: 3}
+  m_PrefabInstance: {fileID: 1422423681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &329998303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,8 +1173,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3416426069873720285, guid: 0ff2f872a6019e648888ce7c57aa21fc,
+        type: 3}
+      propertyPath: PlayerArrivalLocation
+      value: 
+      objectReference: {fileID: 270973994}
+    - target: {fileID: 3416426069873720285, guid: 0ff2f872a6019e648888ce7c57aa21fc,
+        type: 3}
+      propertyPath: VirtualCamera
+      value: 
+      objectReference: {fileID: 827554591}
+    - target: {fileID: 3416426069873720285, guid: 0ff2f872a6019e648888ce7c57aa21fc,
+        type: 3}
+      propertyPath: CameraManager
+      value: 
+      objectReference: {fileID: 615712539}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff2f872a6019e648888ce7c57aa21fc, type: 3}
+--- !u!114 &998538380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3416426069873720285, guid: 0ff2f872a6019e648888ce7c57aa21fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 998538379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c53cf8be14c3564a825216544266d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1101093848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1703,6 +1736,11 @@ PrefabInstance:
       propertyPath: NewLocationDiscoveredElement
       value: 
       objectReference: {fileID: 1425091257}
+    - target: {fileID: 6417903185013608063, guid: fa68bf09bb43fca49b0011f4092c78d7,
+        type: 3}
+      propertyPath: ThisShrine
+      value: 
+      objectReference: {fileID: 998538380}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa68bf09bb43fca49b0011f4092c78d7, type: 3}
 --- !u!1001 &1945173235

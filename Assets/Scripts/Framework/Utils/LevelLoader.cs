@@ -57,6 +57,8 @@ namespace Framework.Utils
 
         private IEnumerator LoadSceneAsynchronously(string sceneName, LoadSceneMode mode)
         {
+            GameManager.Instance.SceneHasStarted = false;
+
             if(mode == LoadSceneMode.Single)
                 TransitionAnimator.Play("LoadScreen_StartTransition");
             
@@ -68,7 +70,17 @@ namespace Framework.Utils
             {
                 yield return null;
             }
-            
+
+            var gameManager = GameManager.Instance;
+
+            if (gameManager)
+            {
+                while (!gameManager.SceneHasStarted)
+                {
+                    yield return null;
+                }
+            }
+
             if(mode == LoadSceneMode.Single)
                 TransitionAnimator.Play("LoadScreen_EndTransition");
         }
@@ -82,8 +94,8 @@ namespace Framework.Utils
         {
             TransitionAnimator.Play("LoadScreen_StartTransition");
             
-            yield return new WaitForSeconds(1);
-            
+            yield return new WaitForSecondsRealtime(1);
+
             Application.Quit();
         }
     }

@@ -20,7 +20,7 @@ namespace Framework
                 //Obstacle Collision
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, CollisionLayerMask);
 
-                if (hit && hit.transform != transform)
+                if (hit && hit.transform != transform && hit.collider != Pushbox)
                 {
                     velocity.x = (hit.distance - SkinWidth) * directionX;
                     rayLength = hit.distance;
@@ -46,7 +46,7 @@ namespace Framework
 
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, CollisionLayerMask);
 
-                if (hit && hit.transform != transform)
+                if (hit && hit.transform != transform && hit.collider != Pushbox)
                 {
                     velocity.y = (hit.distance - SkinWidth) * directionY;
                     rayLength = hit.distance;

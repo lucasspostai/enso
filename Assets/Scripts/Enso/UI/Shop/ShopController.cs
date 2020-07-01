@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Enso.Characters.Player;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Enso.UI.Shop
     public class ShopController : Element
     {
         private bool isPlayerNull;
+        private Coroutine disableObjectCoroutine;
         private Player player;
 
         [Header("References")] 
@@ -22,18 +24,14 @@ namespace Enso.UI.Shop
         [SerializeField] private ShopOption StrongAttackShopOption;
         [SerializeField] private ShopOption SpecialAttackShopOption;
 
-        protected override void Start()
-        {
-            base.Start();
-            
-            ExperienceManager.Instance.PerksAvailable = 9;
-        }
-
         private void OnEnable()
         {
             player = FindObjectOfType<Player>();
 
             isPlayerNull = player == null;
+            
+            if(disableObjectCoroutine != null)
+                StopCoroutine(disableObjectCoroutine);
             
             UpdateButtonsInfo();
         }
@@ -136,6 +134,26 @@ namespace Enso.UI.Shop
         private void NotEnoughPerks()
         {
             ExperienceAmountElement.Disable();
+        }
+
+        public override void Disable()
+        {
+            base.Disable();
+
+            if (!gameObject.activeSelf)
+                return;
+
+            if(disableObjectCoroutine != null)
+                StopCoroutine(disableObjectCoroutine);
+            
+            disableObjectCoroutine = StartCoroutine(WaitThenDisable());
+        }
+
+        private IEnumerator WaitThenDisable()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            gameObject.SetActive(false);
         }
     }
 }

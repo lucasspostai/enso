@@ -26,7 +26,7 @@ MonoBehaviour:
   TimeToFullyRecoverBalanceWithoutGuard: 8
   HealingCharges: 1
   DelayToHealAgain: 0
-  XpAmount: 5
+  XpAmount: 3
   WaitDistance: 10
   GuardDistance: 4
   LightAttackDistance: 2

@@ -22,7 +22,7 @@ namespace Enso
             }
         }
 
-        public int MaxXp = 10;
+        public int MaxXp = 1;
 
         private int xpAmount;
         public int XpAmount

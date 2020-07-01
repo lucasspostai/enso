@@ -24,9 +24,8 @@ namespace Enso.UI
         {
             if (ExperienceManager.Instance != null)
             {
-                ExperienceManager.Instance.XpValueChanged += FillCircleValue;
+                //ExperienceManager.Instance.XpValueChanged += FillCircleValue;
                 ExperienceManager.Instance.PerkReceived += ReceivePerk;
-                FillCircleValue();
             }
         }
 
@@ -34,24 +33,24 @@ namespace Enso.UI
         {
             if (ExperienceManager.Instance != null)
             {
-                ExperienceManager.Instance.XpValueChanged -= FillCircleValue;
+                //ExperienceManager.Instance.XpValueChanged -= FillCircleValue;
                 ExperienceManager.Instance.PerkReceived -= ReceivePerk;
             }
         }
 
         private void Update()
         {
-            if (ExperienceManager.Instance.XpAmount > 0)
-            {
-                EnsoImage.fillAmount = Mathf.Clamp01(
-                    Mathf.Lerp(
-                        EnsoImage.fillAmount,
-                        (float) ExperienceManager.Instance.XpAmount / ExperienceManager.Instance.MaxXp,
-                        Time.deltaTime / TimeToFill));
-
-                angle = EnsoImage.fillAmount * -360f + 1;
-                EnsoFillPivot.localEulerAngles = new Vector3(0, 0, angle);
-            }
+            // if (ExperienceManager.Instance.XpAmount > 0)
+            // {
+            //     EnsoImage.fillAmount = Mathf.Clamp01(
+            //         Mathf.Lerp(
+            //             EnsoImage.fillAmount,
+            //             (float) ExperienceManager.Instance.XpAmount / ExperienceManager.Instance.MaxXp,
+            //             Time.deltaTime / TimeToFill));
+            //
+            //     angle = EnsoImage.fillAmount * -360f + 1;
+            //     EnsoFillPivot.localEulerAngles = new Vector3(0, 0, angle);
+            // }
         }
 
         private void FillCircleValue()
@@ -96,8 +95,10 @@ namespace Enso.UI
             yield return new WaitForSeconds(1f);
 
             playingPerkAnimation = false;
+            
+            yield return new WaitForSeconds(5f);
 
-            FillCircleValue();
+            Disable();
         }
 
         private void ReceivePerk()

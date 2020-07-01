@@ -35,7 +35,7 @@ namespace Enso.CombatSystem
             if (ghostEffectController)
                 ghostEffectController.ActivateGhostEffects();
 
-            SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker, false);
+            SetAnimationPropertiesAndPlay(RollAnimation.ClipHolder, RollAnimation.AnimationFrameChecker);
 
             ThisFighter.GetHealthSystem().IsInvincible = true;
 

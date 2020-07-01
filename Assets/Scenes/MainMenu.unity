@@ -1300,7 +1300,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dc16f30ecc482d64498a8b568c906547, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1550,7 +1550,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dc16f30ecc482d64498a8b568c906547, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3271,6 +3271,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1050527236}
+    - target: {fileID: 3447516272090854337, guid: b8cdddd7b79e29448936d1d163858b53,
+        type: 3}
+      propertyPath: PointerDownSoundCue
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d2f46e431e0f0740907fbd3e4acf0d8,
+        type: 2}
     - target: {fileID: 2459404785771754118, guid: b8cdddd7b79e29448936d1d163858b53,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -4036,11 +4042,5 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3447516272090854337, guid: b8cdddd7b79e29448936d1d163858b53,
-        type: 3}
-      propertyPath: PointerDownSoundCue
-      value: 
-      objectReference: {fileID: 11400000, guid: 4d2f46e431e0f0740907fbd3e4acf0d8,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8cdddd7b79e29448936d1d163858b53, type: 3}
