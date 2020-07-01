@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mountain
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 960db08786bfbf84a8855dbb83458ff9, type: 3}
+    - {fileID: 102900000, guid: 08f72871ad9928748b57a1706a4d72f5, type: 3}
+    - {fileID: 2800000, guid: f2290f132eff61342ad5a7e19934bb24, type: 3}
+    - {fileID: 2800000, guid: 198c8ffa97105e246b233aed53879ab6, type: 3}
+    totalSpriteSurfaceArea: 107492984
+    bindAsDefault: 1
+    storedHash:
+      serializedVersion: 2
+      Hash: 00000000000000000000000000000000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 033c31f1348a88d4f8015e9896722da9, type: 3}
+  - {fileID: 21300000, guid: f2290f132eff61342ad5a7e19934bb24, type: 3}
+  - {fileID: 21300000, guid: 8eb70c056c2704e429f2c3595664deda, type: 3}
+  - {fileID: 21300000, guid: a51d46dac10d67940abb6939788e848d, type: 3}
+  - {fileID: 21300000, guid: 198c8ffa97105e246b233aed53879ab6, type: 3}
+  - {fileID: 21300000, guid: f6fb987bbd9f5414ba2c59c88deb7b6a, type: 3}
+  - {fileID: 21300000, guid: 3ffdbdabbbb25324a8837982dca7a67c, type: 3}
+  - {fileID: 21300000, guid: 9b2c17bbebec30a4089a7887ad9a32b7, type: 3}
+  - {fileID: 21300000, guid: 539e22cfeb96065449eceb03e1e1bd13, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SPR_mountainFoot_Base_1
+  - Clouds
+  - SPR_mountainFoot_Base_0
+  - NorataFields_Mountain_Front
+  - Lanterns
+  - MountainTori_MiddleGround
+  - MountainTori_ForeGround
+  - NorataFields_Mountain_Foreground
+  - NorataFields_Mountain_BackGround
+  m_Tag: Mountain
+  m_IsVariant: 0
