@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Enso.Characters;
 using Enso.Characters.Player;
 using Enso.CombatSystem;
+using Enso.UI.Shop;
 using TMPro;
 using UnityEngine;
 
@@ -15,12 +17,15 @@ namespace Enso.UI
         private Player player;
         private HealthSystem healthSystem;
         private HealController healController;
+        private List<Element> filledSpots = new List<Element>();
+        private List<GameObject> emptySpots = new List<GameObject>();
 
         [SerializeField] private RectTransform FilledSpotsParent;
-        [SerializeField] private GameObject FilledHealthPrefab;
         [SerializeField] private RectTransform EmptySpotsParent;
+        [SerializeField] private GameObject FilledHealthPrefab;
         [SerializeField] private GameObject EmptyHealthPrefab;
         [SerializeField] private float DelayToInstantiate = 0.1f;
+        [SerializeField] private ShopProperties ThisShopProperties;
 
         [Header("Healing Charges")] 
         [SerializeField] private Element Amulet;
@@ -36,16 +41,7 @@ namespace Enso.UI
             healthSystem = player.GetComponent<HealthSystem>();
             healController = player.GetComponent<HealController>();
 
-            if (healthSystem != null)
-            {
-                healthSystem.HealthValueChanged += UpdateHealthValue;
-            }
-
-            if (healController != null)
-            {
-                healController.HealingValueChanged += UpdateHealingValue;
-                healController.NoHealingAvailable += NoHealingChargesAvailable;
-            }
+            SetupHealth();
         }
 
         private void OnDisable()
@@ -57,20 +53,146 @@ namespace Enso.UI
 
             if (healController != null)
             {
-                healController.HealingValueChanged -= UpdateHealingValue;
+                healController.HealingValueChanged -= UpdateHealingChargesValue;
                 healController.NoHealingAvailable -= NoHealingChargesAvailable;
             }
         }
 
-        private void CreateEmptySpots()
+        public void SetupHealth()
         {
-            for (int i = 0; i < healthSystem.GetMaxHealth(); i++)
+            if (healthSystem != null)
             {
-                Instantiate(EmptyHealthPrefab, EmptySpotsParent);
+                healthSystem.HealthValueChanged += UpdateHealthValue;
+            }
+
+            if (healController != null)
+            {
+                healController.HealingValueChanged += UpdateHealingChargesValue;
+                healController.NoHealingAvailable += NoHealingChargesAvailable;
+            }
+            
+            currentHealth = 0;
+            
+            filledSpots.Clear();
+            emptySpots.Clear();
+            
+            ClearParent(FilledSpotsParent);
+            ClearParent(EmptySpotsParent);
+            
+            for (int i = 0; i < ThisShopProperties.MaxHealth; i++)
+            {
+                //Filled
+                var filledHealth = Instantiate(FilledHealthPrefab, FilledSpotsParent);
+                filledHealth.SetActive(false);
+                
+                var element = filledHealth.GetComponent<Element>();
+                
+                if(element != null)
+                    filledSpots.Add(element);
+                
+                //Empty
+                var emptyHealth = Instantiate(EmptyHealthPrefab, EmptySpotsParent);
+                emptyHealth.SetActive(false);
+                
+                emptySpots.Add(emptyHealth);
+            }
+            
+            UpdateHealthValue();
+        }
+
+        private void ClearParent(Transform parentTransform)
+        {
+            foreach (Transform child in parentTransform) {
+                Destroy(child.gameObject);
             }
         }
 
-        private void UpdateHealingValue()
+        private void SetupEmptySpots()
+        {
+            for (int i = 0; i < emptySpots.Count; i++)
+            {
+                emptySpots[i].SetActive(i < healthSystem.GetMaxHealth());
+            }
+        }
+
+        private void UpdateHealthValue()
+        {
+            SetupEmptySpots();
+            
+            if (healthSystem.GetHealth() == currentHealth)
+                return;
+            
+            if (healthSystem.GetHealth() > currentHealth)
+            {
+                IncreaseHealth();
+            }
+            else
+            {
+                DecreaseHealth();
+            }
+
+            currentHealth = healthSystem.GetHealth();
+        }
+
+        private void IncreaseHealth()
+        {
+            if (healthCoroutine != null)
+                StopCoroutine(healthCoroutine);
+
+            healthCoroutine = StartCoroutine(AddFilledHealth());
+        }
+        
+        private void DecreaseHealth()
+        {
+            if (healthCoroutine != null)
+                StopCoroutine(healthCoroutine);
+                
+            healthCoroutine = StartCoroutine(RemoveFilledHealth());
+        }
+
+        private IEnumerator AddFilledHealth()
+        {
+            for (int i = 0; i < filledSpots.Count; i++)
+            {
+                if (i < healthSystem.GetHealth())
+                {
+                    if (!filledSpots[i].gameObject.activeSelf)
+                    {
+                        filledSpots[i].gameObject.SetActive(true);
+                        filledSpots[i].Enable();
+                    }
+                }
+                else
+                {
+                    if (filledSpots[i].gameObject.activeSelf)
+                    {
+                        filledSpots[i].gameObject.SetActive(false);
+                    }
+                }
+                
+                yield return new WaitForSeconds(DelayToInstantiate);
+            }
+        }
+
+        private IEnumerator RemoveFilledHealth()
+        {
+            for (int i = currentHealth - 1; i >= 0; i--)
+            {
+                if (filledSpots[i] && i >= healthSystem.GetHealth())
+                {
+                    if (filledSpots[i].gameObject.activeSelf)
+                    {
+                        filledSpots[i].Disable();
+                    }
+                }
+                
+                yield return new WaitForSeconds(DelayToInstantiate);
+            }
+        }
+
+        #region Healing Charges
+
+        private void UpdateHealingChargesValue()
         {
             HealingChargesText.text = healController.GetHealingValue().ToString();
 
@@ -85,63 +207,6 @@ namespace Enso.UI
             Amulet.Disable();
         }
 
-        private void UpdateHealthValue()
-        {
-            if (healthSystem == null)
-                return;
-
-            if (EmptySpotsParent.childCount == 0)
-                CreateEmptySpots();
-
-            if (healthSystem.GetHealth() > currentHealth)
-            {
-                if (healthCoroutine != null)
-                    StopCoroutine(healthCoroutine);
-
-                healthCoroutine = StartCoroutine(AddFilledHealth());
-            }
-            else
-            {
-                if (healthCoroutine != null)
-                    StopCoroutine(healthCoroutine);
-
-                healthCoroutine = StartCoroutine(RemoveFilledHealth());
-            }
-
-            currentHealth = healthSystem.GetHealth();
-        }
-
-        private IEnumerator AddFilledHealth()
-        {
-            for (int i = currentHealth; i < healthSystem.GetHealth(); i++)
-            {
-                Instantiate(FilledHealthPrefab, FilledSpotsParent);
-
-                yield return new WaitForSeconds(DelayToInstantiate);
-            }
-
-            yield return null;
-        }
-
-        private IEnumerator RemoveFilledHealth()
-        {
-            if (FilledSpotsParent.childCount > 0)
-            {
-                for (int i = currentHealth - 1; i >= healthSystem.GetHealth(); i--)
-                {
-                    if (FilledSpotsParent.GetChild(i))
-                    {
-                        var uiElement = FilledSpotsParent.GetChild(i).GetComponent<Element>();
-
-                        if (uiElement)
-                            uiElement.Disable();
-
-                        yield return new WaitForSeconds(DelayToInstantiate);
-                    }
-                }
-            }
-
-            yield return null;
-        }
+        #endregion
     }
 }

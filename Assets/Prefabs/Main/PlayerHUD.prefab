@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HudAnimator: {fileID: 6885917242476207998}
   DeathScreen: {fileID: 5953638358154688004}
+  ThisHealthBar: {fileID: 7166038622847731321}
 --- !u!1 &3904715025427971432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,12 +1141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilledSpotsParent: {fileID: 7166038624895965615}
+  EmptySpotsParent: {fileID: 7166038624677429779}
   FilledHealthPrefab: {fileID: 5237520854930887671, guid: 0cdd939adbdc290469d31278d8171147,
     type: 3}
-  EmptySpotsParent: {fileID: 7166038624677429779}
   EmptyHealthPrefab: {fileID: 8552834852984734675, guid: ecf53dc52d6c7e14b88f114b91c5943a,
     type: 3}
   DelayToInstantiate: 0.1
+  ThisShopProperties: {fileID: 11400000, guid: b722e5e6853f46f45aaf8ce7357e0f07, type: 2}
   Amulet: {fileID: 7166038624513610171}
   HealingChargesText: {fileID: 7166038624017398980}
 --- !u!1 &7166038622924400077

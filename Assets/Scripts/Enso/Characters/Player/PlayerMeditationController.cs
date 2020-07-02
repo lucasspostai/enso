@@ -55,7 +55,7 @@ namespace Enso.Characters.Player
 
         public void EndMeditation()
         {
-            if (currentShrine.IsInteracting)
+            if (currentShrine && currentShrine.IsInteracting)
                 return;
             
             currentShrine = null;

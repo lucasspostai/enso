@@ -116,6 +116,7 @@ namespace Enso.Characters
             {
                 if (waitThenRecoverCoroutine != null)
                     StopCoroutine (waitThenRecoverCoroutine);
+                
                 waitThenRecoverCoroutine = StartCoroutine(WaitThenRecover(fighter.GetBaseProperties().DelayToRecoverAfterLosingBalance));
                 
                 OnBreakBalance();
@@ -124,6 +125,7 @@ namespace Enso.Characters
             {
                 if (waitThenRecoverCoroutine != null)
                     StopCoroutine (waitThenRecoverCoroutine);
+                
                 waitThenRecoverCoroutine = StartCoroutine(WaitThenRecover(fighter.GetBaseProperties().DelayToRecoverAfterDamage));
 
                 OnLoseBalance();

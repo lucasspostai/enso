@@ -14,8 +14,9 @@ namespace Enso.Characters.Player
 {
     public class Player : Fighter
     {
-        [Header("Managers")] 
-        [SerializeField] private GameObject MainGameManager;
+        private HealthBar playerHealthBar;
+        
+        [Header("Managers")] [SerializeField] private GameObject MainGameManager;
         [SerializeField] private GameObject MainAudioManager;
         [SerializeField] private GameObject MainPoolManager;
         [SerializeField] private GameObject MainInputManager;
@@ -25,8 +26,7 @@ namespace Enso.Characters.Player
         [SerializeField] private GameObject MainLevelLoader;
         [SerializeField] private GameObject MainMusicManager;
 
-        [Header("References")] 
-        public PlayerAttackController AttackController;
+        [Header("References")] public PlayerAttackController AttackController;
         public PlayerGuardController GuardController;
         public PlayerRollController RollController;
         public PlayerHealController HealController;
@@ -37,6 +37,7 @@ namespace Enso.Characters.Player
         private void OnDisable()
         {
             GetHealthSystem().Death -= OnDeath;
+            GetHealthSystem().HealthValueChanged -= OnHealthValueChanged;
         }
 
         protected override void Awake()
@@ -49,8 +50,13 @@ namespace Enso.Characters.Player
         protected override void Start()
         {
             base.Start();
-
+            
             LoadGame();
+
+            GetHealthSystem().HealthValueChanged += OnHealthValueChanged;
+
+            if(GameManager.Instance.CurrentHealth == 0)
+                OnHealthValueChanged();
         }
 
         public void SaveGame()
@@ -64,7 +70,13 @@ namespace Enso.Characters.Player
 
             if (playerData != null)
             {
-                GetHealthSystem().SetHealth(playerData.Health);
+                GetHealthSystem().SetMaxHealth(playerData.Health);
+
+                if (GameManager.Instance.LeavingLocation)
+                    GetHealthSystem().SetHealth(GameManager.Instance.CurrentHealth);
+                else
+                    GetHealthSystem().SetHealth(playerData.Health);
+
                 HealController.SetMaxHealingCharges(playerData.HealingCharges);
                 GetBalanceSystem().SetMaxBalance(playerData.Balance);
                 AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
@@ -74,7 +86,13 @@ namespace Enso.Characters.Player
             }
             else
             {
-                GetHealthSystem().SetHealth(GetProperties().Health);
+                GetHealthSystem().SetMaxHealth(GetProperties().Health);
+
+                if (GameManager.Instance.LeavingLocation)
+                    GetHealthSystem().SetHealth(GameManager.Instance.CurrentHealth);
+                else
+                    GetHealthSystem().SetHealth(GetProperties().Health);
+
                 HealController.SetMaxHealingCharges(GetProperties().HealingCharges);
                 GetBalanceSystem().SetMaxBalance(GetProperties().BalanceAmount);
                 AttackController.StrongAttackUnlocked = false;
@@ -84,7 +102,7 @@ namespace Enso.Characters.Player
             }
 
             var shrine = FindObjectOfType<Shrine>();
-            
+
             if (shrine)
             {
                 if (GameManager.Instance.LeavingLocation)
@@ -98,13 +116,19 @@ namespace Enso.Characters.Player
                     transform.position = shrine.SaveLocation.position;
 
                     MeditationController.StartMeditationLoop(shrine, true);
-                    
+
                     shrine.CameraManager.SetPriority();
                     shrine.VirtualCamera.Priority = 10;
                     shrine.Execute();
                     shrine.PlayerStartedHere = true;
                 }
             }
+            else
+            {
+                MeditationController.StartMeditationLoop(null, true);
+            }
+            
+            playerHealthBar.SetupHealth();
         }
 
         private void InstantiateManagers()
@@ -114,7 +138,7 @@ namespace Enso.Characters.Player
 
             if (!gameManager)
                 Instantiate(MainGameManager);
-            
+
             //Audio Manager
             var audioManager = FindObjectOfType<AudioManager>();
 
@@ -143,20 +167,22 @@ namespace Enso.Characters.Player
             var playerCanvas = FindObjectOfType<PlayerCanvas>();
 
             if (!playerCanvas)
-                Instantiate(MainCanvas);
+                playerCanvas = Instantiate(MainCanvas).GetComponent<PlayerCanvas>();
+
+            playerHealthBar = playerCanvas.ThisHealthBar;
 
             //Pause Canvas
             var pauseCanvas = FindObjectOfType<PauseMenu>();
 
             if (!pauseCanvas)
                 Instantiate(PauseCanvas);
-            
+
             //Level Loader
             var levelLoader = FindObjectOfType<LevelLoader>();
 
             if (!levelLoader)
                 Instantiate(MainLevelLoader);
-            
+
             //Music Manager
             var musicManager = FindObjectOfType<MusicManager>();
 
@@ -168,13 +194,18 @@ namespace Enso.Characters.Player
             MusicManager.Instance.SetState(GameState.Adventure, 2f);
 
             GetHealthSystem().Death += OnDeath;
-            
+
             GameManager.Instance.SceneHasStarted = true;
         }
 
         private void OnDeath()
         {
             MusicManager.Instance.StopAllMusics();
+        }
+
+        private void OnHealthValueChanged()
+        {
+            GameManager.Instance.CurrentHealth = GetHealthSystem().GetHealth();
         }
 
         public override void EnterCombatWith(Fighter fighter)
@@ -185,7 +216,7 @@ namespace Enso.Characters.Player
             {
                 MusicManager.Instance.SetState(GameState.Boss, 0);
             }
-            else if(CurrentEnemies.Count == 0)
+            else if (CurrentEnemies.Count == 0)
                 MusicManager.Instance.SetState(GameState.Combat, 0f);
 
             CurrentEnemies.Add(enemy);
@@ -198,19 +229,19 @@ namespace Enso.Characters.Player
 
             if (enemy as Naosuke != null)
                 StartCoroutine(WaitThenLoadCredits());
-            else if(CurrentEnemies.Count == 0)
+            else if (CurrentEnemies.Count == 0)
                 MusicManager.Instance.SetState(GameState.Adventure, 20f);
         }
 
         private IEnumerator WaitThenLoadCredits()
         {
             GameManager.Instance.GamePaused = true;
-            
+
             var playerCanvas = FindObjectOfType<PlayerCanvas>();
 
             if (playerCanvas)
                 playerCanvas.Hide();
-            
+
             yield return new WaitForSeconds(6f);
 
             LevelLoader.Instance.LoadCredits();

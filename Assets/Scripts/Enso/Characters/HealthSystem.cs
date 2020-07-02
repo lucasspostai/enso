@@ -7,6 +7,7 @@ namespace Enso.Characters
     [RequireComponent(typeof(Fighter))]
     public sealed class HealthSystem : MonoBehaviour
     {
+        private bool canCallDamage;
         private Fighter fighter;
         
         private int health;
@@ -31,10 +32,12 @@ namespace Enso.Characters
                     OnDeath();
                 } 
                 
-                if (health < maxHealth)
+                if (canCallDamage && health < maxHealth)
                 {
                     OnDamage();
                 }
+
+                canCallDamage = true;
                 
                 OnHealthValueChanged();
             }
@@ -53,7 +56,9 @@ namespace Enso.Characters
         private void Awake()
         {
             fighter = GetComponent<Fighter>();
+            
             maxHealth = fighter.GetBaseProperties().Health;
+
             Health = maxHealth;
         }
 
@@ -74,8 +79,14 @@ namespace Enso.Characters
 
         public void SetHealth(int healthValue)
         {
+            canCallDamage = false;
+            
+            Health = healthValue;
+        }
+
+        public void SetMaxHealth(int healthValue)
+        {
             maxHealth = healthValue;
-            Health = maxHealth;
         }
 
         public float GetHealthPercentage()

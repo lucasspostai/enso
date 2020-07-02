@@ -10,6 +10,8 @@ namespace Enso.UI
 
         [SerializeField] private Animator HudAnimator;
         [SerializeField] private GameObject DeathScreen;
+
+        public HealthBar ThisHealthBar;
         
         private static readonly int DisableHash = Animator.StringToHash("Disable");
         private static readonly int EnableHash = Animator.StringToHash("Enable");
