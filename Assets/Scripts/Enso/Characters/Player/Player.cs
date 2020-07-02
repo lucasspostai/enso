@@ -15,7 +15,7 @@ namespace Enso.Characters.Player
     public class Player : Fighter
     {
         private HealthBar playerHealthBar;
-        
+
         [Header("Managers")] [SerializeField] private GameObject MainGameManager;
         [SerializeField] private GameObject MainAudioManager;
         [SerializeField] private GameObject MainPoolManager;
@@ -50,12 +50,12 @@ namespace Enso.Characters.Player
         protected override void Start()
         {
             base.Start();
-            
+
             LoadGame();
 
             GetHealthSystem().HealthValueChanged += OnHealthValueChanged;
 
-            if(GameManager.Instance.CurrentHealth == 0)
+            if (GameManager.Instance.CurrentHealth == 0)
                 OnHealthValueChanged();
         }
 
@@ -81,8 +81,12 @@ namespace Enso.Characters.Player
                 GetBalanceSystem().SetMaxBalance(playerData.Balance);
                 AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
                 AttackController.SpecialAttackUnlocked = playerData.SpecialAttackUnlocked;
-                ExperienceManager.Instance.XpAmount = playerData.XpAmount;
-                ExperienceManager.Instance.PerksAvailable = playerData.Perks;
+
+                if (GameManager.Instance.LeavingLocation)
+                {
+                    ExperienceManager.Instance.XpAmount = playerData.XpAmount;
+                    ExperienceManager.Instance.PerksAvailable = playerData.Perks;
+                }
             }
             else
             {
@@ -97,6 +101,7 @@ namespace Enso.Characters.Player
                 GetBalanceSystem().SetMaxBalance(GetProperties().BalanceAmount);
                 AttackController.StrongAttackUnlocked = false;
                 AttackController.SpecialAttackUnlocked = false;
+
                 ExperienceManager.Instance.XpAmount = 0;
                 ExperienceManager.Instance.PerksAvailable = 0;
             }
@@ -127,7 +132,7 @@ namespace Enso.Characters.Player
             {
                 MeditationController.StartMeditationLoop(null, true);
             }
-            
+
             playerHealthBar.SetupHealth();
         }
 

@@ -7,6 +7,8 @@ namespace Framework.LevelDesignEvents
 {
     public class NewLocationDiscoveredTrigger : LevelDesignEvent
     {
+        private bool hasInteracted;
+        
         [SerializeField] private Element NewLocationDiscoveredElement;
         [SerializeField] private Shrine ThisShrine;
         
@@ -14,11 +16,13 @@ namespace Framework.LevelDesignEvents
         {
             base.Execute();
 
-            if (ThisShrine && ThisShrine.PlayerStartedHere)
+            if (ThisShrine && ThisShrine.PlayerStartedHere || hasInteracted)
                 return;
             
             NewLocationDiscoveredElement.gameObject.SetActive(true);
             NewLocationDiscoveredElement.Enable();
+
+            hasInteracted = true;
 
             StartCoroutine(WaitThenDisable());
         }

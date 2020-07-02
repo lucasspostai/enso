@@ -39,5 +39,10 @@ namespace Enso.UI.Menu
             if(playerCanvas != null)
                 playerCanvas.gameObject.SetActive(true);
         }
+
+        public void QuitGame()
+        {
+            LevelLoader.Instance.QuitGame();
+        }
     }
 }

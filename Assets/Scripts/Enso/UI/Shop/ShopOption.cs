@@ -10,8 +10,9 @@ namespace Enso.UI.Shop
         private static readonly int Bought = Animator.StringToHash("Bought");
         
         [SerializeField] private Animator ThisAnimator;
-        [SerializeField] private Button ThisButton;
         [SerializeField] private TextMeshProUGUI CostText;
+        
+        public Button ThisButton;
 
         private void Awake()
         {

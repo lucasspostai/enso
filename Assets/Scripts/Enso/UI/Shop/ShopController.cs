@@ -71,6 +71,7 @@ namespace Enso.UI.Shop
             if (HasEnoughPerks(Properties.ExtraHealthCost))
             {
                 player.GetHealthSystem().IncreaseMaxHealth();
+                player.GetHealthSystem().SetHealth(player.GetHealthSystem().GetMaxHealth());
                 ExperienceManager.Instance.UsePerk(Properties.ExtraHealthCost);
 
                 UpdateButtonsInfo();

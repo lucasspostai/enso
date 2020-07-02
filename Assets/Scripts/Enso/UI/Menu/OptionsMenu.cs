@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enso.Characters.Player;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -21,22 +22,35 @@ namespace Enso.UI.Menu
         [SerializeField] private GameObject AudioOptions;
         [SerializeField] private GameObject GraphicsOptions;
         [SerializeField] private GameObject ControlsOptions;
+        [SerializeField] private GameObject ReturnObjectToActivate;
 
         private void OnEnable()
         {
             PlayerInput.PageLeftInputDown += GoToLeftOption;
             PlayerInput.PageRightInputDown += GoToRightOption;
+            PlayerInput.CancelInputDown += Return;
         }
 
         private void OnDisable()
         {
             PlayerInput.PageLeftInputDown -= GoToLeftOption;
             PlayerInput.PageRightInputDown -= GoToRightOption;
+            PlayerInput.CancelInputDown -= Return;
         }
 
         private void Start()
         {
             SetResolutionProperties();
+        }
+
+        private void Return()
+        {
+            if(ReturnObjectToActivate)
+                ReturnObjectToActivate.SetActive(true);
+
+            var element = GetComponent<Element>();
+            if(element)
+                element.Disable();
         }
 
         #region Audio Settings

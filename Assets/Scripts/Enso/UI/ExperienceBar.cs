@@ -26,6 +26,8 @@ namespace Enso.UI
             {
                 //ExperienceManager.Instance.XpValueChanged += FillCircleValue;
                 ExperienceManager.Instance.PerkReceived += ReceivePerk;
+                
+                PerkText.text = ExperienceManager.Instance.PerksAvailable.ToString();
             }
         }
 
