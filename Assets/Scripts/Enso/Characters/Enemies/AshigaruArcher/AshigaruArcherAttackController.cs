@@ -7,11 +7,13 @@ namespace Enso.Characters.Enemies.AshigaruArcher
 {
     public class AshigaruArcherAttackController : EnemyAttackController
     {
+        private bool hitTarget;
         private bool raisingBow;
         private bool mustRotate;
         private Coroutine disableLineCoroutine;
+        private Vector2 shootDirection;
 
-        private const float ArrowMissDistance = 100f;
+        private const float ArrowMissDistance = 50f;
         private const float ArrowLineDuration = 0.1f;
 
         [SerializeField] private AttackAnimation RaiseBowAnimation;
@@ -35,7 +37,10 @@ namespace Enso.Characters.Enemies.AshigaruArcher
             base.Update();
 
             if (raisingBow && mustRotate)
+            {
                 RotateTowardsTarget();
+                SetShootDirection();
+            }
         }
 
         public void RaiseBow()
@@ -65,33 +70,41 @@ namespace Enso.Characters.Enemies.AshigaruArcher
             GetCollisions();
         }
 
+        private void SetShootDirection()
+        {
+            if (ThisFighter.Target)
+                shootDirection = ThisFighter.Target.position - transform.position;
+        }
+
         private void GetCollisions()
         {
-            var hitInfo = Physics2D.Raycast(ArrowSpawn.position, ArrowSpawn.right, ArrowMissDistance, HitLayerMask);
+            // ReSharper disable once Unity.PreferNonAllocApi
+            var raycastHits = Physics2D.RaycastAll(transform.position, shootDirection,
+                ArrowMissDistance, HitLayerMask);
 
             ArrowLineRenderer.SetPosition(0, ArrowSpawn.position);
 
-            var hitTarget = false;
-            
-            if (hitInfo)
+            hitTarget = false;
+
+            foreach (var hit in raycastHits)
             {
-                var hurtbox = hitInfo.transform.GetComponent<Hurtbox>();
+                var hurtbox = hit.transform.GetComponent<Hurtbox>();
 
                 if (hurtbox && hurtbox.ThisFighter.FighterTeam != ThisFighter.FighterTeam &&
                     !hurtbox.ThisFighter.GetHealthSystem().IsInvincible)
                 {
                     hurtbox.TakeDamage(ShootArrowAnimation.Damage, ArrowSpawn.right);
-                    
+                    ArrowLineRenderer.SetPosition(1, hit.point);
+
                     hitTarget = true;
+
+                    break;
                 }
             }
 
-            if (hitTarget)
+            if (!hitTarget)
             {
-                ArrowLineRenderer.SetPosition(1, hitInfo.point);
-            }
-            else
-            {
+                hitTarget = false;
                 ArrowLineRenderer.SetPosition(1, ArrowSpawn.position + ArrowSpawn.right * ArrowMissDistance);
             }
 
