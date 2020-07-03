@@ -95,7 +95,7 @@ namespace Enso.Characters.Player
                 if (GameManager.Instance.LeavingLocation)
                     GetHealthSystem().SetHealth(GameManager.Instance.CurrentHealth);
                 else
-                    GetHealthSystem().SetHealth(GetProperties().Health);
+                    GetHealthSystem().SetHealth(GetProperties().Health - 1);
 
                 HealController.SetMaxHealingCharges(GetProperties().HealingCharges);
                 GetBalanceSystem().SetMaxBalance(GetProperties().BalanceAmount);
