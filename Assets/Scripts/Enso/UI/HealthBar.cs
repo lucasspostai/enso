@@ -156,18 +156,12 @@ namespace Enso.UI
             {
                 if (i < healthSystem.GetHealth())
                 {
-                    if (!filledSpots[i].gameObject.activeSelf)
-                    {
-                        filledSpots[i].gameObject.SetActive(true);
-                        filledSpots[i].Enable();
-                    }
+                    filledSpots[i].gameObject.SetActive(true);
+                    filledSpots[i].Enable();
                 }
                 else
                 {
-                    if (filledSpots[i].gameObject.activeSelf)
-                    {
-                        filledSpots[i].gameObject.SetActive(false);
-                    }
+                    filledSpots[i].gameObject.SetActive(false);
                 }
                 
                 yield return new WaitForSeconds(DelayToInstantiate);

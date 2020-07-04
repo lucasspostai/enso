@@ -9,5 +9,11 @@ namespace Enso.UI
             MusicManager.Instance.StopAllMusics();
             LevelLoader.Instance.LoadCredits();
         }
+
+        public void DeleteSave()
+        {
+            SaveSystem.DeleteSave();
+            LevelLoader.Instance.LoadMainMenu();
+        }
     }
 }

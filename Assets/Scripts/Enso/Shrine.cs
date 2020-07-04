@@ -101,6 +101,9 @@ namespace Enso
             IsInteracting = false;
 
             player.MeditationController.EndMeditation();
+            
+            player.GetHealthSystem().Heal(player.GetHealthSystem().GetMaxHealth());
+            player.HealController.RechargeHealing();
 
             LevelLoader.Instance.CurrentLevelIndex = ThisLevel.LevelIndex;
             player.SaveGame();
