@@ -47,11 +47,11 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 4862d1fd1c4e8d44183ac7e6860663ac, type: 3}
     - {fileID: 102900000, guid: 624f41881cebd0642998e26e755513e5, type: 3}
     - {fileID: 102900000, guid: 5542b025f3d55b04a8e5df5810a4b120, type: 3}
-    totalSpriteSurfaceArea: 101390674
+    totalSpriteSurfaceArea: 100814130
     bindAsDefault: 1
     storedHash:
       serializedVersion: 2
-      Hash: 7726cec37ea54163150b078a36d810ff
+      Hash: 0ae4d74b4cde59b27824d0fb0ce5e560
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 599d850071e656445a14c6efc366566d, type: 3}
@@ -164,7 +164,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 574cbd42e938dca4d9744fce1710bdc2, type: 3}
   - {fileID: 21300000, guid: 34877952d327a52459bc1500fb8097c5, type: 3}
   - {fileID: 21300000, guid: 55871a52dbb0a6646995cfb81898177e, type: 3}
-  - {fileID: 21300000, guid: 8303cc52ab69cbf4c95af7f7d6dc9f92, type: 3}
   - {fileID: 21300000, guid: 7c2632622741f0040b78f34e1f4d7f0e, type: 3}
   - {fileID: 21300000, guid: 0dfe127297a922246bf02c5a0d8f020f, type: 3}
   - {fileID: 21300000, guid: d1290472926b5a044a35811c9b7db78b, type: 3}
@@ -202,7 +201,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7ebc3df2e3c1cc04d99b6e0f77de1144, type: 3}
   - {fileID: 21300000, guid: 1f10960321a6864468d748768cce75f9, type: 3}
   - {fileID: 21300000, guid: 649b9e037ae1b2540b2c7c512e3cba22, type: 3}
-  - {fileID: 21300000, guid: 2095bf03230e82349b387247ad0cdf25, type: 3}
   - {fileID: 21300000, guid: aa8f7013c9ff78d4ea9c3a6e626e9bf6, type: 3}
   - {fileID: 21300000, guid: 3837901395bbdb74c815a5bb0545d0c9, type: 3}
   - {fileID: 21300000, guid: a11b851358ec1ce46a281c115c4febb8, type: 3}
@@ -255,6 +253,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 340c28e3c05c3d14587ce29d300f14c0, type: 3}
   - {fileID: 21300000, guid: 68ca7ce3d3d07ef49b15bc13646010ff, type: 3}
   - {fileID: 21300000, guid: d2f71de304dac454fbddd7a73a90cc5f, type: 3}
+  - {fileID: 21300000, guid: bc7e37f3dc4a7dc4d8e6031cacd6f4c1, type: 3}
   - {fileID: 21300000, guid: 813319f3e5944c749827c070333180dd, type: 3}
   - {fileID: 21300000, guid: a0d7b9f3ccc96e34c9f29edb6b16d3b8, type: 3}
   - {fileID: 21300000, guid: 93fbd9f36f4da334fa7575a1942cc6cd, type: 3}
@@ -638,6 +637,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f1c7d75ba84fe6641a16081a0b25350a, type: 3}
   - {fileID: 21300000, guid: 9a08166b13268e046a5b9895fb969877, type: 3}
   - {fileID: 21300000, guid: 996e876b7a53dff41aa6a3504e441678, type: 3}
+  - {fileID: 21300000, guid: c8aafa6bc49a0124b8b7e7c927ebfc60, type: 3}
   - {fileID: 21300000, guid: 8926b47b983335742b99f6deb53e7db6, type: 3}
   - {fileID: 21300000, guid: 56fffa7bcba975c4b96c4f8e8a5f7bb6, type: 3}
   - {fileID: 21300000, guid: a2a1809b796feb6498cdc0a702c5ec1b, type: 3}
@@ -969,7 +969,6 @@ SpriteAtlas:
   - Clothesline3_UpLeft
   - RockB_DownRight
   - GreenTree7_Up
-  - ImprovisedBridge_DownRight
   - Clothesline7_UpLeft
   - SackA_UpLeft
   - RockB_Right
@@ -1007,7 +1006,6 @@ SpriteAtlas:
   - RockC_UpLeft
   - RusticHouseA_Down
   - RockA_UpLeft
-  - ImprovisedBridge_DownLeft
   - Clothesline5_Right
   - NorataFields_DownRight
   - FenceA_DownRight
@@ -1060,6 +1058,7 @@ SpriteAtlas:
   - LanternPost1_UpRight
   - Flag6_DownRight
   - Bucket_DownRight
+  - ImprovisedBridge_DownLeft
   - Clothesline2t_DownLeft
   - Flag2_DownRight
   - RockC_Down
@@ -1443,6 +1442,7 @@ SpriteAtlas:
   - Well_Down
   - GrassD_Right
   - StrawPileB_UpRight
+  - ImprovisedBridge_DownRight
   - ToriiPillarB_DownRight
   - DirtGround_UpRight
   - GrassD_Left
