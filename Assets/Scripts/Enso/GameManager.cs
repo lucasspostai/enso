@@ -12,6 +12,7 @@ namespace Enso
         [HideInInspector] public bool GamePaused;
         [HideInInspector] public bool ShrineActive;
         [HideInInspector] public bool LeavingLocation;
+        [HideInInspector] public bool MenuIsOpen;
         [HideInInspector] public int CurrentHealth;
 
         public void FreezeGame()

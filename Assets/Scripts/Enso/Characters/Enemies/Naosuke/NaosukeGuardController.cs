@@ -23,9 +23,6 @@ namespace Enso.Characters.Enemies.Naosuke
         {
             base.PlayMovementAnimation();
 
-            if (IsParrying || canParry)
-                return;
-            
             if (naosuke.MovementController.Velocity == Vector3.zero)
             {
                 PlayGuardAnimation(Animations.GuardIdleAnimationClipHolder);
@@ -88,6 +85,11 @@ namespace Enso.Characters.Enemies.Naosuke
 
             if (naosuke)
                 naosuke.MovementController.SetSpeed(naosuke.GetBaseProperties().RunSpeed);
+        }
+
+        public void StopGuarding()
+        {
+            ResetAllProperties();
         }
     }
 }

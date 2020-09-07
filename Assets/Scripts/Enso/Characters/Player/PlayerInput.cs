@@ -86,9 +86,9 @@ namespace Enso.Characters.Player
         private void Update()
         {
             pauseInputDownCalled = rewiredPlayer.GetButtonDown(PauseAction);
-            
             pageLeftInputDownCalled = rewiredPlayer.GetButtonDown(PageLeftAction);
             pageRightInputDownCalled = rewiredPlayer.GetButtonDown(PageRightAction);
+            returnInputDownCalled = rewiredPlayer.GetButtonDown(CancelAction);
 
             if (pauseInputDownCalled)
             {
@@ -103,6 +103,11 @@ namespace Enso.Characters.Player
             if (pageRightInputDownCalled)
             {
                 OnPageRightInputDown();
+            }
+            
+            if (returnInputDownCalled)
+            {
+                OnReturnInputDown();
             }
             
             if (GameManager.Instance && GameManager.Instance.GamePaused)
@@ -121,7 +126,6 @@ namespace Enso.Characters.Player
             healInputDownCalled = rewiredPlayer.GetButtonDown(HealAction);
             specialAttackInputDownCalled = rewiredPlayer.GetButtonDown(SpecialAttackAction);
             interactionInputDownCalled = rewiredPlayer.GetButtonDown(InteractionAction);
-            returnInputDownCalled = rewiredPlayer.GetButtonDown(CancelAction);
             anyKeyDownCalled = rewiredPlayer.GetAnyButton();
 
             HoldingGuardInput = rewiredPlayer.GetButton(GuardAction);
@@ -192,10 +196,6 @@ namespace Enso.Characters.Player
             if (interactionInputDownCalled)
             {
                 OnInteractionInputDown();
-            }
-            else if (returnInputDownCalled)
-            {
-                OnReturnInputDown();
             }
 
             if (anyKeyDownCalled)

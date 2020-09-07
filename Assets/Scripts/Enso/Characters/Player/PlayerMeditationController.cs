@@ -12,7 +12,7 @@ namespace Enso.Characters.Player
         [SerializeField] private ActionAnimation MeditationLoopAnimation;
         [SerializeField] private ActionAnimation EndMeditationAnimation;
 
-        public bool IsMeditating;
+        [HideInInspector] public bool IsMeditating;
 
         private void OnDisable()
         {
@@ -55,9 +55,10 @@ namespace Enso.Characters.Player
 
         public void EndMeditation()
         {
-            if (currentShrine && currentShrine.IsInteracting)
+            if (currentShrine && currentShrine.IsInteracting || GameManager.Instance.GamePaused ||
+                GameManager.Instance.MenuIsOpen)
                 return;
-            
+
             currentShrine = null;
 
             PlayerInput.AnyInputDown -= EndMeditation;

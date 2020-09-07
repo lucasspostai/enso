@@ -95,9 +95,9 @@ namespace Enso
         
         public void Return()
         {
-            if (!isActive || !IsInteracting)
+            if (!isActive || !IsInteracting || GameManager.Instance.GamePaused || GameManager.Instance.MenuIsOpen)
                 return;
-
+            
             IsInteracting = false;
 
             player.MeditationController.EndMeditation();

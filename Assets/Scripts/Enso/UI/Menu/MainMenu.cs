@@ -19,6 +19,8 @@ namespace Enso.UI.Menu
             
             if(playerCanvas != null)
                 playerCanvas.gameObject.SetActive(false);
+
+            GameManager.Instance.MenuIsOpen = true;
         }
 
         public void StartGame()
@@ -33,6 +35,7 @@ namespace Enso.UI.Menu
             yield return new WaitForSeconds(0.5f);
             
             GameManager.Instance.GamePaused = false;
+            GameManager.Instance.MenuIsOpen = false;
             
             SceneManager.UnloadSceneAsync(LevelLoader.MainMenuScene);
             

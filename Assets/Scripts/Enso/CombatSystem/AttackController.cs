@@ -4,8 +4,6 @@ using Enso.Characters.Player;
 using Enso.Enums;
 using Enso.Interfaces;
 using Framework;
-using Framework.Animations;
-using Framework.Audio;
 using UnityEngine;
 
 namespace Enso.CombatSystem
@@ -79,7 +77,7 @@ namespace Enso.CombatSystem
                 hurtbox.ThisFighter.FighterTeam != ThisFighter.FighterTeam)
             {
                 damagedHurtboxes.Add(hurtbox);
-
+                
                 var guardController = hurtbox.ThisFighter.GetComponent<GuardController>();
 
                 ThisFighter.AnimationHandler.PauseAnimationForAWhile();

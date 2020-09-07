@@ -81,12 +81,6 @@ namespace Enso.Characters.Player
                 GetBalanceSystem().SetMaxBalance(playerData.Balance);
                 AttackController.StrongAttackUnlocked = playerData.StrongAttackUnlocked;
                 AttackController.SpecialAttackUnlocked = playerData.SpecialAttackUnlocked;
-
-                if (GameManager.Instance.LeavingLocation)
-                {
-                    ExperienceManager.Instance.XpAmount = playerData.XpAmount;
-                    ExperienceManager.Instance.PerksAvailable = playerData.Perks;
-                }
             }
             else
             {
@@ -233,7 +227,10 @@ namespace Enso.Characters.Player
                 CurrentEnemies.Remove(enemy);
 
             if (enemy as Naosuke != null)
+            {
+                MovementController.Move(Vector2.zero);
                 StartCoroutine(WaitThenLoadCredits());
+            }
             else if (CurrentEnemies.Count == 0)
                 MusicManager.Instance.SetState(GameState.Adventure, 20f);
         }

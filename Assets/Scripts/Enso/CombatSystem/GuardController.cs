@@ -65,10 +65,10 @@ namespace Enso.CombatSystem
 
         public virtual void StartGuard()
         {
-            GuardReleased = false;
-
             if (ThisFighter.AnimationHandler.IsAnyCustomAnimationPlaying())
                 return;
+            
+            GuardReleased = false;
 
             StartingGuard = true;
 

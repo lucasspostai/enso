@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enso.Characters.Enemies;
 using Enso.CombatSystem;
-using Framework;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Enso.Characters.Player
 {

@@ -21,7 +21,7 @@ namespace Enso.UI
 
         private void ChooseOption()
         {
-            if (GameManager.Instance.ShrineActive)
+            if (GameManager.Instance.ShrineActive || GameManager.Instance.MenuIsOpen)
                 return;
             
             if (GameManager.Instance.GamePaused)
@@ -36,17 +36,30 @@ namespace Enso.UI
 
         private void PauseGame()
         {
+            OptionsPanel.gameObject.SetActive(false);
             PausePanel.gameObject.SetActive(true);
-            PausePanel.Enable();
             
+            if(!PausePanel.IsEnabled)
+                PausePanel.Enable();
+
             GameManager.Instance.FreezeGame();
         }
         
         public void ResumeGame()
         {
-            PausePanel.Disable();
-            OptionsPanel.Disable();
-            
+            if (OptionsPanel.IsEnabled)
+            {
+                OptionsPanel.Disable();
+                PauseGame();
+                return;
+            }
+
+            if (PausePanel.IsEnabled)
+            {
+                PausePanel.Disable();
+                OptionsPanel.gameObject.SetActive(false);
+            }
+
             GameManager.Instance.NormalizeTime();
         }
 

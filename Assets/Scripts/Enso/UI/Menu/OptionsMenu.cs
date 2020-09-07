@@ -45,12 +45,18 @@ namespace Enso.UI.Menu
 
         private void Return()
         {
+            var element = GetComponent<Element>();
+
+            if (!element) 
+                return;
+            
+            if (!element.IsEnabled)
+                return;
+            
+            element.Disable();
+                
             if(ReturnObjectToActivate)
                 ReturnObjectToActivate.SetActive(true);
-
-            var element = GetComponent<Element>();
-            if(element)
-                element.Disable();
         }
 
         #region Audio Settings

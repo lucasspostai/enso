@@ -72,6 +72,8 @@ namespace Enso.Characters.Enemies.Naosuke
                 if (chasePlayerAndAttack)
                 {
                     MustMove(false);
+                    
+                    GuardController.StopGuarding();
 
                     if (currentStage >= 3 && chosenBehaviorIndex >= 5 && AttackController.CanUseSpecialAttack &&
                         AttackController.CanAttack &&
@@ -153,7 +155,7 @@ namespace Enso.Characters.Enemies.Naosuke
             else //Follow Target
             {
                 MustMove(true);
-
+                
                 if (GuardController.IsGuarding)
                     GuardController.EndGuard();
             }

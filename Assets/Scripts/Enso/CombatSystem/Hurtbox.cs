@@ -17,7 +17,7 @@ namespace Enso.CombatSystem
         {
             ThisFighter.GetHealthSystem().Death += DisableHurtbox;
         }
-        
+
         private void OnDisable()
         {
             ThisFighter.GetHealthSystem().Death -= DisableHurtbox;
@@ -28,35 +28,18 @@ namespace Enso.CombatSystem
             HurtboxCollider = GetComponent<Collider2D>();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Y))
-                Guard.Block();
-        }
-
         public void TakeDamage(int damageAmount, Vector3 direction)
         {
             ThisFighter.AnimationHandler.SetFacingDirection((direction * -1)
                 .normalized); //Opposite direction to damage dealer
 
-            if (Guard && Guard.IsGuarding)
+            if (Guard && (Guard.IsGuarding || Guard.StartingGuard))
             {
-                if (Guard.IsGuarding)
-                {
-                    ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
+                ThisFighter.GetBalanceSystem().TakeDamage(damageAmount);
 
-                    if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
-                    {
-                        Guard.Block();
-                    }
-                    else
-                    {
-                        //Damage
-                    }
-                }
-                else if (Guard.IsParrying)
+                if (ThisFighter.GetBalanceSystem().GetBalance() > 0)
                 {
-                    //Parry
+                    Guard.Block();
                 }
             }
             else
