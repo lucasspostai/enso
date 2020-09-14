@@ -14,8 +14,6 @@ namespace Enso.UI
         private float angle;
 
         [Header("Enso")] [SerializeField] private string GainPerkHash = "GainPerk";
-        [SerializeField] private Image EnsoImage;
-        [SerializeField] private RectTransform EnsoFillPivot;
         [SerializeField] private float TimeToFill = 2f;
 
         [Header("Perk")] [SerializeField] private TextMeshProUGUI PerkText;
@@ -35,32 +33,8 @@ namespace Enso.UI
         {
             if (ExperienceManager.Instance != null)
             {
-                //ExperienceManager.Instance.XpValueChanged -= FillCircleValue;
                 ExperienceManager.Instance.PerkReceived -= ReceivePerk;
             }
-        }
-
-        private void Update()
-        {
-            // if (ExperienceManager.Instance.XpAmount > 0)
-            // {
-            //     EnsoImage.fillAmount = Mathf.Clamp01(
-            //         Mathf.Lerp(
-            //             EnsoImage.fillAmount,
-            //             (float) ExperienceManager.Instance.XpAmount / ExperienceManager.Instance.MaxXp,
-            //             Time.deltaTime / TimeToFill));
-            //
-            //     angle = EnsoImage.fillAmount * -360f + 1;
-            //     EnsoFillPivot.localEulerAngles = new Vector3(0, 0, angle);
-            // }
-        }
-
-        private void FillCircleValue()
-        {
-            if (updateThenStopCoroutine != null)
-                StopCoroutine(updateThenStopCoroutine);
-
-            updateThenStopCoroutine = StartCoroutine(UpdateThenStop());
         }
 
         private IEnumerator UpdateThenStop()

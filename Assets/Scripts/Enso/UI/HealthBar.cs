@@ -7,6 +7,7 @@ using Enso.CombatSystem;
 using Enso.UI.Shop;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Enso.UI
 {
@@ -17,19 +18,16 @@ namespace Enso.UI
         private Player player;
         private HealthSystem healthSystem;
         private HealController healController;
-        private List<Element> filledSpots = new List<Element>();
-        private List<GameObject> emptySpots = new List<GameObject>();
 
-        [SerializeField] private RectTransform FilledSpotsParent;
-        [SerializeField] private RectTransform EmptySpotsParent;
-        [SerializeField] private GameObject FilledHealthPrefab;
-        [SerializeField] private GameObject EmptyHealthPrefab;
+        [SerializeField] List<Vitality> VitalityPoints = new List<Vitality>();
         [SerializeField] private float DelayToInstantiate = 0.1f;
         [SerializeField] private ShopProperties ThisShopProperties;
 
-        [Header("Healing Charges")] 
-        [SerializeField] private Element Amulet;
-        [SerializeField] private TextMeshProUGUI HealingChargesText;
+        [Header("Healing Charges")] [SerializeField]
+        private Element Amulet;
+
+        [SerializeField] private Image AmuletImage;
+        [SerializeField] private float TimeToLerpMana;
 
         private void OnEnable()
         {
@@ -58,6 +56,11 @@ namespace Enso.UI
             }
         }
 
+        private void Update()
+        {
+            UpdateHealingChargesValue();
+        }
+
         public void SetupHealth()
         {
             if (healthSystem != null)
@@ -70,58 +73,32 @@ namespace Enso.UI
                 healController.HealingValueChanged += UpdateHealingChargesValue;
                 healController.NoHealingAvailable += NoHealingChargesAvailable;
             }
-            
-            currentHealth = 0;
-            
-            filledSpots.Clear();
-            emptySpots.Clear();
-            
-            ClearParent(FilledSpotsParent);
-            ClearParent(EmptySpotsParent);
-            
-            for (int i = 0; i < ThisShopProperties.MaxHealth; i++)
-            {
-                //Filled
-                var filledHealth = Instantiate(FilledHealthPrefab, FilledSpotsParent);
-                filledHealth.SetActive(false);
-                
-                var element = filledHealth.GetComponent<Element>();
-                
-                if(element != null)
-                    filledSpots.Add(element);
-                
-                //Empty
-                var emptyHealth = Instantiate(EmptyHealthPrefab, EmptySpotsParent);
-                emptyHealth.SetActive(false);
-                
-                emptySpots.Add(emptyHealth);
-            }
-            
-            UpdateHealthValue();
-        }
 
-        private void ClearParent(Transform parentTransform)
-        {
-            foreach (Transform child in parentTransform) {
-                Destroy(child.gameObject);
-            }
+            currentHealth = 0;
+
+            // for (int i = 0; i < ThisShopProperties.MaxHealth; i++)
+            // {
+            //     VitalityPoints[i].Enable();
+            // }
+
+            UpdateHealthValue();
         }
 
         private void SetupEmptySpots()
         {
-            for (int i = 0; i < emptySpots.Count; i++)
+            for (int i = 0; i < VitalityPoints.Count; i++)
             {
-                emptySpots[i].SetActive(i < healthSystem.GetMaxHealth());
+                VitalityPoints[i].gameObject.SetActive(i < healthSystem.GetMaxHealth());
             }
         }
 
         private void UpdateHealthValue()
         {
             SetupEmptySpots();
-            
+
             if (healthSystem.GetHealth() == currentHealth)
                 return;
-            
+
             if (healthSystem.GetHealth() > currentHealth)
             {
                 IncreaseHealth();
@@ -141,29 +118,30 @@ namespace Enso.UI
 
             healthCoroutine = StartCoroutine(AddFilledHealth());
         }
-        
+
         private void DecreaseHealth()
         {
             if (healthCoroutine != null)
                 StopCoroutine(healthCoroutine);
-                
+
             healthCoroutine = StartCoroutine(RemoveFilledHealth());
         }
 
         private IEnumerator AddFilledHealth()
         {
-            for (int i = 0; i < filledSpots.Count; i++)
+            for (int i = 0; i < VitalityPoints.Count; i++)
             {
                 if (i < healthSystem.GetHealth())
                 {
-                    filledSpots[i].gameObject.SetActive(true);
-                    filledSpots[i].Enable();
+                    VitalityPoints[i].gameObject.SetActive(true);
+                    VitalityPoints[i].Point.gameObject.SetActive(true);
+                    VitalityPoints[i].Point.Enable();
                 }
                 else
                 {
-                    filledSpots[i].gameObject.SetActive(false);
+                    VitalityPoints[i].Point.gameObject.SetActive(false);
                 }
-                
+
                 yield return new WaitForSeconds(DelayToInstantiate);
             }
         }
@@ -172,14 +150,14 @@ namespace Enso.UI
         {
             for (int i = currentHealth - 1; i >= 0; i--)
             {
-                if (filledSpots[i] && i >= healthSystem.GetHealth())
+                if (VitalityPoints[i] && i >= healthSystem.GetHealth())
                 {
-                    if (filledSpots[i].gameObject.activeSelf)
+                    if (VitalityPoints[i].gameObject.activeSelf)
                     {
-                        filledSpots[i].Disable();
+                        VitalityPoints[i].Point.Disable();
                     }
                 }
-                
+
                 yield return new WaitForSeconds(DelayToInstantiate);
             }
         }
@@ -188,12 +166,18 @@ namespace Enso.UI
 
         private void UpdateHealingChargesValue()
         {
-            HealingChargesText.text = healController.GetHealingValue().ToString();
+            float desiredValue = (float)healController.GetHealingValue() / healController.GetMaxHealingCharges();
+            
+            AmuletImage.fillAmount =
+                Mathf.Lerp(
+                    AmuletImage.fillAmount,
+                    desiredValue,
+                    Time.deltaTime / TimeToLerpMana);
 
-            var element = HealingChargesText.GetComponent<Element>();
-
-            if (element)
-                element.UpdateInfo();
+            // var element = HealingChargesText.GetComponent<Element>();
+            //
+            // if (element)
+            //     element.UpdateInfo();
         }
 
         private void NoHealingChargesAvailable()

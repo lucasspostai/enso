@@ -16,11 +16,9 @@ namespace Enso.UI
         private BalanceSystem balanceSystem;
 
         [SerializeField] private Slider[] BalanceSliders;
-        [SerializeField] private Slider[] DamageSliders;
         [SerializeField] private string LoseBalanceHash = "LoseBalance";
         [SerializeField] private string EnableSpecialAttackHash = "EnableSpecialAttack";
         [SerializeField] private float DelayToUpdateDamageSlider = 1f;
-        [SerializeField] private float TimeToLerpDamageSliderValue = 0.5f;
 
         private void OnEnable()
         {
@@ -50,15 +48,6 @@ namespace Enso.UI
             }
         }
 
-        private void Update()
-        {
-            if (updateDamageSlider)
-                SetDamageSlidersValue(Mathf.Lerp(
-                    DamageSliders[0].value, 
-                    BalanceSliders[0].value,
-                    Time.deltaTime / TimeToLerpDamageSliderValue));
-        }
-
         private void OnDisable()
         {
             if (balanceSystem != null)
@@ -75,7 +64,7 @@ namespace Enso.UI
         {
             foreach (var slider in BalanceSliders)
             {
-                slider.value = balanceSystem.GetBalancePercentage();
+                slider.value = Mathf.InverseLerp(1, 0, balanceSystem.GetBalancePercentage());
             }
         }
 
@@ -93,14 +82,6 @@ namespace Enso.UI
         private void EnableSpecialAttack()
         {
             SetTrigger(EnableSpecialAttackHash);
-        }
-
-        private void SetDamageSlidersValue(float value)
-        {
-            foreach (var slider in DamageSliders)
-            {
-                slider.value = value;
-            }
         }
 
         private IEnumerator UpdateDamageSlider()

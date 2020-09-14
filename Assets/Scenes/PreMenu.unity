@@ -512,7 +512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.1 - Enso Team (2020)
+  m_text: Version 0.1.2 - SBGames 2020 Special Build - Enso Team / 2020
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b5cbd5580658b54c8055bb5b71872bf, type: 2}
   m_sharedMaterial: {fileID: -614418607785774177, guid: 1b5cbd5580658b54c8055bb5b71872bf,
@@ -582,10 +582,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 731805555}
-    characterCount: 30
+    characterCount: 61
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 7
+    spaceCount: 11
+    wordCount: 13
     linkCount: 0
     lineCount: 1
     pageCount: 1

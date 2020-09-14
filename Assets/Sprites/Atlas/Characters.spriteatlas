@@ -47,7 +47,7 @@ SpriteAtlas:
     bindAsDefault: 1
     storedHash:
       serializedVersion: 2
-      Hash: d0b3baafa51d69af40e6b7af1da210a8
+      Hash: 730786ab96723a0b5a139e26747f6827
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 9bfe7000e0ea5dc469e9f8873b828ceb, type: 3}
@@ -12953,7 +12953,7 @@ SpriteAtlas:
   - AshigaruArcher_Combat_Idle_D_12
   - AshigaruWarrior_Combat_StartGuard_DL_03
   - Hiroyuki_OneSword_GuardWalk_Right_DL_00
-  - Hiroyuki_OneSword_GuardWalk_Right_L_09
+  - Hiroyuki_OneSword_GuardWalk_Right_R_09
   - AshigaruWarrior_Combat_Idle_DR_08
   - Komuso_Combat_Block_UL_03
   - Hiroyuki_OneSword_Heal_U_14
@@ -13120,7 +13120,7 @@ SpriteAtlas:
   - Naosuke_Combat_LoseBalance_D_19
   - Naosuke_Combat_LoseBalance_R_16
   - Komuso_Combat_Death_DR_06
-  - Hiroyuki_OneSword_GuardWalk_Right_L_05
+  - Hiroyuki_OneSword_GuardWalk_Right_R_05
   - 0021_Peasant_Adventure_SitA_UL
   - Hiroyuki_OneSword_EndMeditate_DR_05
   - AshigaruArcher_Combat_ShootArrow_UR_13
@@ -13572,7 +13572,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Idle_DR_12
   - Hiroyuki_OneSword_Death_R_03
   - AshigaruArcher_Combat_DamageA_D_15
-  - Hiroyuki_OneSword_GuardWalk_Right_L_00
+  - Hiroyuki_OneSword_GuardWalk_Right_R_00
   - Komuso_Combat_LightAttackA_D_04
   - Hiroyuki_OneSword_Run_L_04
   - Hiroyuki_OneSword_DamageA_DR_03
@@ -13607,7 +13607,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_EndMeditate_L_01
   - Naosuke_Combat_HeavyDamage_DL_05
   - Hiroyuki_OneSword_Riposte_UL_00
-  - Hiroyuki_OneSword_GuardWalk_Right_R_06
+  - Hiroyuki_OneSword_GuardWalk_Right_L_06
   - AshigaruArcher_Combat_LoseBalance_UR_00
   - AshigaruArcher_Combat_ShootArrow_D_15
   - Komuso_Combat_Riposte_U_03
@@ -13984,7 +13984,7 @@ SpriteAtlas:
   - AshigaruWarrior_Combat_Run_UL_04
   - Hiroyuki_OneSword_GuardWalk_Backward_L_15
   - 0023_Peasant_Adventure_Talk_UL
-  - Hiroyuki_OneSword_GuardWalk_Right_R_01
+  - Hiroyuki_OneSword_GuardWalk_Right_L_01
   - Hiroyuki_OneSword_Meditate_L_23
   - Naosuke_Combat_DamageA_UR_07
   - AshigaruWarrior_Combat_LoseBalance_DL_18
@@ -14749,7 +14749,7 @@ SpriteAtlas:
   - Naosuke_Combat_LightAttackC_R_09
   - AshigaruArcher_Combat_Walk_R_02
   - AshigaruArcher_Combat_DamageA_DR_06
-  - Hiroyuki_OneSword_GuardWalk_Right_R_15
+  - Hiroyuki_OneSword_GuardWalk_Right_L_15
   - Hiroyuki_OneSword_HeavyDamage_U_13
   - Hiroyuki_OneSword_DamageA_DR_01
   - AshigaruWarrior_Combat_LoseBalance_L_15
@@ -14761,7 +14761,7 @@ SpriteAtlas:
   - Naosuke_Combat_DamageA_DR_02
   - AshigaruWarrior_Combat_StartGuard_L_00
   - AshigaruWarrior_Combat_EndGuard_UL_03
-  - Hiroyuki_OneSword_GuardWalk_Right_R_10
+  - Hiroyuki_OneSword_GuardWalk_Right_L_10
   - Hiroyuki_OneSword_GuardWalk_Forward_DR_04
   - Naosuke_Combat_HeavyDamage_DL_16
   - 0032_Peasant_Adventure_SitA_L
@@ -15019,7 +15019,7 @@ SpriteAtlas:
   - Naosuke_Combat_HeavyDamage_L_17
   - Hiroyuki_OneSword_Meditate_UL_22
   - Naosuke_Combat_Idle_U_05
-  - Hiroyuki_OneSword_GuardWalk_Right_L_15
+  - Hiroyuki_OneSword_GuardWalk_Right_R_15
   - Hiroyuki_OneSword_EndMeditate_UR_00
   - Komuso_Combat_StrongAttackA_R_01
   - Hiroyuki_OneSword_GuardWalk_Backward_DL_05
@@ -15137,7 +15137,7 @@ SpriteAtlas:
   - AshigaruArcher_Combat_ShootArrow_U_09
   - Hiroyuki_OneSword_Run_UL_02
   - Naosuke_Combat_Death_R_02
-  - Hiroyuki_OneSword_GuardWalk_Right_L_06
+  - Hiroyuki_OneSword_GuardWalk_Right_R_06
   - Naosuke_Combat_SpecialAttack_DL_02
   - Komuso_Combat_Death_DR_11
   - 0004_Peasant_Adventure_Idle_D
@@ -15664,7 +15664,7 @@ SpriteAtlas:
   - Naosuke_Combat_Riposte_UR_09
   - 0022_Peasant_Adventure_Talk_DL
   - Hiroyuki_OneSword_Idle_DR_02
-  - Hiroyuki_OneSword_GuardWalk_Right_R_05
+  - Hiroyuki_OneSword_GuardWalk_Right_L_05
   - Hiroyuki_OneSword_LightAttackB_L_02
   - Hiroyuki_OneSword_LoseBalance_D_19
   - AshigaruArcher_Combat_Death_U_07
@@ -15844,7 +15844,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Meditate_U_35
   - AshigaruArcher_Combat_Walk_U_12
   - Komuso_Combat_LoseBalance_DL_10
-  - Hiroyuki_OneSword_GuardWalk_Right_R_12
+  - Hiroyuki_OneSword_GuardWalk_Right_L_12
   - Naosuke_Combat_Run_D_00
   - Komuso_Combat_DamageA_DR_01
   - AshigaruArcher_Combat_LoseBalance_D_08
@@ -16181,7 +16181,7 @@ SpriteAtlas:
   - Naosuke_Combat_EndGuard_U_01
   - Naosuke_Combat_LightAttackA_U_17
   - Naosuke_Combat_Block_L_05
-  - Hiroyuki_OneSword_GuardWalk_Right_L_14
+  - Hiroyuki_OneSword_GuardWalk_Right_R_14
   - Hiroyuki_OneSword_EndGuard_DL_04
   - Hiroyuki_OneSword_LightAttackC_DR_10
   - Komuso_Combat_HeavyDamage_DR_06
@@ -16366,7 +16366,7 @@ SpriteAtlas:
   - Naosuke_Combat_GuardWalk_Forward_DL_12
   - Komuso_Combat_Idle_UR_05
   - Naosuke_Combat_LightAttackA_R_01
-  - Hiroyuki_OneSword_GuardWalk_Right_R_03
+  - Hiroyuki_OneSword_GuardWalk_Right_L_03
   - Komuso_Combat_HeavyDamage_U_15
   - Komuso_Combat_Idle_DL_17
   - Naosuke_Combat_LoseBalance_DL_14
@@ -16377,7 +16377,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Riposte_UR_18
   - Hiroyuki_OneSword_EndMeditate_L_10
   - AshigaruWarrior_Combat_GuardIdle_UR_09
-  - Hiroyuki_OneSword_GuardWalk_Right_L_08
+  - Hiroyuki_OneSword_GuardWalk_Right_R_08
   - Naosuke_Combat_GuardIdle_DR_11
   - AshigaruWarrior_Combat_DamageA_R_02
   - Hiroyuki_OneSword_GuardWalk_Left_DR_00
@@ -16731,7 +16731,7 @@ SpriteAtlas:
   - AshigaruArcher_Combat_Roll_UL_06
   - Naosuke_Combat_LightAttackA_D_00
   - AshigaruArcher_Combat_LoseBalance_D_15
-  - Hiroyuki_OneSword_GuardWalk_Right_L_12
+  - Hiroyuki_OneSword_GuardWalk_Right_R_12
   - Komuso_Combat_Death_D_04
   - Hiroyuki_OneSword_Death_UR_20
   - AshigaruWarrior_Combat_Idle_DR_15
@@ -17117,7 +17117,7 @@ SpriteAtlas:
   - Naosuke_Combat_HeavyDamage_U_05
   - 0013_Peasant_Adventure_Talk_DR
   - Naosuke_Combat_EndGuard_D_06
-  - Hiroyuki_OneSword_GuardWalk_Right_L_02
+  - Hiroyuki_OneSword_GuardWalk_Right_R_02
   - Hiroyuki_OneSword_GuardWalk_Backward_UL_02
   - Naosuke_Combat_LoseBalance_U_00
   - AshigaruWarrior_Combat_Run_R_06
@@ -17214,7 +17214,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_HeavyDamage_DL_08
   - AshigaruArcher_Combat_Death_L_09
   - Naosuke_Combat_ParryStance_DL_07
-  - Hiroyuki_OneSword_GuardWalk_Right_R_07
+  - Hiroyuki_OneSword_GuardWalk_Right_L_07
   - Hiroyuki_OneSword_EndMeditate_D_14
   - 0021_Peasant_Adventure_SitA_R
   - AshigaruWarrior_Combat_LoseBalance_DL_16
@@ -17250,7 +17250,7 @@ SpriteAtlas:
   - Komuso_Combat_GuardIdle_L_08
   - Hiroyuki_OneSword_GuardWalk_Left_UL_03
   - Komuso_Combat_StrongAttackB_D_06
-  - Hiroyuki_OneSword_GuardWalk_Right_L_07
+  - Hiroyuki_OneSword_GuardWalk_Right_R_07
   - AshigaruArcher_Combat_LoseBalance_R_17
   - Hiroyuki_OneSword_HoldStrongAttack_L_08
   - Komuso_Combat_Idle_L_22
@@ -17893,7 +17893,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Heal_L_28
   - Hiroyuki_OneSword_Heal_DL_06
   - 0017_Peasant_Adventure_Talk_UR
-  - Hiroyuki_OneSword_GuardWalk_Right_L_03
+  - Hiroyuki_OneSword_GuardWalk_Right_R_03
   - Komuso_Combat_GuardWalk_Forward_DR_23
   - Naosuke_Combat_Riposte_D_09
   - Komuso_Combat_Idle_L_00
@@ -17996,7 +17996,7 @@ SpriteAtlas:
   - 0018_Peasant_Adventure_Talk_L
   - AshigaruArcher_Combat_LoseBalance_UL_14
   - Hiroyuki_OneSword_PrepareStrongAttack_DR_04
-  - Hiroyuki_OneSword_GuardWalk_Right_R_00
+  - Hiroyuki_OneSword_GuardWalk_Right_L_00
   - Naosuke_Combat_LightAttackC_U_03
   - AshigaruWarrior_Combat_LoseBalance_U_00
   - Naosuke_Combat_LoseBalance_U_02
@@ -18566,7 +18566,7 @@ SpriteAtlas:
   - Komuso_Combat_Block_UR_00
   - Hiroyuki_OneSword_EndGuard_R_02
   - Hiroyuki_OneSword_StartGuard_DR_02
-  - Hiroyuki_OneSword_GuardWalk_Right_L_01
+  - Hiroyuki_OneSword_GuardWalk_Right_R_01
   - AshigaruWarrior_Combat_GuardIdle_UL_05
   - Komuso_Combat_Idle_DR_13
   - Komuso_Combat_Idle_D_18
@@ -18744,7 +18744,7 @@ SpriteAtlas:
   - 0009_Peasant_Adventure_SitA_DL
   - Komuso_Combat_LoseBalance_U_29
   - Naosuke_Combat_HeavyDamage_UR_22
-  - Hiroyuki_OneSword_GuardWalk_Right_R_09
+  - Hiroyuki_OneSword_GuardWalk_Right_L_09
   - AshigaruWarrior_Combat_LightAttackA_UL_04
   - AshigaruArcher_Combat_Death_R_03
   - Hiroyuki_OneSword_EndMeditate_DL_13
@@ -19772,7 +19772,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_GuardWalk_Forward_UR_12
   - Komuso_Combat_EndGuard_DL_03
   - Naosuke_Combat_HeavyDamage_UL_06
-  - Hiroyuki_OneSword_GuardWalk_Right_R_11
+  - Hiroyuki_OneSword_GuardWalk_Right_L_11
   - AshigaruWarrior_Combat_GuardIdle_UL_11
   - Komuso_Combat_Idle_DR_09
   - Naosuke_Combat_StartGuard_U_03
@@ -19966,7 +19966,7 @@ SpriteAtlas:
   - 0008_Peasant_Adventure_Idle_R
   - Komuso_Combat_DamageA_UL_06
   - Komuso_Combat_GuardWalk_Forward_UR_17
-  - Hiroyuki_OneSword_GuardWalk_Right_L_11
+  - Hiroyuki_OneSword_GuardWalk_Right_R_11
   - Hiroyuki_OneSword_Run_U_01
   - Komuso_Combat_Riposte_U_12
   - 0001_Peasant_Adventure_Talk_U
@@ -20385,11 +20385,11 @@ SpriteAtlas:
   - Hiroyuki_OneSword_PrepareStrongAttack_UL_03
   - Komuso_Combat_GuardIdle_R_04
   - AshigaruWarrior_Combat_LoseBalance_UR_19
-  - Hiroyuki_OneSword_GuardWalk_Right_R_14
+  - Hiroyuki_OneSword_GuardWalk_Right_L_14
   - Hiroyuki_OneSword_Roll_R_10
   - Hiroyuki_OneSword_Riposte_D_06
   - AshigaruArcher_Combat_RaiseBow_DR_02
-  - Hiroyuki_OneSword_GuardWalk_Right_R_02
+  - Hiroyuki_OneSword_GuardWalk_Right_L_02
   - Hiroyuki_OneSword_Idle_U_11
   - AshigaruWarrior_Combat_LightAttackA_UL_06
   - AshigaruArcher_Combat_Idle_UR_11
@@ -20412,7 +20412,7 @@ SpriteAtlas:
   - AshigaruArcher_Combat_DamageA_UR_06
   - Komuso_Combat_LoseBalance_D_29
   - Naosuke_Combat_Death_R_20
-  - Hiroyuki_OneSword_GuardWalk_Right_L_10
+  - Hiroyuki_OneSword_GuardWalk_Right_R_10
   - Hiroyuki_OneSword_EndMeditate_L_13
   - Naosuke_Combat_LightAttackC_UL_05
   - Naosuke_Combat_HeavyDamage_R_03
@@ -20469,7 +20469,7 @@ SpriteAtlas:
   - AshigaruArcher_Combat_Roll_D_09
   - Naosuke_Combat_DamageA_U_06
   - Hiroyuki_OneSword_HoldStrongAttack_UL_05
-  - Hiroyuki_OneSword_GuardWalk_Right_R_04
+  - Hiroyuki_OneSword_GuardWalk_Right_L_04
   - AshigaruArcher_Combat_Idle_U_15
   - Naosuke_Combat_ParryStance_UL_00
   - AshigaruWarrior_Combat_GuardIdle_D_13
@@ -20760,7 +20760,7 @@ SpriteAtlas:
   - Naosuke_Combat_StrongAttack_DR_01
   - Naosuke_Combat_Run_D_01
   - Naosuke_Combat_DamageA_R_05
-  - Hiroyuki_OneSword_GuardWalk_Right_R_13
+  - Hiroyuki_OneSword_GuardWalk_Right_L_13
   - AshigaruWarrior_Combat_EndGuard_DR_02
   - Naosuke_Combat_StrongAttack_UR_16
   - Naosuke_Combat_LightAttackB_U_14
@@ -21008,7 +21008,7 @@ SpriteAtlas:
   - Naosuke_Combat_SpecialAttack_DL_16
   - Komuso_Combat_GuardIdle_UR_18
   - Hiroyuki_OneSword_HoldStrongAttack_D_12
-  - Hiroyuki_OneSword_GuardWalk_Right_L_13
+  - Hiroyuki_OneSword_GuardWalk_Right_R_13
   - Naosuke_Combat_HeavyDamage_D_09
   - Hiroyuki_OneSword_LightAttackB_U_06
   - AshigaruWarrior_Combat_Run_DL_07
@@ -22006,7 +22006,7 @@ SpriteAtlas:
   - AshigaruWarrior_Combat_Idle_UL_19
   - Hiroyuki_OneSword_Run_DR_06
   - Hiroyuki_OneSword_Sprint_R_02
-  - Hiroyuki_OneSword_GuardWalk_Right_L_04
+  - Hiroyuki_OneSword_GuardWalk_Right_R_04
   - Hiroyuki_OneSword_LightAttackC_DR_12
   - Hiroyuki_OneSword_Heal_UL_06
   - Komuso_Combat_GuardWalk_Forward_R_19
@@ -22017,7 +22017,7 @@ SpriteAtlas:
   - Hiroyuki_OneSword_Meditate_U_26
   - Hiroyuki_OneSword_SpecialAttack_UL_04
   - AshigaruWarrior_Combat_Death_UL_04
-  - Hiroyuki_OneSword_GuardWalk_Right_R_08
+  - Hiroyuki_OneSword_GuardWalk_Right_L_08
   - Naosuke_Combat_Idle_DR_04
   - Komuso_Combat_StrongAttackB_L_01
   - Komuso_Combat_StrongAttackA_UR_01
