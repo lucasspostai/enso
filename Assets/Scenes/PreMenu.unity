@@ -512,7 +512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.1.2 - SBGames 2020 Special Build - Enso Team / 2020
+  m_text: Version 0.1.3 - BIG Festival 2021 Special Build - Enso Team / 2020
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b5cbd5580658b54c8055bb5b71872bf, type: 2}
   m_sharedMaterial: {fileID: -614418607785774177, guid: 1b5cbd5580658b54c8055bb5b71872bf,
@@ -582,10 +582,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 731805555}
-    characterCount: 61
+    characterCount: 66
     spriteCount: 0
-    spaceCount: 11
-    wordCount: 13
+    spaceCount: 12
+    wordCount: 14
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1141,6 +1141,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
         type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
       propertyPath: _userData.actions.Array.data[7]._name
       value: Special Attack
       objectReference: {fileID: 0}
@@ -1148,6 +1168,516 @@ PrefabInstance:
         type: 3}
       propertyPath: _userData.actions.Array.data[7]._descriptiveName
       value: Special Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[20]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[20]._elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[20]._elementIdentifierId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._id
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._name
+      value: UI Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._descriptiveName
+      value: UI X
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[14]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionIdCounter
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._positiveDescriptiveName
+      value: UI Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[14]._negativeDescriptiveName
+      value: UI Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._id
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._name
+      value: UI Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._descriptiveName
+      value: UI Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[15]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._positiveDescriptiveName
+      value: UI Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[15]._negativeDescriptiveName
+      value: UI Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[21]._actionId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[21]._elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[21]._elementIdentifierId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[14]._actionId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[14]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[14]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[14]._keyboardKeyCode
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[15]._actionId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[15]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[15]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[15]._keyboardKeyCode
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[15]._axisContribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[16]._actionId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[16]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[16]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[16]._keyboardKeyCode
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[17]._actionId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[17]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[17]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[17]._keyboardKeyCode
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[18]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[18]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[18]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[18]._keyboardKeyCode
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[19]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[19]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[19]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[19]._keyboardKeyCode
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[19]._axisContribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[17]._axisContribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[20]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[20]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[20]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[20]._keyboardKeyCode
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[21]._actionId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[21]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[21]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[21]._keyboardKeyCode
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[21]._axisContribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[16]._id
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[16]._name
+      value: Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[16]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[16]._descriptiveName
+      value: Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[16]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[16]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[17]._id
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[17]._name
+      value: Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[17]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[17]._descriptiveName
+      value: Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actions.Array.data[17]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[17]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[22]._actionId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[22]._elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[22]._elementIdentifierId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[22]._axisRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[23]._actionId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[23]._elementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[23]._elementIdentifierId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[23]._axisRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._actionId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[22]._keyboardKeyCode
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[23]._actionId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[23]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[23]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[23]._keyboardKeyCode
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[24]._actionId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[24]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[24]._elementIdentifierId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[25]._actionId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[25]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[25]._elementIdentifierId
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[24]._actionId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[24]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[24]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[24]._keyboardKeyCode
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[25]._actionId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[25]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[25]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897994389101508715, guid: 73b797cc0af975142a9dfcfb92b61bac,
+        type: 3}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[25]._keyboardKeyCode
+      value: 274
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b797cc0af975142a9dfcfb92b61bac, type: 3}

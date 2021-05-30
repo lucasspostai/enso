@@ -219,7 +219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba70bb71cfa253c4bb1d0e18a0d106bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6e31ffbe2125374b9736d8e6282aa80, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -847,8 +847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisAnimator: {fileID: 5923332420423338608}
-  ThisButton: {fileID: 241329925980080394}
   CostText: {fileID: 8931142912199829682}
+  ThisButton: {fileID: 241329925980080394}
 --- !u!225 &3543179208527818308
 CanvasGroup:
   m_ObjectHideFlags: 0

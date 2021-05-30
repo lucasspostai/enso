@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2097210894765453586}
   - component: {fileID: 2097210894765453677}
-  - component: {fileID: 3117854945146688258}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -61,7 +60,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.3254717, b: 0.3254717, a: 1}
     m_PressedColor: {r: 0.8235294, g: 0.30588236, b: 0.30588236, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -86,26 +85,10 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.468
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3117854945146688258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097210894765453587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb09d3fdb9748343af3e4a5d4c706c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PointerEnterSoundCue: {fileID: 11400000, guid: 8dc6e53702a7a624fb8bf1b51dc5eb1b,
-    type: 2}
-  PointerDownSoundCue: {fileID: 11400000, guid: a473f48a61d9f54478942b070b2df6a7,
-    type: 2}
 --- !u!1 &2097210894922212241
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +172,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2097210894945695156}
   - component: {fileID: 2097210894945695159}
+  - component: {fileID: 1472789764735668611}
+  - component: {fileID: 7013872781685942638}
+  - component: {fileID: 1850963290331778481}
+  - component: {fileID: 4494119431797540046}
+  - component: {fileID: 7289044729730148396}
   m_Layer: 5
   m_Name: OptionsSlider
   m_TagString: Untagged
@@ -243,6 +231,95 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!222 &1472789764735668611
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097210894945695157}
+  m_CullTransparentMesh: 0
+--- !u!114 &7013872781685942638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097210894945695157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1850963290331778481
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097210894945695157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8718d9111e1262a41928458e3c13c2fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4494119431797540046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097210894945695157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb09d3fdb9748343af3e4a5d4c706c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackAnimator: {fileID: 1850963290331778481}
+  ObjectToFocus: {fileID: 2097210894765453587}
+  PointerEnterSoundCue: {fileID: 11400000, guid: 8dc6e53702a7a624fb8bf1b51dc5eb1b,
+    type: 2}
+  PointerDownSoundCue: {fileID: 11400000, guid: a473f48a61d9f54478942b070b2df6a7,
+    type: 2}
+--- !u!114 &7289044729730148396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097210894945695157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d2aa068cfb23949b83140c66044d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OptionUp: {fileID: 0}
+  OptionDown: {fileID: 0}
+  ObjectToFocus: {fileID: 2097210894765453587}
+  ThisAnimator: {fileID: 1850963290331778481}
 --- !u!1 &2097210894980393100
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,9 @@ namespace Enso.Characters.Player
             Running,
             Sprinting
         }
-
+        
+        private bool uiUpInputDownCalled;
+        private bool uiDownInputDownCalled;
         private bool pageLeftInputDownCalled;
         private bool pageRightInputDownCalled;
         private bool sprintInputDownCalled;
@@ -39,6 +41,8 @@ namespace Enso.Characters.Player
 
         private float guardInputHoldingTime;
 
+        [SerializeField] private string UiUpAction = "Up";
+        [SerializeField] private string UiDownAction = "Down";
         [SerializeField] private string MoveHorizontalAction = "Move Horizontal";
         [SerializeField] private string MoveVerticalAction = "Move Vertical";
         [SerializeField] private string SprintAction = "Sprint";
@@ -73,6 +77,8 @@ namespace Enso.Characters.Player
         public static event Action CancelInputDown;
         public static event Action PageLeftInputDown;
         public static event Action PageRightInputDown;
+        public static event Action UiUpInputDown;
+        public static event Action UiDownInputDown;
         public static event Action PauseInputDown;
         public static event Action AnyInputDown;
 
@@ -88,6 +94,8 @@ namespace Enso.Characters.Player
             pauseInputDownCalled = rewiredPlayer.GetButtonDown(PauseAction);
             pageLeftInputDownCalled = rewiredPlayer.GetButtonDown(PageLeftAction);
             pageRightInputDownCalled = rewiredPlayer.GetButtonDown(PageRightAction);
+            uiUpInputDownCalled = rewiredPlayer.GetButtonDown(UiUpAction);
+            uiDownInputDownCalled = rewiredPlayer.GetButtonDown(UiDownAction);
             returnInputDownCalled = rewiredPlayer.GetButtonDown(CancelAction);
 
             if (pauseInputDownCalled)
@@ -103,6 +111,16 @@ namespace Enso.Characters.Player
             if (pageRightInputDownCalled)
             {
                 OnPageRightInputDown();
+            }
+            
+            if (uiUpInputDownCalled)
+            {
+                OnUiUpInputDown();
+            }
+
+            if (uiDownInputDownCalled)
+            {
+                OnUiDownInputDown();
             }
             
             if (returnInputDownCalled)
@@ -288,6 +306,16 @@ namespace Enso.Characters.Player
         private static void OnPageRightInputDown()
         {
             PageRightInputDown?.Invoke();
+        }
+        
+        private static void OnUiUpInputDown()
+        {
+            UiUpInputDown?.Invoke();
+        }
+        
+        private static void OnUiDownInputDown()
+        {
+            UiDownInputDown?.Invoke();
         }
 
         private static void OnPauseInputDown()

@@ -66,14 +66,14 @@ MonoBehaviour:
   rewiredPlayerIds: 00000000
   usePlayingPlayersOnly: 0
   playerMice: []
-  moveOneElementPerAxisPress: 0
+  moveOneElementPerAxisPress: 1
   setActionsById: 0
   horizontalActionId: -1
   verticalActionId: -1
   submitActionId: -1
   cancelActionId: -1
-  m_HorizontalAxis: Move Horizontal
-  m_VerticalAxis: Move Vertical
+  m_HorizontalAxis: UI Horizontal
+  m_VerticalAxis: UI Vertical
   m_SubmitButton: Accept
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -81,6 +81,6 @@ MonoBehaviour:
   m_allowMouseInput: 1
   m_allowMouseInputIfTouchSupported: 1
   m_allowTouchInput: 1
-  m_deselectIfBackgroundClicked: 1
+  m_deselectIfBackgroundClicked: 0
   m_deselectBeforeSelecting: 1
   m_ForceModuleActive: 0

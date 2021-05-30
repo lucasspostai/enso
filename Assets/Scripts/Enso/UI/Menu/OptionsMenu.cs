@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Enso.Characters.Player;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Enso.UI.Menu
@@ -23,6 +25,9 @@ namespace Enso.UI.Menu
         [SerializeField] private GameObject GraphicsOptions;
         [SerializeField] private GameObject ControlsOptions;
         [SerializeField] private GameObject ReturnObjectToActivate;
+        [SerializeField] private Option FirstAudioOptionToFocus;
+        [SerializeField] private Option FirstGraphicsOptionToFocus;
+        [SerializeField] private Option FirstControlsOptionToFocus;
 
         private void OnEnable()
         {
@@ -45,6 +50,9 @@ namespace Enso.UI.Menu
 
         private void Return()
         {
+            if (ResolutionsDropdown.IsExpanded)
+                return;
+            
             var element = GetComponent<Element>();
 
             if (!element) 
@@ -135,6 +143,9 @@ namespace Enso.UI.Menu
 
         private void GoToLeftOption()
         {
+            if (ResolutionsDropdown.IsExpanded)
+                return;
+            
             if (AudioOptions.activeSelf)
                 EnableControls();
             else if (GraphicsOptions.activeSelf)
@@ -145,6 +156,9 @@ namespace Enso.UI.Menu
 
         private void GoToRightOption()
         {
+            if (ResolutionsDropdown.IsExpanded)
+                return;
+            
             if (AudioOptions.activeSelf)
                 EnableGraphics();
             else if (GraphicsOptions.activeSelf)
@@ -163,19 +177,30 @@ namespace Enso.UI.Menu
         public void EnableAudio()
         {
             EnableOption(true, false, false);
-            HeaderButtons[0].Select();
+            HighlightButton(0);
+            FirstAudioOptionToFocus.Focus();
         }
 
         public void EnableGraphics()
         {
             EnableOption(false, true, false);
-            HeaderButtons[1].Select();
+            HighlightButton(1);
+            FirstGraphicsOptionToFocus.Focus();
         }
 
         public void EnableControls()
         {
             EnableOption(false, false, true);
-            HeaderButtons[2].Select();
+            HighlightButton(2);
+            FirstControlsOptionToFocus.Focus();
+        }
+
+        private void HighlightButton(int index)
+        {
+            for (int i = 0; i < HeaderButtons.Length; i++)
+            {
+                HeaderButtons[i].interactable = i != index;
+            }
         }
     }
 }
